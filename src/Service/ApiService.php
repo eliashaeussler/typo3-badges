@@ -87,6 +87,6 @@ final class ApiService
      */
     private function calculateCacheIdentifier(string $key, array $options = []): string
     {
-        return sha1($key.'_'.json_encode($options));
+        return hash('sha512', $key.'_'.json_encode($options));
     }
 }

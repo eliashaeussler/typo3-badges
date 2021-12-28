@@ -65,6 +65,6 @@ abstract class AbstractApiTestCase extends KernelTestCase
 
     protected function getCacheIdentifier(): string
     {
-        return sha1('typo3_api.extension_metadata_{"apiPath":"\/api\/v1\/extension\/foo"}');
+        return hash('sha512', 'typo3_api.extension_metadata_{"apiPath":"\/api\/v1\/extension\/foo"}');
     }
 }
