@@ -1,5 +1,6 @@
 {
     "name": "eliashaeussler/typo3-badges",
+    "description": "A Symfony project that provides endpoints for beautiful TYPO3 badges.",
     "license": "GPL-3.0-or-later",
     "type": "project",
     "require": {
