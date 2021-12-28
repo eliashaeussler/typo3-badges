@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Composer project "eliashaeussler/typo3-badges".
  *
- * Copyright (C) 2021 Elias Häußler <e.haeussler@familie-redlich.de>
+ * Copyright (C) 2021 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
