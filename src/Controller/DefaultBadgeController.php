@@ -28,7 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Typo3BadgeController.
+ * DefaultBadgeController.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
@@ -37,7 +37,7 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/typo3',
     methods: ['GET'],
 )]
-final class Typo3BadgeController
+final class DefaultBadgeController
 {
     public function __invoke(): Response
     {
