@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo](docs/logo.png)
+![Logo](docs/header.png)
 
 # Badges for TYPO3 extensions
 
