@@ -15,7 +15,8 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.21",
-        "friendsofphp/php-cs-fixer": "^3.4"
+        "friendsofphp/php-cs-fixer": "^3.4",
+        "phpstan/phpstan": "^1.2"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -67,6 +68,7 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
-        "lint": "php-cs-fixer fix"
+        "lint": "php-cs-fixer fix",
+        "sca": "phpstan analyse"
     }
 }
