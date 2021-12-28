@@ -24,41 +24,23 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Http\BadgeResponse;
-use App\Service\ApiService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * VersionBadgeController.
+ * Typo3BadgeController.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/{extension}/version',
-    requirements: ['extension' => '[a-z0-9_]+'],
+    path: '/badge/typo3',
     methods: ['GET'],
 )]
-final class VersionBadgeController
+final class Typo3BadgeController
 {
-    public function __construct(
-        private ApiService $apiService,
-    ) {
-    }
-
-    public function __invoke(string $extension): Response
+    public function __invoke(): Response
     {
-        try {
-            $apiResponse = $this->apiService->getExtensionMetadata($extension);
-            $version = $apiResponse[0]['current_version']['number'] ?? null;
-        } catch (\Exception) {
-            return BadgeResponse::forError()->create();
-        }
-
-        if (null !== $version) {
-            return BadgeResponse::forVersion($version)->create();
-        }
-
-        return BadgeResponse::forError()->create();
+        return (new BadgeResponse())->create();
     }
 }
