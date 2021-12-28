@@ -80,6 +80,6 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "lint": "php-cs-fixer fix",
-        "sca": "phpstan analyse"
+        "sca": "phpstan analyse -c phpstan.neon"
     }
 }
