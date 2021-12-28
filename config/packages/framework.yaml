@@ -23,6 +23,8 @@ framework:
                 base_uri: 'https://extensions.typo3.org'
                 auth_bearer: '%env(TYPO3_API_TOKEN)%'
 
+    error_controller: App\Controller\ErrorController
+
 when@test:
     framework:
         test: true
