@@ -1,0 +1,58 @@
+name: Tests
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  # Job: Run unit tests
+  tests:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      # Prepare environment
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          tools: composer:v2
+          coverage: xdebug
+
+      # Define Composer cache
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Define Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: tests-php-8.0
+          restore-keys: |
+            tests-php-
+
+      # Install dependencies
+      - name: Install Composer and dependencies
+        run: composer install --no-progress
+
+      # Run tests
+      - name: Build coverage directory
+        run: mkdir -p .build/coverage
+      - name: Run tests with coverage
+        run: composer test:coverage
+
+      # Report coverage
+      - name: Fix coverage path
+        working-directory: .build/coverage
+        run: sed -i 's/\/home\/runner\/work\/typo3-badges\/typo3-badges\//\/github\/workspace\//g' clover.xml
+      - name: Run SonarCloud scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
