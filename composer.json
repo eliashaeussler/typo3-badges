@@ -3,6 +3,15 @@
     "description": "A Symfony project that provides endpoints for beautiful TYPO3 badges.",
     "license": "GPL-3.0-or-later",
     "type": "project",
+    "authors": [
+        {
+            "name": "Elias Häußler",
+            "email": "elias@haeussler.dev",
+            "homepage": "https://haeussler.dev",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://badges.typo3-web.dev",
     "require": {
         "php": ">=8.0.2",
         "ext-ctype": "*",
