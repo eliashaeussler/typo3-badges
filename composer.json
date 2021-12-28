@@ -26,6 +26,8 @@
         "ergebnis/composer-normalize": "^2.21",
         "friendsofphp/php-cs-fixer": "^3.4",
         "phpstan/phpstan": "^1.2",
+        "phpunit/phpunit": "^9.5",
+        "symfony/phpunit-bridge": "^6.0",
         "symfony/stopwatch": "6.0.*",
         "symfony/web-profiler-bundle": "6.0.*"
     },
@@ -80,6 +82,7 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "lint": "php-cs-fixer fix",
-        "sca": "phpstan analyse -c phpstan.neon"
+        "sca": "phpstan analyse -c phpstan.neon",
+        "test": "phpunit"
     }
 }
