@@ -1,97 +1,107 @@
 {
-    "name": "eliashaeussler/typo3-badges",
-    "license": "GPL-3.0-or-later",
-    "type": "project",
-    "require": {
-        "php": ">=8.0.2",
-        "ext-ctype": "*",
-        "ext-iconv": "*",
-        "ext-json": "*",
-        "doctrine/annotations": "^1.0",
-        "phpdocumentor/reflection-docblock": "^5.3",
-        "phpstan/phpdoc-parser": "^1.2",
-        "sensio/framework-extra-bundle": "^6.2",
-        "symfony/apache-pack": "^1.0",
-        "symfony/cache": "6.0.*",
-        "symfony/cache-contracts": "^3.0",
-        "symfony/console": "6.0.*",
-        "symfony/dotenv": "6.0.*",
-        "symfony/flex": "^2",
-        "symfony/framework-bundle": "6.0.*",
-        "symfony/http-client": "6.0.*",
-        "symfony/http-client-contracts": "^3.0",
-        "symfony/http-foundation": "6.0.*",
-        "symfony/http-kernel": "6.0.*",
-        "symfony/property-access": "6.0.*",
-        "symfony/property-info": "6.0.*",
-        "symfony/runtime": "6.0.*",
-        "symfony/serializer": "6.0.*",
-        "symfony/yaml": "6.0.*"
-    },
-    "require-dev": {
-        "ergebnis/composer-normalize": "^2.21",
-        "friendsofphp/php-cs-fixer": "^3.4",
-        "phpstan/phpstan": "^1.2",
-        "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "6.0.*",
-        "symfony/phpunit-bridge": "^6.0",
-        "symfony/stopwatch": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*"
-    },
-    "replace": {
-        "symfony/polyfill-ctype": "*",
-        "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php73": "*",
-        "symfony/polyfill-php74": "*",
-        "symfony/polyfill-php80": "*"
-    },
-    "conflict": {
-        "symfony/symfony": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true,
-            "ergebnis/composer-normalize": true,
-            "symfony/flex": true,
-            "symfony/runtime": true
-        },
-        "optimize-autoloader": true,
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "6.0.*"
-        }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ],
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
-        "lint": "php-cs-fixer fix",
-        "sca": "phpstan analyse -c phpstan.neon",
-        "test": "phpunit",
-        "test:coverage": "phpunit -c phpunit.coverage.xml"
-    }
+	"name": "eliashaeussler/typo3-badges",
+	"description": "A Symfony project that provides endpoints for beautiful TYPO3 badges.",
+	"license": "GPL-3.0-or-later",
+	"type": "project",
+	"authors": [
+		{
+			"name": "Elias Häußler",
+			"email": "elias@haeussler.dev",
+			"homepage": "https://haeussler.dev",
+			"role": "Maintainer"
+		}
+	],
+	"homepage": "https://badges.typo3-web.dev",
+	"require": {
+		"php": ">=8.0.2",
+		"ext-ctype": "*",
+		"ext-iconv": "*",
+		"ext-json": "*",
+		"doctrine/annotations": "^1.0",
+		"phpdocumentor/reflection-docblock": "^5.3",
+		"phpstan/phpdoc-parser": "^1.2",
+		"sensio/framework-extra-bundle": "^6.2",
+		"symfony/apache-pack": "^1.0",
+		"symfony/cache": "6.0.*",
+		"symfony/cache-contracts": "^3.0",
+		"symfony/console": "6.0.*",
+		"symfony/dotenv": "6.0.*",
+		"symfony/flex": "^2",
+		"symfony/framework-bundle": "6.0.*",
+		"symfony/http-client": "6.0.*",
+		"symfony/http-client-contracts": "^3.0",
+		"symfony/http-foundation": "6.0.*",
+		"symfony/http-kernel": "6.0.*",
+		"symfony/property-access": "6.0.*",
+		"symfony/property-info": "6.0.*",
+		"symfony/runtime": "6.0.*",
+		"symfony/serializer": "6.0.*",
+		"symfony/yaml": "6.0.*"
+	},
+	"require-dev": {
+		"ergebnis/composer-normalize": "^2.21",
+		"friendsofphp/php-cs-fixer": "^3.4",
+		"phpstan/phpstan": "^1.2",
+		"phpunit/phpunit": "^9.5",
+		"symfony/browser-kit": "6.0.*",
+		"symfony/phpunit-bridge": "^6.0",
+		"symfony/stopwatch": "6.0.*",
+		"symfony/web-profiler-bundle": "6.0.*"
+	},
+	"replace": {
+		"symfony/polyfill-ctype": "*",
+		"symfony/polyfill-iconv": "*",
+		"symfony/polyfill-php72": "*",
+		"symfony/polyfill-php73": "*",
+		"symfony/polyfill-php74": "*",
+		"symfony/polyfill-php80": "*"
+	},
+	"conflict": {
+		"symfony/symfony": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"App\\Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/package-versions-deprecated": true,
+			"ergebnis/composer-normalize": true,
+			"symfony/flex": true,
+			"symfony/runtime": true
+		},
+		"optimize-autoloader": true,
+		"preferred-install": {
+			"*": "dist"
+		},
+		"sort-packages": true
+	},
+	"extra": {
+		"symfony": {
+			"allow-contrib": false,
+			"require": "6.0.*"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"@auto-scripts"
+		],
+		"post-update-cmd": [
+			"@auto-scripts"
+		],
+		"auto-scripts": {
+			"cache:clear": "symfony-cmd",
+			"assets:install %PUBLIC_DIR%": "symfony-cmd"
+		},
+		"lint": "php-cs-fixer fix",
+		"sca": "phpstan analyse -c phpstan.neon",
+		"test": "phpunit",
+		"test:coverage": "phpunit -c phpunit.coverage.xml"
+	}
 }
