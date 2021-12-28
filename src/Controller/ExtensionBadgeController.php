@@ -26,6 +26,7 @@ namespace App\Controller;
 use App\Http\BadgeResponse;
 use App\Service\ApiService;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -48,17 +49,10 @@ final class ExtensionBadgeController
 
     public function __invoke(string $extension): Response
     {
-        try {
-            $apiResponse = $this->apiService->getExtensionMetadata($extension);
-            $extensionKey = $apiResponse[0]['key'] ?? null;
-        } catch (\Exception) {
-            return BadgeResponse::forError()->create();
-        }
+        $apiResponse = $this->apiService->getExtensionMetadata($extension);
+        $extensionKey = $apiResponse[0]['key']
+            ?? throw new BadRequestHttpException('Invalid API response.');
 
-        if (null !== $extensionKey) {
-            return BadgeResponse::forExtension($extensionKey)->create();
-        }
-
-        return BadgeResponse::forError()->create();
+        return BadgeResponse::forExtension($extensionKey)->create();
     }
 }
