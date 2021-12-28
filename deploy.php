@@ -26,7 +26,7 @@ namespace Deployer;
 require 'recipe/symfony.php';
 
 // Config
-set('repository', 'git@github.com:eliashaeussler/typo3-badges.git');
+set('repository', 'https://github.com/eliashaeussler/typo3-badges.git');
 set('env', [
     'APP_ENV' => 'prod',
 ]);
