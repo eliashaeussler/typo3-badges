@@ -35,6 +35,11 @@ jobs:
       # Deploy to production
       - name: Deploy
         uses: deployphp/action@v1
+        env:
+          LANG: en_US.UTF-8
+          LANGUAGE: en_US.UTF-8
+          LC_CTYPE: en_US.UTF-8
+          LC_ALL: en_US.UTF-8
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
