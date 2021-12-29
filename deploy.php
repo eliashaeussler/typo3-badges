@@ -29,6 +29,7 @@ require 'recipe/symfony.php';
 set('repository', 'https://github.com/eliashaeussler/typo3-badges.git');
 set('env', [
     'APP_ENV' => 'prod',
+    'LANG' => 'en_US.UTF-8',
 ]);
 
 // Hosts
