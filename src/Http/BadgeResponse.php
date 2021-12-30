@@ -23,7 +23,7 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use App\Number\NumberFormatter;
+use App\Value\NumberFormatter;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -39,52 +39,62 @@ final class BadgeResponse
         'version' => 'orange',
         'downloads' => 'blue',
         'error' => 'red',
+        'stability_stable' => 'green',
+        'stability_beta' => 'yellow',
+        'stability_alpha' => 'red',
+        'stability_experimental' => 'red',
+        'stability_test' => 'lightgrey',
+        'stability_obsolete' => 'lightgrey',
+        'stability_excludeFromUpdates' => 'lightgrey',
     ];
 
-    private string $label = '';
-    private string $message = '';
-    private string $color = '';
-    private bool $isError = false;
+    public function __construct(
+        private string $label = '',
+        private string $message = '',
+        private string $color = '',
+        private bool $isError = false,
+    ) {
+    }
 
     public static function forExtension(string $extension): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = $extension;
-        $object->color = self::COLOR_MAP['extension'];
-
-        return $object;
+        return new self(
+            message: $extension,
+            color: self::COLOR_MAP['extension'],
+        );
     }
 
     public static function forVersion(string $version): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = $version;
-        $object->color = self::COLOR_MAP['version'];
-
-        return $object;
+        return new self(
+            message: $version,
+            color: self::COLOR_MAP['version'],
+        );
     }
 
     public static function forDownloads(int $downloads): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = sprintf('%s downloads', strtolower(NumberFormatter::format($downloads)));
-        $object->color = self::COLOR_MAP['downloads'];
+        return new self(
+            message: sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
+            color: self::COLOR_MAP['downloads'],
+        );
+    }
 
-        return $object;
+    public static function forStability(string $stability): self
+    {
+        return new self(
+            message: $stability,
+            color: self::COLOR_MAP['stability_'.$stability] ?? 'orange',
+        );
     }
 
     public static function forError(): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = 'error';
-        $object->color = self::COLOR_MAP['error'];
-        $object->isError = true;
-
-        return $object;
+        return new self(
+            message: 'error',
+            color: self::COLOR_MAP['error'],
+            isError: true,
+        );
     }
 
     public function create(): JsonResponse

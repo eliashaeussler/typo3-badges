@@ -21,7 +21,7 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Number;
+namespace App\Value;
 
 /**
  * NumberFormatter.
@@ -40,11 +40,11 @@ final class NumberFormatter
             return (string) $number;
         }
 
-        $unit = intval(log($number, 1000));
+        $unit = \intval(log($number, 1000));
         $units = ['', 'K', 'M', 'B', 'T', 'Q'];
 
-        if (array_key_exists($unit, $units)) {
-            return sprintf('%s%s', rtrim(number_format($number / pow(1000, $unit), 1), '.0'), $units[$unit]);
+        if (\array_key_exists($unit, $units)) {
+            return \sprintf('%s%s', rtrim(number_format($number / pow(1000, $unit), 1), '.0'), $units[$unit]);
         }
 
         return (string) $number;

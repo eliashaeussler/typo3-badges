@@ -21,9 +21,9 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Tests\Number;
+namespace App\Tests\Value;
 
-use App\Number\NumberFormatter;
+use App\Value\NumberFormatter;
 use PHPUnit\Framework\TestCase;
 
 /**
