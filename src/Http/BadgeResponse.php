@@ -23,7 +23,7 @@ declare(strict_types=1);
 
 namespace App\Http;
 
-use App\Number\NumberFormatter;
+use App\Value\NumberFormatter;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
