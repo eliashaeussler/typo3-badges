@@ -226,6 +226,9 @@
             "bin/console"
         ]
     },
+    "symfony/css-selector": {
+        "version": "v6.0.2"
+    },
     "symfony/dependency-injection": {
         "version": "v6.0.1"
     },
