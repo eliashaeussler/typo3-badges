@@ -23,10 +23,13 @@ framework:
                 base_uri: 'https://extensions.typo3.org'
                 auth_bearer: '%env(TYPO3_API_TOKEN)%'
 
-    error_controller: App\Controller\ErrorController
+when@prod:
+    framework:
+        error_controller: App\Controller\ErrorController
 
 when@test:
     framework:
         test: true
         session:
             storage_factory_id: session.storage.factory.mock_file
+        error_controller: App\Controller\ErrorController
