@@ -1,0 +1,26 @@
+<details class="bg-gray-50 p-4 rounded-md {% if containerClass is defined %}{{ containerClass }}{% else %}mt-2{% endif %}">
+    <summary>
+        <h3 class="inline-block text-sm cursor-pointer">
+            <span class="inline-block bg-green-600 text-white px-1.5 pb-0.25 rounded font-mono mr-1">GET</span>
+            <code class="inline-block border-b border-dashed pb-0.5 font-bold">{{ routes.get(routeName).path }}</code>
+        </h3>
+        <span class="block text-gray mt-4">
+            {% block description %}{% endblock %}
+        </span>
+    </summary>
+    <p class="text-xs font-bold py-1 mt-4 uppercase text-gray-600 cursor-pointer select-none">
+        Example
+    </p>
+    <p class="group bg-gray-100 border-b-4 border-gray-200 rounded-md mt-2 text-sm relative">
+        <button class="clipboard-btn bg-white rounded-md absolute p-1 top-2 right-2 shadow-lg opacity-0 group-hover:opacity-100 transition ease-in-out" title="Copy to clipboard">
+            <svg class="clipboard-copy w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+            <svg class="clipboard-check w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        </button>
+        <code class="clipboard-text block px-6 py-4 whitespace-nowrap overflow-x-auto">
+            <span class="text-red-700">![{% block badgeLabel %}TYPO3 badge{% endblock %}]</span><span class="text-yellow-700">(</span><span class="text-green-700">https://shields.io/endpoint?url=<strong>{{ url(routeName, routeParameters) }}</strong></span><span class="text-yellow-700">)</span>
+        </code>
+    </p>
+    <a href="https://shields.io/endpoint?url={{ url(routeName, routeParameters) }}">
+        <img src="https://shields.io/endpoint?url={{ url(routeName, routeParameters) }}" alt="Rendered badge" class="mt-4" />
+    </a>
+</details>

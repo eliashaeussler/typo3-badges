@@ -25,3 +25,6 @@
 ###< phpunit/phpunit ###
 
 /.build
+/node_modules
+/public/assets
+/public/fonts

@@ -199,6 +199,9 @@
             "public/.htaccess"
         ]
     },
+    "symfony/asset": {
+        "version": "v6.0.1"
+    },
     "symfony/browser-kit": {
         "version": "v6.0.1"
     },

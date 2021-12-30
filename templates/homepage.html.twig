@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TYPO3 Badges</title>
+    <link href="{{ asset('assets/fonts.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/main.css') }}" rel="stylesheet" />
+</head>
+<body class="bg-typo3-orange bg-gradient-to-br from-typo3-orange to-indigo-600 min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
+    <header class="max-w-3xl mx-auto">
+        <div class="text-center">
+            <img src="https://shields.io/endpoint?url={{ url('badge.default') }}&color=white"
+                 alt="TYPO3 badge" class="inline" />
+            <a href="https://github.com/eliashaeussler/typo3-badges" rel="nofollow">
+                <img src="https://img.shields.io/github/v/release/eliashaeussler/typo3-badges?logo=github"
+                     alt="Current version badge" class="inline" />
+            </a>
+            <a href="https://github.com/eliashaeussler/typo3-badges/deployments/activity_log?environment=production" rel="nofollow">
+                <img src="https://img.shields.io/badge/dynamic/json?color=green&label=last+deployment&query=0.updated_at&url=https://api.github.com/repos/eliashaeussler/typo3-badges/deployments"
+                     alt="Last deployment badge" class="inline" />
+            </a>
+        </div>
+    </header>
+
+    <main class="bg-white max-w-3xl mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h1 class="font-bold text-2xl">TYPO3 Badges</h1>
+            <p class="text-gray-600 pt-2">A beautiful eye-catcher for your extension documentations.</p>
+        </section>
+
+        <section class="mt-10">
+            <h2 class="font-bold text-xl">&#x1F680;&nbsp;Usage</h2>
+            <hr class="my-2 border-gray-200">
+            <p class="text-gray mt-4">
+                This API provides JSON endpoints for Shields.io.
+            </p>
+            <p class="text-gray mt-2">
+                Use the badge URL of Shields.io together with the URL of the endpoint you would
+                like to render the badge:
+            </p>
+            <p class="mt-2">
+                <code class="inline border-b border-dashed pb-0.5 text-sm">
+                    https://shields.io/endpoint?url=<strong>{{ app.request.schemeAndHttpHost }}/<span class="text-red-600">&lt;endpoint&gt;</span></strong>
+                </code>
+            </p>
+            <div class="flex px-6 py-4 mt-5 text-sm text-yellow-700 bg-yellow-100 rounded-md" role="alert">
+                <svg class="inline flex-shrink-0 mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                <div>
+                    Only extensions that are available in the
+                    <a href="https://extensions.typo3.org" class="font-bold hover:underline" rel="nofollow">TYPO3 extension repository (TER)</a>
+                    are supported!
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-10">
+            <h2 class="font-bold text-xl">&#x1F525;&nbsp;Endpoints</h2>
+            <hr class="my-2 border-gray-200">
+
+            {% embed '_endpoint.html.twig' with {'routeName': 'badge.version', 'routeParameters': {'extension': 'handlebars'}, 'routes': routes, 'containerClass': ''} %}
+                {% block description %}Get JSON data for current extension version.{% endblock %}
+                {% block badgeLabel %}Current version{% endblock %}
+            {% endembed %}
+
+            {% embed '_endpoint.html.twig' with {'routeName': 'badge.downloads', 'routeParameters': {'extension': 'handlebars'}, 'routes': routes} %}
+                {% block description %}Get JSON data for total extension downloads.{% endblock %}
+                {% block badgeLabel %}Total downloads{% endblock %}
+            {% endembed %}
+
+            {% embed '_endpoint.html.twig' with {'routeName': 'badge.extension', 'routeParameters': {'extension': 'handlebars'}, 'routes': routes} %}
+                {% block description %}Get JSON data for extension key.{% endblock %}
+                {% block badgeLabel %}TYPO3 extension{% endblock %}
+            {% endembed %}
+
+            {% embed '_endpoint.html.twig' with {'routeName': 'badge.default', 'routeParameters': {}, 'routes': routes} %}
+                {% block description %}Get JSON data for a generic TYPO3 badge.{% endblock %}
+                {% block badgeLabel %}TYPO3{% endblock %}
+            {% endembed %}
+        </section>
+
+        <section class="mt-10">
+            <h2 class="font-bold text-xl">&#x1F916;&nbsp;API response</h2>
+            <hr class="my-2 border-gray-200">
+            <p class="text-gray mt-4">
+                All endpoints return JSON objects to be processed by Shields.io.
+            </p>
+<pre class="bg-gray-100 block border-b-4 border-gray-200 px-6 py-4 rounded-md mt-4 text-sm">
+{
+    <span class="text-red-700">"schemaVersion"</span>: <span class="text-yellow-700">1</span>,
+    <span class="text-red-700">"label"</span>: <span class="text-green-700">"typo3"</span>,
+    <span class="text-red-700">"message"</span>: <span class="text-green-700">"inspiring people to share"</span>,
+    <span class="text-red-700">"color"</span>: <span class="text-green-700">"orange"</span>,
+    <span class="text-red-700">"isError"</span>: <span class="text-yellow-700">false</span>,
+    <span class="text-red-700">"namedLogo"</span>: <span class="text-green-700">"typo3"</span>
+}
+</pre>
+            <p class="text-gray mt-4">
+                Take a look at the <a href="https://shields.io/endpoint" class="font-bold hover:underline">official documentation of Shields.io</a>
+                to get an overview about how JSON data is processed. There you will also find
+                ways to override the configuration sent by the API.
+            </p>
+        </section>
+
+        <section class="mt-10">
+            <h2 class="font-bold text-xl">&#x1F914;&nbsp;Anything else?</h2>
+            <hr class="my-2 border-gray-200">
+            <p class="text-gray mt-4">
+                If you are missing something, feel free to
+                <a href="https://github.com/eliashaeussler/typo3-badges/issues" rel="nofollow" class="font-bold hover:underline">create an issue</a>
+                or
+                <a href="https://github.com/eliashaeussler/typo3-badges/pulls" rel="nofollow" class="font-bold hover:underline">submit a pull request</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="max-w-lg mx-auto text-center mt-12 mb-6">
+        <p class="text-white text-sm">
+            Created with &#x2764; in Berlin by <a href="https://haeussler.dev" class="font-bold hover:underline">Elias Häußler</a>
+        </p>
+    </footer>
+
+    <script src="{{ asset('assets/main.js') }}"></script>
+</body>
+</html>
