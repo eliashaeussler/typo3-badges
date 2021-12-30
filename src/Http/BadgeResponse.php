@@ -39,6 +39,13 @@ final class BadgeResponse
         'version' => 'orange',
         'downloads' => 'blue',
         'error' => 'red',
+        'stability_stable' => 'green',
+        'stability_beta' => 'yellow',
+        'stability_alpha' => 'red',
+        'stability_experimental' => 'red',
+        'stability_test' => 'lightgrey',
+        'stability_obsolete' => 'lightgrey',
+        'stability_excludeFromUpdates' => 'lightgrey',
     ];
 
     private string $label = '';
@@ -72,6 +79,16 @@ final class BadgeResponse
         $object->label = 'typo3';
         $object->message = sprintf('%s downloads', strtolower(NumberFormatter::format($downloads)));
         $object->color = self::COLOR_MAP['downloads'];
+
+        return $object;
+    }
+
+    public static function forStability(string $stability): self
+    {
+        $object = new self();
+        $object->label = 'typo3';
+        $object->message = $stability;
+        $object->color = self::COLOR_MAP['stability_'.$stability] ?? 'orange';
 
         return $object;
     }

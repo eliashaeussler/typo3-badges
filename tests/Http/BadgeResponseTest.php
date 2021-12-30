@@ -91,6 +91,25 @@ final class BadgeResponseTest extends TestCase
 
     /**
      * @test
+     * @dataProvider forStabilityReturnsResponseForStabilityDataProvider
+     */
+    public function forStabilityReturnsResponseForStability(string $stability, string $expectedColor): void
+    {
+        $subject = BadgeResponse::forStability($stability);
+        $expected = new JsonResponse([
+            'schemaVersion' => 1,
+            'label' => 'typo3',
+            'message' => $stability,
+            'color' => $expectedColor,
+            'isError' => false,
+            'namedLogo' => 'typo3',
+        ]);
+
+        self::assertEquals($expected, $subject->create());
+    }
+
+    /**
+     * @test
      */
     public function forErrorReturnsResponseOnError(): void
     {
@@ -123,5 +142,19 @@ final class BadgeResponseTest extends TestCase
         ]);
 
         self::assertEquals($expected, $subject->create());
+    }
+
+    /**
+     * @return \Generator<string, array{string, string}>
+     */
+    public function forStabilityReturnsResponseForStabilityDataProvider(): \Generator
+    {
+        yield 'stable' => ['stable', 'green'];
+        yield 'beta' => ['beta', 'yellow'];
+        yield 'alpha' => ['alpha', 'red'];
+        yield 'experimental' => ['experimental', 'red'];
+        yield 'test' => ['test', 'lightgrey'];
+        yield 'obsolete' => ['obsolete', 'lightgrey'];
+        yield 'excludeFromUpdates' => ['excludeFromUpdates', 'lightgrey'];
     }
 }

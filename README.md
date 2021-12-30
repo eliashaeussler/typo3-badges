@@ -75,6 +75,20 @@ Endpoint: `/badge/{extension}/extension`
 
 ![TYPO3 extension](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/extension)
 
+### Badge for extension stability
+
+Endpoint: `/badge/{extension}/stability`
+
+**Example (Markdown):**
+
+```markdown
+![Stability](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/stability)
+```
+
+**Result:**
+
+![Stability](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/stability)
+
 ### Generic TYPO3 badge
 
 Endpoint: `/badge/typo3`

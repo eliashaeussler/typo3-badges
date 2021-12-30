@@ -74,6 +74,11 @@
                 {% block badgeLabel %}TYPO3 extension{% endblock %}
             {% endembed %}
 
+            {% embed '_endpoint.html.twig' with {'routeName': 'badge.stability', 'routeParameters': {'extension': 'handlebars'}, 'routes': routes} %}
+                {% block description %}Get JSON data for extension stability.{% endblock %}
+                {% block badgeLabel %}Stability{% endblock %}
+            {% endembed %}
+
             {% embed '_endpoint.html.twig' with {'routeName': 'badge.default', 'routeParameters': {}, 'routes': routes} %}
                 {% block description %}Get JSON data for a generic TYPO3 badge.{% endblock %}
                 {% block badgeLabel %}TYPO3{% endblock %}
