@@ -21,39 +21,33 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Controller;
+namespace App\Tests\Controller;
 
-use App\Http\BadgeResponse;
-use App\Service\ApiService;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Routing\Route;
 
 /**
- * DownloadsBadgeController.
+ * HomepageControllerTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-#[Route(
-    path: '/badge/{extension}/downloads',
-    name: 'badge.downloads',
-    requirements: ['extension' => '[a-z0-9_]+'],
-    methods: ['GET'],
-)]
-final class DownloadsBadgeController
+final class HomepageControllerTest extends WebTestCase
 {
-    public function __construct(
-        private ApiService $apiService,
-    ) {
-    }
-
-    public function __invoke(string $extension): Response
+    /**
+     * @test
+     */
+    public function controllerReturnsHomepage(): void
     {
-        $apiResponse = $this->apiService->getExtensionMetadata($extension);
-        $downloads = $apiResponse[0]['downloads']
-            ?? throw new BadRequestHttpException('Invalid API response.');
+        $client = self::createClient();
+        $crawler = $client->request('GET', '/');
 
-        return BadgeResponse::forDownloads($downloads)->create();
+        $router = self::getContainer()->get('router');
+        $allRoutes = $router->getRouteCollection()->all();
+        $badgeRoutes = array_filter($allRoutes, fn (Route $route) => str_starts_with($route->getPath(), '/badge/'));
+
+        self::assertResponseIsSuccessful();
+        self::assertSelectorTextContains('h1', 'TYPO3 Badges');
+        self::assertCount(count($badgeRoutes), $crawler->filter('.endpoint'));
     }
 }

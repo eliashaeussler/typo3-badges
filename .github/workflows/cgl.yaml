@@ -25,6 +25,8 @@ jobs:
       # Install dependencies
       - name: Install Composer dependencies
         run: composer install --no-progress
+      - name: Install node modules
+        run: yarn --frozen-lockfile
 
       # Linting
       - name: Lint composer.json
@@ -35,3 +37,7 @@ jobs:
       # SCA
       - name: SCA PHP
         run: composer sca -- --error-format github
+
+      # JavaScript
+      - name: Lint JavaScript
+        run: yarn lint

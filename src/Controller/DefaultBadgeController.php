@@ -35,6 +35,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 #[Route(
     path: '/badge/typo3',
+    name: 'badge.default',
     methods: ['GET'],
 )]
 final class DefaultBadgeController

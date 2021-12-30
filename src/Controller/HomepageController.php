@@ -23,37 +23,23 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Http\BadgeResponse;
-use App\Service\ApiService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * DownloadsBadgeController.
+ * DefaultController.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-#[Route(
-    path: '/badge/{extension}/downloads',
-    name: 'badge.downloads',
-    requirements: ['extension' => '[a-z0-9_]+'],
-    methods: ['GET'],
-)]
-final class DownloadsBadgeController
+#[Route(path: '/')]
+final class HomepageController extends AbstractController
 {
-    public function __construct(
-        private ApiService $apiService,
-    ) {
-    }
-
-    public function __invoke(string $extension): Response
+    public function __invoke(): Response
     {
-        $apiResponse = $this->apiService->getExtensionMetadata($extension);
-        $downloads = $apiResponse[0]['downloads']
-            ?? throw new BadRequestHttpException('Invalid API response.');
-
-        return BadgeResponse::forDownloads($downloads)->create();
+        return $this->render('homepage.html.twig', [
+            'routes' => $this->container->get('router')->getRouteCollection(),
+        ]);
     }
 }

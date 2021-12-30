@@ -37,6 +37,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 #[Route(
     path: '/badge/{extension}/extension',
+    name: 'badge.extension',
     requirements: ['extension' => '[a-z0-9_]+'],
     methods: ['GET'],
 )]
