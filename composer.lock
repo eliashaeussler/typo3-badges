@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6c40028a62b311ed53189700ab1f993",
+    "content-hash": "be096c624d3c9c88d992ac68cead6ec7",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -568,6 +568,125 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.0"
             },
             "time": "2021-07-14T16:46:02+00:00"
+        },
+        {
+            "name": "sebastianfeldmann/cli",
+            "version": "3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianfeldmann/cli.git",
+                "reference": "8a932e99e9455981fb32fa6c085492462fe8f8cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianfeldmann/cli/zipball/8a932e99e9455981fb32fa6c085492462fe8f8cf",
+                "reference": "8a932e99e9455981fb32fa6c085492462fe8f8cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "symfony/process": "^4.3 | ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SebastianFeldmann\\Cli\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Feldmann",
+                    "email": "sf@sebastian-feldmann.info"
+                }
+            ],
+            "description": "PHP cli helper classes",
+            "homepage": "https://github.com/sebastianfeldmann/cli",
+            "keywords": [
+                "cli"
+            ],
+            "support": {
+                "issues": "https://github.com/sebastianfeldmann/cli/issues",
+                "source": "https://github.com/sebastianfeldmann/cli/tree/3.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianfeldmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-20T14:59:49+00:00"
+        },
+        {
+            "name": "sebastianfeldmann/git",
+            "version": "3.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianfeldmann/git.git",
+                "reference": "c7a16b549e303f870a003b7df08fa88c6756593a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianfeldmann/git/zipball/c7a16b549e303f870a003b7df08fa88c6756593a",
+                "reference": "c7a16b549e303f870a003b7df08fa88c6756593a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-xml": "*",
+                "php": ">=7.2",
+                "sebastianfeldmann/cli": "^3.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SebastianFeldmann\\Git\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Feldmann",
+                    "email": "sf@sebastian-feldmann.info"
+                }
+            ],
+            "description": "PHP git wrapper",
+            "homepage": "https://github.com/sebastianfeldmann/git",
+            "keywords": [
+                "git"
+            ],
+            "support": {
+                "issues": "https://github.com/sebastianfeldmann/git/issues",
+                "source": "https://github.com/sebastianfeldmann/git/tree/3.8.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianfeldmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-19T20:42:49+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
