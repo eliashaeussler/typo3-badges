@@ -25,83 +25,8 @@ endpoints provide JSON configuration for use with
 
 ## :zap: Usage
 
-Base URL: `https://badges.typo3-web.dev`
-
-> **Note:**
->
-> All endpoints return only the JSON configuration for
-> [Shields.io](https://shields.io/endpoint). The actual badges are still rendered via
-> Shields.io: `https://shields.io/endpoint?url=<endpoint>`
-
-### Badge for current extension version
-
-Endpoint: `/badge/{extension}/version`
-
-**Example (Markdown):**
-
-```markdown
-![Current version](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/version)
-```
-
-**Result:**
-
-![Current version](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/version)
-
-### Badge for total extension downloads
-
-Endpoint: `/badge/{extension}/downloads`
-
-**Example (Markdown):**
-
-```markdown
-![TER downloads](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/downloads)
-```
-
-**Result:**
-
-![TER downloads](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/downloads)
-
-### Badge for extension key
-
-Endpoint: `/badge/{extension}/extension`
-
-**Example (Markdown):**
-
-```markdown
-![TYPO3 extension](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/extension)
-```
-
-**Result:**
-
-![TYPO3 extension](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/extension)
-
-### Badge for extension stability
-
-Endpoint: `/badge/{extension}/stability`
-
-**Example (Markdown):**
-
-```markdown
-![Stability](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/stability)
-```
-
-**Result:**
-
-![Stability](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/handlebars/stability)
-
-### Generic TYPO3 badge
-
-Endpoint: `/badge/typo3`
-
-**Example (Markdown):**
-
-```markdown
-![TYPO3](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/typo3)
-```
-
-**Result:**
-
-![TYPO3](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/typo3)
+An overview of all endpoints and their usage can be found on the
+[official website](https://badges.typo3-web.dev).
 
 ## :star: License
 
