@@ -48,60 +48,53 @@ final class BadgeResponse
         'stability_excludeFromUpdates' => 'lightgrey',
     ];
 
-    private string $label = '';
-    private string $message = '';
-    private string $color = '';
-    private bool $isError = false;
+    public function __construct(
+        private string $label = '',
+        private string $message = '',
+        private string $color = '',
+        private bool $isError = false,
+    ) {
+    }
 
     public static function forExtension(string $extension): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = $extension;
-        $object->color = self::COLOR_MAP['extension'];
-
-        return $object;
+        return new self(
+            message: $extension,
+            color: self::COLOR_MAP['extension'],
+        );
     }
 
     public static function forVersion(string $version): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = $version;
-        $object->color = self::COLOR_MAP['version'];
-
-        return $object;
+        return new self(
+            message: $version,
+            color: self::COLOR_MAP['version'],
+        );
     }
 
     public static function forDownloads(int $downloads): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = sprintf('%s downloads', strtolower(NumberFormatter::format($downloads)));
-        $object->color = self::COLOR_MAP['downloads'];
-
-        return $object;
+        return new self(
+            message: sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
+            color: self::COLOR_MAP['downloads'],
+        );
     }
 
     public static function forStability(string $stability): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = $stability;
-        $object->color = self::COLOR_MAP['stability_'.$stability] ?? 'orange';
-
-        return $object;
+        return new self(
+            message: $stability,
+            color: self::COLOR_MAP['stability_'.$stability] ?? 'orange',
+        );
     }
 
     public static function forError(): self
     {
-        $object = new self();
-        $object->label = 'typo3';
-        $object->message = 'error';
-        $object->color = self::COLOR_MAP['error'];
-        $object->isError = true;
-
-        return $object;
+        return new self(
+            message: 'error',
+            color: self::COLOR_MAP['error'],
+            isError: true,
+        );
     }
 
     public function create(): JsonResponse
