@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     environment:
       name: production
-      url: https://badges.typo3-web.dev
+      url: https://typo3-badges.dev
     env:
       APP_ENV: prod
     steps:
