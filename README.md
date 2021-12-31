@@ -9,9 +9,9 @@
 [![Tests](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml)
 [![CGL](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
 [![License](http://poser.pugx.org/eliashaeussler/typo3-badges/license)](LICENSE)
-[![TYPO3](https://shields.io/endpoint?url=https://badges.typo3-web.dev/badge/typo3)](https://badges.typo3-web.dev)
+[![TYPO3](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/typo3)](https://typo3-badges.dev)
 
-**:computer:&nbsp;[Official website](https://badges.typo3-web.dev)** |
+**:computer:&nbsp;[Official website](https://typo3-badges.dev)** |
 :package:&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/typo3-badges) |
 :floppy_disk:&nbsp;[Repository](https://github.com/eliashaeussler/typo3-badges) |
 :bug:&nbsp;[Issue tracker](https://github.com/eliashaeussler/typo3-badges/issues)
@@ -26,7 +26,7 @@ endpoints provide JSON configuration for use with
 ## :zap: Usage
 
 An overview of all endpoints and their usage can be found on the
-[official website](https://badges.typo3-web.dev).
+[official website](https://typo3-badges.dev).
 
 ## :star: License
 
