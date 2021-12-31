@@ -34,7 +34,7 @@ set('env', [
 // Hosts
 host('cp232.sp-server.net')
     ->set('remote_user', 'eliashae')
-    ->set('deploy_path', '~/html/badges.typo3-web.dev');
+    ->set('deploy_path', '~/html/typo3-badges.dev');
 
 // Tasks
 task('deploy:vendors', function () {
