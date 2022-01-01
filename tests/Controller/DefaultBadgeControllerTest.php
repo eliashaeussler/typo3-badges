@@ -49,9 +49,14 @@ final class DefaultBadgeControllerTest extends WebTestCase
 
         $client = self::createClient();
         $client->request('GET', '/badge/typo3');
+        $json = $client->getResponse()->getContent();
+
+        if (false === $json) {
+            throw new \RuntimeException('Invalid JSON data.');
+        }
 
         self::assertResponseIsSuccessful();
-        self::assertJson($client->getResponse()->getContent());
-        self::assertSame($expected, json_decode($client->getResponse()->getContent(), true));
+        self::assertJson($json);
+        self::assertSame($expected, json_decode($json, true));
     }
 }
