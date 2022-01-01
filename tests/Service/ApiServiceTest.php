@@ -54,7 +54,7 @@ final class ApiServiceTest extends AbstractApiTestCase
      */
     public function getExtensionMetadataReturnsMetadataFromApiAndStoresResponseInCache(): void
     {
-        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz']));
+        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
         self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo'));
         self::assertSame(1, $this->client->getRequestsCount());

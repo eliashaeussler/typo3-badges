@@ -50,7 +50,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
      */
     public function controllerThrowsBadRequestExceptionIfApiResponseIsInvalid(): void
     {
-        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz']));
+        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
         $this->expectException(BadRequestHttpException::class);
         $this->expectErrorMessage('Invalid API response.');
@@ -69,7 +69,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
                     'number' => '1.0.0',
                 ],
             ],
-        ]));
+        ], JSON_THROW_ON_ERROR));
 
         $expected = new ShieldsEndpointBadgeResponse([
             'schemaVersion' => 1,
