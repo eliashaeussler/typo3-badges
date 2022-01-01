@@ -21,17 +21,40 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Http;
+namespace App\Tests\Http;
 
 use App\Entity\Badge;
+use App\Http\ShieldsEndpointBadgeResponse;
+use PHPUnit\Framework\TestCase;
 
 /**
- * BadgeResponse.
+ * ShieldsEndpointBadgeResponseTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-interface BadgeResponse
+final class ShieldsEndpointBadgeResponseTest extends TestCase
 {
-    public static function fromBadge(Badge $badge): self;
+    /**
+     * @test
+     */
+    public function fromBadgeReturnsResponseForBadge(): void
+    {
+        $badge = new Badge(
+            label: 'foo',
+            message: 'baz',
+            color: 'orange',
+            isError: true,
+        );
+        $expected = new ShieldsEndpointBadgeResponse([
+            'schemaVersion' => 1,
+            'label' => 'foo',
+            'message' => 'baz',
+            'color' => 'orange',
+            'isError' => true,
+            'namedLogo' => 'typo3',
+        ]);
+
+        self::assertEquals($expected, ShieldsEndpointBadgeResponse::fromBadge($badge));
+    }
 }

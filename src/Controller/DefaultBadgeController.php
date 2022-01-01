@@ -23,7 +23,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Http\BadgeResponse;
+use App\Entity\Badge;
+use App\Http\ShieldsEndpointBadgeResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -42,6 +43,6 @@ final class DefaultBadgeController
 {
     public function __invoke(): Response
     {
-        return (new BadgeResponse())->create();
+        return ShieldsEndpointBadgeResponse::fromBadge(new Badge());
     }
 }

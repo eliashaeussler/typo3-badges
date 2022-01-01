@@ -23,7 +23,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Http\BadgeResponse;
+use App\Entity\Badge;
+use App\Http\ShieldsEndpointBadgeResponse;
 use App\Service\ApiService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -53,7 +54,8 @@ final class DownloadsBadgeController
         $apiResponse = $this->apiService->getExtensionMetadata($extension);
         $downloads = $apiResponse[0]['downloads']
             ?? throw new BadRequestHttpException('Invalid API response.');
+        $badge = Badge::forDownloads($downloads);
 
-        return BadgeResponse::forDownloads($downloads)->create();
+        return ShieldsEndpointBadgeResponse::fromBadge($badge);
     }
 }

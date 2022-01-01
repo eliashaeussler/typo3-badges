@@ -23,7 +23,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Http\BadgeResponse;
+use App\Entity\Badge;
+use App\Http\ShieldsEndpointBadgeResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -36,6 +37,8 @@ final class ErrorController
 {
     public function __invoke(\Throwable $exception): Response
     {
-        return BadgeResponse::forError()->create();
+        $badge = Badge::forError();
+
+        return ShieldsEndpointBadgeResponse::fromBadge($badge);
     }
 }
