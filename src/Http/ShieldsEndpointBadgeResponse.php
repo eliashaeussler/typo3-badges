@@ -24,14 +24,25 @@ declare(strict_types=1);
 namespace App\Http;
 
 use App\Entity\Badge;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * BadgeResponse.
+ * ShieldsEndpointBadgeResponse.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-interface BadgeResponse
+final class ShieldsEndpointBadgeResponse extends JsonResponse implements BadgeResponse
 {
-    public static function fromBadge(Badge $badge): self;
+    public static function fromBadge(Badge $badge): self
+    {
+        return new self([
+            'schemaVersion' => 1,
+            'label' => $badge->getLabel() ?: 'typo3',
+            'message' => $badge->getMessage() ?: 'inspiring people to share',
+            'color' => $badge->getColor() ?: 'orange',
+            'isError' => $badge->isError(),
+            'namedLogo' => 'typo3',
+        ]);
+    }
 }

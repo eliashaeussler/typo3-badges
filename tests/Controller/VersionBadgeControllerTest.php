@@ -24,9 +24,9 @@ declare(strict_types=1);
 namespace App\Tests\Controller;
 
 use App\Controller\VersionBadgeController;
+use App\Http\ShieldsEndpointBadgeResponse;
 use App\Tests\AbstractApiTestCase;
 use Symfony\Component\HttpClient\Response\MockResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
@@ -71,7 +71,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
             ],
         ]));
 
-        $expected = new JsonResponse([
+        $expected = new ShieldsEndpointBadgeResponse([
             'schemaVersion' => 1,
             'label' => 'typo3',
             'message' => '1.0.0',

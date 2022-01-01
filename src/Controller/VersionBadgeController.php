@@ -23,7 +23,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Http\BadgeResponse;
+use App\Entity\Badge;
+use App\Http\ShieldsEndpointBadgeResponse;
 use App\Service\ApiService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -53,7 +54,8 @@ final class VersionBadgeController
         $apiResponse = $this->apiService->getExtensionMetadata($extension);
         $version = $apiResponse[0]['current_version']['number']
             ?? throw new BadRequestHttpException('Invalid API response.');
+        $badge = Badge::forVersion($version);
 
-        return BadgeResponse::forVersion($version)->create();
+        return ShieldsEndpointBadgeResponse::fromBadge($badge);
     }
 }
