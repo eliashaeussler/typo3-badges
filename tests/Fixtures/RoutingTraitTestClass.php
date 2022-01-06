@@ -21,17 +21,27 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Http;
+namespace App\Tests\Fixtures;
 
-use App\Entity\Badge;
+use App\Badge\Provider\RoutingTrait;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
- * BadgeResponse.
+ * RoutingTraitTestClass.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
+ *
+ * @internal
  */
-interface BadgeResponse
+final class RoutingTraitTestClass
 {
-    public static function fromBadge(Badge $badge): self;
+    use RoutingTrait {
+        identifyRoute as public testIdentifyRoute;
+    }
+
+    public function __construct(RouterInterface $router)
+    {
+        $this->router = $router;
+    }
 }

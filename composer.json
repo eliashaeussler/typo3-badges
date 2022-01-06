@@ -15,12 +15,13 @@
 	"require": {
 		"php": ">=8.0.2",
 		"ext-ctype": "*",
+		"ext-hash": "*",
 		"ext-iconv": "*",
 		"ext-json": "*",
 		"doctrine/annotations": "^1.0",
+		"nyholm/psr7": "^1.4",
 		"phpdocumentor/reflection-docblock": "^5.3",
 		"phpstan/phpdoc-parser": "^1.2",
-		"sebastianfeldmann/git": "^3.8",
 		"sensio/framework-extra-bundle": "^6.2",
 		"symfony/apache-pack": "^1.0",
 		"symfony/asset": "6.0.*",
@@ -28,6 +29,7 @@
 		"symfony/cache-contracts": "^3.0",
 		"symfony/console": "6.0.*",
 		"symfony/css-selector": "6.0.*",
+		"symfony/dependency-injection": "6.0.*",
 		"symfony/dotenv": "6.0.*",
 		"symfony/flex": "^2",
 		"symfony/framework-bundle": "6.0.*",
@@ -37,14 +39,17 @@
 		"symfony/http-kernel": "6.0.*",
 		"symfony/property-access": "6.0.*",
 		"symfony/property-info": "6.0.*",
+		"symfony/routing": "6.0.*",
 		"symfony/runtime": "6.0.*",
 		"symfony/serializer": "6.0.*",
+		"symfony/webpack-encore-bundle": "^1.13",
 		"symfony/yaml": "6.0.*"
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.21",
 		"friendsofphp/php-cs-fixer": "^3.4",
 		"phpstan/phpstan": "^1.2",
+		"phpstan/phpstan-symfony": "^1.0",
 		"phpunit/phpunit": "^9.5",
 		"symfony/browser-kit": "6.0.*",
 		"symfony/phpunit-bridge": "^6.0",
@@ -104,7 +109,7 @@
 		},
 		"lint": "php-cs-fixer fix",
 		"sca": "phpstan analyse -c phpstan.neon",
-		"test": "phpunit",
-		"test:coverage": "phpunit -c phpunit.coverage.xml"
+		"test": "XDEBUG_MODE=none phpunit",
+		"test:coverage": "XDEBUG_MODE=coverage phpunit -c phpunit.coverage.xml"
 	}
 }

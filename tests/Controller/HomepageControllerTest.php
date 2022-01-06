@@ -25,7 +25,6 @@ namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Routing\Route;
-use Symfony\Component\Routing\Router;
 
 /**
  * HomepageControllerTest.
@@ -43,13 +42,11 @@ final class HomepageControllerTest extends WebTestCase
         $client = self::createClient();
         $crawler = $client->request('GET', '/');
 
-        $router = self::getContainer()->get('router');
-        assert($router instanceof Router);
-        $allRoutes = $router->getRouteCollection()->all();
+        $allRoutes = self::getContainer()->get('router')->getRouteCollection()->all();
         $badgeRoutes = array_filter($allRoutes, fn (Route $route) => str_starts_with($route->getPath(), '/badge/'));
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'TYPO3 Badges');
-        self::assertCount(count($badgeRoutes), $crawler->filter('.endpoint'));
+        self::assertCount(count($badgeRoutes), $crawler->filter('.badge-endpoint'));
     }
 }

@@ -39,7 +39,6 @@ host('cp232.sp-server.net')
 // Tasks
 task('deploy:vendors', function () {
     upload('public/assets', '{{release_path}}/public');
-    upload('public/fonts', '{{release_path}}/public');
     upload('vendor', '{{release_path}}');
 });
 task('deploy:writable')->disable();

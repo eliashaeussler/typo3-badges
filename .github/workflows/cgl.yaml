@@ -33,11 +33,11 @@ jobs:
         run: composer normalize --dry-run
       - name: Lint PHP
         run: composer lint -- --dry-run
+      - name: Lint CSS
+        run: yarn lint:css
+      - name: Lint JavaScript
+        run: yarn lint:js
 
       # SCA
       - name: SCA PHP
         run: composer sca -- --error-format github
-
-      # JavaScript
-      - name: Lint JavaScript
-        run: yarn lint

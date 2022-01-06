@@ -50,10 +50,7 @@ abstract class AbstractApiTestCase extends KernelTestCase
     {
         self::bootKernel();
 
-        $cache = self::getContainer()->get(CacheInterface::class);
-        assert($cache instanceof CacheInterface);
-
-        $this->cache = $cache;
+        $this->cache = self::getContainer()->get(CacheInterface::class);
         $this->client = new MockHttpClient($this->getMockResponses());
         $this->apiService = new ApiService($this->client, $this->cache);
     }
