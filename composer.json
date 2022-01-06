@@ -109,7 +109,7 @@
 		},
 		"lint": "php-cs-fixer fix",
 		"sca": "phpstan analyse -c phpstan.neon",
-		"test": "XDEBUG_MODE=none phpunit",
-		"test:coverage": "XDEBUG_MODE=coverage phpunit -c phpunit.coverage.xml"
+		"test": "XDEBUG_MODE=off bin/phpunit",
+		"test:coverage": "XDEBUG_MODE=coverage bin/phpunit -c phpunit.coverage.xml"
 	}
 }
