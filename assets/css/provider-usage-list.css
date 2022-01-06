@@ -1,0 +1,11 @@
+ol {
+  counter-reset: list-counter;
+}
+
+ol > li {
+  counter-increment: list-counter;
+}
+
+ol > li .list-counter::before {
+  content: counter(list-counter);
+}

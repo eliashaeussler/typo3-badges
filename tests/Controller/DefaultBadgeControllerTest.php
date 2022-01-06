@@ -35,20 +35,14 @@ final class DefaultBadgeControllerTest extends WebTestCase
 {
     /**
      * @test
+     * @dataProvider controllerReturnsTypo3BadgeDataProvider
+     *
+     * @param array<string, string|int|bool> $expected
      */
-    public function controllerReturnsTypo3Badge(): void
+    public function controllerReturnsTypo3Badge(string $path, array $expected): void
     {
-        $expected = [
-            'schemaVersion' => 1,
-            'label' => 'typo3',
-            'message' => 'inspiring people to share',
-            'color' => 'orange',
-            'isError' => false,
-            'namedLogo' => 'typo3',
-        ];
-
         $client = self::createClient();
-        $client->request('GET', '/badge/typo3');
+        $client->request('GET', $path);
         $json = $client->getResponse()->getContent();
 
         if (false === $json) {
@@ -58,5 +52,29 @@ final class DefaultBadgeControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertJson($json);
         self::assertSame($expected, json_decode($json, true));
+    }
+
+    /**
+     * @return \Generator<string, array{string, array<string, string|int|bool>}>
+     */
+    public function controllerReturnsTypo3BadgeDataProvider(): \Generator
+    {
+        $badgenResponse = [
+            'subject' => 'typo3',
+            'status' => 'inspiring people to share',
+            'color' => 'orange',
+        ];
+        $shieldsResponse = [
+            'schemaVersion' => 1,
+            'label' => 'typo3',
+            'message' => 'inspiring people to share',
+            'color' => 'orange',
+            'isError' => false,
+            'namedLogo' => 'typo3',
+        ];
+
+        yield 'no explicit provider (fall back to default)' => ['/badge/typo3', $shieldsResponse];
+        yield 'badgen' => ['/badge/typo3/badgen', $badgenResponse];
+        yield 'shields' => ['/badge/typo3/shields', $shieldsResponse];
     }
 }

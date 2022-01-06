@@ -23,10 +23,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\DownloadsBadgeController;
-use App\Http\ShieldsEndpointBadgeResponse;
 use App\Tests\AbstractApiTestCase;
 use Symfony\Component\HttpClient\Response\MockResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
@@ -43,6 +45,7 @@ final class DownloadsBadgeControllerTest extends AbstractApiTestCase
     {
         parent::setUp();
         $this->subject = new DownloadsBadgeController($this->apiService);
+        $this->subject->setBadgeProviderFactory(self::getContainer()->get(BadgeProviderFactory::class));
     }
 
     /**
@@ -55,7 +58,7 @@ final class DownloadsBadgeControllerTest extends AbstractApiTestCase
         $this->expectException(BadRequestHttpException::class);
         $this->expectErrorMessage('Invalid API response.');
 
-        $this->subject->__invoke('foo');
+        $this->subject->__invoke(new Request(), 'foo');
     }
 
     /**
@@ -69,7 +72,7 @@ final class DownloadsBadgeControllerTest extends AbstractApiTestCase
             ],
         ], JSON_THROW_ON_ERROR));
 
-        $expected = new ShieldsEndpointBadgeResponse([
+        $expected = new JsonResponse([
             'schemaVersion' => 1,
             'label' => 'typo3',
             'message' => '123 downloads',
@@ -78,6 +81,6 @@ final class DownloadsBadgeControllerTest extends AbstractApiTestCase
             'namedLogo' => 'typo3',
         ]);
 
-        self::assertEquals($expected, $this->subject->__invoke('foo'));
+        self::assertEquals($expected, $this->subject->__invoke(new Request(), 'foo'));
     }
 }

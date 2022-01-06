@@ -21,28 +21,31 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Http;
+namespace App\Badge\Provider;
 
-use App\Entity\Badge;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
- * ShieldsEndpointBadgeResponse.
+ * RoutingTrait.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class ShieldsEndpointBadgeResponse extends JsonResponse implements BadgeResponse
+trait RoutingTrait
 {
-    public static function fromBadge(Badge $badge): self
+    protected RouterInterface $router;
+
+    protected function identifyRoute(Route $route): string
     {
-        return new self([
-            'schemaVersion' => 1,
-            'label' => $badge->getLabel() ?: 'typo3',
-            'message' => $badge->getMessage() ?: 'inspiring people to share',
-            'color' => $badge->getColor() ?: 'orange',
-            'isError' => $badge->isError(),
-            'namedLogo' => 'typo3',
-        ]);
+        foreach ($this->router->getRouteCollection()->all() as $routeName => $currentRoute) {
+            // Loose comparison is intended
+            if ($route == $currentRoute) {
+                return $routeName;
+            }
+        }
+
+        throw new RouteNotFoundException(sprintf('Unable to find route with path "%s"!', $route->getPath()), 1641203175);
     }
 }

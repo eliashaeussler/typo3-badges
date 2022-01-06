@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo](docs/header.png)
+![Logo](assets/img/header.png)
 
 # Badges for TYPO3 extensions
 
@@ -21,7 +21,7 @@
 A Symfony project that provides endpoints for beautiful TYPO3 badges. Pimp all your
 extension documentation with badges for extension versions or TER downloads. All
 endpoints provide JSON configuration for use with
-[Shields.io](https://shields.io/endpoint).
+[Shields.io](https://shields.io/endpoint) or [Badgen](https://badgen.net/https).
 
 ## :zap: Usage
 

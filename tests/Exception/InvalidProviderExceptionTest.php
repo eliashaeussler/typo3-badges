@@ -21,40 +21,28 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Tests\Http;
+namespace App\Tests\Exception;
 
-use App\Entity\Badge;
-use App\Http\ShieldsEndpointBadgeResponse;
+use App\Exception\InvalidProviderException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ShieldsEndpointBadgeResponseTest.
+ * InvalidProviderExceptionTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class ShieldsEndpointBadgeResponseTest extends TestCase
+final class InvalidProviderExceptionTest extends TestCase
 {
     /**
      * @test
      */
-    public function fromBadgeReturnsResponseForBadge(): void
+    public function createReturnsException(): void
     {
-        $badge = new Badge(
-            label: 'foo',
-            message: 'baz',
-            color: 'orange',
-            isError: true,
-        );
-        $expected = new ShieldsEndpointBadgeResponse([
-            'schemaVersion' => 1,
-            'label' => 'foo',
-            'message' => 'baz',
-            'color' => 'orange',
-            'isError' => true,
-            'namedLogo' => 'typo3',
-        ]);
+        $actual = InvalidProviderException::create('foo');
 
-        self::assertEquals($expected, ShieldsEndpointBadgeResponse::fromBadge($badge));
+        self::assertInstanceOf(InvalidProviderException::class, $actual);
+        self::assertSame('The provider "foo" is not supported.', $actual->getMessage());
+        self::assertSame(1641195602, $actual->getCode());
     }
 }

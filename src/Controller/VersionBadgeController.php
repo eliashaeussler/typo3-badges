@@ -24,8 +24,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Badge;
-use App\Http\ShieldsEndpointBadgeResponse;
 use App\Service\ApiService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,25 +37,25 @@ use Symfony\Component\Routing\Annotation\Route;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/{extension}/version',
+    path: '/badge/{extension}/version/{provider?}',
     name: 'badge.version',
     requirements: ['extension' => '[a-z0-9_]+'],
+    options: ['description' => 'Get JSON data for current extension version.'],
     methods: ['GET'],
 )]
-final class VersionBadgeController
+final class VersionBadgeController extends AbstractBadgeController
 {
     public function __construct(
         private ApiService $apiService,
     ) {
     }
 
-    public function __invoke(string $extension): Response
+    public function __invoke(Request $request, string $extension): Response
     {
         $apiResponse = $this->apiService->getExtensionMetadata($extension);
         $version = $apiResponse[0]['current_version']['number']
             ?? throw new BadRequestHttpException('Invalid API response.');
-        $badge = Badge::forVersion($version);
 
-        return ShieldsEndpointBadgeResponse::fromBadge($badge);
+        return $this->getBadgeResponse($request, Badge::forVersion($version));
     }
 }
