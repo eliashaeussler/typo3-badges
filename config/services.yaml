@@ -27,6 +27,14 @@ services:
         resource: '../src/Controller'
         public: true
 
+    _instanceof:
+        App\Badge\Provider\BadgeProvider:
+            tags: ['badge.provider']
+
     App\Service\ApiService:
         arguments:
             $client: '@typo3_api.client'
+
+    App\Badge\Provider\BadgeProviderFactory:
+        arguments:
+            $providers: !tagged_locator { tag: badge.provider, index_by: 'key', default_index_method: 'getIdentifier' }

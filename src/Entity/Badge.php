@@ -21,18 +21,17 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Http;
+namespace App\Entity;
 
 use App\Value\NumberFormatter;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * BadgeResponse.
+ * Badge.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class BadgeResponse
+final class Badge
 {
     private const COLOR_MAP = [
         'extension' => 'orange',
@@ -59,6 +58,7 @@ final class BadgeResponse
     public static function forExtension(string $extension): self
     {
         return new self(
+            label: 'typo3',
             message: $extension,
             color: self::COLOR_MAP['extension'],
         );
@@ -67,6 +67,7 @@ final class BadgeResponse
     public static function forVersion(string $version): self
     {
         return new self(
+            label: 'typo3',
             message: $version,
             color: self::COLOR_MAP['version'],
         );
@@ -75,7 +76,8 @@ final class BadgeResponse
     public static function forDownloads(int $downloads): self
     {
         return new self(
-            message: sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
+            label: 'typo3',
+            message: \sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
             color: self::COLOR_MAP['downloads'],
         );
     }
@@ -83,6 +85,7 @@ final class BadgeResponse
     public static function forStability(string $stability): self
     {
         return new self(
+            label: 'typo3',
             message: $stability,
             color: self::COLOR_MAP['stability_'.$stability] ?? 'orange',
         );
@@ -91,21 +94,30 @@ final class BadgeResponse
     public static function forError(): self
     {
         return new self(
+            label: 'typo3',
             message: 'error',
             color: self::COLOR_MAP['error'],
             isError: true,
         );
     }
 
-    public function create(): JsonResponse
+    public function getLabel(): string
     {
-        return new JsonResponse([
-            'schemaVersion' => 1,
-            'label' => $this->label ?: 'typo3',
-            'message' => $this->message ?: 'inspiring people to share',
-            'color' => $this->color ?: 'orange',
-            'isError' => $this->isError,
-            'namedLogo' => 'typo3',
-        ]);
+        return $this->label;
+    }
+
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
+    public function isError(): bool
+    {
+        return $this->isError;
     }
 }

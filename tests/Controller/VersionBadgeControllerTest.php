@@ -23,10 +23,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\VersionBadgeController;
 use App\Tests\AbstractApiTestCase;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
@@ -43,6 +45,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
     {
         parent::setUp();
         $this->subject = new VersionBadgeController($this->apiService);
+        $this->subject->setBadgeProviderFactory(self::getContainer()->get(BadgeProviderFactory::class));
     }
 
     /**
@@ -50,12 +53,12 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
      */
     public function controllerThrowsBadRequestExceptionIfApiResponseIsInvalid(): void
     {
-        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz']));
+        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
         $this->expectException(BadRequestHttpException::class);
         $this->expectErrorMessage('Invalid API response.');
 
-        $this->subject->__invoke('foo');
+        $this->subject->__invoke(new Request(), 'foo');
     }
 
     /**
@@ -69,7 +72,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
                     'number' => '1.0.0',
                 ],
             ],
-        ]));
+        ], JSON_THROW_ON_ERROR));
 
         $expected = new JsonResponse([
             'schemaVersion' => 1,
@@ -80,6 +83,6 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
             'namedLogo' => 'typo3',
         ]);
 
-        self::assertEquals($expected, $this->subject->__invoke('foo'));
+        self::assertEquals($expected, $this->subject->__invoke(new Request(), 'foo'));
     }
 }

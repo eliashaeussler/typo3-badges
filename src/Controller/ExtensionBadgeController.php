@@ -23,8 +23,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Http\BadgeResponse;
+use App\Entity\Badge;
 use App\Service\ApiService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,24 +37,25 @@ use Symfony\Component\Routing\Annotation\Route;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/{extension}/extension',
+    path: '/badge/{extension}/extension/{provider?}',
     name: 'badge.extension',
     requirements: ['extension' => '[a-z0-9_]+'],
+    options: ['description' => 'Get JSON data for extension key.'],
     methods: ['GET'],
 )]
-final class ExtensionBadgeController
+final class ExtensionBadgeController extends AbstractBadgeController
 {
     public function __construct(
         private ApiService $apiService,
     ) {
     }
 
-    public function __invoke(string $extension): Response
+    public function __invoke(Request $request, string $extension): Response
     {
         $apiResponse = $this->apiService->getExtensionMetadata($extension);
         $extensionKey = $apiResponse[0]['key']
             ?? throw new BadRequestHttpException('Invalid API response.');
 
-        return BadgeResponse::forExtension($extensionKey)->create();
+        return $this->getBadgeResponse($request, Badge::forExtension($extensionKey));
     }
 }

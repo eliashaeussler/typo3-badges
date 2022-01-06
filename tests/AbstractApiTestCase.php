@@ -37,8 +37,8 @@ use Symfony\Contracts\Cache\CacheInterface;
  */
 abstract class AbstractApiTestCase extends KernelTestCase
 {
-    protected MockHttpClient $client;
     protected CacheInterface $cache;
+    protected MockHttpClient $client;
     protected ApiService $apiService;
 
     /**
@@ -50,8 +50,8 @@ abstract class AbstractApiTestCase extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->client = new MockHttpClient($this->getMockResponses());
         $this->cache = self::getContainer()->get(CacheInterface::class);
+        $this->client = new MockHttpClient($this->getMockResponses());
         $this->apiService = new ApiService($this->client, $this->cache);
     }
 

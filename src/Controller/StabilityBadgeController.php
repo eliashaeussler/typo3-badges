@@ -23,8 +23,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Http\BadgeResponse;
+use App\Entity\Badge;
 use App\Service\ApiService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,24 +37,25 @@ use Symfony\Component\Routing\Annotation\Route;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/{extension}/stability',
+    path: '/badge/{extension}/stability/{provider?}',
     name: 'badge.stability',
     requirements: ['extension' => '[a-z0-9_]+'],
+    options: ['description' => 'Get JSON data for extension stability.'],
     methods: ['GET'],
 )]
-final class StabilityBadgeController
+final class StabilityBadgeController extends AbstractBadgeController
 {
     public function __construct(
         private ApiService $apiService,
     ) {
     }
 
-    public function __invoke(string $extension): Response
+    public function __invoke(Request $request, string $extension): Response
     {
         $apiResponse = $this->apiService->getExtensionMetadata($extension);
         $stability = $apiResponse[0]['current_version']['state']
             ?? throw new BadRequestHttpException('Invalid API response.');
 
-        return BadgeResponse::forStability($stability)->create();
+        return $this->getBadgeResponse($request, Badge::forStability($stability));
     }
 }

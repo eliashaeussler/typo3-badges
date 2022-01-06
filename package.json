@@ -1,7 +1,7 @@
 {
 	"name": "@eliashaeussler/typo3-badges",
 	"description": "Frontend for TYPO3 Badges, a Symfony project that provides endpoints for beautiful TYPO3 badges.",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"license": "GPL-3.0-or-later",
 	"repository": "https://github.com/eliashaeussler/typo3-badges.git",
 	"private": true,
@@ -14,32 +14,35 @@
 	"devDependencies": {
 		"@babel/core": "^7.16.5",
 		"@babel/preset-env": "^7.16.5",
-		"@rollup/plugin-babel": "^5.3.0",
-		"@rollup/plugin-commonjs": "^21.0.1",
-		"@rollup/plugin-node-resolve": "^13.1.1",
+		"@symfony/webpack-encore": "^1.7.0",
+		"axios": "^0.24.0",
 		"eslint": "^8.5.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-plugin-import": "^2.25.3",
+		"file-loader": "^6.2.0",
 		"npm-run-all": "^4.1.5",
-		"rollup": "^2.62.0",
-		"rollup-plugin-copy": "^3.4.0",
-		"rollup-plugin-postcss": "^4.0.2",
-		"rollup-plugin-uglify": "^6.0.4",
-		"sass": "^1.45.1"
+		"postcss-import": "^14.0.2",
+		"postcss-loader": "^6.2.1",
+		"stylelint": "^14.2.0",
+		"stylelint-config-standard": "^24.0.0",
+		"tailwindcss": "^3.0.10",
+		"tailwindcss-crossbrowser-touch": "^1.1.2",
+		"tailwindcss-selection-variant": "^0.1.0",
+		"tailwindcss-triangles": "^4.0.0",
+		"webpack-notifier": "^1.15.0"
 	},
 	"dependencies": {
+		"@fontsource/indie-flower": "^4.5.0",
 		"@fontsource/jetbrains-mono": "^4.5.0",
 		"@fontsource/lato": "^4.5.0",
-		"clipboard": "^2.0.8",
-		"tailwindcss": "^3.0.8"
+		"@themesberg/flowbite": "^1.2.0",
+		"clipboard": "^2.0.8"
 	},
 	"scripts": {
-		"css:dev": "tailwindcss -i assets/main.css -o public/assets/main.css --watch",
-		"css:prod": "NODE_ENV=production tailwindcss -i assets/main.css -o public/assets/main.css --minify",
-		"js:dev": "rollup -c -w",
-		"js:prod": "NODE_ENV=production rollup -c",
-		"dev": "run-p js:dev css:dev",
-		"build": "run-s js:prod css:prod",
-		"lint": "eslint assets/**/*.js"
+		"dev": "encore dev --watch",
+		"build": "encore prod",
+		"lint": "run-s lint:css lint:js",
+		"lint:js": "eslint 'assets/**/*.js'",
+		"lint:css": "stylelint 'assets/**/*.css'"
 	}
 }

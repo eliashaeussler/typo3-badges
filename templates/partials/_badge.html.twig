@@ -1,0 +1,7 @@
+{% if link is defined %}
+    <a href="{% if link is same as(true) %}{{ src }}{% else %}{{ link }}{% endif %}" rel="nofollow" {% if linkClass is defined %}class="{{ linkClass }}"{% endif %}>
+{% endif %}
+        <img src="{{ src }}" alt="{{ title }}" {% if class is defined %}class="{{ class }}"{% endif%} />
+{% if link is defined and link %}
+    </a>
+{% endif %}
