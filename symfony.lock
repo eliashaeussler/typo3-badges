@@ -35,6 +35,9 @@
     "ergebnis/json-printer": {
         "version": "3.2.0"
     },
+    "ergebnis/json-schema-validator": {
+        "version": "2.0.0"
+    },
     "friendsofphp/php-cs-fixer": {
         "version": "3.4",
         "recipe": {
