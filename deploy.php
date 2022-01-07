@@ -41,7 +41,14 @@ host('typo3-badges.dev')
 
 // Tasks
 task('deploy:vendors', function () {
+    // Build
+    runLocally('composer {{composer_action}} {{composer_options}}');
+    runLocally('yarn --frozen-lockfile');
+    runLocally('yarn build');
+
+    // Upload
     upload('public/assets', '{{release_path}}/public', ['progress_bar' => false]);
+    upload('var', '{{release_path}}', ['progress_bar' => false]);
     upload('vendor', '{{release_path}}', ['progress_bar' => false]);
 });
 task('database:migrate')->disable();

@@ -28,16 +28,6 @@ jobs:
           php-version: 8.0
           tools: composer:v2
 
-      # Install dependencies
-      - name: Install Composer dependencies
-        run: composer install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
-      - name: Install node modules
-        run: yarn --frozen-lockfile
-
-      # Build Frontend assets
-      - name: Build Frontend assets
-        run: yarn build
-
       # Deploy to production
       - name: Deploy
         uses: deployphp/action@v1
