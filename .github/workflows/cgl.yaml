@@ -41,3 +41,9 @@ jobs:
       # SCA
       - name: SCA PHP
         run: composer sca -- --error-format github
+
+      # Requirements
+      - name: Check Composer requirements
+        run: |
+          composer global require maglnet/composer-require-checker:"^4.0"
+          composer-require-checker check
