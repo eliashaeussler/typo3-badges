@@ -29,7 +29,7 @@ jobs:
         uses: heinrichreimer/github-changelog-generator-action@v2.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          addSections: '{"documentation":{"prefix":"### Documentation","labels":["documentation"]},"feature":{"prefix":"### Added","labels":["feature"]}}'
+          addSections: '{"documentation":{"prefix":"### Documentation","labels":["documentation"]},"feature":{"prefix":"### Added","labels":["feature"]},"dependencies":{"prefix":"### Changes","labels":["dependencies"]}}'
           breakingLabel: "### Breaking"
           enhancementLabel: "### Changed"
           bugsLabel: "### Fixed"
