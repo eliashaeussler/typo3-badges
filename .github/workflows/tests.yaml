@@ -57,8 +57,10 @@ jobs:
       - name: Fix coverage path
         working-directory: .build/coverage
         run: sed -i 's/\/home\/runner\/work\/typo3-badges\/typo3-badges\//\/github\/workspace\//g' clover.xml
+        if: ${{ github.actor != 'dependabot[bot]' }}
       - name: Run SonarCloud scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        if: ${{ github.actor != 'dependabot[bot]' }}
