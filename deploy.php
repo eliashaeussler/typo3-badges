@@ -27,6 +27,7 @@ require 'recipe/symfony.php';
 
 // Config
 set('repository', 'https://github.com/eliashaeussler/typo3-badges.git');
+set('keep_releases', 3);
 set('env', [
     'APP_ENV' => 'prod',
 ]);
