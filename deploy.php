@@ -30,13 +30,21 @@ set('repository', 'https://github.com/eliashaeussler/typo3-badges.git');
 set('keep_releases', 3);
 
 // Hosts
-host('typo3-badges.dev')
+host('production')
     ->set('hostname', 'cp232.sp-server.net')
     ->set('remote_user', 'eliashae')
     ->set('http_user', 'eliashae')
     ->set('writable_mode', 'chmod')
     ->set('deploy_path', '~/html/typo3-badges.dev')
     ->add('env', ['APP_ENV' => 'prod'])
+;
+host('dev')
+    ->set('hostname', 'cp232.sp-server.net')
+    ->set('remote_user', 'eliashae')
+    ->set('http_user', 'eliashae')
+    ->set('writable_mode', 'chmod')
+    ->set('deploy_path', '~/html/pre.typo3-badges.dev')
+    ->add('env', ['APP_ENV' => 'dev'])
 ;
 
 // Tasks
