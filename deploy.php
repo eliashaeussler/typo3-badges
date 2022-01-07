@@ -41,8 +41,8 @@ host('typo3-badges.dev')
 
 // Tasks
 task('deploy:vendors', function () {
-    upload('public/assets', '{{release_path}}/public');
-    upload('vendor', '{{release_path}}');
+    upload('public/assets', '{{release_path}}/public', ['progress_bar' => false]);
+    upload('vendor', '{{release_path}}', ['progress_bar' => false]);
 });
 task('database:migrate')->disable();
 
