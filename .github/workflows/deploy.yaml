@@ -30,7 +30,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        run: composer install --optimize-autoloader
+        run: composer install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
       - name: Install node modules
         run: yarn --frozen-lockfile
 
