@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - '*'
+    branches:
+      - develop
+  workflow_dispatch:
 
 # Prevents concurrent deployments
 concurrency: production_environment
@@ -14,8 +17,6 @@ jobs:
     environment:
       name: production
       url: https://typo3-badges.dev
-    env:
-      APP_ENV: prod
     steps:
       - uses: actions/checkout@v2
         with:
@@ -28,15 +29,37 @@ jobs:
           php-version: 8.0
           tools: composer:v2
 
-      # Install dependencies
-      - name: Install Composer dependencies
-        run: composer install --optimize-autoloader
-      - name: Install node modules
-        run: yarn --frozen-lockfile
+      # Deploy to production
+      - name: Deploy
+        uses: deployphp/action@v1
+        env:
+          LANG: en_US.UTF-8
+          LANGUAGE: en_US.UTF-8
+          LC_CTYPE: en_US.UTF-8
+          LC_ALL: en_US.UTF-8
+        with:
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          dep: deploy production
+          deployer-version: '7.0.0-rc.3'
 
-      # Build Frontend assets
-      - name: Build Frontend assets
-        run: yarn build
+  dev:
+    if: ${{ github.ref_name == 'develop' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-20.04
+    environment:
+      name: dev
+      url: https://pre.typo3-badges.dev
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      # Prepare environment
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          tools: composer:v2
 
       # Deploy to production
       - name: Deploy
@@ -49,5 +72,5 @@ jobs:
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          dep: deploy
+          dep: deploy dev
           deployer-version: '7.0.0-rc.3'

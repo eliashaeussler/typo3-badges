@@ -27,21 +27,39 @@ require 'recipe/symfony.php';
 
 // Config
 set('repository', 'https://github.com/eliashaeussler/typo3-badges.git');
-set('env', [
-    'APP_ENV' => 'prod',
-]);
+set('keep_releases', 3);
 
 // Hosts
-host('cp232.sp-server.net')
+host('production')
+    ->set('hostname', 'cp232.sp-server.net')
     ->set('remote_user', 'eliashae')
-    ->set('deploy_path', '~/html/typo3-badges.dev');
+    ->set('http_user', 'eliashae')
+    ->set('writable_mode', 'chmod')
+    ->set('deploy_path', '~/html/typo3-badges.dev')
+    ->add('env', ['APP_ENV' => 'prod'])
+;
+host('dev')
+    ->set('hostname', 'cp232.sp-server.net')
+    ->set('remote_user', 'eliashae')
+    ->set('http_user', 'eliashae')
+    ->set('writable_mode', 'chmod')
+    ->set('deploy_path', '~/html/pre.typo3-badges.dev')
+    ->add('shared_files', ['.htaccess'])
+    ->add('env', ['APP_ENV' => 'dev'])
+;
 
 // Tasks
 task('deploy:vendors', function () {
-    upload('public/assets', '{{release_path}}/public');
-    upload('vendor', '{{release_path}}');
+    // Build
+    runLocally('composer {{composer_action}} {{composer_options}}');
+    runLocally('yarn --frozen-lockfile');
+    runLocally('yarn build');
+
+    // Upload
+    upload('public/assets', '{{release_path}}/public', ['progress_bar' => false]);
+    upload('var', '{{release_path}}', ['progress_bar' => false]);
+    upload('vendor', '{{release_path}}', ['progress_bar' => false]);
 });
-task('deploy:writable')->disable();
 task('database:migrate')->disable();
 
 after('deploy:failed', 'deploy:unlock');
