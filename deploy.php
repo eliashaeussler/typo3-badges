@@ -28,22 +28,22 @@ require 'recipe/symfony.php';
 // Config
 set('repository', 'https://github.com/eliashaeussler/typo3-badges.git');
 set('keep_releases', 3);
-set('env', [
-    'APP_ENV' => 'prod',
-]);
 
 // Hosts
 host('typo3-badges.dev')
-    ->setHostname('cp232.sp-server.net')
-    ->setRemoteUser('eliashae')
-    ->setDeployPath('~/html/typo3-badges.dev');
+    ->set('hostname', 'cp232.sp-server.net')
+    ->set('remote_user', 'eliashae')
+    ->set('http_user', 'eliashae')
+    ->set('writable_mode', 'chmod')
+    ->set('deploy_path', '~/html/typo3-badges.dev')
+    ->add('env', ['APP_ENV' => 'prod'])
+;
 
 // Tasks
 task('deploy:vendors', function () {
     upload('public/assets', '{{release_path}}/public');
     upload('vendor', '{{release_path}}');
 });
-task('deploy:writable')->disable();
 task('database:migrate')->disable();
 
 after('deploy:failed', 'deploy:unlock');
