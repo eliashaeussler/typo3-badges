@@ -49,9 +49,7 @@ jobs:
 
       # Start Symfony server
       - name: Run PHP web server
-        run: |
-          php -S 0.0.0.0:8000 -t public/ &
-          sleep 2
+        run: php -S 0.0.0.0:8000 -t public/ &
       - id: php-server
         run: echo "::set-output name=baseUrl::http://$(ip addr show eth0 | grep -Po 'inet \K[\d.]+'):8000"
 
@@ -65,6 +63,9 @@ jobs:
         with:
           browser: electron
           config: baseUrl=${{ steps.php-server.outputs.baseUrl }}
+          headless: false
+          install: false
+          wait-on: ${{ steps.php-server.outputs.baseUrl }}
 
       # Report coverage
       - name: Fix coverage path
