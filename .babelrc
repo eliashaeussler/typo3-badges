@@ -6,5 +6,12 @@
                 "targets": "last 2 versions"
             }
         ]
-    ]
+    ],
+    "env": {
+        "dev": {
+            "plugins": [
+                "istanbul"
+            ]
+        }
+    }
 }

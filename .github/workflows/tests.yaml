@@ -45,13 +45,26 @@ jobs:
 
       # Build Frontend assets (necessary for application tests)
       - name: Build Frontend assets
-        run: yarn build
+        run: yarn dev
+
+      # Start Symfony server
+      - name: Run PHP web server
+        run: |
+          php -S 0.0.0.0:8000 -t public/ &
+          sleep 2
+      - id: php-server
+        run: echo "::set-output name=baseUrl::http://$(ip addr show eth0 | grep -Po 'inet \K[\d.]+'):8000"
 
       # Run tests
       - name: Build coverage directory
         run: mkdir -p .build/coverage
-      - name: Run tests with coverage
+      - name: Run PHP tests with coverage
         run: composer test:coverage
+      - name: Run JavaScript tests with coverage
+        uses: cypress-io/github-action@v2
+        with:
+          browser: electron
+          config: baseUrl=${{ steps.php-server.outputs.baseUrl }}
 
       # Report coverage
       - name: Fix coverage path
@@ -64,3 +77,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         if: ${{ github.actor != 'dependabot[bot]' }}
+
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
