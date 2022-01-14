@@ -70,5 +70,5 @@ jobs:
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          dep: deploy dev
+          dep: deploy dev --branch ${{ github.ref_name }}
           deployer-version: '7.0.0-rc.3'
