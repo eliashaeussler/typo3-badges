@@ -1,7 +1,7 @@
 {
 	"name": "@eliashaeussler/typo3-badges",
 	"description": "Frontend for TYPO3 Badges, a Symfony project that provides endpoints for beautiful TYPO3 badges.",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"license": "GPL-3.0-or-later",
 	"repository": "https://github.com/eliashaeussler/typo3-badges.git",
 	"private": true,
@@ -13,7 +13,7 @@
 	"homepage": "https://typo3-badges.dev",
 	"devDependencies": {
 		"@babel/core": "^7.16.5",
-		"@babel/preset-env": "^7.16.5",
+		"@babel/preset-env": "^7.16.8",
 		"@symfony/webpack-encore": "^1.7.0",
 		"axios": "^0.24.0",
 		"eslint": "^8.5.0",
@@ -25,7 +25,7 @@
 		"postcss-loader": "^6.2.1",
 		"stylelint": "^14.2.0",
 		"stylelint-config-standard": "^24.0.0",
-		"tailwindcss": "^3.0.10",
+		"tailwindcss": "^3.0.13",
 		"tailwindcss-crossbrowser-touch": "^1.1.2",
 		"tailwindcss-selection-variant": "^0.1.0",
 		"tailwindcss-triangles": "^4.0.0",
