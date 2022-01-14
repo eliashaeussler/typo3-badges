@@ -3,8 +3,6 @@ on:
   push:
     tags:
       - '*'
-    branches:
-      - develop
   workflow_dispatch:
 
 # Prevents concurrent deployments
@@ -44,7 +42,7 @@ jobs:
           deployer-version: '7.0.0-rc.3'
 
   dev:
-    if: ${{ github.ref_name == 'develop' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-20.04
     environment:
       name: dev
