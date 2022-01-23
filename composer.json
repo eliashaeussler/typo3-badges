@@ -104,8 +104,8 @@
 			"@auto-scripts"
 		],
 		"auto-scripts": {
-			"cache:clear": "symfony-cmd",
-			"assets:install %PUBLIC_DIR%": "symfony-cmd"
+			"assets:install %PUBLIC_DIR%": "symfony-cmd",
+			"cache:clear": "symfony-cmd"
 		},
 		"lint": "php-cs-fixer fix",
 		"sca": "phpstan analyse -c phpstan.neon",
