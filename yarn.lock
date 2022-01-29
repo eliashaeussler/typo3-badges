@@ -1067,10 +1067,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/indie-flower@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-4.5.0.tgz#a0d9e972dedfe2f83127cd86af11d4b69299658c"
-  integrity sha512-pJHSLwBybGnG5gjOI/2MAyYi/lyvkwvcPO6g7vEfBgPhWNSQqBnMkKFmrl6dKKMsmzKuNrLndumVxetcwWgFIw==
+"@fontsource/indie-flower@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-4.5.1.tgz#c3031fa1c01bb6379cc9772fd7dcad3739e46d68"
+  integrity sha512-U99DKqivEdJCG+c5wSrqZWTkm+/8lrPRiei7XteFN7K5DayZByIljbjh9cGYRKTNA8YVPOArQQuRfXyx2pSeaA==
 
 "@fontsource/jetbrains-mono@^4.5.0":
   version "4.5.0"
