@@ -5,6 +5,7 @@
 # Badges for TYPO3 extensions
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=eliashaeussler_typo3-badges&metric=coverage)](https://sonarcloud.io/dashboard?id=eliashaeussler_typo3-badges)
+[![Uptime monitoring](https://betteruptime.com/status-badges/v1/monitor/bxsw.svg)](https://up.eliash.de/)
 [![Deploy](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
 [![Tests](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml)
 [![CGL](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
