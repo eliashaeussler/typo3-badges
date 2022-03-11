@@ -43,8 +43,8 @@ use Symfony\Component\Routing\Annotation\Route;
 )]
 final class DefaultBadgeController extends AbstractBadgeController
 {
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, string $provider = null): Response
     {
-        return $this->getBadgeResponse($request, new Badge());
+        return $this->getBadgeResponse(new Badge(), $provider);
     }
 }

@@ -25,7 +25,6 @@ namespace App\Tests\Fixtures;
 
 use App\Controller\AbstractBadgeController;
 use App\Entity\Badge;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -38,8 +37,8 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class AbstractBadgeControllerTestClass extends AbstractBadgeController
 {
-    public function testGetBadgeResponse(Request $request, Badge $badge): Response
+    public function testGetBadgeResponse(Badge $badge, string $provider = null): Response
     {
-        return $this->getBadgeResponse($request, $badge);
+        return $this->getBadgeResponse($badge, $provider);
     }
 }
