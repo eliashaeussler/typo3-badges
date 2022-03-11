@@ -27,7 +27,6 @@ use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
 use App\Tests\Fixtures\AbstractBadgeControllerTestClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -55,19 +54,18 @@ final class AbstractBadgeControllerTest extends KernelTestCase
     {
         $this->expectException(NotFoundHttpException::class);
 
-        $this->subject->testGetBadgeResponse(new Request(['provider' => 'foo']), new Badge());
+        $this->subject->testGetBadgeResponse(new Badge(), 'foo');
     }
 
     /**
      * @test
      */
-    public function getBadgeResponseReturnsResponseForDefaultProviderIfProviderIsOmittedInRequest(): void
+    public function getBadgeResponseReturnsResponseForDefaultProviderIfNoProviderIsGiven(): void
     {
-        $request = new Request();
         $badge = new Badge();
         $expected = $this->badgeProviderFactory->get()->createResponse($badge);
 
-        self::assertEquals($expected, $this->subject->testGetBadgeResponse($request, $badge));
+        self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge));
     }
 
     /**
@@ -75,10 +73,9 @@ final class AbstractBadgeControllerTest extends KernelTestCase
      */
     public function getBadgeResponseReturnsResponseForRequestedProvider(): void
     {
-        $request = new Request(['provider' => 'badgen']);
         $badge = new Badge();
         $expected = $this->badgeProviderFactory->get('badgen')->createResponse($badge);
 
-        self::assertEquals($expected, $this->subject->testGetBadgeResponse($request, $badge));
+        self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge, 'badgen'));
     }
 }
