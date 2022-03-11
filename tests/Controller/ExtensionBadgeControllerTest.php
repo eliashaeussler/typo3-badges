@@ -81,6 +81,9 @@ final class ExtensionBadgeControllerTest extends AbstractApiTestCase
             'namedLogo' => 'typo3',
         ]);
 
-        self::assertEquals($expected, $this->subject->__invoke(new Request(), 'foo'));
+        self::assertSame(
+            $expected->getContent(),
+            $this->subject->__invoke(new Request(), 'foo')->getContent()
+        );
     }
 }
