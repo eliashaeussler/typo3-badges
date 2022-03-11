@@ -50,12 +50,12 @@ final class VersionBadgeController extends AbstractBadgeController
     ) {
     }
 
-    public function __invoke(Request $request, string $extension): Response
+    public function __invoke(Request $request, string $extension, string $provider = null): Response
     {
         $apiResponse = $this->apiService->getExtensionMetadata($extension);
         $version = $apiResponse[0]['current_version']['number']
             ?? throw new BadRequestHttpException('Invalid API response.');
 
-        return $this->getBadgeResponse($request, Badge::forVersion($version));
+        return $this->getBadgeResponse(Badge::forVersion($version), $provider);
     }
 }

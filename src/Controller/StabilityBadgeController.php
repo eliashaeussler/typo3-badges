@@ -50,12 +50,12 @@ final class StabilityBadgeController extends AbstractBadgeController
     ) {
     }
 
-    public function __invoke(Request $request, string $extension): Response
+    public function __invoke(Request $request, string $extension, string $provider = null): Response
     {
         $apiResponse = $this->apiService->getExtensionMetadata($extension);
         $stability = $apiResponse[0]['current_version']['state']
             ?? throw new BadRequestHttpException('Invalid API response.');
 
-        return $this->getBadgeResponse($request, Badge::forStability($stability));
+        return $this->getBadgeResponse(Badge::forStability($stability), $provider);
     }
 }

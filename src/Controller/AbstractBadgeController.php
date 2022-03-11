@@ -26,7 +26,6 @@ namespace App\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
 use App\Exception\InvalidProviderException;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -48,10 +47,9 @@ abstract class AbstractBadgeController
         $this->badgeProviderFactory = $badgeProviderFactory;
     }
 
-    protected function getBadgeResponse(Request $request, Badge $badge): Response
+    protected function getBadgeResponse(Badge $badge, string $provider = null): Response
     {
         try {
-            $provider = (string) $request->get('provider') ?: null;
             $providerClass = $this->badgeProviderFactory->get($provider);
         } catch (InvalidProviderException $e) {
             throw new NotFoundHttpException($e->getMessage());
