@@ -56,13 +56,15 @@ jobs:
       # Report coverage
       - name: Fix coverage path
         working-directory: .build/coverage
-        run: sed -i 's/\/home\/runner\/work\/typo3-badges\/typo3-badges\//\/github\/workspace\//g' clover.xml
+        run: sed -i 's#/home/runner/work/typo3-badges/typo3-badges#${{ github.workspace }}#g' clover.xml
         if: ${{ github.actor != 'dependabot[bot]' }}
-      - name: Run SonarCloud scan
-        uses: SonarSource/sonarcloud-github-action@master
+      - name: CodeClimate report
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageLocations: |
+            ${{ github.workspace }}/.build/coverage/clover.xml:clover
         if: ${{ github.actor != 'dependabot[bot]' }}
       - name: codecov report
         uses: codecov/codecov-action@v2
