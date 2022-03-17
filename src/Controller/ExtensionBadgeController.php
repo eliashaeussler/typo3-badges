@@ -52,10 +52,14 @@ final class ExtensionBadgeController extends AbstractBadgeController
 
     public function __invoke(Request $request, string $extension, string $provider = null): Response
     {
-        $apiResponse = $this->apiService->getExtensionMetadata($extension);
-        $extensionKey = $apiResponse[0]['key']
+        $extensionMetadata = $this->apiService->getExtensionMetadata($extension);
+        $extensionKey = $extensionMetadata[0]['key']
             ?? throw new BadRequestHttpException('Invalid API response.');
 
-        return $this->getBadgeResponse(Badge::forExtension($extensionKey), $provider);
+        return $this->getBadgeResponse(
+            Badge::forExtension($extensionKey),
+            $provider,
+            $extensionMetadata->getExpiryDate(),
+        );
     }
 }

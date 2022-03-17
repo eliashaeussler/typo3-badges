@@ -26,6 +26,7 @@ framework:
 when@prod:
     framework:
         error_controller: App\Controller\ErrorController
+        http_cache: true
 
 when@test:
     framework:
