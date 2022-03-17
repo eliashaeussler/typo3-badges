@@ -11,6 +11,7 @@
 [![CGL](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
 [![License](http://poser.pugx.org/eliashaeussler/typo3-badges/license)](LICENSE)
 [![TYPO3](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/typo3)](https://typo3-badges.dev)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feliashaeussler%2Ftypo3-badges.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Feliashaeussler%2Ftypo3-badges?ref=badge_shield)
 
 **:computer:&nbsp;[Official website](https://typo3-badges.dev)** |
 :package:&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/typo3-badges) |
@@ -32,3 +33,6 @@ An overview of all endpoints and their usage can be found on the
 ## :star: License
 
 This project is licensed under [GNU General Public License 3.0 (or later)](LICENSE).
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feliashaeussler%2Ftypo3-badges.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Feliashaeussler%2Ftypo3-badges?ref=badge_large)
