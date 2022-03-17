@@ -77,7 +77,7 @@ final class Badge
     {
         return new self(
             label: 'typo3',
-            message: \sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
+            message: sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
             color: self::COLOR_MAP['downloads'],
         );
     }

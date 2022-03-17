@@ -47,6 +47,6 @@ final class HomepageControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'TYPO3 Badges');
-        self::assertCount(count($badgeRoutes), $crawler->filter('.badge-endpoint'));
+        self::assertCount(\count($badgeRoutes), $crawler->filter('.badge-endpoint'));
     }
 }

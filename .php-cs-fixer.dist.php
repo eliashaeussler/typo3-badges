@@ -54,6 +54,8 @@ return (new PhpCsFixer\Config())
             'location' => 'after_declare_strict',
             'separate' => 'both',
         ],
+        'native_function_invocation' => true,
     ])
     ->setFinder($finder)
+    ->setRiskyAllowed(true)
 ;

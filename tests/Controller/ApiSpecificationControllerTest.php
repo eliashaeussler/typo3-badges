@@ -50,7 +50,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertJson($json);
-        self::assertSame($expected, \json_decode($json, true, \JSON_THROW_ON_ERROR));
+        self::assertSame($expected, json_decode($json, true, \JSON_THROW_ON_ERROR));
     }
 
     /**
@@ -58,7 +58,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
      */
     private function getExpectedApiSpecification(): array
     {
-        $apiSpecification = Yaml::parseFile(dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml');
+        $apiSpecification = Yaml::parseFile(\dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml');
 
         self::assertIsArray($apiSpecification);
 
