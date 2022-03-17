@@ -33,3 +33,5 @@ An overview of all endpoints and their usage can be found on the
 ## :star: License
 
 This project is licensed under [GNU General Public License 3.0 (or later)](LICENSE).
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Feliashaeussler%2Ftypo3-badges.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Feliashaeussler%2Ftypo3-badges?ref=badge_large)
