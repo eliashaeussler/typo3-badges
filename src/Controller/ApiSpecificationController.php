@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,17 +37,41 @@ use Symfony\Component\Yaml\Yaml;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/spec',
+    path: '/spec.{_format}',
+    requirements: [
+        '_format' => 'json|yaml',
+    ],
     methods: ['GET'],
+    format: 'json',
 )]
 final class ApiSpecificationController
 {
-    public function __invoke(): Response
+    public function __invoke(Request $request): Response
     {
+        $format = $request->getRequestFormat();
         $specification = $this->loadSpecification();
-        $json = json_encode($specification, \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_NUMERIC_CHECK);
 
-        return JsonResponse::fromJsonString($json);
+        switch ($format) {
+            case 'yaml':
+                $yaml = Yaml::dump($specification, 99, 2);
+                $response = new Response($yaml);
+                $contentType = 'application/openapi+yaml';
+                break;
+
+            case 'json':
+            default:
+                $json = json_encode(
+                    $specification,
+                    \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_NUMERIC_CHECK
+                );
+                $response = JsonResponse::fromJsonString($json);
+                $contentType = 'application/openapi+json';
+                break;
+        }
+
+        $response->headers->set('Content-Type', $contentType);
+
+        return $response;
     }
 
     /**
@@ -58,7 +83,9 @@ final class ApiSpecificationController
         $fileContents = Yaml::parseFile($apiSpecificationPath);
 
         if (!\is_array($fileContents)) {
-            throw new BadRequestHttpException('Unable to load API specification tile.');
+            // @codeCoverageIgnoreStart
+            throw new BadRequestHttpException('Unable to load API specification file.');
+            // @codeCoverageIgnoreEnd
         }
 
         return $fileContents;
