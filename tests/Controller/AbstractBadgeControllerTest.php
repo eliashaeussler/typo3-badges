@@ -78,4 +78,19 @@ final class AbstractBadgeControllerTest extends KernelTestCase
 
         self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge, 'badgen'));
     }
+
+    /**
+     * @test
+     */
+    public function getBadgeResponseReturnsCachedResponse(): void
+    {
+        $badge = new Badge();
+        $cacheExpirationDate = new \DateTime();
+        $expected = $this->badgeProviderFactory->get('badgen')->createResponse($badge)
+            ->setPublic()
+            ->setExpires($cacheExpirationDate);
+        $expected->headers->addCacheControlDirective('must-revalidate', true);
+
+        self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge, 'badgen', $cacheExpirationDate));
+    }
 }

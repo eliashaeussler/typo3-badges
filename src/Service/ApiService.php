@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Entity\Dto\ExtensionMetadata;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -42,17 +43,27 @@ final class ApiService
     ) {
     }
 
-    /**
-     * @return array<int|string, mixed>
-     */
-    public function getExtensionMetadata(string $extension): array
+    public function getExtensionMetadata(string $extension): ExtensionMetadata
     {
         $apiPath = $this->buildApiPath('/extension/{extension}', ['extension' => $extension]);
 
-        return $this->cache->get(
+        // Fetch extension metadata from cache or external API
+        $extensionMetadata = $this->cache->get(
             $this->calculateCacheIdentifier('typo3_api.extension_metadata', ['apiPath' => $apiPath]),
             fn (ItemInterface $item) => $this->sendRequestAndCacheResponse($apiPath, $item),
+            null,
+            $cacheMetadata,
         );
+
+        // Define cache expiry date from cache metadata
+        if (isset($cacheMetadata[ItemInterface::METADATA_EXPIRY])) {
+            $timestamp = (int) $cacheMetadata[ItemInterface::METADATA_EXPIRY];
+            $expiryDate = \DateTime::createFromFormat('U', (string) $timestamp) ?: null;
+        } else {
+            $expiryDate = null;
+        }
+
+        return new ExtensionMetadata($extensionMetadata, $expiryDate);
     }
 
     /**

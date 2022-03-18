@@ -47,14 +47,25 @@ abstract class AbstractBadgeController
         $this->badgeProviderFactory = $badgeProviderFactory;
     }
 
-    protected function getBadgeResponse(Badge $badge, string $provider = null): Response
-    {
+    protected function getBadgeResponse(
+        Badge $badge,
+        string $provider = null,
+        \DateTime $cacheExpirationDate = null,
+    ): Response {
         try {
             $providerClass = $this->badgeProviderFactory->get($provider);
         } catch (InvalidProviderException $e) {
             throw new NotFoundHttpException($e->getMessage());
         }
 
-        return $providerClass->createResponse($badge);
+        $response = $providerClass->createResponse($badge);
+
+        if (null !== $cacheExpirationDate) {
+            $response->setPublic();
+            $response->setExpires($cacheExpirationDate);
+            $response->headers->addCacheControlDirective('must-revalidate', true);
+        }
+
+        return $response;
     }
 }
