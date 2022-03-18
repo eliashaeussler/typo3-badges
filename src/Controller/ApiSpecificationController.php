@@ -44,7 +44,7 @@ final class ApiSpecificationController
     public function __invoke(): Response
     {
         $specification = $this->loadSpecification();
-        $json = \json_encode($specification, \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_NUMERIC_CHECK);
+        $json = json_encode($specification, \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_NUMERIC_CHECK);
 
         return JsonResponse::fromJsonString($json);
     }
@@ -54,10 +54,10 @@ final class ApiSpecificationController
      */
     private function loadSpecification(): array
     {
-        $apiSpecificationPath = dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml';
+        $apiSpecificationPath = \dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml';
         $fileContents = Yaml::parseFile($apiSpecificationPath);
 
-        if (!is_array($fileContents)) {
+        if (!\is_array($fileContents)) {
             throw new BadRequestHttpException('Unable to load API specification tile.');
         }
 
