@@ -36,11 +36,12 @@ final class ApiSpecificationControllerTest extends WebTestCase
 {
     /**
      * @test
+     * @dataProvider controllerReturnsApiSpecificationAsJsonDataProvider
      */
-    public function controllerReturnsApiSpecificationAsJson(): void
+    public function controllerReturnsApiSpecificationAsJson(string $uri): void
     {
         $client = self::createClient();
-        $client->request('GET', '/spec');
+        $client->request('GET', $uri);
         $json = $client->getResponse()->getContent();
         $expected = $this->getExpectedApiSpecification();
 
@@ -54,6 +55,24 @@ final class ApiSpecificationControllerTest extends WebTestCase
     }
 
     /**
+     * @test
+     */
+    public function controllerReturnsApiSpecificationAsYaml(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/spec.yaml');
+        $yaml = $client->getResponse()->getContent();
+        $expected = $this->getExpectedApiSpecification();
+
+        if (false === $yaml) {
+            throw new \RuntimeException('Invalid YAML data.');
+        }
+
+        self::assertResponseIsSuccessful();
+        self::assertSame($expected, Yaml::parse($yaml));
+    }
+
+    /**
      * @return array<string, mixed>
      */
     private function getExpectedApiSpecification(): array
@@ -63,5 +82,14 @@ final class ApiSpecificationControllerTest extends WebTestCase
         self::assertIsArray($apiSpecification);
 
         return $apiSpecification;
+    }
+
+    /**
+     * @return \Generator<string, array{string}>
+     */
+    public function controllerReturnsApiSpecificationAsJsonDataProvider(): \Generator
+    {
+        yield 'default route' => ['/spec'];
+        yield 'route with json format' => ['/spec.json'];
     }
 }
