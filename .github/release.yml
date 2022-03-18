@@ -8,21 +8,24 @@ changelog:
       - question
       - wontfix
   categories:
-    - title: 📖 Documentation
+    - title: 🚀 Added
       labels:
-        - documentation
+        - enhancement
     - title: ⚡ Breaking
       labels:
         - breaking
-    - title: 🚀 Improved
+    - title: 👷 Changed
       labels:
-        - enhancement
-    - title: 🚑 Fixed
-      labels:
-        - bug
+        - maintenance
     - title: ⚙️ Dependencies
       labels:
         - dependencies
-    - title: Other changes
+    - title: 📖 Documentation
+      labels:
+        - documentation
+    - title: 🚑 Fixed
+      labels:
+        - bug
+    - title: 🏗️ Other changes
       labels:
         - "*"

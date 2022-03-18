@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
- * Copyright (C) 2021 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2022 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ final class ApiServiceTest extends AbstractApiTestCase
 
         $this->cache->get($cacheIdentifier, fn () => ['foo' => 'baz']);
 
-        self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo'));
+        self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo')->getMetadata());
         self::assertSame(0, $this->client->getRequestsCount());
 
         $this->cache->delete($cacheIdentifier);
@@ -56,7 +56,7 @@ final class ApiServiceTest extends AbstractApiTestCase
     {
         $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
-        self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo'));
+        self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo')->getMetadata());
         self::assertSame(1, $this->client->getRequestsCount());
         self::assertSame(['foo' => 'baz'], $this->cache->get($this->getCacheIdentifier(), fn () => null));
     }

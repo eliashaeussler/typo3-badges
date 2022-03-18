@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
- * Copyright (C) 2021 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2022 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ host('dev')
     ->set('writable_mode', 'chmod')
     ->set('deploy_path', '~/html/pre.typo3-badges.dev')
     ->add('shared_files', ['.htaccess'])
-    ->add('env', ['APP_ENV' => 'prod'])
+    ->add('env', ['APP_ENV' => 'prod', 'APP_DEBUG' => '1'])
 ;
 
 // Tasks

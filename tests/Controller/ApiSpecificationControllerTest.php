@@ -36,11 +36,12 @@ final class ApiSpecificationControllerTest extends WebTestCase
 {
     /**
      * @test
+     * @dataProvider controllerReturnsApiSpecificationAsJsonDataProvider
      */
-    public function controllerReturnsApiSpecificationAsJson(): void
+    public function controllerReturnsApiSpecificationAsJson(string $uri): void
     {
         $client = self::createClient();
-        $client->request('GET', '/spec');
+        $client->request('GET', $uri);
         $json = $client->getResponse()->getContent();
         $expected = $this->getExpectedApiSpecification();
 
@@ -50,7 +51,25 @@ final class ApiSpecificationControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertJson($json);
-        self::assertSame($expected, \json_decode($json, true, \JSON_THROW_ON_ERROR));
+        self::assertSame($expected, json_decode($json, true, \JSON_THROW_ON_ERROR));
+    }
+
+    /**
+     * @test
+     */
+    public function controllerReturnsApiSpecificationAsYaml(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/spec.yaml');
+        $yaml = $client->getResponse()->getContent();
+        $expected = $this->getExpectedApiSpecification();
+
+        if (false === $yaml) {
+            throw new \RuntimeException('Invalid YAML data.');
+        }
+
+        self::assertResponseIsSuccessful();
+        self::assertSame($expected, Yaml::parse($yaml));
     }
 
     /**
@@ -58,10 +77,19 @@ final class ApiSpecificationControllerTest extends WebTestCase
      */
     private function getExpectedApiSpecification(): array
     {
-        $apiSpecification = Yaml::parseFile(dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml');
+        $apiSpecification = Yaml::parseFile(\dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml');
 
         self::assertIsArray($apiSpecification);
 
         return $apiSpecification;
+    }
+
+    /**
+     * @return \Generator<string, array{string}>
+     */
+    public function controllerReturnsApiSpecificationAsJsonDataProvider(): \Generator
+    {
+        yield 'default route' => ['/spec'];
+        yield 'route with json format' => ['/spec.json'];
     }
 }

@@ -37,8 +37,11 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class AbstractBadgeControllerTestClass extends AbstractBadgeController
 {
-    public function testGetBadgeResponse(Badge $badge, string $provider = null): Response
-    {
-        return $this->getBadgeResponse($badge, $provider);
+    public function testGetBadgeResponse(
+        Badge $badge,
+        string $provider = null,
+        \DateTime $cacheExpirationDate = null,
+    ): Response {
+        return $this->getBadgeResponse($badge, $provider, $cacheExpirationDate);
     }
 }

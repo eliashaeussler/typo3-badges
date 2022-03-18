@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
- * Copyright (C) 2021 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2022 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,10 +52,14 @@ final class StabilityBadgeController extends AbstractBadgeController
 
     public function __invoke(Request $request, string $extension, string $provider = null): Response
     {
-        $apiResponse = $this->apiService->getExtensionMetadata($extension);
-        $stability = $apiResponse[0]['current_version']['state']
+        $extensionMetadata = $this->apiService->getExtensionMetadata($extension);
+        $stability = $extensionMetadata[0]['current_version']['state']
             ?? throw new BadRequestHttpException('Invalid API response.');
 
-        return $this->getBadgeResponse(Badge::forStability($stability), $provider);
+        return $this->getBadgeResponse(
+            Badge::forStability($stability),
+            $provider,
+            $extensionMetadata->getExpiryDate(),
+        );
     }
 }

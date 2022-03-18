@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
- * Copyright (C) 2021 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2022 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,10 +52,14 @@ final class VersionBadgeController extends AbstractBadgeController
 
     public function __invoke(Request $request, string $extension, string $provider = null): Response
     {
-        $apiResponse = $this->apiService->getExtensionMetadata($extension);
-        $version = $apiResponse[0]['current_version']['number']
+        $extensionMetadata = $this->apiService->getExtensionMetadata($extension);
+        $version = $extensionMetadata[0]['current_version']['number']
             ?? throw new BadRequestHttpException('Invalid API response.');
 
-        return $this->getBadgeResponse(Badge::forVersion($version), $provider);
+        return $this->getBadgeResponse(
+            Badge::forVersion($version),
+            $provider,
+            $extensionMetadata->getExpiryDate()
+        );
     }
 }
