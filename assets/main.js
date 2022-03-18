@@ -19,7 +19,7 @@
 
 import './main.css';
 
-import '@themesberg/flowbite';
+import 'flowbite';
 import App from './js/app';
 
 const app = new App();
