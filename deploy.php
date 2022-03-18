@@ -45,7 +45,7 @@ host('dev')
     ->set('writable_mode', 'chmod')
     ->set('deploy_path', '~/html/pre.typo3-badges.dev')
     ->add('shared_files', ['.htaccess'])
-    ->add('env', ['APP_ENV' => 'prod'])
+    ->add('env', ['APP_ENV' => 'prod', 'APP_DEBUG' => '1'])
 ;
 
 // Tasks
