@@ -1,15 +1,16 @@
 name: Dependabot update
 on:
-  push:
-    branches:
-      - 'dependabot/composer/**'
   pull_request:
     branches:
-      - 'dependabot/composer/**'
+      - 'dependabot/**'
+
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
   dependabot-update:
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor == 'dependabot[bot]' && startsWith(github.ref, 'refs/heads/dependabot/composer/') }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -38,3 +39,19 @@ jobs:
           commit_options: '--amend --no-edit'
           push_options: '--force'
           skip_fetch: true
+
+  dependabot-auto-merge:
+    runs-on: ubuntu-20.04
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Fetch dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Enable auto-merge for Dependabot PRs
+        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' }}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
