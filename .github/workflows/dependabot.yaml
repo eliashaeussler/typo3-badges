@@ -2,10 +2,10 @@ name: Dependabot
 on:
   push:
     branches:
-      - '**'
+      - 'dependabot/**'
   pull_request:
     branches:
-      - '**'
+      - 'dependabot/**'
 
 permissions:
   pull-requests: write
@@ -45,7 +45,7 @@ jobs:
 
   dependabot-auto-merge:
     runs-on: ubuntu-20.04
-    if: ${{ startsWith(github.ref, 'refs/heads/dependabot/') }}
+    if: ${{ github.event_name == "pull_request" }}
     steps:
       - uses: actions/checkout@v2
       - uses: ahmadnassri/action-dependabot-auto-merge@v2
