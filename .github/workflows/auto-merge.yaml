@@ -1,8 +1,6 @@
 name: Dependabot auto-merge
 on:
   pull_request:
-    branches:
-      - 'dependabot/**'
 
 permissions:
   pull-requests: write
@@ -11,7 +9,6 @@ permissions:
 jobs:
   dependabot-auto-merge:
     runs-on: ubuntu-20.04
-    if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
       - uses: actions/checkout@v2
       - uses: ahmadnassri/action-dependabot-auto-merge@v2
