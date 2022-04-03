@@ -1,19 +1,15 @@
-name: Dependabot
+name: Dependabot update
 on:
   push:
     branches:
-      - 'dependabot/**'
+      - 'dependabot/composer/**'
   pull_request:
     branches:
-      - 'dependabot/**'
-
-permissions:
-  pull-requests: write
-  contents: write
+      - 'dependabot/composer/**'
 
 jobs:
   dependabot-update:
-    if: ${{ github.actor == 'dependabot[bot]' && startsWith(github.ref, 'refs/heads/dependabot/composer/') }}
+    if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -42,12 +38,3 @@ jobs:
           commit_options: '--amend --no-edit'
           push_options: '--force'
           skip_fetch: true
-
-  dependabot-auto-merge:
-    runs-on: ubuntu-20.04
-    if: ${{ github.event_name == 'pull_request' }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ahmadnassri/action-dependabot-auto-merge@v2
-        with:
-          target: minor
