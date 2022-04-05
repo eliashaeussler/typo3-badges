@@ -12,7 +12,7 @@ jobs:
   tests:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "::set-output name=dir::$(composer config cache-files-dir)"
       - name: Define Composer cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3.0.1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: tests-php-8.0
@@ -65,7 +65,7 @@ jobs:
           coverageLocations: |
             ${{ github.workspace }}/.build/coverage/clover.xml:clover
       - name: codecov report
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           directory: .build/coverage
           fail_ci_if_error: true
