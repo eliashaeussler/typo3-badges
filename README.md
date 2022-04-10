@@ -10,8 +10,8 @@
 [![Deploy](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
 [![Tests](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml)
 [![CGL](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
-[![License](http://poser.pugx.org/eliashaeussler/typo3-badges/license)](LICENSE)
-[![TYPO3](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/typo3)](https://typo3-badges.dev)
+[![License](https://img.shields.io/github/license/eliashaeussler/typo3-badges)](LICENSE)
+[![TYPO3 – inspiring people to share!](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/typo3)](https://typo3-badges.dev)
 
 **:computer:&nbsp;[Official website](https://typo3-badges.dev)** |
 :package:&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/typo3-badges) |
