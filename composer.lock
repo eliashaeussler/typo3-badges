@@ -447,16 +447,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.4.4",
+            "version": "1.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "d8e9fd97ca11f2f24fc1aafbcfb1f78bce762267"
+                "reference": "129a63b3bc7caeb593c224c41f420675e63cfefc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/d8e9fd97ca11f2f24fc1aafbcfb1f78bce762267",
-                "reference": "d8e9fd97ca11f2f24fc1aafbcfb1f78bce762267",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/129a63b3bc7caeb593c224c41f420675e63cfefc",
+                "reference": "129a63b3bc7caeb593c224c41f420675e63cfefc",
                 "shasum": ""
             },
             "require": {
@@ -485,9 +485,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.4.4"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.4.5"
             },
-            "time": "2022-04-14T12:24:06+00:00"
+            "time": "2022-04-22T11:11:01+00:00"
         },
         {
             "name": "psr/cache",
@@ -4545,34 +4545,34 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.25.1",
+            "version": "2.25.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "f8dcad3ab46b251864b89e1a33cb396d6e85984a"
+                "reference": "854ca6746fbc23e285da01aa963b9c61266d56eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/f8dcad3ab46b251864b89e1a33cb396d6e85984a",
-                "reference": "f8dcad3ab46b251864b89e1a33cb396d6e85984a",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/854ca6746fbc23e285da01aa963b9c61266d56eb",
+                "reference": "854ca6746fbc23e285da01aa963b9c61266d56eb",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2.0.0",
                 "ergebnis/json-normalizer": "~2.1.0",
                 "ergebnis/json-printer": "^3.2.0",
-                "justinrainbow/json-schema": "^5.2.11",
+                "justinrainbow/json-schema": "^5.2.12",
                 "localheinz/diff": "^1.1.1",
                 "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "composer/composer": "^2.3.1",
+                "composer/composer": "^2.3.5",
                 "ergebnis/license": "^1.2.0",
                 "ergebnis/php-cs-fixer-config": "^4.4.0",
                 "fakerphp/faker": "^1.19.0",
-                "phpunit/phpunit": "^9.5.19",
+                "phpunit/phpunit": "^9.5.20",
                 "psalm/plugin-phpunit": "~0.16.1",
-                "symfony/filesystem": "^5.4.6",
+                "symfony/filesystem": "^5.4.7",
                 "vimeo/psalm": "^4.22.0"
             },
             "type": "composer-plugin",
@@ -4616,7 +4616,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-30T13:53:56+00:00"
+            "time": "2022-04-20T07:53:13+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",
@@ -5383,16 +5383,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.5.6",
+            "version": "1.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "799dd8c2d2c9c704bb55d2078078cb970cf0f6d1"
+                "reference": "7fb7e2e1e9f3d59a26a413b2d3d5e47f0edb75ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/799dd8c2d2c9c704bb55d2078078cb970cf0f6d1",
-                "reference": "799dd8c2d2c9c704bb55d2078078cb970cf0f6d1",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7fb7e2e1e9f3d59a26a413b2d3d5e47f0edb75ac",
+                "reference": "7fb7e2e1e9f3d59a26a413b2d3d5e47f0edb75ac",
                 "shasum": ""
             },
             "require": {
@@ -5418,7 +5418,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.5.6"
+                "source": "https://github.com/phpstan/phpstan/tree/1.5.7"
             },
             "funding": [
                 {
@@ -5438,7 +5438,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-15T11:13:37+00:00"
+            "time": "2022-04-20T12:20:27+00:00"
         },
         {
             "name": "phpstan/phpstan-symfony",
@@ -7380,5 +7380,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
