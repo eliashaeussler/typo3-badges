@@ -20,7 +20,8 @@
             'linkClass': 'mt-2',
         } %}
         {% include 'partials/_badge.html.twig' with {
-            'src': 'https://img.shields.io/badge/dynamic/json?color=green&label=last+deployment&query=0.updated_at&url=https://api.github.com/repos/eliashaeussler/typo3-badges/deployments%3Fenvironment%3Dproduction',
+            'src': 'https://img.shields.io/badge/dynamic/json?color=green&label=last+deployment&query=0.updated_at&url='
+                ~ ('https://api.github.com/repos/eliashaeussler/typo3-badges/deployments?environment=production' | url_encode),
             'title': 'Last deployment badge',
             'link': 'https://github.com/eliashaeussler/typo3-badges/deployments/activity_log?environment=production',
             'linkClass': 'mt-2',
