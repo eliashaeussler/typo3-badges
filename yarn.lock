@@ -2911,9 +2911,9 @@ flatted@^3.1.0:
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
 flowbite@^1.3.4:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/flowbite/-/flowbite-1.4.2.tgz#01fb979af5cb9ae12ef405242e276359a15e5177"
-  integrity sha512-5UWilgT6+iuO2OYJzSa2OZHU6YPPWHfc526YV/1lSFlVVAIWQ+V0WuwtE+JIhsUJs928+vevmEOThg6PtIl2Rg==
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/flowbite/-/flowbite-1.4.5.tgz#324d3ba35fdce8fd648cc7a0ff6a70d7c46c041f"
+  integrity sha512-6Y5tGBUM+qP/KzehtJ4s+CO+4stQo7dMIozAzuc+x724uDmEM8/ti/KbyxykADTiyBCJd++dNJj3fa0EpxmRvQ==
   dependencies:
     "@popperjs/core" "^2.9.3"
     mini-svg-data-uri "^1.4.3"
