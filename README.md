@@ -13,7 +13,7 @@
 [![License](https://img.shields.io/github/license/eliashaeussler/typo3-badges)](LICENSE)
 [![TYPO3 – inspiring people to share!](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/typo3)](https://typo3-badges.dev)
 
-**:computer:&nbsp;[Official website](https://typo3-badges.dev)** |
+**:earth_africa:&nbsp;[Official website](https://typo3-badges.dev)** |
 :package:&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/typo3-badges) |
 :floppy_disk:&nbsp;[Repository](https://github.com/eliashaeussler/typo3-badges) |
 :bug:&nbsp;[Issue tracker](https://github.com/eliashaeussler/typo3-badges/issues)
