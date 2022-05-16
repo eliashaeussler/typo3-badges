@@ -8,8 +8,22 @@ on:
       - '**'
 
 jobs:
+  # Job: Check pre-conditions
+  check:
+    runs-on: ubuntu-20.04
+    outputs:
+      should_skip: ${{ steps.check.outputs.should_skip }}
+    steps:
+      - id: check
+        uses: fkirc/skip-duplicate-actions@v4.0.0
+        with:
+          concurrent_skipping: 'same_content_newer'
+          do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
+
   cgl:
     runs-on: ubuntu-20.04
+    needs: check
+    if: ${{ needs.check.outputs.should_skip != 'true' }}
     steps:
       - uses: actions/checkout@v3
         with:
