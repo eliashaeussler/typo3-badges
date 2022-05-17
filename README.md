@@ -10,11 +10,11 @@
 [![Deploy](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
 [![Tests](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml)
 [![CGL](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
+[![Latest version](https://img.shields.io/github/v/release/eliashaeussler/typo3-badges)](https://github.com/eliashaeussler/typo3-badges/releases/latest)
 [![License](https://img.shields.io/github/license/eliashaeussler/typo3-badges)](LICENSE)
 [![TYPO3 – inspiring people to share!](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/typo3)](https://typo3-badges.dev)
 
 **:earth_africa:&nbsp;[Official website](https://typo3-badges.dev)** |
-:package:&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/typo3-badges) |
 :floppy_disk:&nbsp;[Repository](https://github.com/eliashaeussler/typo3-badges) |
 :bug:&nbsp;[Issue tracker](https://github.com/eliashaeussler/typo3-badges/issues)
 
