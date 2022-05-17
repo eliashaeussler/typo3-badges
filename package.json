@@ -1,7 +1,7 @@
 {
 	"name": "@eliashaeussler/typo3-badges",
 	"description": "Frontend for TYPO3 Badges, a Symfony project that provides endpoints for beautiful TYPO3 badges.",
-	"version": "0.5.9",
+	"version": "0.5.10",
 	"license": "GPL-3.0-or-later",
 	"repository": "https://github.com/eliashaeussler/typo3-badges.git",
 	"private": true,
