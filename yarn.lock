@@ -948,9 +948,9 @@
   integrity sha512-75SuZkxFxVIeeU1ZJzuAnG76sXiBbDMwY9zJ26yAfCK95GJRYrdzDuIGCfsDrouK/Z5aO+AN7bkF8iEFoRXnHg==
 
 "@fontsource/jetbrains-mono@^4.5.1":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-4.5.8.tgz#cd1613ec7ca4ab4a7f3e4b07a2eeb4ae9e89611b"
-  integrity sha512-Wp2oUcXNFqw7pwEZdstZLv09v8lWhMscuSbmPU8VpdxPpC+kbQb6u0sOF/wZX/GZcwJHZyXBaZan0iia16r30Q==
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-4.5.9.tgz#792bcd574f42a0602cc04bfef39e11058d0ca217"
+  integrity sha512-qgzRg1dYIPyAOTp1XR6RkDOlNt4o6LVAe9PXR68hQzbwd1xf0S86TWEzNFSL82do8weF/G2ubo4TGxrNKo9D1A==
 
 "@fontsource/lato@^4.5.1":
   version "4.5.8"
