@@ -156,16 +156,16 @@
         },
         {
             "name": "nyholm/psr7",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nyholm/psr7.git",
-                "reference": "1461e07a0f2a975a52082ca3b769ca912b816226"
+                "reference": "f734364e38a876a23be4d906a2a089e1315be18a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/1461e07a0f2a975a52082ca3b769ca912b816226",
-                "reference": "1461e07a0f2a975a52082ca3b769ca912b816226",
+                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/f734364e38a876a23be4d906a2a089e1315be18a",
+                "reference": "f734364e38a876a23be4d906a2a089e1315be18a",
                 "shasum": ""
             },
             "require": {
@@ -217,7 +217,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Nyholm/psr7/issues",
-                "source": "https://github.com/Nyholm/psr7/tree/1.5.0"
+                "source": "https://github.com/Nyholm/psr7/tree/1.5.1"
             },
             "funding": [
                 {
@@ -229,7 +229,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-02T18:37:57+00:00"
+            "time": "2022-06-22T07:13:36+00:00"
         },
         {
             "name": "php-http/message-factory",
@@ -4198,21 +4198,21 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "6964c76c7804814a842473e0c8fd15bab0f18e25"
+                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/6964c76c7804814a842473e0c8fd15bab0f18e25",
-                "reference": "6964c76c7804814a842473e0c8fd15bab0f18e25",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
+                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0",
-                "symfony/polyfill-ctype": "^1.8"
+                "ext-ctype": "*",
+                "php": "^7.2 || ^8.0"
             },
             "conflict": {
                 "phpstan/phpstan": "<0.12.20",
@@ -4250,9 +4250,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.10.0"
+                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
-            "time": "2021-03-09T10:59:23+00:00"
+            "time": "2022-06-03T18:03:27+00:00"
         }
     ],
     "packages-dev": [
@@ -4546,16 +4546,16 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.28.0",
+            "version": "2.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "a227b49e339700fd4c6c4d15b7a16ff956512da5"
+                "reference": "5466fd02eff760fe1ff568f0367251dbf93dd52d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/a227b49e339700fd4c6c4d15b7a16ff956512da5",
-                "reference": "a227b49e339700fd4c6c4d15b7a16ff956512da5",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/5466fd02eff760fe1ff568f0367251dbf93dd52d",
+                "reference": "5466fd02eff760fe1ff568f0367251dbf93dd52d",
                 "shasum": ""
             },
             "require": {
@@ -4571,8 +4571,8 @@
                 "ergebnis/license": "^1.2.0",
                 "ergebnis/php-cs-fixer-config": "^4.4.0",
                 "fakerphp/faker": "^1.19.0",
-                "phpunit/phpunit": "^9.5.20",
-                "psalm/plugin-phpunit": "~0.16.1",
+                "phpunit/phpunit": "^9.5.21",
+                "psalm/plugin-phpunit": "~0.17.0",
                 "symfony/filesystem": "^5.4.9",
                 "vimeo/psalm": "^4.23.0"
             },
@@ -4611,7 +4611,7 @@
                 "issues": "https://github.com/ergebnis/composer-normalize/issues",
                 "source": "https://github.com/ergebnis/composer-normalize"
             },
-            "time": "2022-06-02T09:47:07+00:00"
+            "time": "2022-06-22T20:02:07+00:00"
         },
         {
             "name": "ergebnis/json-normalizer",
@@ -5092,16 +5092,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.13.2",
+            "version": "v4.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "210577fe3cf7badcc5814d99455df46564f3c077"
+                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/210577fe3cf7badcc5814d99455df46564f3c077",
-                "reference": "210577fe3cf7badcc5814d99455df46564f3c077",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/34bea19b6e03d8153165d8f30bba4c3be86184c1",
+                "reference": "34bea19b6e03d8153165d8f30bba4c3be86184c1",
                 "shasum": ""
             },
             "require": {
@@ -5142,9 +5142,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.14.0"
             },
-            "time": "2021-11-30T19:35:32+00:00"
+            "time": "2022-05-31T20:59:12+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5378,16 +5378,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.7.14",
+            "version": "1.7.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "e6f145f196a59c7ca91ea926c87ef3d936c4305f"
+                "reference": "cd0202ea1b1fc6d1bbe156c6e2e18a03e0ff160a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e6f145f196a59c7ca91ea926c87ef3d936c4305f",
-                "reference": "e6f145f196a59c7ca91ea926c87ef3d936c4305f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/cd0202ea1b1fc6d1bbe156c6e2e18a03e0ff160a",
+                "reference": "cd0202ea1b1fc6d1bbe156c6e2e18a03e0ff160a",
                 "shasum": ""
             },
             "require": {
@@ -5413,7 +5413,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.7.14"
+                "source": "https://github.com/phpstan/phpstan/tree/1.7.15"
             },
             "funding": [
                 {
@@ -5433,7 +5433,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-14T13:09:35+00:00"
+            "time": "2022-06-20T08:29:01+00:00"
         },
         {
             "name": "phpstan/phpstan-symfony",
@@ -5826,16 +5826,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.20",
+            "version": "9.5.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "12bc8879fb65aef2138b26fc633cb1e3620cffba"
+                "reference": "0e32b76be457de00e83213528f6bb37e2a38fcb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/12bc8879fb65aef2138b26fc633cb1e3620cffba",
-                "reference": "12bc8879fb65aef2138b26fc633cb1e3620cffba",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0e32b76be457de00e83213528f6bb37e2a38fcb1",
+                "reference": "0e32b76be457de00e83213528f6bb37e2a38fcb1",
                 "shasum": ""
             },
             "require": {
@@ -5869,7 +5869,6 @@
                 "sebastian/version": "^3.0.2"
             },
             "require-dev": {
-                "ext-pdo": "*",
                 "phpspec/prophecy-phpunit": "^2.0.1"
             },
             "suggest": {
@@ -5913,7 +5912,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.20"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.21"
             },
             "funding": [
                 {
@@ -5925,7 +5924,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-01T12:37:26+00:00"
+            "time": "2022-06-19T12:14:25+00:00"
         },
         {
             "name": "sebastian/cli-parser",
