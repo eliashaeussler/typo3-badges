@@ -9,7 +9,6 @@ updates:
       day: friday
     commit-message:
       prefix: '[TASK]'
-    target-branch: develop
     labels:
       - dependencies
     open-pull-requests-limit: 10
@@ -22,7 +21,6 @@ updates:
       day: friday
     commit-message:
       prefix: '[TASK]'
-    target-branch: develop
     labels:
       - dependencies
     open-pull-requests-limit: 10
@@ -34,7 +32,6 @@ updates:
       interval: daily
     commit-message:
       prefix: '[TASK]'
-    target-branch: develop
     labels:
       - dependencies
     open-pull-requests-limit: 10

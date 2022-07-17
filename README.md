@@ -4,7 +4,7 @@
 
 # Badges for TYPO3 extensions
 
-[![Coverage](https://codecov.io/gh/eliashaeussler/typo3-badges/branch/develop/graph/badge.svg?token=YIPIE5IZX3)](https://codecov.io/gh/eliashaeussler/typo3-badges)
+[![Coverage](https://codecov.io/gh/eliashaeussler/typo3-badges/branch/main/graph/badge.svg?token=YIPIE5IZX3)](https://codecov.io/gh/eliashaeussler/typo3-badges)
 [![Maintainability](https://api.codeclimate.com/v1/badges/47c15aa6c889330c5913/maintainability)](https://codeclimate.com/github/eliashaeussler/typo3-badges/maintainability)
 [![Uptime monitoring](https://betteruptime.com/status-badges/v1/monitor/bxsw.svg)](https://up.eliash.de/)
 [![Deploy](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
