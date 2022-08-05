@@ -21,7 +21,7 @@
 
                 {% for provider in providers %}
                     {% if route.hasRequirement('extension') %}
-                        {% set routeParameters = {'extension': 'handlebars'} %}
+                        {% set routeParameters = {'extension': randomExtensionKey} %}
                     {% else %}
                         {% set routeParameters = {} %}
                     {% endif %}

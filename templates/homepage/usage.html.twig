@@ -49,7 +49,7 @@
     {% endblock %}
     {% block item3_description %}
         <code class="inline border-b border-dashed border-gray-500 pb-0.5 text-sm">
-            {{ provider.generateUriForRoute(routes | keys | first, {'extension': 'handlebars'}) }}
+            {{ provider.generateUriForRoute(routes | keys | first, {'extension': randomExtensionKey}) }}
         </code>
         <br>
         <div class="inline-flex mt-4 text-xs text-gray-400" role="alert">
@@ -92,7 +92,7 @@
     {% endblock %}
     {% block item3_description %}
         <code class="inline border-b border-dashed border-gray-500 pb-0.5 text-sm">
-            {{ provider.generateUriForRoute(routes | keys | first, {'extension': 'handlebars'}) }}
+            {{ provider.generateUriForRoute(routes | keys | first, {'extension': randomExtensionKey}) }}
         </code>
         <br>
         <div class="inline-flex mt-4 text-xs text-gray-400" role="alert">
