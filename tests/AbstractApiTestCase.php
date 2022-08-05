@@ -48,8 +48,11 @@ abstract class AbstractApiTestCase extends KernelTestCase
         $this->apiService = new ApiService($this->getMockClient(), $this->cache);
     }
 
-    protected function getCacheIdentifier(): string
+    /**
+     * @param array<string, string> $options
+     */
+    protected function getCacheIdentifier(string $key, array $options = []): string
     {
-        return hash('sha512', 'typo3_api.extension_metadata_{"apiPath":"\/api\/v1\/extension\/foo"}');
+        return hash('sha512', $key.'_'.json_encode($options));
     }
 }
