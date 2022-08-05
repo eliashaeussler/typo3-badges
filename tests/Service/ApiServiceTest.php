@@ -44,7 +44,7 @@ final class ApiServiceTest extends AbstractApiTestCase
         $this->cache->get($cacheIdentifier, fn () => ['foo' => 'baz']);
 
         self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo')->getMetadata());
-        self::assertSame(0, $this->client->getRequestsCount());
+        self::assertSame(0, $this->mockClient?->getRequestsCount());
 
         $this->cache->delete($cacheIdentifier);
     }
@@ -57,7 +57,7 @@ final class ApiServiceTest extends AbstractApiTestCase
         $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
         self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo')->getMetadata());
-        self::assertSame(1, $this->client->getRequestsCount());
+        self::assertSame(1, $this->mockClient?->getRequestsCount());
         self::assertSame(['foo' => 'baz'], $this->cache->get($this->getCacheIdentifier(), fn () => null));
     }
 }

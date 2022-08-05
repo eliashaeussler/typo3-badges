@@ -23,8 +23,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use App\Service\ApiService;
+use App\Tests\MockClientTrait;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\Routing\Route;
+use Symfony\Contracts\Cache\CacheInterface;
 
 /**
  * HomepageControllerTest.
@@ -34,14 +39,27 @@ use Symfony\Component\Routing\Route;
  */
 final class HomepageControllerTest extends WebTestCase
 {
+    use MockClientTrait;
+
+    private KernelBrowser $client;
+
+    protected function setUp(): void
+    {
+        $this->mockClient = $this->getMockClient();
+        $this->client = self::createClient();
+
+        $container = self::getContainer();
+        $container->set(ApiService::class, new ApiService($this->mockClient, $container->get(CacheInterface::class)));
+    }
+
     /**
      * @test
      */
     public function controllerReturnsHomepage(): void
     {
-        $client = self::createClient();
-        $crawler = $client->request('GET', '/');
+        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
+        $crawler = $this->client->request('GET', '/');
         $allRoutes = self::getContainer()->get('router')->getRouteCollection()->all();
         $badgeRoutes = array_filter($allRoutes, fn (Route $route) => str_starts_with($route->getPath(), '/badge/'));
 

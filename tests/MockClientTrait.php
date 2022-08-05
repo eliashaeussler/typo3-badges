@@ -23,33 +23,38 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use App\Service\ApiService;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Component\HttpClient\MockHttpClient;
+use Symfony\Component\HttpClient\Response\MockResponse;
 
 /**
- * AbstractApiTestCase.
+ * MockClientTrait.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-abstract class AbstractApiTestCase extends KernelTestCase
+trait MockClientTrait
 {
-    use MockClientTrait;
+    protected ?MockHttpClient $mockClient = null;
 
-    protected CacheInterface $cache;
-    protected ApiService $apiService;
+    /**
+     * @var array<MockResponse>
+     */
+    protected array $mockResponses = [];
 
-    protected function setUp(): void
+    protected function getMockClient(): MockHttpClient
     {
-        self::bootKernel();
+        if (null === $this->mockClient) {
+            $this->mockClient = new MockHttpClient($this->getMockResponses());
+        }
 
-        $this->cache = self::getContainer()->get(CacheInterface::class);
-        $this->apiService = new ApiService($this->getMockClient(), $this->cache);
+        return $this->mockClient;
     }
 
-    protected function getCacheIdentifier(): string
+    /**
+     * @return \Generator<MockResponse>
+     */
+    protected function getMockResponses(): \Generator
     {
-        return hash('sha512', 'typo3_api.extension_metadata_{"apiPath":"\/api\/v1\/extension\/foo"}');
+        yield from $this->mockResponses;
     }
 }
