@@ -25,6 +25,7 @@ namespace App\Controller;
 
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Badge\Provider\ShieldsBadgeProvider;
+use App\Service\ApiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,6 +43,7 @@ final class HomepageController extends AbstractController
     public function __construct(
         private RouterInterface $router,
         private BadgeProviderFactory $badgeProviderFactory,
+        private ApiService $apiService,
     ) {
     }
 
@@ -53,6 +55,7 @@ final class HomepageController extends AbstractController
             'routes' => $this->getRoutes(),
             'providers' => $providers,
             'defaultProvider' => $providers[ShieldsBadgeProvider::getIdentifier()],
+            'randomExtensionKey' => $this->apiService->getRandomExtensionKey(),
         ]);
     }
 

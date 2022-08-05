@@ -36,6 +36,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 final class ApiService
 {
+    private const FALLBACK_EXTENSION_KEY = 'handlebars';
+
     public function __construct(
         private HttpClientInterface $client,
         private CacheInterface $cache,
@@ -43,9 +45,9 @@ final class ApiService
     ) {
     }
 
-    public function getExtensionMetadata(string $extension): ExtensionMetadata
+    public function getExtensionMetadata(string $extensionKey): ExtensionMetadata
     {
-        $apiPath = $this->buildApiPath('/extension/{extension}', ['extension' => $extension]);
+        $apiPath = $this->buildApiPath('/extension/{extension}', ['extension' => $extensionKey]);
 
         // Fetch extension metadata from cache or external API
         $extensionMetadata = $this->cache->get(
@@ -66,15 +68,46 @@ final class ApiService
         return new ExtensionMetadata($extensionMetadata, $expiryDate);
     }
 
+    public function getRandomExtensionKey(): string
+    {
+        $apiPath = $this->buildApiPath('/extension');
+
+        // Fetch current extensions from cache or external API
+        $result = $this->cache->get(
+            $this->calculateCacheIdentifier('typo3_api.random_extensions', ['apiPath' => $apiPath]),
+            function (ItemInterface $item) use ($apiPath): array {
+                // Build random filter options
+                $filterOptions = [
+                    'page' => rand(1, 5),
+                    'per_page' => 50,
+                    'filter' => [
+                        'typo3_version' => rand(10, 11),
+                    ],
+                ];
+                $apiUrl = $apiPath.'?'.http_build_query($filterOptions);
+
+                return $this->sendRequestAndCacheResponse($apiUrl, $item, 60 * 60 * 24);
+            }
+        );
+
+        $extensions = $result['extensions'] ?? [];
+
+        if ([] === $extensions) {
+            return self::FALLBACK_EXTENSION_KEY;
+        }
+
+        return $extensions[array_rand($extensions)]['key'];
+    }
+
     /**
      * @return array<int|string, mixed>
      */
-    private function sendRequestAndCacheResponse(string $path, ItemInterface $item): array
+    private function sendRequestAndCacheResponse(string $path, ItemInterface $item, int $expiresAfter = null): array
     {
         $response = $this->client->request('GET', $path);
         $responseArray = $response->toArray();
 
-        $item->expiresAfter($this->cacheExpirationPeriod);
+        $item->expiresAfter($expiresAfter ?? $this->cacheExpirationPeriod);
         $item->set($responseArray);
 
         return $responseArray;

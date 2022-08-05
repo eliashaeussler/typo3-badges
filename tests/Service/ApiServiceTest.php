@@ -39,12 +39,14 @@ final class ApiServiceTest extends AbstractApiTestCase
      */
     public function getExtensionMetadataReturnsMetadataFromCache(): void
     {
-        $cacheIdentifier = $this->getCacheIdentifier();
+        $cacheIdentifier = $this->getCacheIdentifier('typo3_api.extension_metadata', [
+            'apiPath' => '/api/v1/extension/foo',
+        ]);
 
         $this->cache->get($cacheIdentifier, fn () => ['foo' => 'baz']);
 
         self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo')->getMetadata());
-        self::assertSame(0, $this->client->getRequestsCount());
+        self::assertSame(0, $this->mockClient?->getRequestsCount());
 
         $this->cache->delete($cacheIdentifier);
     }
@@ -56,8 +58,69 @@ final class ApiServiceTest extends AbstractApiTestCase
     {
         $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
+        $cacheIdentifier = $this->getCacheIdentifier('typo3_api.extension_metadata', [
+            'apiPath' => '/api/v1/extension/foo',
+        ]);
+
         self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo')->getMetadata());
-        self::assertSame(1, $this->client->getRequestsCount());
-        self::assertSame(['foo' => 'baz'], $this->cache->get($this->getCacheIdentifier(), fn () => null));
+        self::assertSame(1, $this->mockClient?->getRequestsCount());
+        self::assertSame(['foo' => 'baz'], $this->cache->get($cacheIdentifier, fn () => null));
+    }
+
+    /**
+     * @test
+     */
+    public function getRandomExtensionKeyReturnsExtensionKeyFromCache(): void
+    {
+        $cacheIdentifier = $this->getCacheIdentifier('typo3_api.random_extensions', [
+            'apiPath' => '/api/v1/extension',
+        ]);
+
+        $this->cache->get($cacheIdentifier, fn () => [
+            'extensions' => [
+                [
+                    'key' => 'foo',
+                ],
+            ],
+        ]);
+
+        self::assertSame('foo', $this->apiService->getRandomExtensionKey());
+        self::assertSame(0, $this->mockClient?->getRequestsCount());
+
+        $this->cache->delete($cacheIdentifier);
+    }
+
+    /**
+     * @test
+     */
+    public function getRandomExtensionKeyReturnsExtensionKeyFromApiAndStoresResponseInCache(): void
+    {
+        $json = [
+            'extensions' => [
+                [
+                    'key' => 'foo',
+                ],
+            ],
+        ];
+
+        $this->mockResponses[] = new MockResponse(json_encode($json, JSON_THROW_ON_ERROR));
+
+        $cacheIdentifier = $this->getCacheIdentifier('typo3_api.random_extensions', [
+            'apiPath' => '/api/v1/extension',
+        ]);
+
+        self::assertSame('foo', $this->apiService->getRandomExtensionKey());
+        self::assertSame(1, $this->mockClient?->getRequestsCount());
+        self::assertSame($json, $this->cache->get($cacheIdentifier, fn () => null));
+    }
+
+    /**
+     * @test
+     */
+    public function getRandomExtensionKeyReturnsFallbackIfRandomExtensionKeysCannotBeFetchedFromApi(): void
+    {
+        $this->mockResponses[] = new MockResponse('{}');
+
+        self::assertSame('handlebars', $this->apiService->getRandomExtensionKey());
     }
 }
