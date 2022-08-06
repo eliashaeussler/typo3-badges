@@ -108,7 +108,14 @@
 			"assets:install %PUBLIC_DIR%": "symfony-cmd",
 			"cache:clear --no-optional-warmers": "symfony-cmd"
 		},
-		"lint": "php-cs-fixer fix",
+		"lint": [
+			"@lint:composer:fix",
+			"@lint:php:fix"
+		],
+		"lint:composer": "@lint:composer:fix --dry-run",
+		"lint:composer:fix": "@composer normalize",
+		"lint:php": "@lint:php:fix --dry-run",
+		"lint:php:fix": "php-cs-fixer fix",
 		"migration": "rector process",
 		"sca": "phpstan analyse -c phpstan.neon",
 		"test": "XDEBUG_MODE=off bin/phpunit",
