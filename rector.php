@@ -21,36 +21,29 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Cache;
+use Rector\Config\RectorConfig;
+use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
+use Rector\Set\ValueObject\LevelSetList;
+use Rector\Symfony\Set\SymfonySetList;
 
-use App\Service\ApiService;
-use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
+return static function (RectorConfig $rectorConfig): void {
+    $rectorConfig->paths([
+        __DIR__.'/src',
+        __DIR__.'/tests',
+    ]);
 
-/**
- * RandomExtensionMetadataCacheWarmer.
- *
- * @author Elias Häußler <elias@haeussler.dev>
- * @license GPL-3.0-or-later
- *
- * @internal
- * @codeCoverageIgnore
- */
-final class RandomExtensionMetadataCacheWarmer implements CacheWarmerInterface
-{
-    public function __construct(
-        private readonly ApiService $apiService,
-    ) {
-    }
+    $rectorConfig->symfonyContainerXml(__DIR__.'/var/cache/dev/App_KernelDevDebugContainer.xml');
 
-    public function warmUp(string $cacheDir): array
-    {
-        $this->apiService->getRandomExtensionMetadata();
+    // define sets of rules
+    $rectorConfig->sets([
+        LevelSetList::UP_TO_PHP_81,
+        SymfonySetList::SYMFONY_60,
+        SymfonySetList::SYMFONY_CODE_QUALITY,
+        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
+        SymfonySetList::SYMFONY_STRICT,
+    ]);
 
-        return [];
-    }
-
-    public function isOptional(): bool
-    {
-        return true;
-    }
-}
+    $rectorConfig->skip([
+        AddLiteralSeparatorToNumberRector::class,
+    ]);
+};

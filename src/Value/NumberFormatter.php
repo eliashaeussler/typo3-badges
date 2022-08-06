@@ -44,7 +44,7 @@ final class NumberFormatter
         $units = ['', 'K', 'M', 'B', 'T', 'Q'];
 
         if (\array_key_exists($unit, $units)) {
-            return sprintf('%s%s', rtrim(number_format($number / pow(1000, $unit), 1), '.0'), $units[$unit]);
+            return sprintf('%s%s', rtrim(number_format($number / 1000 ** $unit, 1), '.0'), $units[$unit]);
         }
 
         return (string) $number;

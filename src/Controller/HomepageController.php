@@ -43,9 +43,9 @@ final class HomepageController extends AbstractController
     use CacheableResponseTrait;
 
     public function __construct(
-        private RouterInterface $router,
-        private BadgeProviderFactory $badgeProviderFactory,
-        private ApiService $apiService,
+        private readonly RouterInterface $router,
+        private readonly BadgeProviderFactory $badgeProviderFactory,
+        private readonly ApiService $apiService,
     ) {
     }
 

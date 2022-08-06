@@ -35,7 +35,7 @@ use Symfony\Component\DependencyInjection\ServiceLocator;
 final class BadgeProviderFactory
 {
     public function __construct(
-        private ServiceLocator $providers,
+        private readonly ServiceLocator $providers,
     ) {
     }
 

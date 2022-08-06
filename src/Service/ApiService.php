@@ -39,9 +39,9 @@ final class ApiService
     private const FALLBACK_EXTENSION_KEY = 'handlebars';
 
     public function __construct(
-        private HttpClientInterface $client,
-        private CacheInterface $cache,
-        private int $cacheExpirationPeriod = 3600,
+        private readonly HttpClientInterface $client,
+        private readonly CacheInterface $cache,
+        private readonly int $cacheExpirationPeriod = 3600,
     ) {
     }
 
@@ -73,10 +73,10 @@ final class ApiService
             function (ItemInterface $item) use ($apiPath): array {
                 // Build random filter options
                 $filterOptions = [
-                    'page' => rand(1, 10),
+                    'page' => random_int(1, 10),
                     'per_page' => 20,
                     'filter' => [
-                        'typo3_version' => rand(10, 11),
+                        'typo3_version' => random_int(10, 11),
                     ],
                 ];
                 $apiUrl = $apiPath.'?'.http_build_query($filterOptions);
@@ -131,7 +131,7 @@ final class ApiService
      */
     private function calculateCacheIdentifier(string $key, array $options = []): string
     {
-        return hash('sha512', $key.'_'.json_encode($options));
+        return hash('sha512', $key.'_'.json_encode($options, JSON_THROW_ON_ERROR));
     }
 
     /**
