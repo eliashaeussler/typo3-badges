@@ -46,7 +46,7 @@ use Symfony\Component\Routing\Annotation\Route;
 final class ExtensionBadgeController extends AbstractBadgeController
 {
     public function __construct(
-        private ApiService $apiService,
+        private readonly ApiService $apiService,
     ) {
     }
 

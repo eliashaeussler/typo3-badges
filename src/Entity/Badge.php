@@ -48,10 +48,10 @@ final class Badge
     ];
 
     public function __construct(
-        private string $label = '',
-        private string $message = '',
-        private string $color = '',
-        private bool $isError = false,
+        private readonly string $label = '',
+        private readonly string $message = '',
+        private readonly string $color = '',
+        private readonly bool $isError = false,
     ) {
     }
 

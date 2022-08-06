@@ -53,6 +53,6 @@ abstract class AbstractApiTestCase extends KernelTestCase
      */
     protected function getCacheIdentifier(string $key, array $options = []): string
     {
-        return hash('sha512', $key.'_'.json_encode($options));
+        return hash('sha512', $key.'_'.json_encode($options, JSON_THROW_ON_ERROR));
     }
 }

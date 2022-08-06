@@ -51,7 +51,7 @@ final class DefaultBadgeControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertJson($json);
-        self::assertSame($expected, json_decode($json, true));
+        self::assertSame($expected, json_decode($json, true, 512, JSON_THROW_ON_ERROR));
     }
 
     /**

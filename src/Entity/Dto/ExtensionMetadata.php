@@ -38,7 +38,7 @@ final class ExtensionMetadata implements \ArrayAccess
          * @var array<int|string, mixed>
          */
         private array $metadata,
-        private ?\DateTime $expiryDate = null,
+        private readonly ?\DateTime $expiryDate = null,
     ) {
     }
 
