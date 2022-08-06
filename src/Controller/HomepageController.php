@@ -40,6 +40,8 @@ use Symfony\Component\Routing\RouterInterface;
 #[Route(path: '/')]
 final class HomepageController extends AbstractController
 {
+    use CacheableResponseTrait;
+
     public function __construct(
         private RouterInterface $router,
         private BadgeProviderFactory $badgeProviderFactory,
@@ -50,13 +52,21 @@ final class HomepageController extends AbstractController
     public function __invoke(): Response
     {
         $providers = $this->badgeProviderFactory->getAll();
+        $randomExtensionMetadata = $this->apiService->getRandomExtensionMetadata();
+        $cacheExpirationDate = $randomExtensionMetadata->getExpiryDate();
 
-        return $this->render('homepage.html.twig', [
+        $response = $this->render('homepage.html.twig', [
             'routes' => $this->getRoutes(),
             'providers' => $providers,
             'defaultProvider' => $providers[ShieldsBadgeProvider::getIdentifier()],
-            'randomExtensionKey' => $this->apiService->getRandomExtensionKey(),
+            'randomExtensionKey' => $randomExtensionMetadata['key'],
         ]);
+
+        if (null !== $cacheExpirationDate) {
+            $this->markResponseAsCacheable($response, $cacheExpirationDate);
+        }
+
+        return $response;
     }
 
     /**
@@ -64,14 +74,9 @@ final class HomepageController extends AbstractController
      */
     private function getRoutes(): array
     {
-        $routes = [];
-
-        foreach ($this->router->getRouteCollection()->all() as $name => $route) {
-            if (str_starts_with($route->getPath(), '/badge/')) {
-                $routes[$name] = $route;
-            }
-        }
-
-        return $routes;
+        return array_filter(
+            $this->router->getRouteCollection()->all(),
+            static fn (\Symfony\Component\Routing\Route $route) => str_starts_with($route->getPath(), '/badge/'),
+        );
     }
 }

@@ -57,18 +57,13 @@ final class ApiService
             $cacheMetadata,
         );
 
-        // Define cache expiry date from cache metadata
-        if (isset($cacheMetadata[ItemInterface::METADATA_EXPIRY])) {
-            $timestamp = (int) $cacheMetadata[ItemInterface::METADATA_EXPIRY];
-            $expiryDate = \DateTime::createFromFormat('U', (string) $timestamp) ?: null;
-        } else {
-            $expiryDate = null;
-        }
-
-        return new ExtensionMetadata($extensionMetadata, $expiryDate);
+        return new ExtensionMetadata(
+            $extensionMetadata,
+            $this->determineCacheExpiryDateFromCacheMetadata($cacheMetadata),
+        );
     }
 
-    public function getRandomExtensionKey(): string
+    public function getRandomExtensionMetadata(): ExtensionMetadata
     {
         $apiPath = $this->buildApiPath('/extension');
 
@@ -87,16 +82,21 @@ final class ApiService
                 $apiUrl = $apiPath.'?'.http_build_query($filterOptions);
 
                 return $this->sendRequestAndCacheResponse($apiUrl, $item, 60 * 60 * 24);
-            }
+            },
+            null,
+            $cacheMetadata,
         );
 
         $extensions = $result['extensions'] ?? [];
 
         if ([] === $extensions) {
-            return self::FALLBACK_EXTENSION_KEY;
+            return new ExtensionMetadata(['key' => self::FALLBACK_EXTENSION_KEY]);
         }
 
-        return $extensions[array_rand($extensions)]['key'];
+        return new ExtensionMetadata(
+            ['key' => $extensions[array_rand($extensions)]['key']],
+            $this->determineCacheExpiryDateFromCacheMetadata($cacheMetadata),
+        );
     }
 
     /**
@@ -132,5 +132,17 @@ final class ApiService
     private function calculateCacheIdentifier(string $key, array $options = []): string
     {
         return hash('sha512', $key.'_'.json_encode($options));
+    }
+
+    /**
+     * @param array{expiry?: int}|null $cacheMetadata
+     */
+    private function determineCacheExpiryDateFromCacheMetadata(?array $cacheMetadata): ?\DateTime
+    {
+        if (!isset($cacheMetadata[ItemInterface::METADATA_EXPIRY])) {
+            return null;
+        }
+
+        return \DateTime::createFromFormat('U', (string) (int) $cacheMetadata[ItemInterface::METADATA_EXPIRY]) ?: null;
     }
 }

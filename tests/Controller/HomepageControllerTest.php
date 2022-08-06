@@ -57,7 +57,13 @@ final class HomepageControllerTest extends WebTestCase
      */
     public function controllerReturnsHomepage(): void
     {
-        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
+        $this->mockResponses[] = new MockResponse(json_encode([
+            'extensions' => [
+                [
+                    'key' => 'foo',
+                ],
+            ],
+        ], JSON_THROW_ON_ERROR));
 
         $crawler = $this->client->request('GET', '/');
         $allRoutes = self::getContainer()->get('router')->getRouteCollection()->all();

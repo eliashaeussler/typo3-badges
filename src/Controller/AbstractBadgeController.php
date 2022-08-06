@@ -37,6 +37,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 abstract class AbstractBadgeController
 {
+    use CacheableResponseTrait;
+
     protected BadgeProviderFactory $badgeProviderFactory;
 
     /**
@@ -61,9 +63,7 @@ abstract class AbstractBadgeController
         $response = $providerClass->createResponse($badge);
 
         if (null !== $cacheExpirationDate) {
-            $response->setPublic();
-            $response->setExpires($cacheExpirationDate);
-            $response->headers->addCacheControlDirective('must-revalidate', true);
+            $this->markResponseAsCacheable($response, $cacheExpirationDate);
         }
 
         return $response;
