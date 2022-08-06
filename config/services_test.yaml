@@ -4,3 +4,5 @@ services:
 
   App\Service\ApiService:
     public: true
+
+  App\Cache\RandomExtensionMetadataCacheWarmer: ~
