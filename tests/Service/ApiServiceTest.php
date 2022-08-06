@@ -70,7 +70,7 @@ final class ApiServiceTest extends AbstractApiTestCase
     /**
      * @test
      */
-    public function getRandomExtensionKeyReturnsExtensionKeyFromCache(): void
+    public function getRandomExtensionMetadataReturnsExtensionMetadataFromCache(): void
     {
         $cacheIdentifier = $this->getCacheIdentifier('typo3_api.random_extensions', [
             'apiPath' => '/api/v1/extension',
@@ -84,7 +84,7 @@ final class ApiServiceTest extends AbstractApiTestCase
             ],
         ]);
 
-        self::assertSame('foo', $this->apiService->getRandomExtensionKey());
+        self::assertSame(['key' => 'foo'], $this->apiService->getRandomExtensionMetadata()->getMetadata());
         self::assertSame(0, $this->mockClient?->getRequestsCount());
 
         $this->cache->delete($cacheIdentifier);
@@ -93,7 +93,7 @@ final class ApiServiceTest extends AbstractApiTestCase
     /**
      * @test
      */
-    public function getRandomExtensionKeyReturnsExtensionKeyFromApiAndStoresResponseInCache(): void
+    public function getRandomExtensionMetadataReturnsExtensionMetadataFromApiAndStoresResponseInCache(): void
     {
         $json = [
             'extensions' => [
@@ -109,7 +109,7 @@ final class ApiServiceTest extends AbstractApiTestCase
             'apiPath' => '/api/v1/extension',
         ]);
 
-        self::assertSame('foo', $this->apiService->getRandomExtensionKey());
+        self::assertSame(['key' => 'foo'], $this->apiService->getRandomExtensionMetadata()->getMetadata());
         self::assertSame(1, $this->mockClient?->getRequestsCount());
         self::assertSame($json, $this->cache->get($cacheIdentifier, fn () => null));
     }
@@ -117,10 +117,10 @@ final class ApiServiceTest extends AbstractApiTestCase
     /**
      * @test
      */
-    public function getRandomExtensionKeyReturnsFallbackIfRandomExtensionKeysCannotBeFetchedFromApi(): void
+    public function getRandomExtensionMetadataReturnsFallbackIfRandomExtensionsCannotBeFetchedFromApi(): void
     {
         $this->mockResponses[] = new MockResponse('{}');
 
-        self::assertSame('handlebars', $this->apiService->getRandomExtensionKey());
+        self::assertSame(['key' => 'handlebars'], $this->apiService->getRandomExtensionMetadata()->getMetadata());
     }
 }
