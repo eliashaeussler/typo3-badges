@@ -6,30 +6,7 @@
 
 {% block body %}
 
-<header class="max-w-3xl mx-auto">
-    <div class="flex flex-wrap place-content-center space-x-2 -mt-2">
-        {% include 'partials/_badge.html.twig' with {
-            'src': 'https://shields.io/endpoint?url=' ~ url('badge.default') ~ '&color=white',
-            'title': 'TYPO3 badge',
-            'class': 'mt-2',
-        } %}
-        {% include 'partials/_badge.html.twig' with {
-            'src': 'https://img.shields.io/github/v/release/eliashaeussler/typo3-badges?logo=github',
-            'title': 'Current version badge',
-            'link': 'https://github.com/eliashaeussler/typo3-badges',
-            'linkClass': 'mt-2',
-        } %}
-        {% include 'partials/_badge.html.twig' with {
-            'src': 'https://img.shields.io/badge/dynamic/json?color=green&label=last+deployment&query=0.updated_at&url='
-                ~ ('https://api.github.com/repos/eliashaeussler/typo3-badges/deployments?environment=production' | url_encode),
-            'title': 'Last deployment badge',
-            'link': 'https://github.com/eliashaeussler/typo3-badges/deployments/activity_log?environment=production',
-            'linkClass': 'mt-2',
-        } %}
-    </div>
-</header>
-
-<main class="bg-white max-w-3xl mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl relative">
+<main class="bg-white max-w-3xl mx-auto p-8 md:p-12 mb-10 rounded-lg shadow-2xl relative">
     <section>
         <h1 class="font-bold text-2xl">TYPO3 Badges</h1>
         <p class="text-gray-600 pt-2">A beautiful eye-catcher for your extension documentations.</p>
@@ -85,8 +62,29 @@
     </section>
 </main>
 
-<footer class="max-w-lg mx-auto text-center mt-12 mb-6">
-    <p class="text-white text-sm">
+<footer class="max-w-3xl mx-auto text-center mt-12 mb-6">
+    <div class="flex flex-wrap place-content-center space-x-2 -mt-2">
+        {% include 'partials/_badge.html.twig' with {
+            'src': 'https://shields.io/endpoint?url=' ~ url('badge.default') ~ '&color=white',
+            'title': 'TYPO3 badge',
+            'class': 'mt-2',
+        } %}
+        {% include 'partials/_badge.html.twig' with {
+            'src': 'https://img.shields.io/github/v/release/eliashaeussler/typo3-badges?logo=github',
+            'title': 'Current version badge',
+            'link': 'https://github.com/eliashaeussler/typo3-badges',
+            'linkClass': 'mt-2',
+        } %}
+        {% include 'partials/_badge.html.twig' with {
+            'src': 'https://img.shields.io/badge/dynamic/json?color=green&label=last+deployment&query=0.updated_at&url='
+                ~ ('https://api.github.com/repos/eliashaeussler/typo3-badges/deployments?environment=production' | url_encode),
+            'title': 'Last deployment badge',
+            'link': 'https://github.com/eliashaeussler/typo3-badges/deployments/activity_log?environment=production',
+            'linkClass': 'mt-2',
+        } %}
+    </div>
+
+    <p class="text-white text-sm mt-4">
         Created with &#x2764; in Berlin by <a href="https://haeussler.dev" class="font-bold hover:underline">Elias Häußler</a>
     </p>
 </footer>
