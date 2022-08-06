@@ -73,8 +73,8 @@ final class ApiService
             function (ItemInterface $item) use ($apiPath): array {
                 // Build random filter options
                 $filterOptions = [
-                    'page' => rand(1, 5),
-                    'per_page' => 50,
+                    'page' => rand(1, 10),
+                    'per_page' => 20,
                     'filter' => [
                         'typo3_version' => rand(10, 11),
                     ],
