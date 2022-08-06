@@ -27,6 +27,16 @@ jobs:
           php-version: 8.0
           tools: composer:v2
 
+      # Install dependencies
+      - name: Install Composer dependencies
+        run: composer install --no-dev --no-progress --optimize-autoloader
+      - name: Install node modules
+        run: yarn --frozen-lockfile
+
+      # Build Frontend
+      - name: Build Frontend dist files
+        run: yarn build
+
       # Deploy to production
       - name: Deploy
         uses: deployphp/action@v1
@@ -59,6 +69,16 @@ jobs:
           php-version: 8.0
           tools: composer:v2
 
+      # Install dependencies
+      - name: Install Composer dependencies
+        run: composer install --no-dev --no-progress --optimize-autoloader
+      - name: Install node modules
+        run: yarn --frozen-lockfile
+
+      # Build Frontend
+      - name: Build Frontend dist files
+        run: yarn build
+
       # Deploy to production
       - name: Deploy
         uses: deployphp/action@v1
@@ -70,5 +90,5 @@ jobs:
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          dep: deploy dev --branch ${{ github.ref_name }}
+          dep: deploy dev
           deployer-version: '7.0.0-rc.8'

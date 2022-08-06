@@ -23,11 +23,60 @@ declare(strict_types=1);
 
 namespace Deployer;
 
-require 'recipe/symfony.php';
+require 'recipe/common.php';
+require 'contrib/rsync.php';
 
 // Config
-set('repository', 'https://github.com/eliashaeussler/typo3-badges.git');
+set('application', 'typo3-badges');
 set('keep_releases', 3);
+
+// Rsync
+set('rsync_src', __DIR__);
+set('rsync', [
+    'exclude' => [
+        '/.github',
+        '/.git',
+        '/assets',
+        '/bin/phpunit',
+        '/tests',
+        '/var',
+        '/.babelrc',
+        '/.editorconfig',
+        '/.env.test',
+        '/.eslintrc.js',
+        '/.gitattributes',
+        '/.gitignore',
+        '/.php-cs-fixer.dist.php',
+        '.stylelintrc.json',
+        'codecov.yml',
+        'CODEOWNERS',
+        'deploy.php',
+        'phpstan.neon',
+        'phpunit.coverage.xml',
+        'phpunit.xml.dist',
+        'postcss.config.js',
+        'tailwind.config.js',
+        'webpack.config.js',
+    ],
+    'exclude-file' => false,
+    'include' => [],
+    'include-file' => false,
+    'filter' => [],
+    'filter-file' => false,
+    'filter-perdir' => false,
+    'flags' => 'az',
+    'options' => ['delete', 'delete-after', 'force'],
+    'timeout' => 3600,
+]);
+set('shared_files', [
+    '.env.local',
+]);
+set('shared_dirs', [
+    'var/log',
+]);
+
+// Symfony
+set('bin/console', '{{bin/php}} {{release_or_current_path}}/bin/console');
 
 // Hosts
 host('production')
@@ -48,18 +97,29 @@ host('dev')
     ->add('env', ['APP_ENV' => 'prod', 'APP_DEBUG' => '1'])
 ;
 
-// Tasks
-task('deploy:vendors', function () {
-    // Build
-    runLocally('composer {{composer_action}} {{composer_options}}');
-    runLocally('yarn --frozen-lockfile');
-    runLocally('yarn build');
+// Symfony tasks
+task('symfony:cache:clear', function () { run('{{bin/console}} cache:clear'); });
+task('symfony:cache:warmup', function () { run('{{bin/console}} cache:warmup'); });
+task('symfony', [
+    'symfony:cache:clear',
+    'symfony:cache:warmup',
+]);
 
-    // Upload
-    upload('public/assets', '{{release_path}}/public', ['progress_bar' => false]);
-    upload('var', '{{release_path}}', ['progress_bar' => false]);
-    upload('vendor', '{{release_path}}', ['progress_bar' => false]);
-});
-task('database:migrate')->disable();
+// Main deploy task
+task('deploy', [
+    'deploy:info',
+    'deploy:setup',
+    'deploy:lock',
+    'deploy:release',
+    'rsync',
+    'deploy:shared',
+    'deploy:writable',
+    'deploy:symlink',
+    'symfony',
+    'deploy:unlock',
+    'deploy:cleanup',
+    'deploy:success',
+])->desc('Deploy your project');
 
+// Unlock after failed
 after('deploy:failed', 'deploy:unlock');
