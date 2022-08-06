@@ -105,7 +105,7 @@
 		],
 		"auto-scripts": {
 			"assets:install %PUBLIC_DIR%": "symfony-cmd",
-			"cache:clear": "symfony-cmd"
+			"cache:clear --no-warmup": "symfony-cmd"
 		},
 		"lint": "php-cs-fixer fix",
 		"sca": "phpstan analyse -c phpstan.neon",
