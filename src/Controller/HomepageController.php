@@ -53,20 +53,13 @@ final class HomepageController extends AbstractController
     {
         $providers = $this->badgeProviderFactory->getAll();
         $randomExtensionMetadata = $this->apiService->getRandomExtensionMetadata();
-        $cacheExpirationDate = $randomExtensionMetadata->getExpiryDate();
 
-        $response = $this->render('homepage.html.twig', [
+        return $this->render('homepage.html.twig', [
             'routes' => $this->getRoutes(),
             'providers' => $providers,
             'defaultProvider' => $providers[ShieldsBadgeProvider::getIdentifier()],
             'randomExtensionKey' => $randomExtensionMetadata['key'],
         ]);
-
-        if (null !== $cacheExpirationDate) {
-            $this->markResponseAsCacheable($response, $cacheExpirationDate);
-        }
-
-        return $response;
     }
 
     /**
