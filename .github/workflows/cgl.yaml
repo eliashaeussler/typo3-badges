@@ -20,7 +20,11 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.1
-          tools: composer:v2
+          tools: composer:v2, composer-require-checker, composer-unused:0.7
+
+      # Validation
+      - name: Validate composer.json
+        run: composer validate --no-check-lock
 
       # Install dependencies
       - name: Install Composer dependencies
@@ -28,11 +32,17 @@ jobs:
       - name: Install node modules
         run: yarn --frozen-lockfile
 
+      # Check Composer dependencies
+      - name: Check dependencies
+        run: composer-require-checker check
+      - name: Check for unused dependencies
+        run: composer-unused --excludePackage=symfony/css-selector
+
       # Linting
       - name: Lint composer.json
-        run: composer normalize --dry-run
+        run: composer lint:composer
       - name: Lint PHP
-        run: composer lint -- --dry-run
+        run: composer lint:php
       - name: Lint CSS
         run: yarn lint:css
       - name: Lint JavaScript
@@ -45,9 +55,3 @@ jobs:
       # Migration
       - name: Rector migration
         run: composer migration -- --dry-run
-
-      # Requirements
-      - name: Check Composer requirements
-        run: |
-          composer global require maglnet/composer-require-checker:"^4.0"
-          composer-require-checker check
