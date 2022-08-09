@@ -36,7 +36,7 @@ jobs:
       - name: Check dependencies
         run: composer-require-checker check
       - name: Check for unused dependencies
-        run: composer-unused
+        run: composer-unused --excludePackage=symfony/css-selector
 
       # Linting
       - name: Lint composer.json
