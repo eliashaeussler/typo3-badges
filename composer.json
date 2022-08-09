@@ -106,7 +106,7 @@
 		],
 		"auto-scripts": {
 			"assets:install %PUBLIC_DIR%": "symfony-cmd",
-			"cache:clear --no-warmup": "symfony-cmd"
+			"cache:clear --no-optional-warmers": "symfony-cmd"
 		},
 		"lint": "php-cs-fixer fix",
 		"migration": "rector process",
