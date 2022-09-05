@@ -76,6 +76,7 @@ final class BadgeProviderFactoryTest extends KernelTestCase
 
     /**
      * @test
+     *
      * @dataProvider getReturnsDefaultBadgeResponseProviderDataProvider
      *
      * @param class-string<BadgeProvider> $expected

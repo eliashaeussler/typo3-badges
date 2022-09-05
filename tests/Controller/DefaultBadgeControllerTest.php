@@ -35,6 +35,7 @@ final class DefaultBadgeControllerTest extends WebTestCase
 {
     /**
      * @test
+     *
      * @dataProvider controllerReturnsTypo3BadgeDataProvider
      *
      * @param array<string, string|int|bool> $expected

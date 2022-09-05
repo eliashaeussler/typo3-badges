@@ -36,6 +36,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
 {
     /**
      * @test
+     *
      * @dataProvider controllerReturnsApiSpecificationAsJsonDataProvider
      */
     public function controllerReturnsApiSpecificationAsJson(string $uri): void

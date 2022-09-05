@@ -66,6 +66,7 @@ final class BadgenBadgeProviderTest extends KernelTestCase
 
     /**
      * @test
+     *
      * @dataProvider generateUriForRouteReturnsUriForGivenRouteDataProvider
      */
     public function generateUriForRouteReturnsUriForGivenRoute(Route|string $route): void
