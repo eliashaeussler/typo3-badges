@@ -81,6 +81,7 @@ final class BadgeTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider forStabilityReturnsBadgeForStabilityDataProvider
      */
     public function forStabilityReturnsBadgeForStability(string $stability, string $expectedColor): void

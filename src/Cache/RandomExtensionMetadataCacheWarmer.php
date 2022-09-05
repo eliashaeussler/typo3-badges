@@ -33,6 +33,7 @@ use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
  * @license GPL-3.0-or-later
  *
  * @internal
+ *
  * @codeCoverageIgnore
  */
 final class RandomExtensionMetadataCacheWarmer implements CacheWarmerInterface

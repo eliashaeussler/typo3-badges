@@ -69,6 +69,7 @@ final class ShieldsBadgeProviderTest extends KernelTestCase
 
     /**
      * @test
+     *
      * @dataProvider generateUriForRouteReturnsUriForGivenRouteDataProvider
      */
     public function generateUriForRouteReturnsUriForGivenRoute(Route|string $route): void

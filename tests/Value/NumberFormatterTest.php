@@ -36,6 +36,7 @@ final class NumberFormatterTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider formatReturnsFormattedNumberDataProvider
      */
     public function formatReturnsFormattedNumber(int $number, string $expected): void

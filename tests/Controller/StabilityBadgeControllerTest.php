@@ -63,6 +63,7 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
 
     /**
      * @test
+     *
      * @dataProvider controllerReturnsBadgeForGivenExtensionDataProvider
      */
     public function controllerReturnsBadgeForGivenExtension(string $state, string $expectedColor): void
