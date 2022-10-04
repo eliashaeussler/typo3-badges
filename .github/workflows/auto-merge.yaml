@@ -17,4 +17,3 @@ jobs:
           approve-only: true
           merge-comment: |
             @dependabot merge
-          github-token: ${{ secrets.MERGE_TOKEN }}
