@@ -11,6 +11,11 @@ jobs:
     if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: WyriHaximus/github-action-wait-for-status@v1.7.1
+        with:
+          ignoreActions: "dependabot-auto-merge"
+        env:
+          GITHUB_TOKEN: "${{ secrets.MERGE_TOKEN }}"
       - uses: fastify/github-action-merge-dependabot@v3.4.0
         with:
           target: minor
