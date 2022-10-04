@@ -11,7 +11,7 @@ jobs:
     if: ${{ github.actor == 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3.2.0
+      - uses: fastify/github-action-merge-dependabot@v3.4.0
         with:
           target: minor
           approve-only: true
