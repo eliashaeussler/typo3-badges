@@ -14,7 +14,3 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3.4.0
         with:
           target: minor
-          approve-only: true
-          merge-comment: |
-            @dependabot merge
-          github-token: ${{ secrets.MERGE_TOKEN }}
