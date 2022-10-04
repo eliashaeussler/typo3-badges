@@ -15,3 +15,5 @@ jobs:
         with:
           target: minor
           approve-only: true
+          merge-comment: |
+            @dependabot merge
