@@ -5,8 +5,7 @@ updates:
   - package-ecosystem: composer
     directory: '/'
     schedule:
-      interval: weekly
-      day: friday
+      interval: daily
     commit-message:
       prefix: '[TASK]'
     labels:
@@ -17,8 +16,7 @@ updates:
   - package-ecosystem: npm
     directory: '/'
     schedule:
-      interval: weekly
-      day: friday
+      interval: daily
     commit-message:
       prefix: '[TASK]'
     labels:
