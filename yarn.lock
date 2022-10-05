@@ -1000,9 +1000,9 @@
     strip-json-comments "^3.1.1"
 
 "@fontsource/indie-flower@^4.5.1":
-  version "4.5.9"
-  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-4.5.9.tgz#f2751f23435bf3b9079e1467bc4f11c916a77c3a"
-  integrity sha512-uXCV/NjEI0ACiLKO8JI2gAegtcBAofqTDigudW/42SjO8DRJvXBakp5pT+Nj2xPaVVTaVT5qTlE2bcREn94eEA==
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-4.5.10.tgz#be270549f23ffcaef2087bd8e0e834e75c848d87"
+  integrity sha512-eT9FyIamAXk9v7XHtTpuOjI1kbxp5NKePfRJ5qy45T2poUWayfU4ub9ISDeVZRVKOxAsYIzk0+3OSraTsC0g5Q==
 
 "@fontsource/jetbrains-mono@^4.5.1":
   version "4.5.11"
