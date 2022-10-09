@@ -1,0 +1,8 @@
+{
+	"ignores": [
+		"file-loader",
+		"postcss-loader",
+		"stylelint-config-standard",
+		"webpack-notifier"
+	]
+}

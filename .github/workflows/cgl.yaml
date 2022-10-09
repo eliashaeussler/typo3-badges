@@ -32,11 +32,13 @@ jobs:
       - name: Install node modules
         run: yarn --frozen-lockfile
 
-      # Check Composer dependencies
+      # Check dependencies
       - name: Check dependencies
         run: composer-require-checker check
-      - name: Check for unused dependencies
+      - name: Check for unused Composer dependencies
         run: composer-unused --excludePackage=symfony/css-selector
+      - name: Check for unused Frontend dependencies
+        run: yarn check-dependencies
 
       # Linting
       - name: Lint composer.json

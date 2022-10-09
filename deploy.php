@@ -41,6 +41,7 @@ set('rsync', [
         '/tests',
         '/var',
         '/.babelrc',
+        '/.depcheckrc.json',
         '/.editorconfig',
         '/.env.test',
         '/.eslintrc.js',
