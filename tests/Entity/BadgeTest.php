@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Badge;
+use Generator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -77,6 +78,35 @@ final class BadgeTest extends TestCase
         );
 
         self::assertEquals($expected, Badge::forDownloads(845760473));
+    }
+
+    /**
+     * @test
+     */
+    public function forTypo3VersionsReturnsErrorBadgeForEmptyTypo3VersionList(): void
+    {
+        $expected = Badge::forError();
+
+        self::assertEquals($expected, Badge::forTypo3Versions([]));
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider
+     *
+     * @param list<int> $typo3Versions
+     */
+    public function forTypo3VersionsReturnsBadgeForTypo3Versions(array $typo3Versions, string $expected): void
+    {
+        $expected = new Badge(
+            label: 'typo3',
+            message: $expected,
+            color: 'orange',
+            isError: false,
+        );
+
+        self::assertEquals($expected, Badge::forTypo3Versions($typo3Versions));
     }
 
     /**
@@ -170,7 +200,7 @@ final class BadgeTest extends TestCase
     /**
      * @return \Generator<string, array{string, string}>
      */
-    public function forStabilityReturnsBadgeForStabilityDataProvider(): \Generator
+    public function forStabilityReturnsBadgeForStabilityDataProvider(): Generator
     {
         yield 'stable' => ['stable', 'green'];
         yield 'beta' => ['beta', 'yellow'];
@@ -179,5 +209,15 @@ final class BadgeTest extends TestCase
         yield 'test' => ['test', 'lightgrey'];
         yield 'obsolete' => ['obsolete', 'lightgrey'];
         yield 'excludeFromUpdates' => ['excludeFromUpdates', 'lightgrey'];
+    }
+
+    /**
+     * @return Generator<string, array{list<int>, string}>
+     */
+    public function forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider(): Generator
+    {
+        yield 'one version' => [[11], '11'];
+        yield 'two versions' => [[10, 11], '10 & 11'];
+        yield 'three versions' => [[9, 10, 11], '9, 10 & 11'];
     }
 }

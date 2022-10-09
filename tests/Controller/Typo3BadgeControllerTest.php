@@ -24,7 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Controller;
 
 use App\Badge\Provider\BadgeProviderFactory;
-use App\Controller\VersionBadgeController;
+use App\Controller\Typo3BadgeController;
 use App\Tests\AbstractApiTestCase;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -32,19 +32,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
- * VersionBadgeControllerTest.
+ * Typo3BadgeControllerTest.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class VersionBadgeControllerTest extends AbstractApiTestCase
+final class Typo3BadgeControllerTest extends AbstractApiTestCase
 {
-    private VersionBadgeController $subject;
+    private Typo3BadgeController $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new VersionBadgeController($this->apiService);
+        $this->subject = new Typo3BadgeController($this->apiService);
         $this->subject->setBadgeProviderFactory(self::getContainer()->get(BadgeProviderFactory::class));
     }
 
@@ -69,7 +69,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
         $this->mockResponses[] = new MockResponse(json_encode([
             [
                 'current_version' => [
-                    'number' => '1.0.0',
+                    'typo3_versions' => [10, 11],
                 ],
             ],
         ], JSON_THROW_ON_ERROR));
@@ -77,7 +77,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
         $expected = new JsonResponse([
             'schemaVersion' => 1,
             'label' => 'typo3',
-            'message' => '1.0.0',
+            'message' => '10 & 11',
             'color' => 'orange',
             'isError' => false,
             'namedLogo' => 'typo3',

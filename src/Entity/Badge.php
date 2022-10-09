@@ -37,6 +37,7 @@ final class Badge
         'extension' => 'orange',
         'version' => 'orange',
         'downloads' => 'blue',
+        'typo3' => 'orange',
         'error' => 'red',
         'stability_stable' => 'green',
         'stability_beta' => 'yellow',
@@ -79,6 +80,30 @@ final class Badge
             label: 'typo3',
             message: sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
             color: self::COLOR_MAP['downloads'],
+        );
+    }
+
+    /**
+     * @param list<int> $typo3Versions
+     */
+    public static function forTypo3Versions(array $typo3Versions): self
+    {
+        if ([] === $typo3Versions) {
+            return self::forError();
+        }
+
+        sort($typo3Versions);
+
+        $lastValue = array_pop($typo3Versions);
+        $message = implode(' & ', array_filter([
+            implode(', ', $typo3Versions) ?: null,
+            $lastValue,
+        ]));
+
+        return new self(
+            label: 'typo3',
+            message: $message,
+            color: self::COLOR_MAP['typo3'],
         );
     }
 
