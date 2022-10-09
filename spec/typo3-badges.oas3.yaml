@@ -114,6 +114,31 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
+  /badge/{extension}/typo3/{provider}:
+    get:
+      description: TYPO3 versions badge
+      summary: >-
+        Gets badge data for supported TYPO3 versions of given TYPO3 extension using the
+        default badge provider.
+      operationId: getTypo3Badge
+      parameters:
+        - $ref: '#/components/parameters/Extension'
+        - $ref: '#/components/parameters/Provider'
+      tags:
+        - Badge
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/BadgenResponse'
+                  - $ref: '#/components/schemas/ShieldsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /badge/{extension}/version/{provider}:
     get:
       description: Version badge

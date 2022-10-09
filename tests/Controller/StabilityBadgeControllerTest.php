@@ -58,7 +58,7 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
         $this->expectException(BadRequestHttpException::class);
         $this->expectErrorMessage('Invalid API response.');
 
-        $this->subject->__invoke(new Request(), 'foo');
+        ($this->subject)(new Request(), 'foo');
     }
 
     /**
@@ -87,7 +87,7 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
 
         self::assertSame(
             $expected->getContent(),
-            $this->subject->__invoke(new Request(), 'foo')->getContent()
+            ($this->subject)(new Request(), 'foo')->getContent()
         );
     }
 
