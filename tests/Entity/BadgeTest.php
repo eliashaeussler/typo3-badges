@@ -41,7 +41,7 @@ final class BadgeTest extends TestCase
     public function forExtensionReturnsBadgeForExtension(): void
     {
         $expected = new Badge(
-            label: 'typo3',
+            label: 'extension',
             message: 'foo',
             color: 'orange',
             isError: false,
@@ -56,7 +56,7 @@ final class BadgeTest extends TestCase
     public function forVersionReturnsBadgeForVersion(): void
     {
         $expected = new Badge(
-            label: 'typo3',
+            label: 'version',
             message: '1.0.0',
             color: 'orange',
             isError: false,
@@ -71,8 +71,8 @@ final class BadgeTest extends TestCase
     public function forDownloadsReturnsBadgeForDownloads(): void
     {
         $expected = new Badge(
-            label: 'typo3',
-            message: '845.8m downloads',
+            label: 'downloads',
+            message: '845.8m',
             color: 'blue',
             isError: false,
         );
@@ -117,7 +117,7 @@ final class BadgeTest extends TestCase
     public function forStabilityReturnsBadgeForStability(string $stability, string $expectedColor): void
     {
         $expected = new Badge(
-            label: 'typo3',
+            label: 'stability',
             message: $stability,
             color: $expectedColor,
             isError: false,

@@ -76,7 +76,7 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
 
         $expected = new JsonResponse([
             'schemaVersion' => 1,
-            'label' => 'typo3',
+            'label' => 'version',
             'message' => '1.0.0',
             'color' => 'orange',
             'isError' => false,

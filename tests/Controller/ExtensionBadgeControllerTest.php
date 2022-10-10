@@ -74,7 +74,7 @@ final class ExtensionBadgeControllerTest extends AbstractApiTestCase
 
         $expected = new JsonResponse([
             'schemaVersion' => 1,
-            'label' => 'typo3',
+            'label' => 'extension',
             'message' => 'foo',
             'color' => 'orange',
             'isError' => false,
