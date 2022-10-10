@@ -3,7 +3,7 @@ servers:
   - url: https://typo3-badges.dev
 info:
   description: API with JSON endpoints to create TYPO3 badges with Badgen or Shields.io.
-  version: 1.0.0
+  version: 1.1.0
   title: TYPO3 Badges
   contact:
     name: Elias Häußler
