@@ -78,7 +78,7 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
 
         $expected = new JsonResponse([
             'schemaVersion' => 1,
-            'label' => 'typo3',
+            'label' => 'stability',
             'message' => $state,
             'color' => $expectedColor,
             'isError' => false,

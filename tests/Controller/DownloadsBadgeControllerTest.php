@@ -74,8 +74,8 @@ final class DownloadsBadgeControllerTest extends AbstractApiTestCase
 
         $expected = new JsonResponse([
             'schemaVersion' => 1,
-            'label' => 'typo3',
-            'message' => '123 downloads',
+            'label' => 'downloads',
+            'message' => '123',
             'color' => 'blue',
             'isError' => false,
             'namedLogo' => 'typo3',

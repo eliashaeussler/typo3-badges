@@ -59,7 +59,7 @@ final class Badge
     public static function forExtension(string $extension): self
     {
         return new self(
-            label: 'typo3',
+            label: 'extension',
             message: $extension,
             color: self::COLOR_MAP['extension'],
         );
@@ -68,7 +68,7 @@ final class Badge
     public static function forVersion(string $version): self
     {
         return new self(
-            label: 'typo3',
+            label: 'version',
             message: $version,
             color: self::COLOR_MAP['version'],
         );
@@ -77,8 +77,8 @@ final class Badge
     public static function forDownloads(int $downloads): self
     {
         return new self(
-            label: 'typo3',
-            message: sprintf('%s downloads', strtolower(NumberFormatter::format($downloads))),
+            label: 'downloads',
+            message: strtolower(NumberFormatter::format($downloads)),
             color: self::COLOR_MAP['downloads'],
         );
     }
@@ -110,7 +110,7 @@ final class Badge
     public static function forStability(string $stability): self
     {
         return new self(
-            label: 'typo3',
+            label: 'stability',
             message: $stability,
             color: self::COLOR_MAP['stability_'.$stability] ?? 'orange',
         );
