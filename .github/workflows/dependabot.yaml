@@ -23,7 +23,7 @@ jobs:
 
       # Normalize composer.json
       - name: Install Composer dependencies
-        run: composer install --no-progress
+        uses: ramsey/composer-install@v2
       - name: Normalize composer.json
         run: composer normalize --no-check-lock
 
