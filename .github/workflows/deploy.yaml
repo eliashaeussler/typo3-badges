@@ -26,10 +26,16 @@ jobs:
         with:
           php-version: 8.1
           tools: composer:v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
 
       # Install dependencies
       - name: Install Composer dependencies
-        run: composer install --no-dev --no-progress --optimize-autoloader
+        uses: ramsey/composer-install@v2
+        with:
+          composer-options: --no-dev --optimize-autoloader
       - name: Install node modules
         run: yarn --frozen-lockfile
 
@@ -68,10 +74,16 @@ jobs:
         with:
           php-version: 8.1
           tools: composer:v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
 
       # Install dependencies
       - name: Install Composer dependencies
-        run: composer install --no-dev --no-progress --optimize-autoloader
+        uses: ramsey/composer-install@v2
+        with:
+          composer-options: --no-dev --optimize-autoloader
       - name: Install node modules
         run: yarn --frozen-lockfile
 
