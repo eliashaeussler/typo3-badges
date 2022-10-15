@@ -26,6 +26,10 @@ jobs:
         with:
           php-version: 8.1
           tools: composer:v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
 
       # Install dependencies
       - name: Install Composer dependencies
@@ -70,6 +74,10 @@ jobs:
         with:
           php-version: 8.1
           tools: composer:v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
 
       # Install dependencies
       - name: Install Composer dependencies

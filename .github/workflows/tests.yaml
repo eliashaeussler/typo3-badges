@@ -23,6 +23,10 @@ jobs:
           php-version: 8.1
           tools: composer:v2
           coverage: xdebug
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
 
       # Install dependencies
       - name: Install Composer dependencies
