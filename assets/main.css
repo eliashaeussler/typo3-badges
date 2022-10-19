@@ -17,8 +17,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import "./css/badge-provider-toggle.css";
-@import "./css/provider-usage-list.css";
+@import url("./css/badge-provider-toggle.css");
+@import url("./css/provider-usage-list.css");
 
 @tailwind base;
 @tailwind components;
