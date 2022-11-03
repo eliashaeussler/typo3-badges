@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Badge;
-use Generator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -200,7 +199,7 @@ final class BadgeTest extends TestCase
     /**
      * @return \Generator<string, array{string, string}>
      */
-    public function forStabilityReturnsBadgeForStabilityDataProvider(): Generator
+    public function forStabilityReturnsBadgeForStabilityDataProvider(): \Generator
     {
         yield 'stable' => ['stable', 'green'];
         yield 'beta' => ['beta', 'yellow'];
@@ -212,9 +211,9 @@ final class BadgeTest extends TestCase
     }
 
     /**
-     * @return Generator<string, array{list<int>, string}>
+     * @return \Generator<string, array{list<int>, string}>
      */
-    public function forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider(): Generator
+    public function forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider(): \Generator
     {
         yield 'one version' => [[11], '11'];
         yield 'two versions' => [[10, 11], '10 & 11'];
