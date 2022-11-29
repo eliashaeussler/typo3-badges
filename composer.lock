@@ -1347,16 +1347,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v6.1.5",
+            "version": "v6.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "b9c797c9d56afc290d4265854bafd01b4e379240"
+                "reference": "11e33ed84db0ced77511a23b35168db127909f0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/b9c797c9d56afc290d4265854bafd01b4e379240",
-                "reference": "b9c797c9d56afc290d4265854bafd01b4e379240",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/11e33ed84db0ced77511a23b35168db127909f0e",
+                "reference": "11e33ed84db0ced77511a23b35168db127909f0e",
                 "shasum": ""
             },
             "require": {
@@ -1414,7 +1414,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/dependency-injection/tree/v6.1.5"
+                "source": "https://github.com/symfony/dependency-injection/tree/v6.1.8"
             },
             "funding": [
                 {
@@ -1430,7 +1430,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-28T16:00:52+00:00"
+            "time": "2022-11-25T07:34:52+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1999,16 +1999,16 @@
         },
         {
             "name": "symfony/framework-bundle",
-            "version": "v6.1.7",
+            "version": "v6.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/framework-bundle.git",
-                "reference": "d402e86ce94bb3eb1ca3d6bb0393285c791e2b14"
+                "reference": "0b40e0995acc4686104e8fca126e147c56c35a25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/d402e86ce94bb3eb1ca3d6bb0393285c791e2b14",
-                "reference": "d402e86ce94bb3eb1ca3d6bb0393285c791e2b14",
+                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/0b40e0995acc4686104e8fca126e147c56c35a25",
+                "reference": "0b40e0995acc4686104e8fca126e147c56c35a25",
                 "shasum": ""
             },
             "require": {
@@ -2130,7 +2130,7 @@
             "description": "Provides a tight integration between Symfony components and the Symfony full-stack framework",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/framework-bundle/tree/v6.1.7"
+                "source": "https://github.com/symfony/framework-bundle/tree/v6.1.8"
             },
             "funding": [
                 {
@@ -2146,7 +2146,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-28T16:23:08+00:00"
+            "time": "2022-11-25T18:59:16+00:00"
         },
         {
             "name": "symfony/http-client",
