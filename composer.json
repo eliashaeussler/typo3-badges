@@ -41,7 +41,7 @@
 		"symfony/serializer": "6.1.*",
 		"symfony/web-profiler-bundle": "6.1.*",
 		"symfony/webpack-encore-bundle": "^1.13",
-		"symfony/yaml": "6.1.*"
+		"symfony/yaml": "6.2.*"
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.21",
