@@ -1,5 +1,6 @@
 {
 	"ignores": [
+		"autoprefixer",
 		"file-loader",
 		"postcss-loader",
 		"stylelint-config-standard",
