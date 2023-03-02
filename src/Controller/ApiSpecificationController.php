@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -29,6 +29,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Yaml\Yaml;
+
+use function dirname;
+use function is_array;
 
 /**
  * ApiSpecificationController.
@@ -62,7 +65,7 @@ final class ApiSpecificationController
             default:
                 $json = json_encode(
                     $specification,
-                    \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_NUMERIC_CHECK
+                    \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES | \JSON_NUMERIC_CHECK,
                 );
                 $response = JsonResponse::fromJsonString($json);
                 $contentType = 'application/openapi+json';
@@ -79,10 +82,10 @@ final class ApiSpecificationController
      */
     private function loadSpecification(): array
     {
-        $apiSpecificationPath = \dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml';
+        $apiSpecificationPath = dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml';
         $fileContents = Yaml::parseFile($apiSpecificationPath);
 
-        if (!\is_array($fileContents)) {
+        if (!is_array($fileContents)) {
             // @codeCoverageIgnoreStart
             throw new BadRequestHttpException('Unable to load API specification file.');
             // @codeCoverageIgnoreEnd

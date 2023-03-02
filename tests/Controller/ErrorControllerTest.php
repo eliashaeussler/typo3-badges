@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -52,7 +53,7 @@ final class ErrorControllerTest extends WebTestCase
         $json = $client->getResponse()->getContent();
 
         if (false === $json) {
-            throw new \RuntimeException('Invalid JSON data.');
+            throw new RuntimeException('Invalid JSON data.');
         }
 
         self::assertResponseStatusCodeSame(404);

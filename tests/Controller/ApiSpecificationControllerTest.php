@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,8 +23,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use Generator;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Yaml\Yaml;
+
+use function dirname;
 
 /**
  * ApiSpecificationControllerTest.
@@ -47,7 +51,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
         $expected = $this->getExpectedApiSpecification();
 
         if (false === $json) {
-            throw new \RuntimeException('Invalid JSON data.');
+            throw new RuntimeException('Invalid JSON data.');
         }
 
         self::assertResponseIsSuccessful();
@@ -66,7 +70,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
         $expected = $this->getExpectedApiSpecification();
 
         if (false === $yaml) {
-            throw new \RuntimeException('Invalid YAML data.');
+            throw new RuntimeException('Invalid YAML data.');
         }
 
         self::assertResponseIsSuccessful();
@@ -78,7 +82,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
      */
     private function getExpectedApiSpecification(): array
     {
-        $apiSpecification = Yaml::parseFile(\dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml');
+        $apiSpecification = Yaml::parseFile(dirname(__DIR__, 2).'/spec/typo3-badges.oas3.yaml');
 
         self::assertIsArray($apiSpecification);
 
@@ -88,7 +92,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
     /**
      * @return \Generator<string, array{string}>
      */
-    public function controllerReturnsApiSpecificationAsJsonDataProvider(): \Generator
+    public function controllerReturnsApiSpecificationAsJsonDataProvider(): Generator
     {
         yield 'default route' => ['/spec'];
         yield 'route with json format' => ['/spec.json'];

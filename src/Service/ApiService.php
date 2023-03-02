@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\Dto\ExtensionMetadata;
+use DateTime;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -137,12 +138,12 @@ final class ApiService
     /**
      * @param array{expiry?: int}|null $cacheMetadata
      */
-    private function determineCacheExpiryDateFromCacheMetadata(?array $cacheMetadata): ?\DateTime
+    private function determineCacheExpiryDateFromCacheMetadata(?array $cacheMetadata): ?DateTime
     {
         if (!isset($cacheMetadata[ItemInterface::METADATA_EXPIRY])) {
             return null;
         }
 
-        return \DateTime::createFromFormat('U', (string) (int) $cacheMetadata[ItemInterface::METADATA_EXPIRY]) ?: null;
+        return DateTime::createFromFormat('U', (string) (int) $cacheMetadata[ItemInterface::METADATA_EXPIRY]) ?: null;
     }
 }

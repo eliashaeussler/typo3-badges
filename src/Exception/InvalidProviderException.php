@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,19 +23,21 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
+use Exception;
+
 /**
  * InvalidProviderException.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class InvalidProviderException extends \Exception
+final class InvalidProviderException extends Exception
 {
     public static function create(string $name): self
     {
         return new self(
             sprintf('The provider "%s" is not supported.', $name),
-            1641195602
+            1641195602,
         );
     }
 }

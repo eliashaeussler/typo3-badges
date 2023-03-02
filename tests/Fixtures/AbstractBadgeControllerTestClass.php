@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,6 +25,7 @@ namespace App\Tests\Fixtures;
 
 use App\Controller\AbstractBadgeController;
 use App\Entity\Badge;
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -40,7 +41,7 @@ final class AbstractBadgeControllerTestClass extends AbstractBadgeController
     public function testGetBadgeResponse(
         Badge $badge,
         string $provider = null,
-        \DateTime $cacheExpirationDate = null,
+        DateTime $cacheExpirationDate = null,
     ): Response {
         return $this->getBadgeResponse($badge, $provider, $cacheExpirationDate);
     }

@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Value;
 
 use App\Value\NumberFormatter;
+use Generator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,7 +48,7 @@ final class NumberFormatterTest extends TestCase
     /**
      * @return \Generator<string, array{int, string}>
      */
-    public function formatReturnsFormattedNumberDataProvider(): \Generator
+    public function formatReturnsFormattedNumberDataProvider(): Generator
     {
         yield 'lower than 1000' => [278, '278'];
         yield 'thousands (#1)' => [2782, '2.8K'];

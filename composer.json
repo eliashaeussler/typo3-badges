@@ -44,8 +44,8 @@
 		"symfony/yaml": "6.2.*"
 	},
 	"require-dev": {
+		"eliashaeussler/php-cs-fixer-config": "^1.1",
 		"ergebnis/composer-normalize": "^2.21",
-		"friendsofphp/php-cs-fixer": "^3.4",
 		"phpstan/phpstan": "^1.2",
 		"phpstan/phpstan-symfony": "^1.0",
 		"phpunit/phpunit": "^9.5",

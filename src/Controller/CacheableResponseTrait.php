@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -33,7 +34,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 trait CacheableResponseTrait
 {
-    private function markResponseAsCacheable(Response $response, \DateTime $cacheExpirationDate): void
+    private function markResponseAsCacheable(Response $response, DateTime $cacheExpirationDate): void
     {
         $response->setPublic();
         $response->setExpires($cacheExpirationDate);

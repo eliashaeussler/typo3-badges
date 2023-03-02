@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c92fc691bfb51c379e05be745fd3c714",
+    "content-hash": "4eb394c0a95d050affd1aadfddf9d22e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4461,6 +4461,58 @@
                 }
             ],
             "time": "2022-12-30T00:23:10+00:00"
+        },
+        {
+            "name": "eliashaeussler/php-cs-fixer-config",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eliashaeussler/php-cs-fixer-config.git",
+                "reference": "f80df8093aff4e2397bf156dabd0ca47d956d313"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eliashaeussler/php-cs-fixer-config/zipball/f80df8093aff4e2397bf156dabd0ca47d956d313",
+                "reference": "f80df8093aff4e2397bf156dabd0ca47d956d313",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "php": "~8.1.0 || ~8.2.0",
+                "symfony/finder": "^5.4 || ^6.0"
+            },
+            "require-dev": {
+                "armin/editorconfig-cli": "^1.5",
+                "eliashaeussler/phpstan-config": "^1.0.1",
+                "ergebnis/composer-normalize": "^2.29",
+                "phpstan/extension-installer": "^1.2",
+                "phpunit/phpunit": "^10.0",
+                "rector/rector": "^0.15.17"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\PhpCsFixerConfig\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elias Häußler",
+                    "email": "elias@haeussler.dev",
+                    "homepage": "https://haeussler.dev",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "My personal configuration for PHP-CS-Fixer",
+            "support": {
+                "issues": "https://github.com/eliashaeussler/php-cs-fixer-config/issues",
+                "source": "https://github.com/eliashaeussler/php-cs-fixer-config/tree/1.1.1"
+            },
+            "time": "2023-02-20T17:32:53+00:00"
         },
         {
             "name": "ergebnis/composer-normalize",

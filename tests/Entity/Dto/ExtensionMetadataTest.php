@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity\Dto;
 
 use App\Entity\Dto\ExtensionMetadata;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,12 +35,12 @@ use PHPUnit\Framework\TestCase;
  */
 final class ExtensionMetadataTest extends TestCase
 {
-    private \DateTime $expiryDate;
+    private DateTime $expiryDate;
     private ExtensionMetadata $subject;
 
     protected function setUp(): void
     {
-        $this->expiryDate = new \DateTime();
+        $this->expiryDate = new DateTime();
         $this->subject = new ExtensionMetadata(['foo' => 'baz'], $this->expiryDate);
     }
 

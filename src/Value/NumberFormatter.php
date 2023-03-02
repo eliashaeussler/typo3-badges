@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -22,6 +22,9 @@ declare(strict_types=1);
  */
 
 namespace App\Value;
+
+use function array_key_exists;
+use function intval;
 
 /**
  * NumberFormatter.
@@ -40,10 +43,10 @@ final class NumberFormatter
             return (string) $number;
         }
 
-        $unit = \intval(log($number, 1000));
+        $unit = intval(log($number, 1000));
         $units = ['', 'K', 'M', 'B', 'T', 'Q'];
 
-        if (\array_key_exists($unit, $units)) {
+        if (array_key_exists($unit, $units)) {
             return sprintf('%s%s', rtrim(number_format($number / 1000 ** $unit, 1), '.0'), $units[$unit]);
         }
 

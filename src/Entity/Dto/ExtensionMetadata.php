@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -22,6 +22,9 @@ declare(strict_types=1);
  */
 
 namespace App\Entity\Dto;
+
+use ArrayAccess;
+use DateTime;
 
 /**
  * ExtensionMetadata.
@@ -31,14 +34,14 @@ namespace App\Entity\Dto;
  *
  * @implements \ArrayAccess<int|string, mixed>
  */
-final class ExtensionMetadata implements \ArrayAccess
+final class ExtensionMetadata implements ArrayAccess
 {
     public function __construct(
         /**
          * @var array<int|string, mixed>
          */
         private array $metadata,
-        private readonly ?\DateTime $expiryDate = null,
+        private readonly ?DateTime $expiryDate = null,
     ) {
     }
 
@@ -50,7 +53,7 @@ final class ExtensionMetadata implements \ArrayAccess
         return $this->metadata;
     }
 
-    public function getExpiryDate(): ?\DateTime
+    public function getExpiryDate(): ?DateTime
     {
         return $this->expiryDate;
     }

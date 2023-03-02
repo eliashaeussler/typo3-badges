@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,6 +25,8 @@ namespace App\Badge\Provider;
 
 use App\Exception\InvalidProviderException;
 use Symfony\Component\DependencyInjection\ServiceLocator;
+
+use function assert;
 
 /**
  * BadgeProviderFactory.
@@ -69,7 +71,7 @@ final class BadgeProviderFactory
         foreach (array_keys($this->providers->getProvidedServices()) as $serviceId) {
             /* @noinspection PhpUnhandledExceptionInspection */
             $provider = $this->providers->get($serviceId);
-            \assert($provider instanceof BadgeProvider);
+            assert($provider instanceof BadgeProvider);
 
             $providers[$provider::getIdentifier()] = $provider;
         }
