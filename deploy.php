@@ -57,6 +57,7 @@ set('rsync', [
         'phpunit.xml.dist',
         'postcss.config.js',
         'rector.php',
+        'renovate.json',
         'tailwind.config.js',
         'webpack.config.js',
     ],
