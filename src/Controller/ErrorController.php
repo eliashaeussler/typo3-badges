@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -26,6 +26,7 @@ namespace App\Controller;
 use App\Entity\Badge;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 /**
  * ErrorController.
@@ -35,7 +36,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class ErrorController extends AbstractBadgeController
 {
-    public function __invoke(Request $request, \Throwable $exception): Response
+    public function __invoke(Request $request, Throwable $exception): Response
     {
         $provider = (string) $request->get('provider') ?: null;
 

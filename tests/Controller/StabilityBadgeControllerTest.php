@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -26,6 +26,7 @@ namespace App\Tests\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\StabilityBadgeController;
 use App\Tests\AbstractApiTestCase;
+use Generator;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -87,14 +88,14 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
 
         self::assertSame(
             $expected->getContent(),
-            ($this->subject)(new Request(), 'foo')->getContent()
+            ($this->subject)(new Request(), 'foo')->getContent(),
         );
     }
 
     /**
      * @return \Generator<string, array{string, string}>
      */
-    public function controllerReturnsBadgeForGivenExtensionDataProvider(): \Generator
+    public function controllerReturnsBadgeForGivenExtensionDataProvider(): Generator
     {
         yield 'stable' => ['stable', 'green'];
         yield 'beta' => ['beta', 'yellow'];

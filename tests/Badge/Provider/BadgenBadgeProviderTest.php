@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,6 +25,7 @@ namespace App\Tests\Badge\Provider;
 
 use App\Badge\Provider\BadgenBadgeProvider;
 use App\Entity\Badge;
+use Generator;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Route;
@@ -79,7 +80,7 @@ final class BadgenBadgeProviderTest extends KernelTestCase
     /**
      * @return \Generator<string, array{Route|null|string}>
      */
-    public function generateUriForRouteReturnsUriForGivenRouteDataProvider(): \Generator
+    public function generateUriForRouteReturnsUriForGivenRouteDataProvider(): Generator
     {
         $router = self::getContainer()->get('router');
 

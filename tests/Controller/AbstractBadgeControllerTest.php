@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -26,6 +26,7 @@ namespace App\Tests\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
 use App\Tests\Fixtures\AbstractBadgeControllerTestClass;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -85,7 +86,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
     public function getBadgeResponseReturnsCachedResponse(): void
     {
         $badge = new Badge();
-        $cacheExpirationDate = new \DateTime();
+        $cacheExpirationDate = new DateTime();
         $expected = $this->badgeProviderFactory->get('badgen')->createResponse($badge)
             ->setPublic()
             ->setExpires($cacheExpirationDate);

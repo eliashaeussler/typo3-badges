@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -28,6 +28,7 @@ use App\Badge\Provider\BadgeProvider;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Badge\Provider\ShieldsBadgeProvider;
 use App\Exception\InvalidProviderException;
+use Generator;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ServiceLocator;
 use Symfony\Component\Routing\RouterInterface;
@@ -102,7 +103,7 @@ final class BadgeProviderFactoryTest extends KernelTestCase
     /**
      * @return \Generator<string, array{string, class-string<BadgeProvider>}>
      */
-    public function getReturnsDefaultBadgeResponseProviderDataProvider(): \Generator
+    public function getReturnsDefaultBadgeResponseProviderDataProvider(): Generator
     {
         yield 'shields' => ['shields', ShieldsBadgeProvider::class];
         yield 'badgen' => ['badgen', BadgenBadgeProvider::class];

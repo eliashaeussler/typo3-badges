@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -26,6 +26,7 @@ namespace App\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
 use App\Exception\InvalidProviderException;
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -51,7 +52,7 @@ abstract class AbstractBadgeController
     protected function getBadgeResponse(
         Badge $badge,
         string $provider = null,
-        \DateTime $cacheExpirationDate = null,
+        DateTime $cacheExpirationDate = null,
     ): Response {
         try {
             $providerClass = $this->badgeProviderFactory->get($provider);

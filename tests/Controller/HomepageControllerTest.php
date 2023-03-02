@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -30,6 +30,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\Routing\Route;
 use Symfony\Contracts\Cache\CacheInterface;
+
+use function count;
 
 /**
  * HomepageControllerTest.
@@ -71,6 +73,6 @@ final class HomepageControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'TYPO3 Badges');
-        self::assertCount(\count((array) $badgeRoutes), $crawler->filter('.badge-endpoint'));
+        self::assertCount(count((array) $badgeRoutes), $crawler->filter('.badge-endpoint'));
     }
 }
