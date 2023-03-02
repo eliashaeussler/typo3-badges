@@ -56,7 +56,7 @@ jobs:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           dep: deploy production
-          deployer-version: '7.0.2'
+          deployer-version: '7.2.1'
 
   dev:
     if: ${{ github.event_name == 'workflow_dispatch' }}
@@ -105,4 +105,4 @@ jobs:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           dep: deploy dev
-          deployer-version: '7.1.1'
+          deployer-version: '7.2.1'
