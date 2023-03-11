@@ -3,10 +3,8 @@
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
          colors="true"
          bootstrap="tests/bootstrap.php"
-         convertDeprecationsToExceptions="false"
 >
     <php>
         <ini name="display_errors" value="1" />
@@ -23,7 +21,7 @@
         </testsuite>
     </testsuites>
 
-    <coverage processUncoveredFiles="true">
+    <coverage>
         <include>
             <directory suffix=".php">src</directory>
         </include>
@@ -37,11 +35,7 @@
         <junit outputFile=".build/coverage/junit.xml"/>
     </logging>
 
-    <listeners>
-        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
-    </listeners>
-
     <extensions>
-        <extension class="App\Tests\ClearCacheAfterTestHook" />
+        <bootstrap class="App\Tests\ClearCacheAfterTestExtension" />
     </extensions>
 </phpunit>

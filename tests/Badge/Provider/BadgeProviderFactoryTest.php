@@ -29,6 +29,8 @@ use App\Badge\Provider\BadgeProviderFactory;
 use App\Badge\Provider\ShieldsBadgeProvider;
 use App\Exception\InvalidProviderException;
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ServiceLocator;
 use Symfony\Component\Routing\RouterInterface;
@@ -55,41 +57,33 @@ final class BadgeProviderFactoryTest extends KernelTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getReturnsDefaultBadgeResponseProvider(): void
     {
         self::assertInstanceOf(ShieldsBadgeProvider::class, $this->subject->get());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getThrowsExceptionIfGivenTypeIsNotSupported(): void
     {
         $this->expectException(InvalidProviderException::class);
-        $this->expectErrorMessage('The provider "foo" is not supported.');
+        $this->expectExceptionMessage('The provider "foo" is not supported.');
         $this->expectExceptionCode(1641195602);
 
         $this->subject->get('foo');
     }
 
     /**
-     * @test
-     *
-     * @dataProvider getReturnsDefaultBadgeResponseProviderDataProvider
-     *
      * @param class-string<BadgeProvider> $expected
      */
+    #[Test]
+    #[DataProvider('getReturnsDefaultBadgeResponseProviderDataProvider')]
     public function getReturnsBadgeResponseProvider(string $type, string $expected): void
     {
         self::assertInstanceOf($expected, $this->subject->get($type));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getAllReturnsAllBadgeResponseProviders(): void
     {
         $expected = [
@@ -103,7 +97,7 @@ final class BadgeProviderFactoryTest extends KernelTestCase
     /**
      * @return \Generator<string, array{string, class-string<BadgeProvider>}>
      */
-    public function getReturnsDefaultBadgeResponseProviderDataProvider(): Generator
+    public static function getReturnsDefaultBadgeResponseProviderDataProvider(): Generator
     {
         yield 'shields' => ['shields', ShieldsBadgeProvider::class];
         yield 'badgen' => ['badgen', BadgenBadgeProvider::class];

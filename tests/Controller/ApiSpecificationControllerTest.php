@@ -24,6 +24,8 @@ declare(strict_types=1);
 namespace App\Tests\Controller;
 
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Yaml\Yaml;
@@ -38,11 +40,8 @@ use function dirname;
  */
 final class ApiSpecificationControllerTest extends WebTestCase
 {
-    /**
-     * @test
-     *
-     * @dataProvider controllerReturnsApiSpecificationAsJsonDataProvider
-     */
+    #[Test]
+    #[DataProvider('controllerReturnsApiSpecificationAsJsonDataProvider')]
     public function controllerReturnsApiSpecificationAsJson(string $uri): void
     {
         $client = self::createClient();
@@ -59,9 +58,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
         self::assertSame($expected, json_decode($json, true, 512, JSON_THROW_ON_ERROR));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function controllerReturnsApiSpecificationAsYaml(): void
     {
         $client = self::createClient();
@@ -92,7 +89,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
     /**
      * @return \Generator<string, array{string}>
      */
-    public function controllerReturnsApiSpecificationAsJsonDataProvider(): Generator
+    public static function controllerReturnsApiSpecificationAsJsonDataProvider(): Generator
     {
         yield 'default route' => ['/spec'];
         yield 'route with json format' => ['/spec.json'];

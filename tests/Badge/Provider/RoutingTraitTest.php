@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Badge\Provider;
 
 use App\Tests\Fixtures\RoutingTraitTestClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\Route;
@@ -46,23 +47,19 @@ final class RoutingTraitTest extends KernelTestCase
         $this->subject = new RoutingTraitTestClass($this->router);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function identifyRouteThrowsExceptionIfRouteCannotBeFound(): void
     {
         $route = new Route('/foo');
 
         $this->expectException(RouteNotFoundException::class);
-        $this->expectErrorMessage('Unable to find route with path "/foo"!');
+        $this->expectExceptionMessage('Unable to find route with path "/foo"!');
         $this->expectExceptionCode(1641203175);
 
         $this->subject->testIdentifyRoute($route);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function identifyRouteReturnsNameOfGivenRoute(): void
     {
         $route = new Route('/foo');

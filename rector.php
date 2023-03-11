@@ -23,7 +23,10 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
+use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
+use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\Set\ValueObject\LevelSetList;
+use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -37,14 +40,16 @@ return static function (RectorConfig $rectorConfig): void {
     // define sets of rules
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_81,
-        SymfonySetList::SYMFONY_60,
-        SymfonySetList::SYMFONY_61,
-        SymfonySetList::SYMFONY_62,
+        SymfonyLevelSetList::UP_TO_SYMFONY_62,
+        PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
     ]);
 
     $rectorConfig->skip([
         AddLiteralSeparatorToNumberRector::class,
+        AnnotationToAttributeRector::class => [
+            __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
+        ],
     ]);
 };

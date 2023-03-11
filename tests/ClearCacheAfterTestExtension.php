@@ -23,18 +23,28 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
-use PHPUnit\Runner\AfterTestHook;
+use PHPUnit\Event\Test\Finished;
+use PHPUnit\Event\Test\FinishedSubscriber;
+use PHPUnit\Runner\Extension\Extension;
+use PHPUnit\Runner\Extension\Facade;
+use PHPUnit\Runner\Extension\ParameterCollection;
+use PHPUnit\TextUI\Configuration\Configuration;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * ClearCacheAfterTestHook.
+ * ClearCacheAfterTestExtension.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class ClearCacheAfterTestHook implements AfterTestHook
+final class ClearCacheAfterTestExtension implements Extension, FinishedSubscriber
 {
-    public function executeAfterTest(string $test, float $time): void
+    public function bootstrap(Configuration $configuration, Facade $facade, ParameterCollection $parameters): void
+    {
+        $facade->registerSubscriber($this);
+    }
+
+    public function notify(Finished $event): void
     {
         (new Filesystem())->remove(__DIR__.'/../var/cache/test');
     }

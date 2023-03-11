@@ -26,6 +26,7 @@ namespace App\Tests\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\VersionBadgeController;
 use App\Tests\AbstractApiTestCase;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,22 +49,18 @@ final class VersionBadgeControllerTest extends AbstractApiTestCase
         $this->subject->setBadgeProviderFactory(self::getContainer()->get(BadgeProviderFactory::class));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function controllerThrowsBadRequestExceptionIfApiResponseIsInvalid(): void
     {
         $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
         $this->expectException(BadRequestHttpException::class);
-        $this->expectErrorMessage('Invalid API response.');
+        $this->expectExceptionMessage('Invalid API response.');
 
         ($this->subject)(new Request(), 'foo');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function controllerReturnsBadgeForGivenExtension(): void
     {
         $this->mockResponses[] = new MockResponse(json_encode([

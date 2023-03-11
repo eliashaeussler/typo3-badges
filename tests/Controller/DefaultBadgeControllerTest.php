@@ -24,6 +24,8 @@ declare(strict_types=1);
 namespace App\Tests\Controller;
 
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -36,12 +38,10 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 final class DefaultBadgeControllerTest extends WebTestCase
 {
     /**
-     * @test
-     *
-     * @dataProvider controllerReturnsTypo3BadgeDataProvider
-     *
      * @param array<string, string|int|bool> $expected
      */
+    #[Test]
+    #[DataProvider('controllerReturnsTypo3BadgeDataProvider')]
     public function controllerReturnsTypo3Badge(string $path, array $expected): void
     {
         $client = self::createClient();
@@ -60,7 +60,7 @@ final class DefaultBadgeControllerTest extends WebTestCase
     /**
      * @return \Generator<string, array{string, array<string, string|int|bool>}>
      */
-    public function controllerReturnsTypo3BadgeDataProvider(): Generator
+    public static function controllerReturnsTypo3BadgeDataProvider(): Generator
     {
         $badgenResponse = [
             'subject' => 'typo3',

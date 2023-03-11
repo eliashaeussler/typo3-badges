@@ -27,6 +27,7 @@ use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
 use App\Tests\Fixtures\AbstractBadgeControllerTestClass;
 use DateTime;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -48,9 +49,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
         $this->subject->setBadgeProviderFactory($this->badgeProviderFactory);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getBadgeResponseThrowsNotFoundExceptionOnUnsupportedProvider(): void
     {
         $this->expectException(NotFoundHttpException::class);
@@ -58,9 +57,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
         $this->subject->testGetBadgeResponse(new Badge(), 'foo');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getBadgeResponseReturnsResponseForDefaultProviderIfNoProviderIsGiven(): void
     {
         $badge = new Badge();
@@ -69,9 +66,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
         self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getBadgeResponseReturnsResponseForRequestedProvider(): void
     {
         $badge = new Badge();
@@ -80,9 +75,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
         self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge, 'badgen'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getBadgeResponseReturnsCachedResponse(): void
     {
         $badge = new Badge();
