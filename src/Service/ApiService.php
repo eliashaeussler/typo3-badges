@@ -136,7 +136,7 @@ final readonly class ApiService
     }
 
     /**
-     * @param array{expiry?: int}|null $cacheMetadata
+     * @param array{expiry?: int|numeric-string}|null $cacheMetadata
      */
     private function determineCacheExpiryDateFromCacheMetadata(?array $cacheMetadata): ?DateTime
     {
@@ -144,6 +144,12 @@ final readonly class ApiService
             return null;
         }
 
-        return DateTime::createFromFormat('U', (string) (int) $cacheMetadata[ItemInterface::METADATA_EXPIRY]) ?: null;
+        $expiryDate = DateTime::createFromFormat('U', (string) (int) $cacheMetadata[ItemInterface::METADATA_EXPIRY]);
+
+        if (false === $expiryDate) {
+            return null;
+        }
+
+        return $expiryDate;
     }
 }

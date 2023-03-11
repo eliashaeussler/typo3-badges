@@ -22,6 +22,7 @@ declare(strict_types=1);
  */
 
 use Rector\Config\RectorConfig;
+use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
 use Rector\PHPUnit\Set\PHPUnitLevelSetList;
@@ -50,6 +51,9 @@ return static function (RectorConfig $rectorConfig): void {
         AddLiteralSeparatorToNumberRector::class,
         AnnotationToAttributeRector::class => [
             __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
+        ],
+        CountOnNullRector::class => [
+            __DIR__.'/tests/Controller/HomepageControllerTest.php',
         ],
     ]);
 };

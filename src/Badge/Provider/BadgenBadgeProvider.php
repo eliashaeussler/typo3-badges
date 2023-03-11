@@ -64,9 +64,9 @@ final class BadgenBadgeProvider implements BadgeProvider
     public function createResponse(Badge $badge): Response
     {
         return new JsonResponse([
-            'subject' => $badge->getLabel() ?: 'typo3',
-            'status' => $badge->getMessage() ?: 'inspiring people to share',
-            'color' => $badge->getColor() ?: 'orange',
+            'subject' => '' !== $badge->getLabel() ? $badge->getLabel() : 'typo3',
+            'status' => '' !== $badge->getMessage() ? $badge->getMessage() : 'inspiring people to share',
+            'color' => '' !== $badge->getColor() ? $badge->getColor() : 'orange',
         ]);
     }
 
