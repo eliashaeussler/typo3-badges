@@ -41,6 +41,7 @@ trait RoutingTrait
     {
         foreach ($this->router->getRouteCollection()->all() as $routeName => $currentRoute) {
             // Loose comparison is intended
+            /* @phpstan-ignore-next-line */
             if ($route == $currentRoute) {
                 return $routeName;
             }

@@ -25,6 +25,8 @@ namespace App\Entity;
 
 use App\Value\NumberFormatter;
 
+use function implode;
+
 /**
  * Badge.
  *
@@ -95,8 +97,9 @@ final readonly class Badge
         sort($typo3Versions);
 
         $lastValue = array_pop($typo3Versions);
+        $typo3VersionList = implode(', ', $typo3Versions);
         $message = implode(' & ', array_filter([
-            implode(', ', $typo3Versions) ?: null,
+            '' !== $typo3VersionList ? $typo3VersionList : null,
             $lastValue,
         ]));
 

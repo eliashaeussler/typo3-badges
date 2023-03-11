@@ -64,9 +64,9 @@ final class ShieldsBadgeProvider implements BadgeProvider
     {
         return new JsonResponse([
             'schemaVersion' => 1,
-            'label' => $badge->getLabel() ?: 'typo3',
-            'message' => $badge->getMessage() ?: 'inspiring people to share',
-            'color' => $badge->getColor() ?: 'orange',
+            'label' => '' !== $badge->getLabel() ? $badge->getLabel() : 'typo3',
+            'message' => '' !== $badge->getMessage() ? $badge->getMessage() : 'inspiring people to share',
+            'color' => '' !== $badge->getColor() ? $badge->getColor() : 'orange',
             'isError' => $badge->isError(),
             'namedLogo' => 'typo3',
         ]);
