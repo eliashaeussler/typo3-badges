@@ -12,9 +12,9 @@
 	},
 	"homepage": "https://typo3-badges.dev",
 	"devDependencies": {
-		"@babel/core": "^7.16.12",
-		"@babel/preset-env": "^7.16.11",
-		"@symfony/webpack-encore": "^3.0.0",
+		"@babel/core": "^7.21.0",
+		"@babel/preset-env": "^7.20.2",
+		"@symfony/webpack-encore": "^4.0.0",
 		"autoprefixer": "^10.4.13",
 		"depcheck": "^1.4.3",
 		"eslint": "^8.8.0",
@@ -30,6 +30,8 @@
 		"tailwindcss-crossbrowser-touch": "^1.1.2",
 		"tailwindcss-selection-variant": "^0.1.0",
 		"tailwindcss-triangles": "^4.0.0",
+		"webpack": "^5.76.1",
+		"webpack-cli": "^5.0.1",
 		"webpack-notifier": "^1.15.0"
 	},
 	"dependencies": {
