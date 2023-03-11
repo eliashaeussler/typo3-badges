@@ -34,10 +34,10 @@ use function assert;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class BadgeProviderFactory
+final readonly class BadgeProviderFactory
 {
     public function __construct(
-        private readonly ServiceLocator $providers,
+        private ServiceLocator $providers,
     ) {
     }
 

@@ -36,10 +36,10 @@ use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
  *
  * @codeCoverageIgnore
  */
-final class RandomExtensionMetadataCacheWarmer implements CacheWarmerInterface
+final readonly class RandomExtensionMetadataCacheWarmer implements CacheWarmerInterface
 {
     public function __construct(
-        private readonly ApiService $apiService,
+        private ApiService $apiService,
     ) {
     }
 
