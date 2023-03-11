@@ -25,6 +25,7 @@ namespace App\Tests\Controller;
 
 use App\Service\ApiService;
 use App\Tests\MockClientTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpClient\Response\MockResponse;
@@ -54,9 +55,7 @@ final class HomepageControllerTest extends WebTestCase
         $container->set(ApiService::class, new ApiService($this->mockClient, $container->get(CacheInterface::class)));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function controllerReturnsHomepage(): void
     {
         $this->mockResponses[] = new MockResponse(json_encode([

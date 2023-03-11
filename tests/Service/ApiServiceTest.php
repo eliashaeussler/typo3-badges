@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Service;
 
 use App\Tests\AbstractApiTestCase;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
 /**
@@ -34,9 +35,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
  */
 final class ApiServiceTest extends AbstractApiTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function getExtensionMetadataReturnsMetadataFromCache(): void
     {
         $cacheIdentifier = $this->getCacheIdentifier('typo3_api.extension_metadata', [
@@ -51,9 +50,7 @@ final class ApiServiceTest extends AbstractApiTestCase
         $this->cache->delete($cacheIdentifier);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getExtensionMetadataReturnsMetadataFromApiAndStoresResponseInCache(): void
     {
         $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
@@ -67,9 +64,7 @@ final class ApiServiceTest extends AbstractApiTestCase
         self::assertSame(['foo' => 'baz'], $this->cache->get($cacheIdentifier, fn () => null));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getRandomExtensionMetadataReturnsExtensionMetadataFromCache(): void
     {
         $cacheIdentifier = $this->getCacheIdentifier('typo3_api.random_extensions', [
@@ -90,9 +85,7 @@ final class ApiServiceTest extends AbstractApiTestCase
         $this->cache->delete($cacheIdentifier);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getRandomExtensionMetadataReturnsExtensionMetadataFromApiAndStoresResponseInCache(): void
     {
         $json = [
@@ -114,9 +107,7 @@ final class ApiServiceTest extends AbstractApiTestCase
         self::assertSame($json, $this->cache->get($cacheIdentifier, fn () => null));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getRandomExtensionMetadataReturnsFallbackIfRandomExtensionsCannotBeFetchedFromApi(): void
     {
         $this->mockResponses[] = new MockResponse('{}');

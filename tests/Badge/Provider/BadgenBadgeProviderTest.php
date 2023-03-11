@@ -26,6 +26,8 @@ namespace App\Tests\Badge\Provider;
 use App\Badge\Provider\BadgenBadgeProvider;
 use App\Entity\Badge;
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Route;
@@ -45,9 +47,7 @@ final class BadgenBadgeProviderTest extends KernelTestCase
         $this->subject = new BadgenBadgeProvider(self::getContainer()->get('router'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createResponseReturnsResponseForBadge(): void
     {
         $badge = new Badge(
@@ -65,11 +65,8 @@ final class BadgenBadgeProviderTest extends KernelTestCase
         self::assertEquals($expected, $this->subject->createResponse($badge));
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider generateUriForRouteReturnsUriForGivenRouteDataProvider
-     */
+    #[Test]
+    #[DataProvider('generateUriForRouteReturnsUriForGivenRouteDataProvider')]
     public function generateUriForRouteReturnsUriForGivenRoute(Route|string $route): void
     {
         $expected = 'https://badgen.net/https/localhost/badge/foo/downloads/badgen';
@@ -80,7 +77,7 @@ final class BadgenBadgeProviderTest extends KernelTestCase
     /**
      * @return \Generator<string, array{Route|null|string}>
      */
-    public function generateUriForRouteReturnsUriForGivenRouteDataProvider(): Generator
+    public static function generateUriForRouteReturnsUriForGivenRouteDataProvider(): Generator
     {
         $router = self::getContainer()->get('router');
 

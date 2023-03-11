@@ -25,6 +25,8 @@ namespace App\Tests\Entity;
 
 use App\Entity\Badge;
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,9 +37,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class BadgeTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function forExtensionReturnsBadgeForExtension(): void
     {
         $expected = new Badge(
@@ -50,9 +50,7 @@ final class BadgeTest extends TestCase
         self::assertEquals($expected, Badge::forExtension('foo'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forVersionReturnsBadgeForVersion(): void
     {
         $expected = new Badge(
@@ -65,9 +63,7 @@ final class BadgeTest extends TestCase
         self::assertEquals($expected, Badge::forVersion('1.0.0'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forDownloadsReturnsBadgeForDownloads(): void
     {
         $expected = new Badge(
@@ -80,9 +76,7 @@ final class BadgeTest extends TestCase
         self::assertEquals($expected, Badge::forDownloads(845760473));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forTypo3VersionsReturnsErrorBadgeForEmptyTypo3VersionList(): void
     {
         $expected = Badge::forError();
@@ -91,12 +85,10 @@ final class BadgeTest extends TestCase
     }
 
     /**
-     * @test
-     *
-     * @dataProvider forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider
-     *
      * @param list<int> $typo3Versions
      */
+    #[Test]
+    #[DataProvider('forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider')]
     public function forTypo3VersionsReturnsBadgeForTypo3Versions(array $typo3Versions, string $expected): void
     {
         $expected = new Badge(
@@ -109,11 +101,8 @@ final class BadgeTest extends TestCase
         self::assertEquals($expected, Badge::forTypo3Versions($typo3Versions));
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider forStabilityReturnsBadgeForStabilityDataProvider
-     */
+    #[Test]
+    #[DataProvider('forStabilityReturnsBadgeForStabilityDataProvider')]
     public function forStabilityReturnsBadgeForStability(string $stability, string $expectedColor): void
     {
         $expected = new Badge(
@@ -126,9 +115,7 @@ final class BadgeTest extends TestCase
         self::assertEquals($expected, Badge::forStability($stability));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function forErrorReturnsBadgeOnError(): void
     {
         $expected = new Badge(
@@ -141,9 +128,7 @@ final class BadgeTest extends TestCase
         self::assertEquals($expected, Badge::forError());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLabelReturnsLabel(): void
     {
         $subject = new Badge();
@@ -155,9 +140,7 @@ final class BadgeTest extends TestCase
         self::assertSame('foo', $subject->getLabel());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getMessageReturnsMessage(): void
     {
         $subject = new Badge();
@@ -169,9 +152,7 @@ final class BadgeTest extends TestCase
         self::assertSame('foo', $subject->getMessage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getColorReturnsColor(): void
     {
         $subject = new Badge();
@@ -183,9 +164,7 @@ final class BadgeTest extends TestCase
         self::assertSame('foo', $subject->getColor());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isErrorReturnsErrorState(): void
     {
         $subject = new Badge();
@@ -200,7 +179,7 @@ final class BadgeTest extends TestCase
     /**
      * @return \Generator<string, array{string, string}>
      */
-    public function forStabilityReturnsBadgeForStabilityDataProvider(): Generator
+    public static function forStabilityReturnsBadgeForStabilityDataProvider(): Generator
     {
         yield 'stable' => ['stable', 'green'];
         yield 'beta' => ['beta', 'yellow'];
@@ -214,7 +193,7 @@ final class BadgeTest extends TestCase
     /**
      * @return \Generator<string, array{list<int>, string}>
      */
-    public function forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider(): Generator
+    public static function forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider(): Generator
     {
         yield 'one version' => [[11], '11'];
         yield 'two versions' => [[10, 11], '10 & 11'];

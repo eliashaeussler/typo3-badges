@@ -27,6 +27,8 @@ use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\StabilityBadgeController;
 use App\Tests\AbstractApiTestCase;
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,24 +51,19 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
         $this->subject->setBadgeProviderFactory(self::getContainer()->get(BadgeProviderFactory::class));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function controllerThrowsBadRequestExceptionIfApiResponseIsInvalid(): void
     {
         $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
         $this->expectException(BadRequestHttpException::class);
-        $this->expectErrorMessage('Invalid API response.');
+        $this->expectExceptionMessage('Invalid API response.');
 
         ($this->subject)(new Request(), 'foo');
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider controllerReturnsBadgeForGivenExtensionDataProvider
-     */
+    #[Test]
+    #[DataProvider('controllerReturnsBadgeForGivenExtensionDataProvider')]
     public function controllerReturnsBadgeForGivenExtension(string $state, string $expectedColor): void
     {
         $this->mockResponses[] = new MockResponse(json_encode([
@@ -95,7 +92,7 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
     /**
      * @return \Generator<string, array{string, string}>
      */
-    public function controllerReturnsBadgeForGivenExtensionDataProvider(): Generator
+    public static function controllerReturnsBadgeForGivenExtensionDataProvider(): Generator
     {
         yield 'stable' => ['stable', 'green'];
         yield 'beta' => ['beta', 'yellow'];

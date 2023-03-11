@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use PHPUnit\Framework\Attributes\Test;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -34,9 +35,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 final class ErrorControllerTest extends WebTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function controllerReturnsErrorBadge(): void
     {
         $expected = [

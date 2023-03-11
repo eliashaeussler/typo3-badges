@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Exception;
 
 use App\Exception\InvalidProviderException;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,9 +35,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class InvalidProviderExceptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function createReturnsException(): void
     {
         $actual = InvalidProviderException::create('foo');

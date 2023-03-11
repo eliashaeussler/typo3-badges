@@ -25,6 +25,7 @@ namespace App\Tests\Entity\Dto;
 
 use App\Entity\Dto\ExtensionMetadata;
 use DateTime;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,25 +45,19 @@ final class ExtensionMetadataTest extends TestCase
         $this->subject = new ExtensionMetadata(['foo' => 'baz'], $this->expiryDate);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getMetadataReturnsExtensionMetadata(): void
     {
         self::assertSame(['foo' => 'baz'], $this->subject->getMetadata());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getExpiryDateReturnsExpiryDate(): void
     {
         self::assertSame($this->expiryDate, $this->subject->getExpiryDate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function subjectCanBeAccessedAsArray(): void
     {
         // offsetExists()

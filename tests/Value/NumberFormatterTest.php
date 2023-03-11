@@ -25,6 +25,8 @@ namespace App\Tests\Value;
 
 use App\Value\NumberFormatter;
 use Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,11 +37,8 @@ use PHPUnit\Framework\TestCase;
  */
 final class NumberFormatterTest extends TestCase
 {
-    /**
-     * @test
-     *
-     * @dataProvider formatReturnsFormattedNumberDataProvider
-     */
+    #[Test]
+    #[DataProvider('formatReturnsFormattedNumberDataProvider')]
     public function formatReturnsFormattedNumber(int $number, string $expected): void
     {
         self::assertSame($expected, NumberFormatter::format($number));
@@ -48,7 +47,7 @@ final class NumberFormatterTest extends TestCase
     /**
      * @return \Generator<string, array{int, string}>
      */
-    public function formatReturnsFormattedNumberDataProvider(): Generator
+    public static function formatReturnsFormattedNumberDataProvider(): Generator
     {
         yield 'lower than 1000' => [278, '278'];
         yield 'thousands (#1)' => [2782, '2.8K'];
