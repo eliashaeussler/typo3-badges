@@ -31,7 +31,7 @@ use App\Value\NumberFormatter;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class Badge
+final readonly class Badge
 {
     private const COLOR_MAP = [
         'extension' => 'orange',
@@ -49,10 +49,10 @@ final class Badge
     ];
 
     public function __construct(
-        private readonly string $label = '',
-        private readonly string $message = '',
-        private readonly string $color = '',
-        private readonly bool $isError = false,
+        private string $label = '',
+        private string $message = '',
+        private string $color = '',
+        private bool $isError = false,
     ) {
     }
 

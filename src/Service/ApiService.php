@@ -35,14 +35,14 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class ApiService
+final readonly class ApiService
 {
     private const FALLBACK_EXTENSION_KEY = 'handlebars';
 
     public function __construct(
-        private readonly HttpClientInterface $client,
-        private readonly CacheInterface $cache,
-        private readonly int $cacheExpirationPeriod = 3600,
+        private HttpClientInterface $client,
+        private CacheInterface $cache,
+        private int $cacheExpirationPeriod = 3600,
     ) {
     }
 
