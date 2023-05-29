@@ -1076,10 +1076,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.41.0.tgz#080321c3b68253522f7646b55b577dd99d2950b3"
   integrity sha512-LxcyMGxwmTh2lY9FwHPGWOHmYFCZvbrFCBZL4FzSSsxsRPuhrYUg/49/0KDfW8tnIEaEHtfmn6+NPN+1DqaNmA==
 
-"@fontsource/indie-flower@^4.5.1":
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-4.5.10.tgz#be270549f23ffcaef2087bd8e0e834e75c848d87"
-  integrity sha512-eT9FyIamAXk9v7XHtTpuOjI1kbxp5NKePfRJ5qy45T2poUWayfU4ub9ISDeVZRVKOxAsYIzk0+3OSraTsC0g5Q==
+"@fontsource/indie-flower@^5.0.0":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-5.0.1.tgz#3d25dcf484825645ee2afc1ca6a31b2da54b30f6"
+  integrity sha512-5CLIPvPeLC7oOqwRL6qfm88TRoqE377HQwPO2psc0cKS/7nivv3evdGlfflKCDwU/WFrbA9AZ2q/bhueDkWnfQ==
 
 "@fontsource/jetbrains-mono@^5.0.0":
   version "5.0.1"
