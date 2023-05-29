@@ -1081,10 +1081,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-4.5.10.tgz#be270549f23ffcaef2087bd8e0e834e75c848d87"
   integrity sha512-eT9FyIamAXk9v7XHtTpuOjI1kbxp5NKePfRJ5qy45T2poUWayfU4ub9ISDeVZRVKOxAsYIzk0+3OSraTsC0g5Q==
 
-"@fontsource/jetbrains-mono@^4.5.1":
-  version "4.5.12"
-  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-4.5.12.tgz#d965dca932f0ecf5379013f4dff3aec7b817b91b"
-  integrity sha512-LJF1ala1/u+wXZmESFqIk08FA9yGX4/uAAleCHmXUMgEjvNAYFHUQQ7eK5hQQoBOwh99cU5suTrqYqEkgzwzPA==
+"@fontsource/jetbrains-mono@^5.0.0":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-5.0.1.tgz#e6fcfa651cd9645134b94986d7c81d64ddf03505"
+  integrity sha512-IaeBrv/kioGP3VJOW2LEpIJ5l68qX/gTvj0T2GTqMyNlvaIw8G0Z4lPo4keuSunCKSKqhhkPenkT8Hps7Mw8Ng==
 
 "@fontsource/lato@^4.5.1":
   version "4.5.10"
