@@ -3,7 +3,7 @@ servers:
   - url: https://typo3-badges.dev
 info:
   description: API with JSON endpoints to create TYPO3 badges with Badgen or Shields.io.
-  version: 1.1.0
+  version: 1.2.0
   title: TYPO3 Badges
   contact:
     name: Elias Häußler
@@ -121,6 +121,31 @@ paths:
         Gets badge data for supported TYPO3 versions of given TYPO3 extension using the
         default badge provider.
       operationId: getTypo3Badge
+      parameters:
+        - $ref: '#/components/parameters/Extension'
+        - $ref: '#/components/parameters/Provider'
+      tags:
+        - Badge
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/BadgenResponse'
+                  - $ref: '#/components/schemas/ShieldsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /badge/{extension}/verified/{provider}:
+    get:
+      description: Verified badge
+      summary: >-
+        Gets badge data to display the verification state of given TYPO3 extension using the
+        default badge provider.
+      operationId: getVerifiedBadge
       parameters:
         - $ref: '#/components/parameters/Extension'
         - $ref: '#/components/parameters/Provider'
