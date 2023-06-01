@@ -48,6 +48,8 @@ final readonly class Badge
         'stability_test' => 'lightgrey',
         'stability_obsolete' => 'lightgrey',
         'stability_excludeFromUpdates' => 'lightgrey',
+        'verified' => 'green',
+        'not_verified' => 'lightgrey',
     ];
 
     public function __construct(
@@ -116,6 +118,15 @@ final readonly class Badge
             label: 'stability',
             message: $stability,
             color: self::COLOR_MAP['stability_'.$stability] ?? 'orange',
+        );
+    }
+
+    public static function forVerification(bool $verified): self
+    {
+        return new self(
+            label: 'typo3',
+            message: $verified ? 'verified' : 'not verified',
+            color: $verified ? self::COLOR_MAP['verified'] : self::COLOR_MAP['not_verified'],
         );
     }
 
