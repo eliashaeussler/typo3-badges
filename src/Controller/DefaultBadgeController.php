@@ -37,7 +37,10 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route(
     path: '/badge/typo3/{provider?}',
     name: 'badge.default',
-    options: ['description' => 'Get JSON data for a generic TYPO3 badge.'],
+    options: [
+        'title' => 'TYPO3',
+        'description' => 'Get JSON data for a generic TYPO3 badge.',
+    ],
     methods: ['GET'],
     priority: -255,
 )]

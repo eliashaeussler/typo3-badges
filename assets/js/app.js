@@ -19,6 +19,9 @@
 
 import BadgeProviderToggle from './badge/provider/badgeProviderToggle';
 import Clipboard from './clipboard';
+import CodeTabs from './badge/codeTabs';
+import LazyLoad from './badge/lazyLoad';
+import TryOut from './badge/tryOut';
 
 /**
  * App.
@@ -27,11 +30,11 @@ import Clipboard from './clipboard';
  * @license GPL-3.0-or-later
  */
 export default class App {
-  isTouchDevice;
-
   badgeProviderToggle;
 
-  clipboard;
+  isTouchDevice;
+
+  tryOut;
 
   constructor() {
     this.isTouchDevice = App.detectTouchDevice();
@@ -44,9 +47,11 @@ export default class App {
 
   initializeComponents() {
     this.badgeProviderToggle = new BadgeProviderToggle('.badge-providers-button');
-    this.clipboard = new Clipboard('.clipboard-btn', {
-      timeout: 2000,
-    });
+    this.tryOut = new TryOut('[data-modal-trigger="try-out-modal"]');
+
+    Clipboard.connect('.clipboard-btn');
+    CodeTabs.connect();
+    LazyLoad.connect('body');
   }
 
   /**

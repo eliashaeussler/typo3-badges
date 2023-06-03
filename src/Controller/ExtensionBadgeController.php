@@ -40,7 +40,10 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/extension/{provider?}',
     name: 'badge.extension',
     requirements: ['extension' => '[a-z0-9_]+'],
-    options: ['description' => 'Get JSON data for extension key.'],
+    options: [
+        'title' => 'TYPO3 extension',
+        'description' => 'Get JSON data for extension key.',
+    ],
     methods: ['GET'],
 )]
 final class ExtensionBadgeController extends AbstractBadgeController
