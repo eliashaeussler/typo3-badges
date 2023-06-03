@@ -40,7 +40,10 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/version/{provider?}',
     name: 'badge.version',
     requirements: ['extension' => '[a-z0-9_]+'],
-    options: ['description' => 'Get JSON data for current extension version.'],
+    options: [
+        'title' => 'Latest version',
+        'description' => 'Get JSON data for current extension version.',
+    ],
     methods: ['GET'],
 )]
 final class VersionBadgeController extends AbstractBadgeController

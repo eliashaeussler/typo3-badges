@@ -40,7 +40,10 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/typo3/{provider?}',
     name: 'badge.typo3',
     requirements: ['extension' => '[a-z0-9_]+'],
-    options: ['description' => 'Get JSON data for supported TYPO3 versions.'],
+    options: [
+        'title' => 'TYPO3 versions',
+        'description' => 'Get JSON data for supported TYPO3 versions.',
+    ],
     methods: ['GET'],
 )]
 final class Typo3BadgeController extends AbstractBadgeController

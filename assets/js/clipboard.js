@@ -19,6 +19,14 @@
 
 import ClipboardJS from 'clipboard';
 
+const ClipboardOptions = {
+  copyIcon: '.clipboard-copy',
+  checkIcon: '.clipboard-check',
+  timeout: 2000,
+  copyText: 'Copy to clipboard',
+  successText: 'Copied to clipboard!',
+};
+
 /**
  * Clipboard.
  *
@@ -26,33 +34,36 @@ import ClipboardJS from 'clipboard';
  * @license GPL-3.0-or-later
  */
 export default class Clipboard {
-  defaults = {
-    copyIcon: '.clipboard-copy',
-    checkIcon: '.clipboard-check',
-    timeout: 5000,
-    copyText: 'Copy to clipboard',
-    successText: 'Copied to clipboard!',
-  };
+  static buttons = [];
 
-  options;
+  static timeouts = [];
 
-  buttons;
+  static clipboard;
 
-  clipboard;
+  /**
+   * Connect a new Clipboard instance to all nodes of given element.
+   *
+   * @param element {string} Clipboard button element selector
+   */
+  static connect(element) {
+    // Destroy previous bindings
+    Clipboard.clipboard?.destroy();
 
-  timeouts = [];
+    // Add new button element
+    if (!Clipboard.buttons.includes(element)) {
+      Clipboard.buttons.push(element);
+    }
 
-  constructor(element, options) {
-    this.options = { ...this.defaults, ...options };
-    this.buttons = document.querySelectorAll(element);
-    this.clipboard = new ClipboardJS(this.buttons, {
+    // Create new clipboard
+    Clipboard.clipboard = new ClipboardJS(Clipboard.getAllButtons(), {
       target: (trigger) => trigger.nextElementSibling,
     });
 
-    this.resetAllButtons();
+    Clipboard.resetAllButtons();
 
-    this.clipboard.on('success', (e) => this.onSuccessfulCopy(e.trigger));
-    this.clipboard.on('error', () => this.resetAllButtons());
+    // Register events
+    Clipboard.clipboard.on('success', (e) => Clipboard.onSuccessfulCopy(e.trigger));
+    Clipboard.clipboard.on('error', () => Clipboard.resetAllButtons());
   }
 
   /**
@@ -60,11 +71,11 @@ export default class Clipboard {
    *
    * @param button {Element} The copy button element
    */
-  onSuccessfulCopy(button) {
-    this.resetAllButtons(false);
-    this.hideCopyIcon(button);
-    this.timeouts.push(
-      window.setTimeout(() => this.resetButton(button), this.options.timeout),
+  static onSuccessfulCopy(button) {
+    Clipboard.resetAllButtons(false);
+    Clipboard.hideCopyIcon(button);
+    Clipboard.timeouts.push(
+      window.setTimeout(() => Clipboard.resetButton(button), ClipboardOptions.timeout),
     );
   }
 
@@ -73,11 +84,11 @@ export default class Clipboard {
    *
    * @param button {Element} The copy button element
    */
-  hideCopyIcon(button) {
-    this.getCopyIcon(button).classList.add('hidden');
-    this.getCheckIcon(button).classList.remove('hidden');
+  static hideCopyIcon(button) {
+    Clipboard.getCopyIcon(button).classList.add('hidden');
+    Clipboard.getCheckIcon(button).classList.remove('hidden');
 
-    button.setAttribute('title', this.options.successText);
+    button.setAttribute('title', ClipboardOptions.successText);
   }
 
   /**
@@ -86,11 +97,11 @@ export default class Clipboard {
    * @param button {Element} The copy button element
    * @param resetFocus {boolean} `true` if focus of button should be lost, `false` otherwise
    */
-  resetButton(button, resetFocus = true) {
-    this.getCopyIcon(button).classList.remove('hidden');
-    this.getCheckIcon(button).classList.add('hidden');
+  static resetButton(button, resetFocus = true) {
+    Clipboard.getCopyIcon(button).classList.remove('hidden');
+    Clipboard.getCheckIcon(button).classList.add('hidden');
 
-    button.setAttribute('title', this.options.copyText);
+    button.setAttribute('title', ClipboardOptions.copyText);
 
     if (resetFocus) {
       button.blur();
@@ -100,18 +111,39 @@ export default class Clipboard {
   /**
    * Reset all copy to clipboard buttons.
    */
-  resetAllButtons(resetFocus = true) {
-    this.timeouts.forEach((id) => window.clearTimeout(id));
-    this.timeouts = [];
+  static resetAllButtons(resetFocus = true) {
+    Clipboard.timeouts.forEach((id) => window.clearTimeout(id));
+    Clipboard.timeouts = [];
 
-    [...this.buttons].forEach((button) => this.resetButton(button, resetFocus));
+    [...Clipboard.getAllButtons()].forEach((button) => Clipboard.resetButton(button, resetFocus));
   }
 
-  getCopyIcon(button) {
-    return button.querySelector(this.options.copyIcon);
+  /**
+   * Get "copy" icon within given button.
+   *
+   * @param button {HTMLElement} Button to be queried
+   * @returns {HTMLElement} "Copy" icon within given button
+   */
+  static getCopyIcon(button) {
+    return button.querySelector(ClipboardOptions.copyIcon);
   }
 
-  getCheckIcon(button) {
-    return button.querySelector(this.options.checkIcon);
+  /**
+   * Get "check" icon within given button.
+   *
+   * @param button {HTMLElement} Button to be queried
+   * @returns {HTMLElement} "Check" icon within given button
+   */
+  static getCheckIcon(button) {
+    return button.querySelector(ClipboardOptions.checkIcon);
+  }
+
+  /**
+   * Get all currently connected clipboard button elements.
+   *
+   * @returns {NodeListOf<Element>} List of connected clipboard button elements
+   */
+  static getAllButtons() {
+    return document.querySelectorAll(Clipboard.buttons.join(','));
   }
 }

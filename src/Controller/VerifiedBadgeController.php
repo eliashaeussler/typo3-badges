@@ -40,7 +40,10 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/verified/{provider?}',
     name: 'badge.verified',
     requirements: ['extension' => '[a-z0-9_]+'],
-    options: ['description' => 'Get JSON data for extension verification state.'],
+    options: [
+        'title' => 'Verified state',
+        'description' => 'Get JSON data for extension verification state.',
+    ],
     methods: ['GET'],
 )]
 final class VerifiedBadgeController extends AbstractBadgeController

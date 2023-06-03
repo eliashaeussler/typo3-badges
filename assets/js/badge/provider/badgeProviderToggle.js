@@ -141,6 +141,15 @@ export default class BadgeProviderToggle {
   }
 
   /**
+   * Get all available providers.
+   *
+   * @returns {string[]} Identifiers of all available providers
+   */
+  getAllProviders() {
+    return [...this.inputs].map((input) => BadgeProviderToggle.getIdentifierByInput(input));
+  }
+
+  /**
    * Hide animated pings on toggle buttons.
    */
   hideButtonPings() {

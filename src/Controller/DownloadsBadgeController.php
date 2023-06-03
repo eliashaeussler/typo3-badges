@@ -40,7 +40,10 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/downloads/{provider?}',
     name: 'badge.downloads',
     requirements: ['extension' => '[a-z0-9_]+'],
-    options: ['description' => 'Get JSON data for total extension downloads.'],
+    options: [
+        'title' => 'Total downloads',
+        'description' => 'Get JSON data for total extension downloads.',
+    ],
     methods: ['GET'],
 )]
 final class DownloadsBadgeController extends AbstractBadgeController

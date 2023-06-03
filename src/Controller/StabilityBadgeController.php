@@ -40,7 +40,10 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/stability/{provider?}',
     name: 'badge.stability',
     requirements: ['extension' => '[a-z0-9_]+'],
-    options: ['description' => 'Get JSON data for extension stability.'],
+    options: [
+        'title' => 'Stability',
+        'description' => 'Get JSON data for extension stability.',
+    ],
     methods: ['GET'],
 )]
 final class StabilityBadgeController extends AbstractBadgeController
