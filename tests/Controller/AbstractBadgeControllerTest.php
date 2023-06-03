@@ -54,13 +54,13 @@ final class AbstractBadgeControllerTest extends KernelTestCase
     {
         $this->expectException(NotFoundHttpException::class);
 
-        $this->subject->testGetBadgeResponse(new Badge(), 'foo');
+        $this->subject->testGetBadgeResponse(Badge::static(), 'foo');
     }
 
     #[Test]
     public function getBadgeResponseReturnsResponseForDefaultProviderIfNoProviderIsGiven(): void
     {
-        $badge = new Badge();
+        $badge = Badge::static();
         $expected = $this->badgeProviderFactory->get()->createResponse($badge);
 
         self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge));
@@ -69,7 +69,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
     #[Test]
     public function getBadgeResponseReturnsResponseForRequestedProvider(): void
     {
-        $badge = new Badge();
+        $badge = Badge::static();
         $expected = $this->badgeProviderFactory->get('badgen')->createResponse($badge);
 
         self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge, 'badgen'));
@@ -78,7 +78,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
     #[Test]
     public function getBadgeResponseReturnsCachedResponse(): void
     {
-        $badge = new Badge();
+        $badge = Badge::static();
         $cacheExpirationDate = new DateTime();
         $expected = $this->badgeProviderFactory->get('badgen')->createResponse($badge)
             ->setPublic()

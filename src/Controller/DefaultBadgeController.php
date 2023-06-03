@@ -48,6 +48,6 @@ final class DefaultBadgeController extends AbstractBadgeController
 {
     public function __invoke(Request $request, string $provider = null): Response
     {
-        return $this->getBadgeResponse(new Badge(), $provider);
+        return $this->getBadgeResponse(Badge::static(), $provider);
     }
 }

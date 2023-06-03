@@ -33,7 +33,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ServiceLocator;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * BadgeProviderFactoryTest.
@@ -43,12 +42,10 @@ use Symfony\Component\Routing\RouterInterface;
  */
 final class BadgeProviderFactoryTest extends KernelTestCase
 {
-    private RouterInterface $router;
     private BadgeProviderFactory $subject;
 
     protected function setUp(): void
     {
-        $this->router = self::getContainer()->get('router');
         $this->subject = new BadgeProviderFactory(
             new ServiceLocator([
                 'badgen' => fn (): BadgenBadgeProvider => self::getContainer()->get(BadgenBadgeProvider::class),
@@ -86,12 +83,11 @@ final class BadgeProviderFactoryTest extends KernelTestCase
     #[Test]
     public function getAllReturnsAllBadgeResponseProviders(): void
     {
-        $expected = [
-            'badgen' => new BadgenBadgeProvider($this->router),
-            'shields' => new ShieldsBadgeProvider($this->router),
-        ];
+        $actual = $this->subject->getAll();
 
-        self::assertEquals($expected, $this->subject->getAll());
+        self::assertCount(2, $actual);
+        self::assertInstanceOf(BadgenBadgeProvider::class, $actual['badgen'] ?? null);
+        self::assertInstanceOf(ShieldsBadgeProvider::class, $actual['shields'] ?? null);
     }
 
     /**

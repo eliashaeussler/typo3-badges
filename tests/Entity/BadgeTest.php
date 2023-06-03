@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Entity;
 
 use App\Entity\Badge;
+use App\Enums\Color;
 use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -41,10 +42,10 @@ final class BadgeTest extends TestCase
     public function forExtensionReturnsBadgeForExtension(): void
     {
         $expected = new Badge(
-            label: 'extension',
-            message: 'foo',
-            color: 'orange',
-            isError: false,
+            'extension',
+            'foo',
+            Color::Orange,
+            false,
         );
 
         self::assertEquals($expected, Badge::forExtension('foo'));
@@ -54,10 +55,10 @@ final class BadgeTest extends TestCase
     public function forVersionReturnsBadgeForVersion(): void
     {
         $expected = new Badge(
-            label: 'version',
-            message: '1.0.0',
-            color: 'orange',
-            isError: false,
+            'version',
+            '1.0.0',
+            Color::Orange,
+            false,
         );
 
         self::assertEquals($expected, Badge::forVersion('1.0.0'));
@@ -67,10 +68,10 @@ final class BadgeTest extends TestCase
     public function forDownloadsReturnsBadgeForDownloads(): void
     {
         $expected = new Badge(
-            label: 'downloads',
-            message: '845.8m',
-            color: 'blue',
-            isError: false,
+            'downloads',
+            '845.8m',
+            Color::Blue,
+            false,
         );
 
         self::assertEquals($expected, Badge::forDownloads(845760473));
@@ -85,31 +86,35 @@ final class BadgeTest extends TestCase
     }
 
     /**
-     * @param list<int> $typo3Versions
+     * @param list<positive-int> $typo3Versions
+     * @param non-empty-string   $expected
      */
     #[Test]
     #[DataProvider('forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider')]
     public function forTypo3VersionsReturnsBadgeForTypo3Versions(array $typo3Versions, string $expected): void
     {
         $expected = new Badge(
-            label: 'typo3',
-            message: $expected,
-            color: 'orange',
-            isError: false,
+            'typo3',
+            $expected,
+            Color::Orange,
+            false,
         );
 
         self::assertEquals($expected, Badge::forTypo3Versions($typo3Versions));
     }
 
+    /**
+     * @param non-empty-string $stability
+     */
     #[Test]
     #[DataProvider('forStabilityReturnsBadgeForStabilityDataProvider')]
-    public function forStabilityReturnsBadgeForStability(string $stability, string $expectedColor): void
+    public function forStabilityReturnsBadgeForStability(string $stability, Color $expectedColor): void
     {
         $expected = new Badge(
-            label: 'stability',
-            message: $stability,
-            color: $expectedColor,
-            isError: false,
+            'stability',
+            $stability,
+            $expectedColor,
+            false,
         );
 
         self::assertEquals($expected, Badge::forStability($stability));
@@ -119,10 +124,10 @@ final class BadgeTest extends TestCase
     public function forErrorReturnsBadgeOnError(): void
     {
         $expected = new Badge(
-            label: 'typo3',
-            message: 'error',
-            color: 'red',
-            isError: true,
+            'typo3',
+            'error',
+            Color::Red,
+            true,
         );
 
         self::assertEquals($expected, Badge::forError());
@@ -131,11 +136,12 @@ final class BadgeTest extends TestCase
     #[Test]
     public function getLabelReturnsLabel(): void
     {
-        $subject = new Badge();
-
-        self::assertSame('', $subject->getLabel());
-
-        $subject = new Badge(label: 'foo');
+        $subject = new Badge(
+            'foo',
+            'baz',
+            Color::Orange,
+            false,
+        );
 
         self::assertSame('foo', $subject->getLabel());
     }
@@ -143,55 +149,58 @@ final class BadgeTest extends TestCase
     #[Test]
     public function getMessageReturnsMessage(): void
     {
-        $subject = new Badge();
+        $subject = new Badge(
+            'foo',
+            'baz',
+            Color::Orange,
+            false,
+        );
 
-        self::assertSame('', $subject->getMessage());
-
-        $subject = new Badge(message: 'foo');
-
-        self::assertSame('foo', $subject->getMessage());
+        self::assertSame('baz', $subject->getMessage());
     }
 
     #[Test]
     public function getColorReturnsColor(): void
     {
-        $subject = new Badge();
+        $subject = new Badge(
+            'foo',
+            'baz',
+            Color::Orange,
+            false,
+        );
 
-        self::assertSame('', $subject->getColor());
-
-        $subject = new Badge(color: 'foo');
-
-        self::assertSame('foo', $subject->getColor());
+        self::assertSame(Color::Orange, $subject->getColor());
     }
 
     #[Test]
     public function isErrorReturnsErrorState(): void
     {
-        $subject = new Badge();
-
-        self::assertFalse($subject->isError());
-
-        $subject = new Badge(isError: true);
+        $subject = new Badge(
+            'foo',
+            'baz',
+            Color::Orange,
+            true,
+        );
 
         self::assertTrue($subject->isError());
     }
 
     /**
-     * @return \Generator<string, array{string, string}>
+     * @return \Generator<string, array{non-empty-string, Color}>
      */
     public static function forStabilityReturnsBadgeForStabilityDataProvider(): Generator
     {
-        yield 'stable' => ['stable', 'green'];
-        yield 'beta' => ['beta', 'yellow'];
-        yield 'alpha' => ['alpha', 'red'];
-        yield 'experimental' => ['experimental', 'red'];
-        yield 'test' => ['test', 'lightgrey'];
-        yield 'obsolete' => ['obsolete', 'lightgrey'];
-        yield 'excludeFromUpdates' => ['excludeFromUpdates', 'lightgrey'];
+        yield 'stable' => ['stable', Color::Green];
+        yield 'beta' => ['beta', Color::Yellow];
+        yield 'alpha' => ['alpha', Color::Red];
+        yield 'experimental' => ['experimental', Color::Red];
+        yield 'test' => ['test', Color::Gray];
+        yield 'obsolete' => ['obsolete', Color::Gray];
+        yield 'excludeFromUpdates' => ['excludeFromUpdates', Color::Gray];
     }
 
     /**
-     * @return \Generator<string, array{list<int>, string}>
+     * @return \Generator<string, array{list<positive-int>, non-empty-string}>
      */
     public static function forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider(): Generator
     {

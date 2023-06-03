@@ -21,37 +21,20 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Value;
-
-use function array_key_exists;
-use function intval;
+namespace App\Enums;
 
 /**
- * NumberFormatter.
+ * Color.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class NumberFormatter
+enum Color
 {
-    /**
-     * @see https://gist.github.com/gcphost/589d915e2c2f67270cc9bdade732b77f
-     *
-     * @return non-empty-string
-     */
-    public static function format(int $number): string
-    {
-        if ($number < 1000) {
-            return (string) $number;
-        }
-
-        $unit = intval(log($number, 1000));
-        $units = ['', 'K', 'M', 'B', 'T', 'Q'];
-
-        if (array_key_exists($unit, $units)) {
-            return sprintf('%s%s', rtrim(number_format($number / 1000 ** $unit, 1), '.0'), $units[$unit]);
-        }
-
-        return (string) $number;
-    }
+    case Blue;
+    case Gray;
+    case Green;
+    case Orange;
+    case Red;
+    case Yellow;
 }

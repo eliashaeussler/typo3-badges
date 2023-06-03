@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Badge\Provider;
 
 use App\Entity\Badge;
+use App\Enums\Color;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -64,9 +65,9 @@ final class ShieldsBadgeProvider implements BadgeProvider
     {
         return new JsonResponse([
             'schemaVersion' => 1,
-            'label' => '' !== $badge->getLabel() ? $badge->getLabel() : 'typo3',
-            'message' => '' !== $badge->getMessage() ? $badge->getMessage() : 'inspiring people to share',
-            'color' => '' !== $badge->getColor() ? $badge->getColor() : 'orange',
+            'label' => $badge->getLabel(),
+            'message' => $badge->getMessage(),
+            'color' => $this->getColorValue($badge->getColor()),
             'isError' => $badge->isError(),
             'namedLogo' => 'typo3',
         ]);
@@ -98,5 +99,17 @@ final class ShieldsBadgeProvider implements BadgeProvider
     public function getProviderUrl(): string
     {
         return 'https://shields.io';
+    }
+
+    private function getColorValue(Color $color): string
+    {
+        return match ($color) {
+            Color::Blue => 'blue',
+            Color::Gray => 'lightgrey',
+            Color::Green => 'green',
+            Color::Orange => 'orange',
+            Color::Red => 'red',
+            Color::Yellow => 'yellow',
+        };
     }
 }
