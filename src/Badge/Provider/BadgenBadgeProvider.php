@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Badge\Provider;
 
 use App\Entity\Badge;
+use App\Enums\Color;
 use Nyholm\Psr7\Uri;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -64,9 +65,9 @@ final class BadgenBadgeProvider implements BadgeProvider
     public function createResponse(Badge $badge): Response
     {
         return new JsonResponse([
-            'subject' => '' !== $badge->getLabel() ? $badge->getLabel() : 'typo3',
-            'status' => '' !== $badge->getMessage() ? $badge->getMessage() : 'inspiring people to share',
-            'color' => '' !== $badge->getColor() ? $badge->getColor() : 'orange',
+            'subject' => $badge->getLabel(),
+            'status' => $badge->getMessage(),
+            'color' => $this->getColorValue($badge->getColor()),
         ]);
     }
 
@@ -97,5 +98,17 @@ final class BadgenBadgeProvider implements BadgeProvider
     public function getProviderUrl(): string
     {
         return 'https://badgen.net';
+    }
+
+    private function getColorValue(Color $color): string
+    {
+        return match ($color) {
+            Color::Blue => 'blue',
+            Color::Gray => 'grey',
+            Color::Green => 'green',
+            Color::Orange => 'orange',
+            Color::Red => 'red',
+            Color::Yellow => 'yellow',
+        };
     }
 }

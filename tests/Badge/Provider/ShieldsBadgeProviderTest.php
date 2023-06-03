@@ -25,6 +25,7 @@ namespace App\Tests\Badge\Provider;
 
 use App\Badge\Provider\ShieldsBadgeProvider;
 use App\Entity\Badge;
+use App\Enums\Color;
 use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -51,10 +52,10 @@ final class ShieldsBadgeProviderTest extends KernelTestCase
     public function createResponseReturnsResponseForBadge(): void
     {
         $badge = new Badge(
-            label: 'foo',
-            message: 'baz',
-            color: 'orange',
-            isError: true,
+            'foo',
+            'baz',
+            Color::Orange,
+            true,
         );
         $expected = new JsonResponse([
             'schemaVersion' => 1,

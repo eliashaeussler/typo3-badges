@@ -53,7 +53,6 @@ final readonly class BadgeProviderFactory
         /** @var class-string<BadgeProvider> $service */
         foreach ($this->providers->getProvidedServices() as $serviceId => $service) {
             if ($service::getIdentifier() === $name) {
-                /* @noinspection PhpUnhandledExceptionInspection */
                 return $this->providers->get($serviceId);
             }
         }
@@ -69,7 +68,6 @@ final readonly class BadgeProviderFactory
         $providers = [];
 
         foreach (array_keys($this->providers->getProvidedServices()) as $serviceId) {
-            /* @noinspection PhpUnhandledExceptionInspection */
             $provider = $this->providers->get($serviceId);
             assert($provider instanceof BadgeProvider);
 

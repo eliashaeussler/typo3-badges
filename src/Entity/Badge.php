@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Enums\Color;
 use App\Value\NumberFormatter;
 
 use function implode;
@@ -36,59 +37,78 @@ use function implode;
 final readonly class Badge
 {
     private const COLOR_MAP = [
-        'extension' => 'orange',
-        'version' => 'orange',
-        'downloads' => 'blue',
-        'typo3' => 'orange',
-        'error' => 'red',
-        'stability_stable' => 'green',
-        'stability_beta' => 'yellow',
-        'stability_alpha' => 'red',
-        'stability_experimental' => 'red',
-        'stability_test' => 'lightgrey',
-        'stability_obsolete' => 'lightgrey',
-        'stability_excludeFromUpdates' => 'lightgrey',
-        'verified' => 'green',
-        'not_verified' => 'lightgrey',
+        'extension' => Color::Orange,
+        'version' => Color::Orange,
+        'downloads' => Color::Blue,
+        'typo3' => Color::Orange,
+        'error' => Color::Red,
+        'stability_stable' => Color::Green,
+        'stability_beta' => Color::Yellow,
+        'stability_alpha' => Color::Red,
+        'stability_experimental' => Color::Red,
+        'stability_test' => Color::Gray,
+        'stability_obsolete' => Color::Gray,
+        'stability_excludeFromUpdates' => Color::Gray,
+        'verified' => Color::Green,
+        'not_verified' => Color::Gray,
     ];
 
+    /**
+     * @param non-empty-string $label
+     * @param non-empty-string $message
+     */
     public function __construct(
-        private string $label = '',
-        private string $message = '',
-        private string $color = '',
+        private string $label,
+        private string $message,
+        private Color $color,
         private bool $isError = false,
     ) {
     }
 
-    public static function forExtension(string $extension): self
+    public static function static(): self
     {
         return new self(
-            label: 'extension',
-            message: $extension,
-            color: self::COLOR_MAP['extension'],
+            'typo3',
+            'inspiring people to share',
+            Color::Orange,
         );
     }
 
+    /**
+     * @param non-empty-string $extension
+     */
+    public static function forExtension(string $extension): self
+    {
+        return new self(
+            'extension',
+            $extension,
+            self::COLOR_MAP['extension'],
+        );
+    }
+
+    /**
+     * @param non-empty-string $version
+     */
     public static function forVersion(string $version): self
     {
         return new self(
-            label: 'version',
-            message: $version,
-            color: self::COLOR_MAP['version'],
+            'version',
+            $version,
+            self::COLOR_MAP['version'],
         );
     }
 
     public static function forDownloads(int $downloads): self
     {
         return new self(
-            label: 'downloads',
-            message: strtolower(NumberFormatter::format($downloads)),
-            color: self::COLOR_MAP['downloads'],
+            'downloads',
+            strtolower(NumberFormatter::format($downloads)),
+            self::COLOR_MAP['downloads'],
         );
     }
 
     /**
-     * @param list<int> $typo3Versions
+     * @param list<positive-int> $typo3Versions
      */
     public static function forTypo3Versions(array $typo3Versions): self
     {
@@ -99,58 +119,66 @@ final readonly class Badge
         sort($typo3Versions);
 
         $lastValue = array_pop($typo3Versions);
-        $typo3VersionList = implode(', ', $typo3Versions);
         $message = implode(' & ', array_filter([
-            '' !== $typo3VersionList ? $typo3VersionList : null,
+            implode(', ', $typo3Versions),
             $lastValue,
         ]));
 
         return new self(
-            label: 'typo3',
-            message: $message,
-            color: self::COLOR_MAP['typo3'],
+            'typo3',
+            $message,
+            self::COLOR_MAP['typo3'],
         );
     }
 
+    /**
+     * @param non-empty-string $stability
+     */
     public static function forStability(string $stability): self
     {
         return new self(
-            label: 'stability',
-            message: $stability,
-            color: self::COLOR_MAP['stability_'.$stability] ?? 'orange',
+            'stability',
+            $stability,
+            self::COLOR_MAP['stability_'.$stability] ?? Color::Orange,
         );
     }
 
     public static function forVerification(bool $verified): self
     {
         return new self(
-            label: 'typo3',
-            message: $verified ? 'verified' : 'not verified',
-            color: $verified ? self::COLOR_MAP['verified'] : self::COLOR_MAP['not_verified'],
+            'typo3',
+            $verified ? 'verified' : 'not verified',
+            $verified ? self::COLOR_MAP['verified'] : self::COLOR_MAP['not_verified'],
         );
     }
 
     public static function forError(): self
     {
         return new self(
-            label: 'typo3',
-            message: 'error',
-            color: self::COLOR_MAP['error'],
-            isError: true,
+            'typo3',
+            'error',
+            self::COLOR_MAP['error'],
+            true,
         );
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function getLabel(): string
     {
         return $this->label;
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function getMessage(): string
     {
         return $this->message;
     }
 
-    public function getColor(): string
+    public function getColor(): Color
     {
         return $this->color;
     }

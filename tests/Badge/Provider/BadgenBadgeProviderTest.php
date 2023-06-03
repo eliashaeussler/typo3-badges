@@ -25,6 +25,7 @@ namespace App\Tests\Badge\Provider;
 
 use App\Badge\Provider\BadgenBadgeProvider;
 use App\Entity\Badge;
+use App\Enums\Color;
 use Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -44,17 +45,17 @@ final class BadgenBadgeProviderTest extends KernelTestCase
 
     protected function setUp(): void
     {
-        $this->subject = new BadgenBadgeProvider(self::getContainer()->get('router'));
+        $this->subject = self::getContainer()->get(BadgenBadgeProvider::class);
     }
 
     #[Test]
     public function createResponseReturnsResponseForBadge(): void
     {
         $badge = new Badge(
-            label: 'foo',
-            message: 'baz',
-            color: 'orange',
-            isError: true,
+            'foo',
+            'baz',
+            Color::Orange,
+            true,
         );
         $expected = new JsonResponse([
             'subject' => 'foo',
