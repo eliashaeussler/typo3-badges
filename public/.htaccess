@@ -71,5 +71,5 @@ DirectoryIndex index.php
 
 # Add CSP header
 <IfModule mod_headers.c>
-	Header add Content-Security-Policy "object-src 'none';frame-src 'none';script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline';img-src 'self' https://shields.io https://img.shields.io https://badgen.net;font-src 'self';connect-src 'self';manifest-src 'none';require-trusted-types-for 'script';"
+	Header add Content-Security-Policy "object-src 'none';frame-src 'none';script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline';img-src 'self' https://shields.io https://img.shields.io https://badgen.net;font-src 'self';connect-src 'self';manifest-src 'none';"
 </IfModule>
