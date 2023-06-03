@@ -26,6 +26,7 @@ namespace App\Tests\Fixtures;
 use App\Controller\AbstractBadgeController;
 use App\Entity\Badge;
 use DateTime;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -39,10 +40,11 @@ use Symfony\Component\HttpFoundation\Response;
 final class AbstractBadgeControllerTestClass extends AbstractBadgeController
 {
     public function testGetBadgeResponse(
+        Request $request,
         Badge $badge,
         string $provider = null,
         DateTime $cacheExpirationDate = null,
     ): Response {
-        return $this->getBadgeResponse($badge, $provider, $cacheExpirationDate);
+        return $this->getBadgeResponse($request, $badge, $provider, $cacheExpirationDate);
     }
 }

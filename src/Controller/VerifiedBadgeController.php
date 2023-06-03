@@ -37,14 +37,18 @@ use Symfony\Component\Routing\Annotation\Route;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/{extension}/verified/{provider?}',
+    path: '/badge/{extension}/verified/{provider?}.{_format}',
     name: 'badge.verified',
-    requirements: ['extension' => '[a-z0-9_]+'],
+    requirements: [
+        'extension' => '[a-z0-9_]+',
+        '_format' => 'json|svg',
+    ],
     options: [
         'title' => 'Verified state',
         'description' => 'Get JSON data for extension verification state.',
     ],
     methods: ['GET'],
+    format: 'json',
 )]
 final class VerifiedBadgeController extends AbstractBadgeController
 {
@@ -60,6 +64,7 @@ final class VerifiedBadgeController extends AbstractBadgeController
             ?? throw new BadRequestHttpException('Invalid API response.');
 
         return $this->getBadgeResponse(
+            $request,
             Badge::forVerification($verified),
             $provider,
             $extensionMetadata->getExpiryDate(),

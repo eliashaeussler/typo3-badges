@@ -32,6 +32,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouterInterface;
 
+use function array_map;
+
 /**
  * BadgenBadgeProvider.
  *
@@ -44,7 +46,8 @@ final class BadgenBadgeProvider implements BadgeProvider
 
     public const IDENTIFIER = 'badgen';
 
-    private const URL_PATTERN = 'https://badgen.net/https/{host}/{path}';
+    private const BADGE_URL_PATTERN = 'https://badgen.net/badge/{subject}/{status}/{color}?icon={icon}';
+    private const ENDPOINT_URL_PATTERN = 'https://badgen.net/https/{host}/{path}';
 
     public function __construct(
         RouterInterface $router,
@@ -84,15 +87,29 @@ final class BadgenBadgeProvider implements BadgeProvider
 
         $appUrl = new Uri($this->router->generate($routeName, $routeParameters, UrlGeneratorInterface::ABSOLUTE_URL));
 
-        return strtr(self::URL_PATTERN, [
+        return strtr(self::ENDPOINT_URL_PATTERN, [
             '{host}' => $appUrl->getHost().(null !== $appUrl->getPort() ? ':'.$appUrl->getPort() : ''),
             '{path}' => ltrim($appUrl->getPath(), '/'),
         ]);
     }
 
+    public function generateUriForBadge(Badge $badge): string
+    {
+        $urlParameters = [
+            '{subject}' => $badge->getLabel(),
+            '{status}' => $badge->getMessage(),
+            '{color}' => $this->getColorValue($badge->getColor()),
+        ];
+
+        return strtr(self::BADGE_URL_PATTERN, array_map('rawurlencode', $urlParameters));
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getUrlPattern(): string
     {
-        return self::URL_PATTERN;
+        return self::ENDPOINT_URL_PATTERN;
     }
 
     public function getProviderUrl(): string

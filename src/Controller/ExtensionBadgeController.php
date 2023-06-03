@@ -37,14 +37,18 @@ use Symfony\Component\Routing\Annotation\Route;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/{extension}/extension/{provider?}',
+    path: '/badge/{extension}/extension/{provider?}.{_format}',
     name: 'badge.extension',
-    requirements: ['extension' => '[a-z0-9_]+'],
+    requirements: [
+        'extension' => '[a-z0-9_]+',
+        '_format' => 'json|svg',
+    ],
     options: [
         'title' => 'TYPO3 extension',
         'description' => 'Get JSON data for extension key.',
     ],
     methods: ['GET'],
+    format: 'json',
 )]
 final class ExtensionBadgeController extends AbstractBadgeController
 {
@@ -60,6 +64,7 @@ final class ExtensionBadgeController extends AbstractBadgeController
             ?? throw new BadRequestHttpException('Invalid API response.');
 
         return $this->getBadgeResponse(
+            $request,
             Badge::forExtension($extensionKey),
             $provider,
             $extensionMetadata->getExpiryDate(),

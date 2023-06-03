@@ -78,6 +78,16 @@ final class ShieldsBadgeProviderTest extends KernelTestCase
         self::assertSame($expected, $this->subject->generateUriForRoute($route, ['extension' => 'foo']));
     }
 
+    #[Test]
+    public function generateUriForBadgeReturnsUriForGivenBadge(): void
+    {
+        $badge = new Badge('foo', 'baz', Color::Blue);
+
+        $expected = 'https://img.shields.io/static/v1?label=foo&message=baz&color=blue&logo=typo3';
+
+        self::assertSame($expected, $this->subject->generateUriForBadge($badge));
+    }
+
     /**
      * @return \Generator<string, array{Route|null|string}>
      */

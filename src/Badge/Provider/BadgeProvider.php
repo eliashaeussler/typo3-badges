@@ -46,6 +46,8 @@ interface BadgeProvider
      */
     public function generateUriForRoute(Route|string $route, array $routeParameters = []): string;
 
+    public function generateUriForBadge(Badge $badge): string;
+
     public function getUrlPattern(): string;
 
     public function getProviderUrl(): string;

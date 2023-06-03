@@ -21,25 +21,53 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace App\Controller;
+namespace App\Entity\Dto;
 
-use App\Entity\Badge;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Throwable;
+use DateTime;
+
+use function strtolower;
 
 /**
- * ErrorController.
+ * BadgeResponse.
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class ErrorController extends AbstractBadgeController
+final readonly class BadgeResponse
 {
-    public function __invoke(Request $request, Throwable $exception): Response
-    {
-        $provider = (string) $request->get('provider');
+    /**
+     * @param string[][] $headers
+     */
+    public function __construct(
+        private string $body,
+        private array $headers,
+        private ?DateTime $expiryDate = null,
+    ) {
+    }
 
-        return $this->getBadgeResponse($request, Badge::forError(), '' !== $provider ? $provider : null);
+    public function getBody(): string
+    {
+        return $this->body;
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getHeader(string $name): array
+    {
+        return $this->headers[strtolower($name)] ?? [];
+    }
+
+    public function getExpiryDate(): ?DateTime
+    {
+        return $this->expiryDate;
     }
 }

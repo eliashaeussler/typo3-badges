@@ -35,19 +35,23 @@ use Symfony\Component\Routing\Annotation\Route;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/typo3/{provider?}',
+    path: '/badge/typo3/{provider?}.{_format}',
     name: 'badge.default',
+    requirements: [
+        '_format' => 'json|svg',
+    ],
     options: [
         'title' => 'TYPO3',
         'description' => 'Get JSON data for a generic TYPO3 badge.',
     ],
     methods: ['GET'],
     priority: -255,
+    format: 'json',
 )]
 final class DefaultBadgeController extends AbstractBadgeController
 {
     public function __invoke(Request $request, string $provider = null): Response
     {
-        return $this->getBadgeResponse(Badge::static(), $provider);
+        return $this->getBadgeResponse($request, Badge::static(), $provider);
     }
 }
