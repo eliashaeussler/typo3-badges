@@ -31,6 +31,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouterInterface;
 
+use function array_map;
+
 /**
  * ShieldsBadgeProvider.
  *
@@ -43,7 +45,8 @@ final class ShieldsBadgeProvider implements BadgeProvider
 
     public const IDENTIFIER = 'shields';
 
-    private const URL_PATTERN = 'https://shields.io/endpoint?url={url}';
+    private const BADGE_URL_PATTERN = 'https://img.shields.io/static/v1?label={label}&message={message}&color={color}&logo={logo}';
+    private const ENDPOINT_URL_PATTERN = 'https://shields.io/endpoint?url={url}';
 
     public function __construct(
         RouterInterface $router,
@@ -86,14 +89,29 @@ final class ShieldsBadgeProvider implements BadgeProvider
 
         $appUrl = $this->router->generate($routeName, $routeParameters, UrlGeneratorInterface::ABSOLUTE_URL);
 
-        return strtr(self::URL_PATTERN, [
+        return strtr(self::ENDPOINT_URL_PATTERN, [
             '{url}' => $appUrl,
         ]);
     }
 
+    public function generateUriForBadge(Badge $badge): string
+    {
+        $urlParameters = [
+            '{label}' => $badge->getLabel(),
+            '{message}' => $badge->getMessage(),
+            '{color}' => $this->getColorValue($badge->getColor()),
+            '{logo}' => 'typo3',
+        ];
+
+        return strtr(self::BADGE_URL_PATTERN, array_map('rawurlencode', $urlParameters));
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getUrlPattern(): string
     {
-        return self::URL_PATTERN;
+        return self::ENDPOINT_URL_PATTERN;
     }
 
     public function getProviderUrl(): string

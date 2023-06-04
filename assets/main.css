@@ -18,7 +18,6 @@
  */
 
 @import url("./css/badge-provider-toggle.css");
-@import url("./css/provider-usage-list.css");
 
 @tailwind base;
 @tailwind components;

@@ -21,9 +21,9 @@
 
                 {% for provider in providers %}
                     {% if route.hasRequirement('extension') %}
-                        {% set routeParameters = {'extension': randomExtensionKey} %}
+                        {% set routeParameters = {'extension': randomExtensionKey, 'provider': provider.identifier, '_format': 'svg'} %}
                     {% else %}
-                        {% set routeParameters = {} %}
+                        {% set routeParameters = {'provider': provider.identifier, '_format': 'svg'} %}
                     {% endif %}
 
                     <div class="badge-endpoint-example mt-3 md:mt-4" data-badge-provider="{{ provider.identifier }}">
@@ -31,7 +31,7 @@
                             {% block md %}
                                 {% embed 'partials/_code-block.html.twig' with {'showCopyButton': true} %}
                                     {% block content %}
-                                        <span class="text-red-400">![{{ route.options.title }}]</span><span class="text-yellow-400">(</span><span class="text-green-400">{{ provider.generateUriForRoute(route, routeParameters) }}</span><span class="text-yellow-400">)</span>
+                                        <span class="text-red-400">![{{ route.options.title }}]</span><span class="text-yellow-400">(</span><span class="text-green-400">{{ url(routeName, routeParameters) }}</span><span class="text-yellow-400">)</span>
                                     {% endblock %}
                                 {% endembed %}
                             {% endblock %}
@@ -39,7 +39,7 @@
                             {% block rst %}
                                 {% embed 'partials/_code-block.html.twig' with {'showCopyButton': true} %}
                                     {% block content %}
-                                        <span>..&nbsp;&nbsp;</span><span class="text-red-400">image::</span>&nbsp;<span class="text-green-400">{{ provider.generateUriForRoute(route, routeParameters) }}</span><br>
+                                        <span>..&nbsp;&nbsp;</span><span class="text-red-400">image::</span>&nbsp;<span class="text-green-400">{{ url(routeName, routeParameters) }}</span><br>
                                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text-red-400">:alt:</span>&nbsp;<span class="text-green-400">{{ route.options.title }}</span><br>
                                     {% endblock %}
                                 {% endembed %}
@@ -48,14 +48,14 @@
                             {% block html %}
                                 {% embed 'partials/_code-block.html.twig' with {'showCopyButton': true} %}
                                     {% block content %}
-                                        <span>&lt;</span><span class="text-red-400">img</span>&nbsp;<span class="text-yellow-400">alt</span><span class="text-green-400">="{{ route.options.title }}"</span>&nbsp;<span class="text-yellow-400">src</span><span class="text-green-400">="{{ provider.generateUriForRoute(route, routeParameters) }}"</span><span>&gt;</span><br>
+                                        <span>&lt;</span><span class="text-red-400">img</span>&nbsp;<span class="text-yellow-400">alt</span><span class="text-green-400">="{{ route.options.title }}"</span>&nbsp;<span class="text-yellow-400">src</span><span class="text-green-400">="{{ url(routeName, routeParameters) }}"</span><span>&gt;</span><br>
                                     {% endblock %}
                                 {% endembed %}
                             {% endblock %}
                         {% endembed %}
 
                         {% include 'partials/_badge.html.twig' with {
-                            'src': provider.generateUriForRoute(route, routeParameters),
+                            'src': url(routeName, routeParameters),
                             'title': 'Rendered badge',
                             'class': 'mt-3 md:mt-4',
                             'link': true,

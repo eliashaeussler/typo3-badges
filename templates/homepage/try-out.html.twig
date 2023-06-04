@@ -35,7 +35,7 @@
                                     {% for routeName, route in routes %}
                                         {% if route.hasRequirement('extension') %}
                                             {% include 'partials/_badge.html.twig' with {
-                                                'src': provider.generateUriForRoute(routeName, {'extension': 'EXTENSION_KEY'}),
+                                                'src': url(routeName, {'extension': 'EXTENSION_KEY', 'provider': provider.identifier, '_format': 'svg'}),
                                                 'title': 'TYPO3 badge',
                                                 'class': 'mr-1 mt-1 inline-block',
                                             } %}
@@ -51,7 +51,7 @@
                                             {% block content %}
                                                 {% for routeName, route in routes %}
                                                     {% if route.hasRequirement('extension') %}
-                                                        <span class="text-red-400">![{{ route.options.title }}]</span><span class="text-yellow-400">(</span><span class="text-green-400">{{ provider.generateUriForRoute(routeName, {'extension': 'EXTENSION_KEY'}) }}</span><span class="text-yellow-400">)</span><br>
+                                                        <span class="text-red-400">![{{ route.options.title }}]</span><span class="text-yellow-400">(</span><span class="text-green-400">{{ url(routeName, {'extension': 'EXTENSION_KEY', 'provider': provider.identifier, '_format': 'svg'}) }}</span><span class="text-yellow-400">)</span><br>
                                                     {% endif %}
                                                 {% endfor %}
                                                 <span class="text-gray-400" style="font-variant-ligatures: none;">&lt;!-- Generated with 🧡 at {{ app.request.host() }} --&gt;</span>
@@ -64,7 +64,7 @@
                                             {% block content %}
                                                 {% for routeName, route in routes %}
                                                     {% if route.hasRequirement('extension') %}
-                                                        <span>..&nbsp;&nbsp;</span><span class="text-red-400">image::</span>&nbsp;<span class="text-green-400">{{ provider.generateUriForRoute(routeName, {'extension': 'EXTENSION_KEY'}) }}</span><br>
+                                                        <span>..&nbsp;&nbsp;</span><span class="text-red-400">image::</span>&nbsp;<span class="text-green-400">{{ url(routeName, {'extension': 'EXTENSION_KEY', 'provider': provider.identifier, '_format': 'svg'}) }}</span><br>
                                                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="text-red-400">:alt:</span>&nbsp;<span class="text-green-400">{{ route.options.title }}</span><br><br>
                                                     {% endif %}
                                                 {% endfor %}
@@ -78,7 +78,7 @@
                                             {% block content %}
                                                 {% for routeName, route in routes %}
                                                     {% if route.hasRequirement('extension') %}
-                                                        <span>&lt;</span><span class="text-red-400">img</span>&nbsp;<span class="text-yellow-400">alt</span><span class="text-green-400">="{{ route.options.title }}"</span>&nbsp;<span class="text-yellow-400">src</span><span class="text-green-400">="{{ provider.generateUriForRoute(routeName, {'extension': 'EXTENSION_KEY'}) }}"</span><span>&gt;</span><br>
+                                                        <span>&lt;</span><span class="text-red-400">img</span>&nbsp;<span class="text-yellow-400">alt</span><span class="text-green-400">="{{ route.options.title }}"</span>&nbsp;<span class="text-yellow-400">src</span><span class="text-green-400">="{{ url(routeName, {'extension': 'EXTENSION_KEY', 'provider': provider.identifier, '_format': 'svg'}) }}"</span><span>&gt;</span><br>
                                                     {% endif %}
                                                 {% endfor %}
                                                 <span class="text-gray-400" style="font-variant-ligatures: none;">&lt;!-- Generated with 🧡 at {{ app.request.host() }} --&gt;</span>

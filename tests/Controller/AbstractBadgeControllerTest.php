@@ -25,10 +25,13 @@ namespace App\Tests\Controller;
 
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
+use App\Service\BadgeService;
+use App\Tests\AbstractApiTestCase;
 use App\Tests\Fixtures\AbstractBadgeControllerTestClass;
 use DateTime;
 use PHPUnit\Framework\Attributes\Test;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -37,16 +40,21 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-final class AbstractBadgeControllerTest extends KernelTestCase
+final class AbstractBadgeControllerTest extends AbstractApiTestCase
 {
     private BadgeProviderFactory $badgeProviderFactory;
     private AbstractBadgeControllerTestClass $subject;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->badgeProviderFactory = self::getContainer()->get(BadgeProviderFactory::class);
         $this->subject = new AbstractBadgeControllerTestClass();
         $this->subject->setBadgeProviderFactory($this->badgeProviderFactory);
+        $this->subject->setBadgeService(
+            new BadgeService($this->getMockClient(), $this->cache),
+        );
     }
 
     #[Test]
@@ -54,7 +62,34 @@ final class AbstractBadgeControllerTest extends KernelTestCase
     {
         $this->expectException(NotFoundHttpException::class);
 
-        $this->subject->testGetBadgeResponse(Badge::static(), 'foo');
+        $this->subject->testGetBadgeResponse(new Request(), Badge::static(), 'foo');
+    }
+
+    #[Test]
+    public function getBadgeResponseReturnsRenderedBadgeOnSvgRequestFormat(): void
+    {
+        $badge = Badge::static();
+
+        $badgeProvider = $this->badgeProviderFactory->get();
+        $cacheIdentifier = $this->getCacheIdentifier('badge_response', [
+            'url' => $badgeProvider->generateUriForBadge($badge),
+        ]);
+
+        $this->cache->get($cacheIdentifier, static fn () => [
+            'body' => 'foo',
+            'headers' => [
+                'content-type' => ['baz'],
+            ],
+        ]);
+
+        $request = new Request();
+        $request->setRequestFormat('svg');
+
+        $actual = $this->subject->testGetBadgeResponse($request, $badge);
+
+        self::assertSame('foo', $actual->getContent());
+        self::assertSame('baz', $actual->headers->get('Content-Type'));
+        self::assertSame(Response::HTTP_OK, $actual->getStatusCode());
     }
 
     #[Test]
@@ -63,7 +98,7 @@ final class AbstractBadgeControllerTest extends KernelTestCase
         $badge = Badge::static();
         $expected = $this->badgeProviderFactory->get()->createResponse($badge);
 
-        self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge));
+        self::assertEquals($expected, $this->subject->testGetBadgeResponse(new Request(), $badge));
     }
 
     #[Test]
@@ -72,7 +107,10 @@ final class AbstractBadgeControllerTest extends KernelTestCase
         $badge = Badge::static();
         $expected = $this->badgeProviderFactory->get('badgen')->createResponse($badge);
 
-        self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge, 'badgen'));
+        self::assertEquals(
+            $expected,
+            $this->subject->testGetBadgeResponse(new Request(), $badge, 'badgen'),
+        );
     }
 
     #[Test]
@@ -85,6 +123,9 @@ final class AbstractBadgeControllerTest extends KernelTestCase
             ->setExpires($cacheExpirationDate);
         $expected->headers->addCacheControlDirective('must-revalidate', true);
 
-        self::assertEquals($expected, $this->subject->testGetBadgeResponse($badge, 'badgen', $cacheExpirationDate));
+        self::assertEquals(
+            $expected,
+            $this->subject->testGetBadgeResponse(new Request(), $badge, 'badgen', $cacheExpirationDate),
+        );
     }
 }

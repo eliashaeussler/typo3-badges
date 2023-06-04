@@ -26,7 +26,9 @@ namespace App\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
 use App\Exception\InvalidProviderException;
+use App\Service\BadgeService;
 use DateTime;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -41,7 +43,10 @@ abstract class AbstractBadgeController
 {
     use CacheableResponseTrait;
 
+    protected const DEFAULT_CONTENT_TYPE = 'image/svg+xml; charset=utf-8';
+
     protected BadgeProviderFactory $badgeProviderFactory;
+    protected BadgeService $badgeService;
 
     #[Required]
     public function setBadgeProviderFactory(BadgeProviderFactory $badgeProviderFactory): void
@@ -49,7 +54,14 @@ abstract class AbstractBadgeController
         $this->badgeProviderFactory = $badgeProviderFactory;
     }
 
+    #[Required]
+    public function setBadgeService(BadgeService $badgeService): void
+    {
+        $this->badgeService = $badgeService;
+    }
+
     protected function getBadgeResponse(
+        Request $request,
         Badge $badge,
         string $provider = null,
         DateTime $cacheExpirationDate = null,
@@ -58,6 +70,19 @@ abstract class AbstractBadgeController
             $providerClass = $this->badgeProviderFactory->get($provider);
         } catch (InvalidProviderException $e) {
             throw new NotFoundHttpException($e->getMessage());
+        }
+
+        if ('svg' === $request->getRequestFormat()) {
+            $badgeResponse = $this->badgeService->get($badge, $providerClass);
+            $contentType = $badgeResponse->getHeader('Content-Type')[0] ?? self::DEFAULT_CONTENT_TYPE;
+
+            return new Response(
+                $badgeResponse->getBody(),
+                Response::HTTP_OK,
+                [
+                    'Content-Type' => $contentType,
+                ],
+            );
         }
 
         $response = $providerClass->createResponse($badge);

@@ -50,6 +50,8 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
         AddLiteralSeparatorToNumberRector::class,
         AnnotationToAttributeRector::class => [
+            __DIR__.'/src/Badge/Provider/BadgenBadgeProvider.php',
+            __DIR__.'/src/Badge/Provider/ShieldsBadgeProvider.php',
             __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
         ],
         CountOnNullRector::class => [

@@ -37,14 +37,18 @@ use Symfony\Component\Routing\Annotation\Route;
  * @license GPL-3.0-or-later
  */
 #[Route(
-    path: '/badge/{extension}/stability/{provider?}',
+    path: '/badge/{extension}/stability/{provider?}.{_format}',
     name: 'badge.stability',
-    requirements: ['extension' => '[a-z0-9_]+'],
+    requirements: [
+        'extension' => '[a-z0-9_]+',
+        '_format' => 'json|svg',
+    ],
     options: [
         'title' => 'Stability',
         'description' => 'Get JSON data for extension stability.',
     ],
     methods: ['GET'],
+    format: 'json',
 )]
 final class StabilityBadgeController extends AbstractBadgeController
 {
@@ -60,6 +64,7 @@ final class StabilityBadgeController extends AbstractBadgeController
             ?? throw new BadRequestHttpException('Invalid API response.');
 
         return $this->getBadgeResponse(
+            $request,
             Badge::forStability($stability),
             $provider,
             $extensionMetadata->getExpiryDate(),

@@ -1,5 +1,5 @@
 <div class="flex items-center justify-space-between">
-    <h2 class="font-bold text-xl flex-grow">&#x1F916;&nbsp;API response</h2>
+    <h2 class="font-bold text-xl flex-grow">&#x1F916;&nbsp;JSON response schema</h2>
 
     {% include 'partials/_badge-provider-toggle.html.twig' with {'section': 'api-response'} %}
 </div>
@@ -12,7 +12,7 @@
     </div>
 
     <p class="text-gray mt-2">
-        All endpoints return JSON objects to be processed by Badgen.
+        All JSON endpoints return objects to be processed by Badgen.
     </p>
     {% embed 'partials/_code-block.html.twig' with {'showCopyButton': true} %}
         {% block content %}
@@ -36,7 +36,7 @@
     </div>
 
     <p class="text-gray mt-2">
-        All endpoints return JSON objects to be processed by Shields.io.
+        All JSON endpoints return objects to be processed by Shields.io.
     </p>
     {% embed 'partials/_code-block.html.twig' with {'showCopyButton': true} %}
         {% block content %}
