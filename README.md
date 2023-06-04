@@ -23,7 +23,7 @@
 
 A Symfony project that provides endpoints for beautiful TYPO3 badges. Pimp all your
 extension documentation with badges for e.g. extension version or TER downloads. All
-endpoints provide JSON configuration for use with
+endpoints provide either rendered SVG badges or JSON configuration for use with
 [Shields.io](https://shields.io/endpoint) or [Badgen](https://badgen.net/https).
 
 ## :zap: Usage
