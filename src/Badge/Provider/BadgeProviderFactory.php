@@ -26,8 +26,6 @@ namespace App\Badge\Provider;
 use App\Exception\InvalidProviderException;
 use Symfony\Component\DependencyInjection\ServiceLocator;
 
-use function assert;
-
 /**
  * BadgeProviderFactory.
  *
@@ -36,6 +34,9 @@ use function assert;
  */
 final readonly class BadgeProviderFactory
 {
+    /**
+     * @param ServiceLocator<BadgeProvider> $providers
+     */
     public function __construct(
         private ServiceLocator $providers,
     ) {
@@ -69,8 +70,6 @@ final readonly class BadgeProviderFactory
 
         foreach (array_keys($this->providers->getProvidedServices()) as $serviceId) {
             $provider = $this->providers->get($serviceId);
-            assert($provider instanceof BadgeProvider);
-
             $providers[$provider::getIdentifier()] = $provider;
         }
 
