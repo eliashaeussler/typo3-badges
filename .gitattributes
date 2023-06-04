@@ -8,7 +8,6 @@
 /CODEOWNERS               export-ignore
 /deploy.php               export-ignore
 /phpstan.neon             export-ignore
-/phpunit.coverage.xml     export-ignore
-/phpunit.xml.dist         export-ignore
+/phpunit.xml              export-ignore
 /rector.php               export-ignore
 /renovate.json            export-ignore

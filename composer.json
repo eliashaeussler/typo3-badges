@@ -120,7 +120,7 @@
 		"lint:php:fix": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix",
 		"migration": "rector process",
 		"sca": "phpstan analyse -c phpstan.neon",
-		"test": "XDEBUG_MODE=off bin/phpunit",
-		"test:coverage": "XDEBUG_MODE=coverage bin/phpunit -c phpunit.coverage.xml"
+		"test": "@test:coverage --no-coverage",
+		"test:coverage": "phpunit -c phpunit.xml"
 	}
 }
