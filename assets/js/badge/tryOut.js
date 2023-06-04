@@ -112,7 +112,8 @@ export default class TryOut {
 
     // Create code tabs
     badgeProviderToggle.getAllProviders().forEach((provider) => {
-      const tabs = new Tabs(
+      // eslint-disable-next-line no-new
+      new Tabs(
         [
           {
             id: 'md',
@@ -134,8 +135,6 @@ export default class TryOut {
           defaultTabId: CodeTabs.getCurrentLanguage() ?? 'md',
         },
       );
-
-      tabs.show(CodeTabs.getCurrentLanguage());
     });
 
     // Connect code tabs
