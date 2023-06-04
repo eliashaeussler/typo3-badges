@@ -58,7 +58,7 @@ final class DefaultBadgeControllerTest extends WebTestCase
     }
 
     /**
-     * @return \Generator<string, array{string, array<string, string|int|bool>}>
+     * @return Generator<string, array{string, array<string, string|int|bool>}>
      */
     public static function controllerReturnsTypo3BadgeDataProvider(): Generator
     {

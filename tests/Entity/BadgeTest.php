@@ -186,7 +186,7 @@ final class BadgeTest extends TestCase
     }
 
     /**
-     * @return \Generator<string, array{non-empty-string, Color}>
+     * @return Generator<string, array{non-empty-string, Color}>
      */
     public static function forStabilityReturnsBadgeForStabilityDataProvider(): Generator
     {
@@ -200,7 +200,7 @@ final class BadgeTest extends TestCase
     }
 
     /**
-     * @return \Generator<string, array{list<positive-int>, non-empty-string}>
+     * @return Generator<string, array{list<positive-int>, non-empty-string}>
      */
     public static function forTypo3VersionsReturnsBadgeForTypo3VersionsDataProvider(): Generator
     {

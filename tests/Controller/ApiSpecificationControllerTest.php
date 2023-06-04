@@ -87,7 +87,7 @@ final class ApiSpecificationControllerTest extends WebTestCase
     }
 
     /**
-     * @return \Generator<string, array{string}>
+     * @return Generator<string, array{string}>
      */
     public static function controllerReturnsApiSpecificationAsJsonDataProvider(): Generator
     {
