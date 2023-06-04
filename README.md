@@ -13,7 +13,7 @@
 [![API schema](https://github.com/eliashaeussler/typo3-badges/actions/workflows/schema.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/schema.yaml)
 [![Latest version](https://img.shields.io/github/v/release/eliashaeussler/typo3-badges)](https://github.com/eliashaeussler/typo3-badges/releases/latest)
 [![License](https://img.shields.io/github/license/eliashaeussler/typo3-badges)](LICENSE)
-[![TYPO3 – inspiring people to share!](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/typo3)](https://typo3-badges.dev)
+[![TYPO3 – inspiring people to share!](https://typo3-badges.dev/badge/typo3/shields.svg)](https://typo3-badges.dev)
 
 **:earth_africa:&nbsp;[Official website](https://typo3-badges.dev)** |
 :floppy_disk:&nbsp;[Repository](https://github.com/eliashaeussler/typo3-badges) |
