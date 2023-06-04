@@ -46,7 +46,7 @@ final class BadgenBadgeProvider implements BadgeProvider
 
     public const IDENTIFIER = 'badgen';
 
-    private const BADGE_URL_PATTERN = 'https://badgen.net/badge/{subject}/{status}/{color}?icon={icon}';
+    private const BADGE_URL_PATTERN = 'https://badgen.net/badge/{subject}/{status}/{color}';
     private const ENDPOINT_URL_PATTERN = 'https://badgen.net/https/{host}/{path}';
 
     public function __construct(
