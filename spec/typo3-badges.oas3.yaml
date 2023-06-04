@@ -3,7 +3,7 @@ servers:
   - url: https://typo3-badges.dev
 info:
   description: API with JSON endpoints to create TYPO3 badges with Badgen or Shields.io.
-  version: 1.2.0
+  version: 1.3.0
   title: TYPO3 Badges
   contact:
     name: Elias Häußler
@@ -15,15 +15,16 @@ tags:
   - name: Badge
     description: Badge data for TYPO3 extension badges
 paths:
-  /badge/typo3/{provider}:
+  /badge/typo3/{provider}.{_format}:
     get:
       description: Generic TYPO3 badge
       summary: >-
-        Gets badge data for a generic TYPO3 badge using the default badge
-        provider.
+        Gets rendered badge or badge data for a generic
+        TYPO3 badge using the default badge provider.
       operationId: getDefaultBadge
       parameters:
         - $ref: '#/components/parameters/Provider'
+        - $ref: '#/components/parameters/Format'
       tags:
         - Badge
       responses:
@@ -35,20 +36,24 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/BadgenResponse'
                   - $ref: '#/components/schemas/ShieldsResponse'
+            image/svg+xml:
+              schema:
+                type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
-  /badge/{extension}/downloads/{provider}:
+  /badge/{extension}/downloads/{provider}.{_format}:
     get:
       description: Downloads badge
       summary: >-
-        Gets badge data for downloads of given TYPO3 extension using the default
-        badge provider.
+        Gets rendered badge or badge data for downloads of given
+        TYPO3 extension using the default badge provider.
       operationId: getDownloadsBadge
       parameters:
         - $ref: '#/components/parameters/Extension'
         - $ref: '#/components/parameters/Provider'
+        - $ref: '#/components/parameters/Format'
       tags:
         - Badge
       responses:
@@ -60,20 +65,24 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/BadgenResponse'
                   - $ref: '#/components/schemas/ShieldsResponse'
+            image/svg+xml:
+              schema:
+                type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
-  /badge/{extension}/extension/{provider}:
+  /badge/{extension}/extension/{provider}.{_format}:
     get:
       description: Extension badge
       summary: >-
-        Gets badge data for extension key of given TYPO3 extension using the
-        default badge provider.
+        Gets rendered badge or badge data for extension key of
+        given TYPO3 extension using the default badge provider.
       operationId: getExtensionBadge
       parameters:
         - $ref: '#/components/parameters/Extension'
         - $ref: '#/components/parameters/Provider'
+        - $ref: '#/components/parameters/Format'
       tags:
         - Badge
       responses:
@@ -85,20 +94,24 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/BadgenResponse'
                   - $ref: '#/components/schemas/ShieldsResponse'
+            image/svg+xml:
+              schema:
+                type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
-  /badge/{extension}/stability/{provider}:
+  /badge/{extension}/stability/{provider}.{_format}:
     get:
       description: Stability badge
       summary: >-
-        Gets badge data for latest stability of given TYPO3 extension using the
-        default badge provider.
+        Gets rendered badge or badge data for latest stability
+        of given TYPO3 extension using the default badge provider.
       operationId: getStabilityBadge
       parameters:
         - $ref: '#/components/parameters/Extension'
         - $ref: '#/components/parameters/Provider'
+        - $ref: '#/components/parameters/Format'
       tags:
         - Badge
       responses:
@@ -110,20 +123,24 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/BadgenResponse'
                   - $ref: '#/components/schemas/ShieldsResponse'
+            image/svg+xml:
+              schema:
+                type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
-  /badge/{extension}/typo3/{provider}:
+  /badge/{extension}/typo3/{provider}.{_format}:
     get:
       description: TYPO3 versions badge
       summary: >-
-        Gets badge data for supported TYPO3 versions of given TYPO3 extension using the
-        default badge provider.
+        Gets rendered badge or badge data for supported TYPO3 versions
+        of given TYPO3 extension using the default badge provider.
       operationId: getTypo3Badge
       parameters:
         - $ref: '#/components/parameters/Extension'
         - $ref: '#/components/parameters/Provider'
+        - $ref: '#/components/parameters/Format'
       tags:
         - Badge
       responses:
@@ -135,20 +152,25 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/BadgenResponse'
                   - $ref: '#/components/schemas/ShieldsResponse'
+            image/svg+xml:
+              schema:
+                type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
-  /badge/{extension}/verified/{provider}:
+  /badge/{extension}/verified/{provider}.{_format}:
     get:
       description: Verified badge
       summary: >-
-        Gets badge data to display the verification state of given TYPO3 extension using the
-        default badge provider.
+        Gets rendered badge or badge data to display the
+        verification state of given TYPO3 extension using
+        the default badge provider.
       operationId: getVerifiedBadge
       parameters:
         - $ref: '#/components/parameters/Extension'
         - $ref: '#/components/parameters/Provider'
+        - $ref: '#/components/parameters/Format'
       tags:
         - Badge
       responses:
@@ -160,20 +182,24 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/BadgenResponse'
                   - $ref: '#/components/schemas/ShieldsResponse'
+            image/svg+xml:
+              schema:
+                type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
-  /badge/{extension}/version/{provider}:
+  /badge/{extension}/version/{provider}.{_format}:
     get:
       description: Version badge
       summary: >-
-        Gets badge data for latest version of given TYPO3 extension using the
-        default badge provider.
+        Gets rendered badge or badge data for latest version of
+        given TYPO3 extension using the default badge provider.
       operationId: getVersionBadge
       parameters:
         - $ref: '#/components/parameters/Extension'
         - $ref: '#/components/parameters/Provider'
+        - $ref: '#/components/parameters/Format'
       tags:
         - Badge
       responses:
@@ -185,6 +211,9 @@ paths:
                 oneOf:
                   - $ref: '#/components/schemas/BadgenResponse'
                   - $ref: '#/components/schemas/ShieldsResponse'
+            image/svg+xml:
+              schema:
+                type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '404':
@@ -198,6 +227,13 @@ components:
         - badgen
         - shields
       default: shields
+    Format:
+      type: string
+      description: The badge response format.
+      enum:
+        - json
+        - svg
+      default: json
     BadgenResponse:
       type: object
       description: Response object to be parsed by Badgen.
@@ -286,6 +322,14 @@ components:
         type: string
       description: The TYPO3 extension key.
       example: handlebars
+    Format:
+      in: path
+      name: _format
+      required: true
+      schema:
+        $ref: '#/components/schemas/Format'
+      description: The badge response format.
+      example: svg
   responses:
     BadRequest:
       description: An error occurred while parsing extension metadata.
