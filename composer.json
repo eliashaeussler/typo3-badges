@@ -117,7 +117,7 @@
 		"lint:composer": "@lint:composer:fix --dry-run",
 		"lint:composer:fix": "@composer normalize",
 		"lint:php": "@lint:php:fix --dry-run",
-		"lint:php:fix": "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer fix",
+		"lint:php:fix": "php-cs-fixer fix",
 		"migration": "rector process",
 		"sca": "phpstan analyse -c phpstan.neon",
 		"test": "@test:coverage --no-coverage",
