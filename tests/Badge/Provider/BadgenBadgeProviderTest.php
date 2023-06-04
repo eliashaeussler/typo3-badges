@@ -86,7 +86,7 @@ final class BadgenBadgeProviderTest extends KernelTestCase
     }
 
     /**
-     * @return \Generator<string, array{Route|null|string}>
+     * @return Generator<string, array{Route|string|null}>
      */
     public static function generateUriForRouteReturnsUriForGivenRouteDataProvider(): Generator
     {

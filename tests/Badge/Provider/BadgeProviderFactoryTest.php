@@ -91,7 +91,7 @@ final class BadgeProviderFactoryTest extends KernelTestCase
     }
 
     /**
-     * @return \Generator<string, array{string, class-string<BadgeProvider>}>
+     * @return Generator<string, array{string, class-string<BadgeProvider>}>
      */
     public static function getReturnsDefaultBadgeResponseProviderDataProvider(): Generator
     {

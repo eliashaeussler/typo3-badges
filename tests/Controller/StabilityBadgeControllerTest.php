@@ -90,7 +90,7 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
     }
 
     /**
-     * @return \Generator<string, array{string, string}>
+     * @return Generator<string, array{string, string}>
      */
     public static function controllerReturnsBadgeForGivenExtensionDataProvider(): Generator
     {
