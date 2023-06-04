@@ -16,7 +16,6 @@
 		"php": "~8.2.0",
 		"ext-hash": "*",
 		"ext-json": "*",
-		"doctrine/annotations": "^2.0",
 		"nyholm/psr7": "^1.4",
 		"symfony/apache-pack": "^1.0",
 		"symfony/asset": "6.3.*",
