@@ -46,12 +46,12 @@ export default class App {
   }
 
   initializeComponents() {
-    this.badgeProviderToggle = new BadgeProviderToggle('.badge-providers-button');
-    this.tryOut = new TryOut('[data-modal-trigger="try-out-modal"]');
-
     Clipboard.connect('.clipboard-btn');
     CodeTabs.connect();
     LazyLoad.connect('body');
+
+    this.badgeProviderToggle = new BadgeProviderToggle('.badge-providers-button');
+    this.tryOut = new TryOut('[data-modal-trigger="try-out-modal"]');
   }
 
   /**

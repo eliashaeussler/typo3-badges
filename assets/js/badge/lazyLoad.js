@@ -70,6 +70,8 @@ export default class LazyLoad {
     element.removeAttribute('data-src');
 
     // Remove lazy-load classes
-    element.classList.remove(...lazyClasses.split(' '));
+    element.addEventListener('load', () => {
+      element.classList.remove(...lazyClasses.split(' '));
+    });
   }
 }
