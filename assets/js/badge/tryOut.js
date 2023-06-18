@@ -82,7 +82,7 @@ export default class TryOut {
     this.element.querySelector('form').onsubmit = (e) => {
       e.preventDefault();
 
-      const extensionKey = this.input.value;
+      const extensionKey = this.input.value.trim().toLowerCase();
       this.applyTemplate(extensionKey);
     };
   }
