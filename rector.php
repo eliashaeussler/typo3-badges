@@ -29,6 +29,7 @@ use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
+use Rector\Symfony\Symfony34\Rector\Closure\ContainerGetNameToTypeInTestsRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -54,6 +55,7 @@ return static function (RectorConfig $rectorConfig): void {
             __DIR__.'/src/Badge/Provider/ShieldsBadgeProvider.php',
             __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
         ],
+        ContainerGetNameToTypeInTestsRector::class,
         CountOnNullRector::class => [
             __DIR__.'/tests/Controller/HomepageControllerTest.php',
         ],
