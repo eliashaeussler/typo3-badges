@@ -1045,19 +1045,19 @@
   integrity sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==
 
 "@fontsource/indie-flower@^5.0.0":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-5.0.4.tgz#4eaeb26eec9e4b250e752ea03cce46ac193fb274"
-  integrity sha512-NZn2N2c5/f7RRsvNfe9weyKj7L7nfjCcZbae9Gh62+qxOumuth6NX/E0P+DwrPS/OzAuYEBhi+5LzCHxY7M3fQ==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-5.0.5.tgz#9c710b7cc80ba434e3252de2ccd3e7d90e426242"
+  integrity sha512-x+DqZX3AqyraSfrvCzSjyk3t/tlIb8draXBk6yUtK4oCkCraQPNbdUak7hIY1JNiMD++Db1HppTBUFAILlVdyA==
 
 "@fontsource/jetbrains-mono@^5.0.0":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-5.0.4.tgz#1f96b5286cf3668e0e0c029c77f33a3f0166fb36"
-  integrity sha512-IJSVgOxGwoiI1TPwl0cT1SZChO+3yo4Ab6dBFk6Y00gs+sTmvFYW/wJDLmTX/3gTZd0gxz8w7xKAyBTi3ShEfg==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-5.0.5.tgz#415c46ba68b40a2f4200117430c99bc04a0ab460"
+  integrity sha512-Smuppiu7QzNCatnccTXdUYbxUmEVywklM/hntWKhig0Q+hm7SYzQpNpxCR1Gm8npE8jpaKslhIsBPGuTBGZgdA==
 
 "@fontsource/lato@^5.0.0":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.4.tgz#e8cacb2fb4eddc1cc4571079771516da73f2f1e1"
-  integrity sha512-56SSR09E/DXtJKwl6unJnnQE6tI8dAd4txyZhrobtvfYGf1IV8Jo3oDBZDaiFuHWeGUm8kfJ/qGHPMzzEIlx+Q==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.5.tgz#b78f11a2875441520ec8ae9175555fcdfb0ec4a5"
+  integrity sha512-hZ9tmHO8vmXPxNAWENTcitEabJeKbOICwok4EBjVIuY985dg1AAy0vUGUMVTpPKgf425An/+qCrO/GJt3tP2Uw==
 
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
