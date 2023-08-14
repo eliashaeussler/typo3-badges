@@ -1012,14 +1012,14 @@
   integrity sha512-MtP1RkdrgW2U9oz0G4jyAvk9is2B9SqXg+v/WhBLZMDt25x2Gwu2dv/1WIc2hkVFHYUOj8husoNq9c1joAlc2A==
 
 "@fontsource/jetbrains-mono@^5.0.0":
-  version "5.0.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-5.0.8.tgz#3e72d5ef537f608af59e4971c102319387eb56ca"
-  integrity sha512-ck4x0rKG9atF1Kvsb8t8c7IXr9UNSQ3BGMWVv0kw/OxF3ldfg11Sg3AxJnOkl/xeXXFwgR+Y9yuMmnK+skTElQ==
+  version "5.0.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-5.0.9.tgz#1a91f9b37d39c4ec5f39a01be0e0543e2dbcc824"
+  integrity sha512-4UFaTOS0QYtcsoK/H230Suoarbgiyz1jTTgVl+AvaDkOjIy+GWTljVrhj8vT7GqzcjeQkDcEx7DxFwFxP5LxEA==
 
 "@fontsource/lato@^5.0.0":
-  version "5.0.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.8.tgz#30362aabe517d80bf3eddc7eb10352be4346423c"
-  integrity sha512-a4XnSIbiISLf0UFflBJ4H4HErH2xvQO99hOm9an7ljBY7cUruaEIMHmqOraPPS8alYikkmMEOOksdulDFyLfFg==
+  version "5.0.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.9.tgz#0e306d6ddd9acf7fbd92334fac98a4498e7507a8"
+  integrity sha512-VqqZWU5he/4gCBjbexQCL5chelaeYu+ssZ8im4vx4VeDeMS/M6mxPelX2zlCbCdzYczwrVBodr3GVRbqIMpWUg==
 
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
