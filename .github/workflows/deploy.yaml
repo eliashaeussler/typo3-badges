@@ -16,7 +16,7 @@ jobs:
       name: production
       url: https://typo3-badges.dev
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -65,7 +65,7 @@ jobs:
       name: dev
       url: https://pre.typo3-badges.dev
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
