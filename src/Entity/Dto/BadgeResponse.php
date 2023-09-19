@@ -42,8 +42,7 @@ final readonly class BadgeResponse
         private string $body,
         private array $headers,
         private ?DateTime $expiryDate = null,
-    ) {
-    }
+    ) {}
 
     public function getBody(): string
     {

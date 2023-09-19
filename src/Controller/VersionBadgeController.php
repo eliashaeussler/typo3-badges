@@ -54,8 +54,7 @@ final class VersionBadgeController extends AbstractBadgeController
 {
     public function __construct(
         private readonly ApiService $apiService,
-    ) {
-    }
+    ) {}
 
     public function __invoke(Request $request, string $extension, string $provider = null): Response
     {

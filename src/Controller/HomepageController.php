@@ -46,8 +46,7 @@ final class HomepageController extends AbstractController
         private readonly RouterInterface $router,
         private readonly BadgeProviderFactory $badgeProviderFactory,
         private readonly ApiService $apiService,
-    ) {
-    }
+    ) {}
 
     public function __invoke(): Response
     {

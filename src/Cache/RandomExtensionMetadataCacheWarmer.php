@@ -40,8 +40,7 @@ final readonly class RandomExtensionMetadataCacheWarmer implements CacheWarmerIn
 {
     public function __construct(
         private ApiService $apiService,
-    ) {
-    }
+    ) {}
 
     public function warmUp(string $cacheDir): array
     {
