@@ -52,7 +52,7 @@ set('rsync', [
         'codecov.yml',
         'CODEOWNERS',
         'deploy.php',
-        'phpstan.neon',
+        'phpstan.php',
         'phpunit.xml',
         'postcss.config.js',
         'rector.php',
