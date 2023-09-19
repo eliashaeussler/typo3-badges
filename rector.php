@@ -21,43 +21,33 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
 use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
-use Rector\PHPUnit\Set\PHPUnitLevelSetList;
-use Rector\Set\ValueObject\LevelSetList;
-use Rector\Symfony\Set\SymfonyLevelSetList;
-use Rector\Symfony\Set\SymfonySetList;
 use Rector\Symfony\Symfony34\Rector\Closure\ContainerGetNameToTypeInTestsRector;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->paths([
-        __DIR__.'/src',
-        __DIR__.'/tests',
-    ]);
-
     $rectorConfig->symfonyContainerXml(__DIR__.'/var/cache/dev/App_KernelDevDebugContainer.xml');
 
-    // define sets of rules
-    $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_82,
-        SymfonyLevelSetList::UP_TO_SYMFONY_62,
-        PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
-        SymfonySetList::SYMFONY_CODE_QUALITY,
-        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
-    ]);
-
-    $rectorConfig->skip([
-        AddLiteralSeparatorToNumberRector::class,
-        AnnotationToAttributeRector::class => [
+    Config::create($rectorConfig)
+        ->in(
+            __DIR__.'/src',
+            __DIR__.'/tests',
+        )
+        ->withSymfony()
+        ->withPHPUnit()
+        ->skip(AddLiteralSeparatorToNumberRector::class)
+        ->skip(AnnotationToAttributeRector::class, [
             __DIR__.'/src/Badge/Provider/BadgenBadgeProvider.php',
             __DIR__.'/src/Badge/Provider/ShieldsBadgeProvider.php',
             __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
-        ],
-        ContainerGetNameToTypeInTestsRector::class,
-        CountOnNullRector::class => [
+        ])
+        ->skip(ContainerGetNameToTypeInTestsRector::class)
+        ->skip(CountOnNullRector::class, [
             __DIR__.'/tests/Controller/HomepageControllerTest.php',
-        ],
-    ]);
+        ])
+        ->apply()
+    ;
 };
