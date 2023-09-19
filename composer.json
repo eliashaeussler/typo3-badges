@@ -103,14 +103,18 @@
 			"assets:install %PUBLIC_DIR%": "symfony-cmd",
 			"cache:clear --no-optional-warmers": "symfony-cmd"
 		},
-		"lint": [
-			"@lint:composer:fix",
-			"@lint:php:fix"
+		"fix": [
+			"@fix:composer",
+			"@fix:php"
 		],
-		"lint:composer": "@lint:composer:fix --dry-run",
-		"lint:composer:fix": "@composer normalize",
-		"lint:php": "@lint:php:fix --dry-run",
-		"lint:php:fix": "php-cs-fixer fix",
+		"fix:composer": "@composer normalize",
+		"fix:php": "php-cs-fixer fix",
+		"lint": [
+			"@lint:composer",
+			"@lint:php"
+		],
+		"lint:composer": "@fix:composer --dry-run",
+		"lint:php": "@fix:php --dry-run",
 		"migration": "rector process",
 		"sca": "phpstan analyse -c phpstan.neon",
 		"test": "@test:coverage --no-coverage",
