@@ -62,8 +62,7 @@ final readonly class Badge
         private string $message,
         private Color $color,
         private bool $isError = false,
-    ) {
-    }
+    ) {}
 
     public static function static(): self
     {

@@ -43,8 +43,7 @@ final readonly class ApiService
         private HttpClientInterface $client,
         private CacheInterface $cache,
         private int $cacheExpirationPeriod = 3600,
-    ) {
-    }
+    ) {}
 
     public function getExtensionMetadata(string $extensionKey): ExtensionMetadata
     {

@@ -44,8 +44,7 @@ final readonly class BadgeService
         private CacheInterface $cache,
         // 1 day
         private int $cacheExpirationPeriod = 60 * 60 * 24,
-    ) {
-    }
+    ) {}
 
     public function get(Badge $badge, BadgeProvider $provider): BadgeResponse
     {

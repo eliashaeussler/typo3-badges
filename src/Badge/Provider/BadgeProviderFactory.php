@@ -39,8 +39,7 @@ final readonly class BadgeProviderFactory
      */
     public function __construct(
         private ServiceLocator $providers,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws InvalidProviderException
