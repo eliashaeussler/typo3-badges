@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d7323ce452bc6a58e33e2a7c1813775",
+    "content-hash": "938626d7a7e4aaf33d5adb5a58e4f1b8",
     "packages": [
         {
             "name": "nyholm/psr7",
@@ -3892,6 +3892,66 @@
             "time": "2023-06-12T17:40:20+00:00"
         },
         {
+            "name": "eliashaeussler/rector-config",
+            "version": "1.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eliashaeussler/rector-config.git",
+                "reference": "7e3e16d1a3dd42b8e53686ff4b94ea647697c941"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/7e3e16d1a3dd42b8e53686ff4b94ea647697c941",
+                "reference": "7e3e16d1a3dd42b8e53686ff4b94ea647697c941",
+                "shasum": ""
+            },
+            "require": {
+                "composer-runtime-api": "^2.0",
+                "php": "~8.1.0 || ~8.2.0",
+                "rector/rector": "^0.15.21 || ^0.16.0 || ^0.17.0 || ^0.18.0"
+            },
+            "require-dev": {
+                "armin/editorconfig-cli": "^1.5",
+                "composer/composer": "^2.0",
+                "eliashaeussler/php-cs-fixer-config": "^1.1",
+                "eliashaeussler/phpstan-config": "^2.0",
+                "ergebnis/composer-normalize": "^2.30",
+                "phpstan/extension-installer": "^1.2",
+                "phpunit/phpunit": "^10.1",
+                "ssch/typo3-rector": "^1.2",
+                "symfony/config": "^5.4 || ^6.0",
+                "symfony/dependency-injection": "^5.4 || ^6.0",
+                "typo3/cms-core": "^12.4"
+            },
+            "suggest": {
+                "ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\RectorConfig\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elias Häußler",
+                    "email": "elias@haeussler.dev",
+                    "homepage": "https://haeussler.dev",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "My personal configuration for Rector",
+            "support": {
+                "issues": "https://github.com/eliashaeussler/rector-config/issues",
+                "source": "https://github.com/eliashaeussler/rector-config/tree/1.7.2"
+            },
+            "time": "2023-09-15T12:17:40+00:00"
+        },
+        {
             "name": "ergebnis/composer-normalize",
             "version": "2.37.0",
             "source": {
@@ -6938,5 +6998,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
