@@ -1002,26 +1002,26 @@
   integrity sha512-HxjQ8Qn+4SI3/AFv6sOrDB+g6PpUTDwSJiQqOrnneEk8L71161srI9gjzzZvYVbzHiVg/BvcH95+cK/zfIt4pg==
 
 "@fontsource/indie-flower@^5.0.0":
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-5.0.15.tgz#cece943e602a37d97d6a87c24288c98358e0b5e0"
-  integrity sha512-CoVW7GMY620VK7bNibgUU2Oqe+lSlk1vsS4IIRvobHGpMUncJtu7uyoxiQQ8U1So0/lZscWXtsNPxigpkMI+cA==
+  version "5.0.16"
+  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-5.0.16.tgz#1ba3080aa5cbd6b7fdb973b22c5b4422fa41c7fe"
+  integrity sha512-dvEkg2Td/7AY/+j4m3Hq2BjdnPGwQop01j7H6l1u8K7Hrx+x3LNeh4TwPU4DId378LksrOYbZmFzqfmUtRDCnQ==
 
 "@fontsource/jetbrains-mono@^5.0.0":
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-5.0.15.tgz#335dacad2354d02cedc7961a7a84bf20441b2bf9"
-  integrity sha512-rxJwcZ/KDC6az2/9yChI/GW53DXyE8LBMybeheozpSgZPFILLYDRw56XtB620cVw4m/gB7ioMzTlMx0+JUcjZw==
+  version "5.0.16"
+  resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-5.0.16.tgz#1e03075929a06beda3cf481f3296011d24ef7b7b"
+  integrity sha512-JO3KQiBST/kqHB/VknW1PjOxKdLTaRrEOjkr2NZB9YSWMtFU0kAvEhv01JoOuKAJ38BR9fGm/FTGbIDoK6Np7g==
 
 "@fontsource/lato@^5.0.0":
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.15.tgz#e6eb2bb7b6dbac915eeafb4a990c4badc3ff4bae"
-  integrity sha512-9aDcNLhisbUHLa4sisBtN7qh7Bzs4oCMO5q3xypc7WNY6ZOtGwf0HF8u/DuYhVMmwo6C/QvlpwUgjYJO8PPL1g==
+  version "5.0.16"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.16.tgz#cc9c05abc4ff0e8b51f1b6842d2c387a6133a7d1"
+  integrity sha512-wLT0TW9+yiK//mlxjuAeHAu4/dhpE0/gk7memLezvzGwoJ8INTSxFHM7WUx2hux+3tnkTopdvVwUrw/5J4QkKg==
 
 "@humanwhocodes/config-array@^0.11.11":
-  version "0.11.11"
-  resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.11.tgz#88a04c570dbbc7dd943e4712429c3df09bc32844"
-  integrity sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==
+  version "0.11.12"
+  resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.12.tgz#549afec9bfce5232ac6325db12765f407e70e3a0"
+  integrity sha512-NlGesA1usRNn6ctHCZ21M4/dKPgW9Nn1FypRdIKKgZOKzkVV4T1FlK5mBiLhHBCDmEbdQG0idrcXlbZfksJ+RA==
   dependencies:
-    "@humanwhocodes/object-schema" "^1.2.1"
+    "@humanwhocodes/object-schema" "^2.0.0"
     debug "^4.1.1"
     minimatch "^3.0.5"
 
@@ -1030,10 +1030,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz#af5b2691a22b44be847b0ca81641c5fb6ad0172c"
   integrity sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==
 
-"@humanwhocodes/object-schema@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
-  integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
+"@humanwhocodes/object-schema@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-2.0.0.tgz#04ad39d82176c7da1591c81e78b993cffd8348d8"
+  integrity sha512-9S9QrXY2K0L4AGDcSgTi9vgiCcG8VcBv4Mp7/1hDPYoswIy6Z6KO5blYto82BT8M0MZNRWmCFLpCs3HlpYGGdw==
 
 "@jest/schemas@^29.6.3":
   version "29.6.3"
