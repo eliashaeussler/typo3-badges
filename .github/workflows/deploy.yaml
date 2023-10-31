@@ -40,6 +40,12 @@ jobs:
       - name: Install node modules
         run: yarn --frozen-lockfile
 
+      # Audit packages
+      - name: Audit Composer dependencies
+        run: composer audit
+      - name: Audit Frontend dependencies
+        run: yarn audit
+
       # Build Frontend
       - name: Build Frontend dist files
         run: yarn build

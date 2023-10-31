@@ -39,6 +39,12 @@ jobs:
       - name: Install node modules
         run: yarn --frozen-lockfile
 
+      # Audit packages
+      - name: Audit Composer dependencies
+        run: composer audit
+      - name: Audit Frontend dependencies
+        run: yarn audit
+
       # Check dependencies
       - name: Check dependencies
         run: composer-require-checker check
