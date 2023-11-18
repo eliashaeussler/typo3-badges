@@ -114,6 +114,7 @@ export default class TryOut {
     badgeProviderToggle.getAllProviders().forEach((provider) => {
       // eslint-disable-next-line no-new
       new Tabs(
+        document.querySelector(`[data-tabs-toggle="#badge-example-${provider}-${extensionKey}-container"]`),
         [
           {
             id: 'md',
