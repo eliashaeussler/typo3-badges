@@ -28,6 +28,7 @@ $header = PhpCsFixerConfig\Rules\Header::create(
     'eliashaeussler/typo3-badges',
     PhpCsFixerConfig\Package\Type::SymfonyProject,
     PhpCsFixerConfig\Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
+    PhpCsFixerConfig\Package\CopyrightRange::from(2021),
     PhpCsFixerConfig\Package\License::GPL3OrLater,
 );
 
