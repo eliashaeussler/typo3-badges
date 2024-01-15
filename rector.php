@@ -23,7 +23,6 @@ declare(strict_types=1);
 
 use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Php71\Rector\FuncCall\CountOnNullRector;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
 use Rector\Symfony\Symfony34\Rector\Closure\ContainerGetNameToTypeInTestsRector;
@@ -45,9 +44,6 @@ return static function (RectorConfig $rectorConfig): void {
             __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
         ])
         ->skip(ContainerGetNameToTypeInTestsRector::class)
-        ->skip(CountOnNullRector::class, [
-            __DIR__.'/tests/Controller/HomepageControllerTest.php',
-        ])
         ->apply()
     ;
 };
