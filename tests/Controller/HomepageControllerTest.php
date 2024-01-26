@@ -25,6 +25,7 @@ namespace App\Tests\Controller;
 
 use App\Service\ApiService;
 use App\Tests\MockClientTrait;
+use Override;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -46,6 +47,7 @@ final class HomepageControllerTest extends WebTestCase
 
     private KernelBrowser $client;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->mockClient = $this->getMockClient();

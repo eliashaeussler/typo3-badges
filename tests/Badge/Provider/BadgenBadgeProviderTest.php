@@ -27,6 +27,7 @@ use App\Badge\Provider\BadgenBadgeProvider;
 use App\Entity\Badge;
 use App\Enums\Color;
 use Generator;
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -43,6 +44,7 @@ final class BadgenBadgeProviderTest extends KernelTestCase
 {
     private BadgenBadgeProvider $subject;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->subject = self::getContainer()->get(BadgenBadgeProvider::class);

@@ -25,6 +25,7 @@ namespace App\Tests\Entity\Dto;
 
 use App\Entity\Dto\BadgeResponse;
 use DateTime;
+use Override;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -39,6 +40,7 @@ final class BadgeResponseTest extends TestCase
     private DateTime $expiryDate;
     private BadgeResponse $subject;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->expiryDate = new DateTime();

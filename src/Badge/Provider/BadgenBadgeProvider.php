@@ -44,10 +44,10 @@ final class BadgenBadgeProvider implements BadgeProvider
 {
     use RoutingTrait;
 
-    public const IDENTIFIER = 'badgen';
+    public const string IDENTIFIER = 'badgen';
 
-    private const BADGE_URL_PATTERN = 'https://badgen.net/badge/{subject}/{status}/{color}';
-    private const ENDPOINT_URL_PATTERN = 'https://badgen.net/https/{host}/{path}';
+    private const string BADGE_URL_PATTERN = 'https://badgen.net/badge/{subject}/{status}/{color}';
+    private const string ENDPOINT_URL_PATTERN = 'https://badgen.net/https/{host}/{path}';
 
     public function __construct(
         RouterInterface $router,

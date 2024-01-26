@@ -27,6 +27,7 @@ use App\Badge\Provider\BadgeProviderFactory;
 use App\Entity\Badge;
 use App\Service\BadgeService;
 use App\Tests\AbstractApiTestCase;
+use Override;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -41,6 +42,7 @@ final class BadgeServiceTest extends AbstractApiTestCase
     private BadgeProviderFactory $badgeProviderFactory;
     private BadgeService $subject;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
