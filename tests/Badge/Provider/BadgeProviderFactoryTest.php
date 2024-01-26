@@ -29,6 +29,7 @@ use App\Badge\Provider\BadgeProviderFactory;
 use App\Badge\Provider\ShieldsBadgeProvider;
 use App\Exception\InvalidProviderException;
 use Generator;
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -44,6 +45,7 @@ final class BadgeProviderFactoryTest extends KernelTestCase
 {
     private BadgeProviderFactory $subject;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->subject = new BadgeProviderFactory(

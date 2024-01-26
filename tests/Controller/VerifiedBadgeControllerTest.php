@@ -27,6 +27,7 @@ use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\VerifiedBadgeController;
 use App\Tests\AbstractApiTestCase;
 use Generator;
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpClient\Response\MockResponse;
@@ -44,6 +45,7 @@ final class VerifiedBadgeControllerTest extends AbstractApiTestCase
 {
     private VerifiedBadgeController $subject;
 
+    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

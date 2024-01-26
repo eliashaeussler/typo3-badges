@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests\Badge\Provider;
 
 use App\Tests\Fixtures\RoutingTraitTestClass;
+use Override;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
@@ -41,6 +42,7 @@ final class RoutingTraitTest extends KernelTestCase
     private RouterInterface $router;
     private RoutingTraitTestClass $subject;
 
+    #[Override]
     protected function setUp(): void
     {
         $this->router = self::getContainer()->get('router');

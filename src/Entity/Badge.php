@@ -36,7 +36,8 @@ use function implode;
  */
 final readonly class Badge
 {
-    private const COLOR_MAP = [
+    /** @var array<string, Color> */
+    private const array COLOR_MAP = [
         'extension' => Color::Orange,
         'version' => Color::Orange,
         'downloads' => Color::Blue,

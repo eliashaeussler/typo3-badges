@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Tests;
 
 use App\Service\ApiService;
+use Override;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Contracts\Cache\CacheInterface;
 
@@ -40,6 +41,7 @@ abstract class AbstractApiTestCase extends KernelTestCase
     protected CacheInterface $cache;
     protected ApiService $apiService;
 
+    #[Override]
     protected function setUp(): void
     {
         self::bootKernel();

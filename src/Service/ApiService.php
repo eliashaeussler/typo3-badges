@@ -37,7 +37,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 final readonly class ApiService
 {
-    private const FALLBACK_EXTENSION_KEY = 'handlebars';
+    private const string FALLBACK_EXTENSION_KEY = 'handlebars';
 
     public function __construct(
         private HttpClientInterface $client,

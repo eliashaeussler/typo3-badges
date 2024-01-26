@@ -43,10 +43,10 @@ final class ShieldsBadgeProvider implements BadgeProvider
 {
     use RoutingTrait;
 
-    public const IDENTIFIER = 'shields';
+    public const string IDENTIFIER = 'shields';
 
-    private const BADGE_URL_PATTERN = 'https://img.shields.io/static/v1?label={label}&message={message}&color={color}&logo={logo}';
-    private const ENDPOINT_URL_PATTERN = 'https://shields.io/endpoint?url={url}';
+    private const string BADGE_URL_PATTERN = 'https://img.shields.io/static/v1?label={label}&message={message}&color={color}&logo={logo}';
+    private const string ENDPOINT_URL_PATTERN = 'https://shields.io/endpoint?url={url}';
 
     public function __construct(
         RouterInterface $router,
