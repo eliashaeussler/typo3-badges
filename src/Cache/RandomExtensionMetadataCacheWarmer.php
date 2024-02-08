@@ -42,7 +42,7 @@ final readonly class RandomExtensionMetadataCacheWarmer implements CacheWarmerIn
         private ApiService $apiService,
     ) {}
 
-    public function warmUp(string $cacheDir, string $buildDir = null): array
+    public function warmUp(string $cacheDir, ?string $buildDir = null): array
     {
         $this->apiService->getRandomExtensionMetadata();
 

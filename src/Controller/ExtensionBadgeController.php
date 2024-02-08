@@ -56,7 +56,7 @@ final class ExtensionBadgeController extends AbstractBadgeController
         private readonly ApiService $apiService,
     ) {}
 
-    public function __invoke(Request $request, string $extension, string $provider = null): Response
+    public function __invoke(Request $request, string $extension, ?string $provider = null): Response
     {
         $extensionMetadata = $this->apiService->getExtensionMetadata($extension);
         $extensionKey = $extensionMetadata[0]['key']
