@@ -38,6 +38,8 @@ final readonly class Badge
 {
     /** @var array<string, Color> */
     private const array COLOR_MAP = [
+        'composer' => Color::Blue,
+        'composer_undefined' => Color::Gray,
         'extension' => Color::Orange,
         'version' => Color::Orange,
         'downloads' => Color::Blue,
@@ -71,6 +73,23 @@ final readonly class Badge
             'typo3',
             'inspiring people to share',
             Color::Orange,
+        );
+    }
+
+    public static function forComposerName(?string $composerName): self
+    {
+        if (null === $composerName || '' === $composerName) {
+            return new self(
+                'composer',
+                'unknown',
+                self::COLOR_MAP['composer_undefined'],
+            );
+        }
+
+        return new self(
+            'composer',
+            $composerName,
+            self::COLOR_MAP['composer'],
         );
     }
 

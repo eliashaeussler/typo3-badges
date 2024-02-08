@@ -39,6 +39,31 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '404':
           $ref: '#/components/responses/NotFound'
+  /badge/{extension}/composer/{provider}:
+    get:
+      description: Composer badge
+      summary: >-
+        Gets badge data for Composer name of given TYPO3 extension using the
+        default badge provider.
+      operationId: getComposerBadge
+      parameters:
+        - $ref: '#/components/parameters/Extension'
+        - $ref: '#/components/parameters/Provider'
+      tags:
+        - Badge
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/BadgenResponse'
+                  - $ref: '#/components/schemas/ShieldsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /badge/{extension}/downloads/{provider}:
     get:
       description: Downloads badge

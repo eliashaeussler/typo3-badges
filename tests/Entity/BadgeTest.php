@@ -39,6 +39,32 @@ use PHPUnit\Framework\TestCase;
 final class BadgeTest extends TestCase
 {
     #[Test]
+    public function forComposerNameReturnsBadgeForUnknownComposerName(): void
+    {
+        $expected = new Badge(
+            'composer',
+            'unknown',
+            Color::Gray,
+            false,
+        );
+
+        self::assertEquals($expected, Badge::forComposerName(null));
+    }
+
+    #[Test]
+    public function forComposerNameReturnsBadgeForGivenComposerName(): void
+    {
+        $expected = new Badge(
+            'composer',
+            'foo/baz',
+            Color::Blue,
+            false,
+        );
+
+        self::assertEquals($expected, Badge::forComposerName('foo/baz'));
+    }
+
+    #[Test]
     public function forExtensionReturnsBadgeForExtension(): void
     {
         $expected = new Badge(
