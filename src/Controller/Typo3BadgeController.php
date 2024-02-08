@@ -56,7 +56,7 @@ final class Typo3BadgeController extends AbstractBadgeController
         private readonly ApiService $apiService,
     ) {}
 
-    public function __invoke(Request $request, string $extension, string $provider = null): Response
+    public function __invoke(Request $request, string $extension, ?string $provider = null): Response
     {
         $extensionMetadata = $this->apiService->getExtensionMetadata($extension);
         $typo3Versions = $extensionMetadata[0]['current_version']['typo3_versions']

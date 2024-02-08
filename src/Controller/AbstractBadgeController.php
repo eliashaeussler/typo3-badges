@@ -63,8 +63,8 @@ abstract class AbstractBadgeController
     protected function getBadgeResponse(
         Request $request,
         Badge $badge,
-        string $provider = null,
-        DateTime $cacheExpirationDate = null,
+        ?string $provider = null,
+        ?DateTime $cacheExpirationDate = null,
     ): Response {
         try {
             $providerClass = $this->badgeProviderFactory->get($provider);

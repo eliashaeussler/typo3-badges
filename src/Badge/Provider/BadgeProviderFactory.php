@@ -44,7 +44,7 @@ final readonly class BadgeProviderFactory
     /**
      * @throws InvalidProviderException
      */
-    public function get(string $name = null): BadgeProvider
+    public function get(?string $name = null): BadgeProvider
     {
         if (null === $name) {
             return $this->getDefaultProvider();

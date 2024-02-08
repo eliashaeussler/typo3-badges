@@ -102,7 +102,7 @@ final readonly class ApiService
     /**
      * @return array<int|string, mixed>
      */
-    private function sendRequestAndCacheResponse(string $path, ItemInterface $item, int $expiresAfter = null): array
+    private function sendRequestAndCacheResponse(string $path, ItemInterface $item, ?int $expiresAfter = null): array
     {
         $response = $this->client->request('GET', $path);
         $responseArray = $response->toArray();
