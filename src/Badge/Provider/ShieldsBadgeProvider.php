@@ -25,6 +25,7 @@ namespace App\Badge\Provider;
 
 use App\Entity\Badge;
 use App\Enums\Color;
+use Override;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -54,16 +55,19 @@ final class ShieldsBadgeProvider implements BadgeProvider
         $this->router = $router;
     }
 
+    #[Override]
     public static function getIdentifier(): string
     {
         return self::IDENTIFIER;
     }
 
+    #[Override]
     public static function getName(): string
     {
         return 'Shields.io';
     }
 
+    #[Override]
     public function createResponse(Badge $badge): Response
     {
         return new JsonResponse([
@@ -76,6 +80,7 @@ final class ShieldsBadgeProvider implements BadgeProvider
         ]);
     }
 
+    #[Override]
     public function generateUriForRoute(Route|string $route, array $routeParameters = []): string
     {
         // Enforce provider parameter
@@ -94,6 +99,7 @@ final class ShieldsBadgeProvider implements BadgeProvider
         ]);
     }
 
+    #[Override]
     public function generateUriForBadge(Badge $badge): string
     {
         $urlParameters = [
@@ -109,11 +115,13 @@ final class ShieldsBadgeProvider implements BadgeProvider
     /**
      * @codeCoverageIgnore
      */
+    #[Override]
     public function getUrlPattern(): string
     {
         return self::ENDPOINT_URL_PATTERN;
     }
 
+    #[Override]
     public function getProviderUrl(): string
     {
         return 'https://shields.io';

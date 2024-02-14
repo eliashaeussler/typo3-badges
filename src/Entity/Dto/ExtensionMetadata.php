@@ -25,6 +25,7 @@ namespace App\Entity\Dto;
 
 use ArrayAccess;
 use DateTime;
+use Override;
 
 /**
  * ExtensionMetadata.
@@ -57,21 +58,25 @@ final class ExtensionMetadata implements ArrayAccess
         return $this->expiryDate;
     }
 
+    #[Override]
     public function offsetExists(mixed $offset): bool
     {
         return isset($this->metadata[$offset]);
     }
 
+    #[Override]
     public function offsetGet(mixed $offset): mixed
     {
         return $this->metadata[$offset] ?? null;
     }
 
+    #[Override]
     public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->metadata[$offset] = $value;
     }
 
+    #[Override]
     public function offsetUnset(mixed $offset): void
     {
         unset($this->metadata[$offset]);
