@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Cache;
 
 use App\Service\ApiService;
+use Override;
 use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
 
 /**
@@ -42,6 +43,7 @@ final readonly class RandomExtensionMetadataCacheWarmer implements CacheWarmerIn
         private ApiService $apiService,
     ) {}
 
+    #[Override]
     public function warmUp(string $cacheDir, ?string $buildDir = null): array
     {
         $this->apiService->getRandomExtensionMetadata();
@@ -49,6 +51,7 @@ final readonly class RandomExtensionMetadataCacheWarmer implements CacheWarmerIn
         return [];
     }
 
+    #[Override]
     public function isOptional(): bool
     {
         return true;

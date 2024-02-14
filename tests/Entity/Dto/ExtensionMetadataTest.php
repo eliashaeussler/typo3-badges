@@ -63,8 +63,8 @@ final class ExtensionMetadataTest extends TestCase
     public function subjectCanBeAccessedAsArray(): void
     {
         // offsetExists()
-        self::assertTrue(isset($this->subject['foo']));
-        self::assertFalse(isset($this->subject['baz']));
+        self::assertArrayHasKey('foo', $this->subject);
+        self::assertArrayNotHasKey('baz', $this->subject);
 
         // offsetGet()
         self::assertSame('baz', $this->subject['foo']);
@@ -76,6 +76,6 @@ final class ExtensionMetadataTest extends TestCase
 
         // offsetUnset()
         unset($this->subject['baz']);
-        self::assertFalse(isset($this->subject['baz']));
+        self::assertArrayNotHasKey('baz', $this->subject);
     }
 }
