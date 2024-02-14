@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use Override;
 use PHPUnit\Event\Test\Finished;
 use PHPUnit\Event\Test\FinishedSubscriber;
 use PHPUnit\Runner\Extension\Extension;
@@ -39,11 +40,13 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 final class ClearCacheAfterTestExtension implements Extension, FinishedSubscriber
 {
+    #[Override]
     public function bootstrap(Configuration $configuration, Facade $facade, ParameterCollection $parameters): void
     {
         $facade->registerSubscriber($this);
     }
 
+    #[Override]
     public function notify(Finished $event): void
     {
         (new Filesystem())->remove(__DIR__.'/../var/cache/test');
