@@ -1031,9 +1031,9 @@
   integrity sha512-SdwUuvdfuAvGWRRc4LOFRSmDrpkE+vFUpCtOIOUl1PpXdLfeU//93BZiGf7j/oFGSZJbHAurfux2uLT38/NIjw==
 
 "@fontsource/lato@^5.0.0":
-  version "5.0.19"
-  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.19.tgz#9403de626b68057056cd7a669f08ddd1278ce607"
-  integrity sha512-RdZy7fmmazrs6eV0lvA68/ss+IyLufD52jAx0qJ6Uw7kVZbjrUGh9JZdJshf+X5GdI3/3Anmg1sEPfqBrZTiNg==
+  version "5.0.20"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-5.0.20.tgz#27721d42112da4da288447f8904e36c8ceef98ee"
+  integrity sha512-2ej7KDuTFoea6Q2hWjx3Png1+MdNcW4V6l7sw/vNauuxCv9xBIZCmpXnTz9eVdj/5Ui//jiWWiQk57mGwjCNwA==
 
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
