@@ -49,7 +49,6 @@ set('rsync', [
         '/.gitignore',
         '/.php-cs-fixer.dist.php',
         '.stylelintrc.json',
-        'codecov.yml',
         'CODEOWNERS',
         'deploy.php',
         'phpstan.php',
