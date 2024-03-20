@@ -7,13 +7,10 @@
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-badges?logo=coveralls)](https://coveralls.io/github/eliashaeussler/typo3-badges)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/typo3-badges?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/typo3-badges/maintainability)
 [![Uptime monitoring](https://betteruptime.com/status-badges/v1/monitor/bxsw.svg)](https://up.eliash.de/)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/deploy.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
-[![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/tests.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml)
 [![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
-[![API schema](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/schema.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/schema.yaml)
-[![Latest version](https://img.shields.io/github/v/release/eliashaeussler/typo3-badges)](https://github.com/eliashaeussler/typo3-badges/releases/latest)
-[![License](https://img.shields.io/github/license/eliashaeussler/typo3-badges)](LICENSE)
-[![TYPO3 – inspiring people to share!](https://typo3-badges.dev/badge/typo3/shields.svg)](https://typo3-badges.dev)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/deploy.yaml?label=deploy&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
+[![API schema](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/schema.yaml?label=schema&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/schema.yaml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml)
 
 **🌍&nbsp;[Official website](https://typo3-badges.dev)** |
 💾&nbsp;[Repository](https://github.com/eliashaeussler/typo3-badges) |
