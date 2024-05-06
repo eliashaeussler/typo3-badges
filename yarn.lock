@@ -1015,9 +1015,9 @@
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
 
 "@fontsource/indie-flower@^5.0.0":
-  version "5.0.19"
-  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-5.0.19.tgz#2350f7a43f9ad7e32dba06d9f1dc9a34570f746c"
-  integrity sha512-oOayFpoYqXhwrXfclK6UBs7DwKQ/AtiBmhAjimUNHJp4mZQ1QAtPJvptTycgLQg24BHlE4KWYEnoxWEeyPDpag==
+  version "5.0.18"
+  resolved "https://registry.yarnpkg.com/@fontsource/indie-flower/-/indie-flower-5.0.18.tgz#a953a2544111a9ef1b42d8a472f248ea04b8a1fa"
+  integrity sha512-1e+er9IyiOWuNiEV2J0Mq7sZt/shptz7qkfah+/Edm/gdFzB3lWTTLY2LMUlh2NTMq+XvoWwvdScDhMpZLCeqg==
 
 "@fontsource/jetbrains-mono@^5.0.0":
   version "5.0.20"
