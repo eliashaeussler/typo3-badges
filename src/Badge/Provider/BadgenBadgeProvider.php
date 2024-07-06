@@ -107,7 +107,7 @@ final class BadgenBadgeProvider implements BadgeProvider
             '{color}' => $this->getColorValue($badge->getColor()),
         ];
 
-        return strtr(self::BADGE_URL_PATTERN, array_map('rawurlencode', $urlParameters));
+        return strtr(self::BADGE_URL_PATTERN, array_map(rawurlencode(...), $urlParameters));
     }
 
     /**

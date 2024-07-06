@@ -109,7 +109,7 @@ final class ShieldsBadgeProvider implements BadgeProvider
             '{logo}' => 'typo3',
         ];
 
-        return strtr(self::BADGE_URL_PATTERN, array_map('rawurlencode', $urlParameters));
+        return strtr(self::BADGE_URL_PATTERN, array_map(rawurlencode(...), $urlParameters));
     }
 
     /**

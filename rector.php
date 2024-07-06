@@ -23,9 +23,7 @@ declare(strict_types=1);
 
 use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
-use Rector\Symfony\Symfony34\Rector\Closure\ContainerGetNameToTypeInTestsRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->symfonyContainerXml(__DIR__.'/var/cache/dev/App_KernelDevDebugContainer.xml');
@@ -37,13 +35,11 @@ return static function (RectorConfig $rectorConfig): void {
         )
         ->withSymfony()
         ->withPHPUnit()
-        ->skip(AddLiteralSeparatorToNumberRector::class)
         ->skip(AnnotationToAttributeRector::class, [
             __DIR__.'/src/Badge/Provider/BadgenBadgeProvider.php',
             __DIR__.'/src/Badge/Provider/ShieldsBadgeProvider.php',
             __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
         ])
-        ->skip(ContainerGetNameToTypeInTestsRector::class)
         ->apply()
     ;
 };
