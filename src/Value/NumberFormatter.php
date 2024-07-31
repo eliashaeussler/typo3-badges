@@ -49,7 +49,10 @@ final class NumberFormatter
         $units = ['', 'K', 'M', 'B', 'T', 'Q'];
 
         if (array_key_exists($unit, $units)) {
-            return sprintf('%s%s', rtrim(number_format($number / 1000 ** $unit, 1), '.0'), $units[$unit]);
+            /** @var non-empty-string $formattedNumber */
+            $formattedNumber = rtrim(number_format($number / 1000 ** $unit, 1), '.0');
+
+            return $formattedNumber.$units[$unit];
         }
 
         return (string) $number;
