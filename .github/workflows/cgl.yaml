@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: 'npm'
 
       # Validation
       - name: Validate composer.json
@@ -37,13 +37,13 @@ jobs:
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v2
       - name: Install node modules
-        run: yarn --frozen-lockfile
+        run: npm ci
 
       # Audit packages
       - name: Audit Composer dependencies
         run: composer audit
       - name: Audit Frontend dependencies
-        run: yarn audit
+        run: npm audit
 
       # Check dependencies
       - name: Check dependencies
@@ -51,7 +51,7 @@ jobs:
       - name: Check for unused Composer dependencies
         run: composer-unused --excludePackage=symfony/css-selector
       - name: Check for unused Frontend dependencies
-        run: yarn check-dependencies
+        run: npm run check-dependencies
 
       # Linting
       - name: Lint composer.json
@@ -59,9 +59,9 @@ jobs:
       - name: Lint PHP
         run: composer lint:php
       - name: Lint CSS
-        run: yarn lint:css
+        run: npm run lint:css
       - name: Lint JavaScript
-        run: yarn lint:js
+        run: npm run lint:js
 
       # SCA
       - name: SCA PHP

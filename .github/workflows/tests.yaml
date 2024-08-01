@@ -28,17 +28,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: 'npm'
 
       # Install dependencies
       - name: Install Composer dependencies
         uses: ramsey/composer-install@v2
       - name: Install node modules
-        run: yarn --frozen-lockfile
+        run: npm ci
 
       # Build Frontend assets (necessary for application tests)
       - name: Build Frontend assets
-        run: yarn build
+        run: npm run build
 
       # Run tests
       - name: Build coverage directory

@@ -24,6 +24,8 @@
  * @license GPL-3.0-or-later
  */
 export default class CodeTabs {
+  ARIA_SELECTED = 'aria-selected';
+
   static observer;
 
   static currentLanguage;
@@ -46,7 +48,7 @@ export default class CodeTabs {
 
     // Observe all tab sync triggers
     [...syncTriggers].forEach((trigger) => {
-      CodeTabs.observer.observe(trigger, { attributeFilter: ['aria-selected'] });
+      CodeTabs.observer.observe(trigger, { attributeFilter: [self.ARIA_SELECTED] });
     });
   }
 
@@ -68,8 +70,8 @@ export default class CodeTabs {
 
     // Early return if mutation is unsupported
     if (mutation.type !== 'attributes'
-      || mutation.attributeName !== 'aria-selected'
-      || target.getAttribute('aria-selected') !== 'true'
+      || mutation.attributeName !== self.ARIA_SELECTED
+      || target.getAttribute(self.ARIA_SELECTED) !== 'true'
     ) {
       return;
     }

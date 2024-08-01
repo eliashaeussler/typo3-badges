@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'yarn'
+          cache: 'npm'
 
       # Install dependencies
       - name: Install Composer dependencies
@@ -39,17 +39,17 @@ jobs:
         with:
           composer-options: --no-dev --optimize-autoloader
       - name: Install node modules
-        run: yarn --frozen-lockfile
+        run: npm ci
 
       # Audit packages
       - name: Audit Composer dependencies
         run: composer audit
       - name: Audit Frontend dependencies
-        run: yarn audit
+        run: npm audit
 
       # Build Frontend
       - name: Build Frontend dist files
-        run: yarn build
+        run: npm run build
 
       # Deploy to production
       - name: Deploy
@@ -86,7 +86,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          cache: 'yarn'
+          cache: 'npm'
 
       # Install dependencies
       - name: Install Composer dependencies
@@ -94,11 +94,11 @@ jobs:
         with:
           composer-options: --no-dev --optimize-autoloader
       - name: Install node modules
-        run: yarn --frozen-lockfile
+        run: npm ci
 
       # Build Frontend
       - name: Build Frontend dist files
-        run: yarn build
+        run: npm run build
 
       # Deploy to production
       - name: Deploy
