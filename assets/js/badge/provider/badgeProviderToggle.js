@@ -18,6 +18,7 @@
  */
 
 import BadgeProvider from './badgeProvider';
+import Url from '../../url';
 
 /**
  * BadgeProviderToggle.
@@ -37,7 +38,7 @@ export default class BadgeProviderToggle {
     this.inputs = this.locateInputs();
     this.providers = this.buildProviders();
 
-    const preselectedProvider = BadgeProviderToggle.getProviderFromUrl();
+    const preselectedProvider = Url.getFromHash('provider');
     this.setActiveProvider(preselectedProvider);
     if (preselectedProvider !== null) {
       this.hideButtonPings();
@@ -118,7 +119,7 @@ export default class BadgeProviderToggle {
     }
 
     // Apply provider as URL fragment
-    window.location.hash = activeProvider;
+    Url.setInHash('provider', activeProvider);
 
     // Apply "checked" state of all input elements
     [...this.inputs].forEach((el) => {
@@ -156,25 +157,6 @@ export default class BadgeProviderToggle {
     [...this.buttons].forEach((el) => {
       BadgeProviderToggle.getButtonPing(el).classList.add('hidden');
     });
-  }
-
-  /**
-   * Get provider identifier from URL fragment.
-   *
-   * @returns {string|null} Provider identifier or `NULL` if no URL fragment is set or if it's empty
-   */
-  static getProviderFromUrl() {
-    let { hash } = window.location;
-
-    if (hash === null || hash.length === 0) {
-      return null;
-    }
-
-    if (hash.startsWith('#')) {
-      hash = hash.substr(1);
-    }
-
-    return hash;
   }
 
   static getButtonLabel(button) {
