@@ -22,6 +22,7 @@ import BadgeProviderToggle from './provider/badgeProviderToggle';
 import Clipboard from '../clipboard';
 import CodeTabs from './codeTabs';
 import LazyLoad from './lazyLoad';
+import Url from '../url';
 
 /**
  * TryOut.
@@ -35,6 +36,7 @@ export default class TryOut {
     backdrop: 'static',
     backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
     onShow: () => this.showModal(),
+    onHide: () => this.hideModal(),
   };
 
   options;
@@ -48,6 +50,8 @@ export default class TryOut {
   template;
 
   output;
+
+  extensionKeyInput;
 
   modal;
 
@@ -72,6 +76,13 @@ export default class TryOut {
         this.modal.toggle();
       }
     });
+
+    // Preselect extension from url
+    const preselectedExtension = Url.getFromHash('extension');
+    if (preselectedExtension !== null) {
+      this.modal.show();
+      this.applyTemplate(preselectedExtension);
+    }
   }
 
   /**
@@ -88,11 +99,19 @@ export default class TryOut {
   }
 
   /**
+   * Hide try-out modal.
+   */
+  hideModal() {
+    Url.deleteFromHash('extension');
+  }
+
+  /**
    * Read and store try-out template section.
    */
   readTemplate() {
     this.template = document.querySelector('#try-out-template').innerHTML;
     this.output = document.querySelector('#try-out-output');
+    this.extensionKeyInput = document.querySelector('#try-out-extension-key');
   }
 
   /**
@@ -103,6 +122,7 @@ export default class TryOut {
   applyTemplate(extensionKey) {
     this.output.classList.remove('hidden');
     this.output.innerHTML = this.template.replaceAll('EXTENSION_KEY', extensionKey);
+    this.extensionKeyInput.value = extensionKey;
 
     // Connect badge provider toggles
     const badgeProviderToggle = new BadgeProviderToggle('#try-out-modal .badge-providers-button');
@@ -143,5 +163,8 @@ export default class TryOut {
 
     // Connect lazy-loading for badges
     LazyLoad.connect(this.element);
+
+    // Store in URL
+    Url.setInHash('extension', extensionKey);
   }
 }
