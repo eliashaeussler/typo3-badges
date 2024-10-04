@@ -43,6 +43,7 @@
 		"eliashaeussler/php-cs-fixer-config": "^2.0",
 		"eliashaeussler/phpstan-config": "^2.0",
 		"eliashaeussler/rector-config": "^3.0",
+		"eliashaeussler/version-bumper": "^1.2",
 		"ergebnis/composer-normalize": "^2.21",
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan-symfony": "^1.0",
@@ -77,6 +78,7 @@
 	"config": {
 		"allow-plugins": {
 			"composer/package-versions-deprecated": true,
+			"eliashaeussler/version-bumper": true,
 			"ergebnis/composer-normalize": true,
 			"phpstan/extension-installer": true,
 			"symfony/flex": true,
