@@ -1,0 +1,13 @@
+filesToModify:
+  - path: package.json
+    patterns:
+      - '"version": "{%version%}"'
+  - path: package-lock.json
+    patterns:
+      - '"name": "@eliashaeussler/typo3-badges",\s+"version": "{%version%}"'
+  - path: spec/typo3-badges.oas3.yaml
+    patterns:
+      - 'version: {%version%}'
+releaseOptions:
+  commitMessage: '[RELEASE] Release of typo3-badges {%version%}'
+  signTag: true

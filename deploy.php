@@ -57,6 +57,7 @@ set('rsync', [
         'rector.php',
         'renovate.json',
         'tailwind.config.js',
+        'version-bumper.yaml',
         'webpack.config.js',
     ],
     'exclude-file' => false,

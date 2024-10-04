@@ -10,3 +10,4 @@
 /phpunit.xml              export-ignore
 /rector.php               export-ignore
 /renovate.json            export-ignore
+/version-bumper.yml       export-ignore
