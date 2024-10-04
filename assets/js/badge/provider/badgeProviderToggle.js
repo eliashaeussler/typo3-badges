@@ -114,7 +114,6 @@ export default class BadgeProviderToggle {
    */
   setActiveProvider(activeProvider = null) {
     if (activeProvider === null || !(activeProvider in this.providers)) {
-      // eslint-disable-next-line no-param-reassign
       activeProvider = this.getActiveProvider();
     }
 
@@ -123,7 +122,6 @@ export default class BadgeProviderToggle {
 
     // Apply "checked" state of all input elements
     [...this.inputs].forEach((el) => {
-      // eslint-disable-next-line
       el.checked = BadgeProviderToggle.getIdentifierByInput(el) === activeProvider;
     });
 
