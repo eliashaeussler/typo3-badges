@@ -21,7 +21,6 @@
 		"eslint": "^9.0.0",
 		"file-loader": "^6.2.0",
 		"globals": "^15.9.0",
-		"npm-run-all": "^4.1.5",
 		"postcss-import": "^16.0.0",
 		"postcss-loader": "^8.0.0",
 		"stylelint": "^16.0.0",
@@ -45,8 +44,8 @@
 		"build": "encore prod",
 		"check-dependencies": "depcheck",
 		"dev": "encore dev --watch",
-		"lint": "run-s lint:css lint:js",
-		"lint:js": "eslint 'assets/**/*.js'",
-		"lint:css": "stylelint 'assets/**/*.css'"
+		"lint": "npm run lint:css && npm run lint:js",
+		"lint:css": "stylelint 'assets/**/*.css'",
+		"lint:js": "eslint 'assets/**/*.js'"
 	}
 }
