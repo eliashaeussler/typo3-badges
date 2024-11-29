@@ -20,7 +20,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
           tools: composer:v2, composer-require-checker, composer-unused
           coverage: none
       - name: Setup Node
@@ -58,6 +58,9 @@ jobs:
         run: composer lint:composer
       - name: Lint PHP
         run: composer lint:php
+        env:
+          # @todo Remove once PHP-CS-Fixer supports PHP 8.4
+          PHP_CS_FIXER_IGNORE_ENV: 1
       - name: Lint CSS
         run: npm run lint:css
       - name: Lint JavaScript
