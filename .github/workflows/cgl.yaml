@@ -70,3 +70,7 @@ jobs:
       # Migration
       - name: Rector migration
         run: composer migration -- --dry-run
+
+      # Symfony recipes
+      - name: Check symfony recipes
+        run: composer recipes --outdated
