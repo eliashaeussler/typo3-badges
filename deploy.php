@@ -38,6 +38,7 @@ set('rsync', [
         '/.git',
         '/assets',
         '/bin/phpunit',
+        '/composer-unused.php',
         '/tests',
         '/var',
         '/.babelrc',

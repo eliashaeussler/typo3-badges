@@ -49,7 +49,7 @@ jobs:
       - name: Check dependencies
         run: composer-require-checker check
       - name: Check for unused Composer dependencies
-        run: composer-unused --excludePackage=symfony/css-selector
+        run: composer-unused
       - name: Check for unused Frontend dependencies
         run: npm run check-dependencies
 
