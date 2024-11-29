@@ -6,7 +6,7 @@
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-badges?logo=coveralls)](https://coveralls.io/github/eliashaeussler/typo3-badges)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/typo3-badges?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/typo3-badges/maintainability)
-[![Uptime monitoring](https://betteruptime.com/status-badges/v1/monitor/bxsw.svg)](https://up.eliash.de/)
+[![Uptime monitoring](https://monitor.haeussler.dev/api/badge/9/status?label=status&upLabel=up&downLabel=down)](https://monitor.haeussler.dev/)
 [![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/deploy.yaml?label=deploy&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
 [![API schema](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/schema.yaml?label=schema&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/schema.yaml)
@@ -31,4 +31,3 @@ An overview of all endpoints and their usage can be found on the
 ## ⭐ License
 
 This project is licensed under [GNU General Public License 3.0 (or later)](LICENSE).
-
