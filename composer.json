@@ -44,7 +44,7 @@
 		"eliashaeussler/phpstan-config": "2.5.2",
 		"eliashaeussler/rector-config": "3.0.4",
 		"eliashaeussler/version-bumper": "1.3.1",
-		"ergebnis/composer-normalize": "2.44.0",
+		"ergebnis/composer-normalize": "2.45.0",
 		"phpstan/extension-installer": "1.4.3",
 		"phpstan/phpstan-symfony": "1.4.12",
 		"phpunit/phpunit": "11.4.4",
