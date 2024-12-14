@@ -13,7 +13,7 @@
 	],
 	"homepage": "https://typo3-badges.dev",
 	"require": {
-		"php": "~8.3.0",
+		"php": "~8.4.0",
 		"ext-hash": "*",
 		"ext-json": "*",
 		"nyholm/psr7": "1.8.2",
@@ -60,7 +60,8 @@
 		"symfony/polyfill-php80": "*",
 		"symfony/polyfill-php81": "*",
 		"symfony/polyfill-php82": "*",
-		"symfony/polyfill-php83": "*"
+		"symfony/polyfill-php83": "*",
+		"symfony/polyfill-php84": "*"
 	},
 	"conflict": {
 		"symfony/symfony": "*"
