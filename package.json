@@ -30,7 +30,7 @@
 		"tailwindcss-selection-variant": "0.1.0",
 		"tailwindcss-triangles": "4.0.0",
 		"webpack": "5.97.1",
-		"webpack-cli": "5.1.4",
+		"webpack-cli": "6.0.1",
 		"webpack-notifier": "1.15.0"
 	},
 	"dependencies": {
