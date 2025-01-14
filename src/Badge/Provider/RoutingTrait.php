@@ -40,8 +40,7 @@ trait RoutingTrait
     protected function identifyRoute(Route $route): string
     {
         foreach ($this->router->getRouteCollection()->all() as $routeName => $currentRoute) {
-            // Loose comparison is intended
-            /* @phpstan-ignore-next-line */
+            /* @phpstan-ignore equal.notAllowed (Loose comparison is intended) */
             if ($route == $currentRoute) {
                 return $routeName;
             }
