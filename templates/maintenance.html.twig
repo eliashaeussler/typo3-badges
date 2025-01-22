@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Badge Maintenance in Progress{% endblock %}
+
+{% block bodyClass %}bg-typo3-orange bg-gradient-to-br from-typo3-orange to-red-900 py-10 md:py-20 px-2 selection:bg-typo3-orange selection:text-white flex items-center{% endblock %}
+
+{% block body %}
+
+    <div class="w-full">
+        <main class="bg-white max-w-3xl mx-auto p-8 md:p-12 mb-10 rounded-lg shadow-2xl relative">
+            <section>
+                <h1 class="font-bold text-2xl">TYPO3 Badges</h1>
+                <p class="text-gray-600 pt-2">A beautiful eye-catcher for your extension documentations.</p>
+
+                {% include 'partials/_callout.html.twig' with {
+                    'severity': 'error',
+                    'header': 'Badge Maintenance in Progress! 🛠️',
+                    'body': 'We\'re giving TYPO3 Badges a quick polish to keep them shining bright. 🌟<br>'
+                    ~ 'Thanks for your patience – your badges will be back soon, better than ever!',
+                } %}
+            </section>
+        </main>
+
+        <footer class="max-w-3xl mx-auto text-center mt-12">
+            <div class="flex flex-wrap place-content-center space-x-2 -mt-2">
+                {% include 'partials/_badge.html.twig' with {
+                    'src': 'https://img.shields.io/github/v/release/eliashaeussler/typo3-badges?logo=github',
+                    'title': 'Current version badge',
+                    'link': 'https://github.com/eliashaeussler/typo3-badges',
+                    'linkClass': 'mt-2',
+                } %}
+                {% include 'partials/_badge.html.twig' with {
+                    'src': 'https://img.shields.io/badge/dynamic/json?color=green&label=last+deployment&query=0.updated_at&url='
+                    ~ ('https://api.github.com/repos/eliashaeussler/typo3-badges/deployments?environment=production' | url_encode),
+                    'title': 'Last deployment badge',
+                    'link': 'https://github.com/eliashaeussler/typo3-badges/deployments/activity_log?environment=production',
+                    'linkClass': 'mt-2',
+                } %}
+            </div>
+
+            <p class="text-white text-sm mt-4">
+                TYPO3 and its logo are trademarks of the TYPO3 Association.
+                <br>
+                Created with &#x2764; and &#x2615; by
+                <a href="https://haeussler.dev" class="font-bold hover:underline">Elias Häußler</a>
+            </p>
+        </footer>
+    </div>
+
+{% endblock %}
