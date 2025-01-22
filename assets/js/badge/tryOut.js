@@ -85,6 +85,10 @@ export default class TryOut {
     }
   }
 
+  static isAvailable() {
+    return document.querySelector('#try-out-modal') !== null;
+  }
+
   /**
    * Show try-out modal.
    */
