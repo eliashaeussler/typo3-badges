@@ -47,6 +47,10 @@ export default class BadgeProviderToggle {
     this.addEventListeners();
   }
 
+  static isAvailable(element) {
+    return document.querySelectorAll(element).length > 0;
+  }
+
   addEventListeners() {
     [...this.buttons].forEach((el) => {
       ['focus', 'click'].forEach((e) => el.addEventListener(e, () => this.hideButtonPings()));

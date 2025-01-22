@@ -50,8 +50,13 @@ export default class App {
     CodeTabs.connect();
     LazyLoad.connect('body');
 
-    this.badgeProviderToggle = new BadgeProviderToggle('.badge-providers-button');
-    this.tryOut = new TryOut('[data-modal-trigger="try-out-modal"]');
+    if (BadgeProviderToggle.isAvailable('.badge-providers-button')) {
+      this.badgeProviderToggle = new BadgeProviderToggle('.badge-providers-button');
+    }
+
+    if (TryOut.isAvailable()) {
+      this.tryOut = new TryOut('[data-modal-trigger="try-out-modal"]');
+    }
   }
 
   /**
