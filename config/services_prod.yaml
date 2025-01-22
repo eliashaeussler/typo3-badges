@@ -1,0 +1,4 @@
+services:
+  App\EventListener\ExceptionListener:
+    autowire: true
+    tags: ['kernel.event_listener']

@@ -38,7 +38,8 @@
 		"symfony/web-link": "7.2.0",
 		"symfony/web-profiler-bundle": "7.2.2",
 		"symfony/webpack-encore-bundle": "2.2.0",
-		"symfony/yaml": "7.2.0"
+		"symfony/yaml": "7.2.0",
+		"twig/twig": "^3.18.0"
 	},
 	"require-dev": {
 		"eliashaeussler/php-cs-fixer-config": "2.2.1",

@@ -37,7 +37,7 @@ use Symfony\Component\Routing\RouterInterface;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
-#[Route(path: '/')]
+#[Route(path: '/', name: 'app_homepage')]
 final class HomepageController extends AbstractController
 {
     use CacheableResponseTrait;
