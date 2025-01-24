@@ -13,7 +13,7 @@
 			true,
 			{
 				"ignoreAtRules": [
-					"tailwind"
+					"config"
 				]
 			}
 		]

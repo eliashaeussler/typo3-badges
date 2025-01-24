@@ -4,6 +4,7 @@
 		"file-loader",
 		"postcss-loader",
 		"stylelint-config-standard",
+		"tailwindcss",
 		"webpack-notifier"
 	]
 }

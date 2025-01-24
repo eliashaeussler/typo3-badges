@@ -34,7 +34,7 @@ export default class TryOut {
   defaults = {
     placement: 'center',
     backdrop: 'static',
-    backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
+    backdropClasses: 'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
     onShow: () => this.showModal(),
     onHide: () => this.hideModal(),
   };

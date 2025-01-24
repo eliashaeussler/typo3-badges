@@ -1,5 +1,5 @@
 <button id="badge-providers-button-{{ section }}" data-dropdown-toggle="badge-providers-{{ section }}" type="button"
-        class="badge-providers-button js-hidden relative shadow-md border border-gray-100 text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-orange-300 font-medium rounded-md text-sm px-4 py-2 text-center inline-flex items-center"
+        class="badge-providers-button js-hidden relative shadow-md border border-gray-100 text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-orange-300 font-medium rounded-md text-sm px-4 py-2 text-center inline-flex items-center cursor-pointer"
         aria-labelledby="badge-providers-button-{{ section }}-label"
 >
     <span class="badge-providers-button-ping flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
@@ -11,7 +11,7 @@
     <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
 </button>
 
-<div id="badge-providers-{{ section }}" class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+<div id="badge-providers-{{ section }}" class="hidden z-10 w-44 text-base list-none bg-white rounded-sm divide-y divide-gray-100 shadow-sm">
     <div class="py-1">
         {% for identifier, provider in providers %}
             <label for="badge-provider-{{ section }}-{{ identifier }}">

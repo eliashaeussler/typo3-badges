@@ -6,7 +6,7 @@
 >
     {% for language, label in languages %}
         <li class="mr-4" role="presentation">
-            <button class="group relative text-xs font-bold py-1 uppercase text-gray-600 hover:text-red-600 aria-selected:text-red-500 dark:text-gray-600 dark:hover:text-red-600 dark:aria-selected:text-red-500"
+            <button class="group relative text-xs font-bold py-1 uppercase text-gray-600 cursor-pointer hover:text-red-600 aria-selected:text-red-500 dark:text-gray-600 dark:hover:text-red-600 dark:aria-selected:text-red-500"
                     id="{{ identifier|replace({'%language%': language}) }}-trigger"
                     data-tabs-target="#{{ identifier|replace({'%language%': language}) }}"
                     data-sync-language="{{ language }}"
