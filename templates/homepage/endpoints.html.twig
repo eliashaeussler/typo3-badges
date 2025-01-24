@@ -1,17 +1,17 @@
 <div class="flex items-center justify-space-between">
-    <h2 class="font-bold text-xl flex-grow">&#x1F525;&nbsp;Endpoints</h2>
+    <h2 class="font-bold text-xl grow">&#x1F525;&nbsp;Endpoints</h2>
 
     {% include 'partials/_badge-provider-toggle.html.twig' with {'section': 'endpoints'} %}
 </div>
 <hr class="my-2 border-gray-200">
 
-<ul class="rounded-md mt-2 shadow border border-gray-100">
+<ul class="rounded-md mt-2 shadow-sm border border-gray-100">
     {% for routeName, route in routes %}
         <li class="px-4 md:px-6 py-4 border-b border-gray-200 last:border-none break-words">
             <details class="badge-endpoint marker:text-gray-400" {% if loop.first %}open{% endif %}>
                 <summary>
                     <h3 class="inline text-sm cursor-pointer">
-                        <span class="inline-block bg-blue-400 text-white px-1.5 pb-0.25 rounded font-mono mr-1">GET</span>
+                        <span class="inline-block bg-blue-400 text-white px-1.5 pb-0.25 rounded-sm font-mono mr-1">GET</span>
                         <code class="inline border-b border-dashed pb-0.5 font-bold">{{ route.path }}</code>
                     </h3>
                     <span class="block text-gray mt-4">

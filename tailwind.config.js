@@ -26,10 +26,6 @@ module.exports = {
     opacity: ['no-touch'],
   },
   plugins: [
-    require('tailwindcss-triangles')({
-      componentPrefix: 'c-',
-      defaultColor: 'currentColor',
-    }),
     require('tailwindcss-selection-variant'),
     require('tailwindcss-crossbrowser-touch')(),
   ],

@@ -17,9 +17,9 @@
     'warning': 'text-orange-500',
 } %}
 
-<div class="rounded-md shadow {{ backgroundColors[severity] }} p-4 mt-3 md:mt-4">
+<div class="rounded-md shadow-sm {{ backgroundColors[severity] }} p-4 mt-3 md:mt-4">
     <div class="flex items-start space-x-2.5 {{ colors[severity] }}">
-        <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">{{ icons[severity] | raw }}</svg>
+        <svg class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">{{ icons[severity] | raw }}</svg>
         <div>
             <div class="mt-0.5 text-sm font-semibold">
                 {{ header }}
