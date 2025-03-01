@@ -2,11 +2,7 @@ name: API schema
 on:
   push:
     branches:
-      - main
-      - 'renovate/**'
-  pull_request:
-    branches:
-      - main
+      - '**'
 
 jobs:
   validate:
