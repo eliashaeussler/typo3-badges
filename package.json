@@ -35,7 +35,7 @@
 	},
 	"dependencies": {
 		"@fontsource/indie-flower": "5.2.5",
-		"@fontsource/jetbrains-mono": "5.1.2",
+		"@fontsource/jetbrains-mono": "5.2.5",
 		"@fontsource/lato": "5.1.1",
 		"clipboard": "2.0.11",
 		"flowbite": "3.1.2"
