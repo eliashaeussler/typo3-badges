@@ -24,7 +24,7 @@
 		"globals": "16.0.0",
 		"postcss-import": "16.1.0",
 		"postcss-loader": "8.1.1",
-		"stylelint": "16.15.0",
+		"stylelint": "16.16.0",
 		"stylelint-config-standard": "37.0.0",
 		"tailwindcss": "4.0.14",
 		"tailwindcss-crossbrowser-touch": "1.1.2",
