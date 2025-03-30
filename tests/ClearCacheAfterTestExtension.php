@@ -49,6 +49,6 @@ final class ClearCacheAfterTestExtension implements Extension, FinishedSubscribe
     #[Override]
     public function notify(Finished $event): void
     {
-        (new Filesystem())->remove(__DIR__.'/../var/cache/test');
+        new Filesystem()->remove(__DIR__.'/../var/cache/test');
     }
 }

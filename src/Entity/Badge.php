@@ -137,18 +137,14 @@ final readonly class Badge
 
         sort($typo3Versions);
 
-        $lastValue = array_pop($typo3Versions);
-        /** @var non-empty-string $message */
-        $message = implode(
-            ' & ',
-            array_filter(
-                [
-                    implode(', ', $typo3Versions),
-                    $lastValue,
-                ],
-                static fn (string|int $version) => '' !== trim((string) $version),
-            ),
-        );
+        $latestVersion = array_pop($typo3Versions);
+        $message = implode(', ', $typo3Versions);
+
+        if ('' !== $message) {
+            $message .= ' & ';
+        }
+
+        $message .= $latestVersion;
 
         return new self(
             'typo3',
