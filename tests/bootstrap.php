@@ -26,11 +26,11 @@ use Symfony\Component\Filesystem\Filesystem;
 
 require dirname(__DIR__).'/vendor/autoload.php';
 
-(new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+new Dotenv()->bootEnv(dirname(__DIR__).'/.env');
 
 if ((bool) $_SERVER['APP_DEBUG']) {
     umask(0000);
 }
 
 // Clear all caches
-(new Filesystem())->remove(__DIR__.'/../var/cache/test');
+new Filesystem()->remove(__DIR__.'/../var/cache/test');
