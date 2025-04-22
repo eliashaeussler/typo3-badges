@@ -118,12 +118,12 @@
         "version": "5.0.3"
     },
     "phpunit/phpunit": {
-        "version": "12.0",
+        "version": "12.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "10.0",
-            "ref": "b786e93f0b38027289867faca488b8c511436fe0"
+            "ref": "bb22cf8d8c554a623b427d5f3416b538f5525233"
         },
         "files": [
             ".env.test",
@@ -198,12 +198,12 @@
         "version": "3.0.2"
     },
     "sentry/sentry-symfony": {
-        "version": "5.1",
+        "version": "5.2",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
             "version": "5.0",
-            "ref": "76afa07d23e76f678942f00af5a6a417ba0816d0"
+            "ref": "c3decefe8a11a5da43adaf827a6cd66695586113"
         },
         "files": [
             "config/packages/sentry.yaml"
@@ -421,7 +421,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "2.0",
-            "ref": "20af60d17dc26c2f2b67f8ee1038cd2da1ca8fb3"
+            "ref": "9ef5412a4a2a8415aca3a3f2b4edd3866aab9a19"
         },
         "files": [
             "assets/app.js",
