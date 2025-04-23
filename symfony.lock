@@ -203,7 +203,7 @@
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
             "version": "5.0",
-            "ref": "c3decefe8a11a5da43adaf827a6cd66695586113"
+            "ref": "d852d02a2e294d0d39110947609a791e93e5ee42"
         },
         "files": [
             "config/packages/sentry.yaml"
