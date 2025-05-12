@@ -35,7 +35,9 @@ return PHPStanConfig\Config\Config::create(__DIR__)
         'src',
         'tests',
     )
-    ->withBleedingEdge()
+    ->withBleedingEdge([
+        'internalTag' => false,
+    ])
     ->withSets($symfonySet)
     ->level(8)
     ->toArray()
