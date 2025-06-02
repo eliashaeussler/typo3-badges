@@ -19,11 +19,4 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
-    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
-];
+return "\xF5\xC4\x2Ca\xE9\x0D\x9CR\xD7T\x2Bd\xF7\xDBHQ\x3B\x9B\xF7\x1F\x5B\xDCb\x40\xEE\xD6\x9C\x83T\x17\x2A\x1AJ\xAE\x1B\xE6\x0D\xD8\xC5\x99\x94\x98\x88\x7B\x09\xAE\xE6\x9F\xDB\xCES\x93\x8D\x2A\x14\xCC\xCAt\xFD\xE0\x0D\x23\xD7F\xEDHRM\xFE5\xED\xB1\x13\xC9X\xC3\xAB\xD9";

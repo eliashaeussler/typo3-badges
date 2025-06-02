@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use App\Repository\ApiTokenRepository;
 use App\Service\ApiService;
 use App\Tests\MockClientTrait;
 use Override;
@@ -54,7 +55,15 @@ final class HomepageControllerTest extends WebTestCase
         $this->client = self::createClient();
 
         $container = self::getContainer();
-        $container->set(ApiService::class, new ApiService($this->mockClient, $container->get(CacheInterface::class)));
+        $container->set(
+            ApiService::class,
+            new ApiService(
+                $this->mockClient,
+                $this->mockClient,
+                $container->get(CacheInterface::class),
+                $container->get(ApiTokenRepository::class),
+            ),
+        );
     }
 
     #[Test]

@@ -32,7 +32,8 @@ services:
 
     App\Service\ApiService:
         arguments:
-            $client: '@typo3_api.client'
+            $tokenClient: '@client.typo3_api.token'
+            $authClient: '@client.typo3_api.auth'
 
     App\Badge\Provider\BadgeProviderFactory:
         arguments:
@@ -40,3 +41,11 @@ services:
 
     App\Cache\RandomExtensionMetadataCacheWarmer:
         tags: ['kernel.cache_warmer']
+
+    client.typo3_api.auth:
+        class: 'Symfony\Contracts\HttpClient\HttpClientInterface'
+        factory: ['@App\Http\Client\Typo3ApiClientFactory', 'getForAuthentication']
+
+    client.typo3_api.token:
+        class: 'Symfony\Contracts\HttpClient\HttpClientInterface'
+        factory: ['@App\Http\Client\Typo3ApiClientFactory', 'getWithToken']
