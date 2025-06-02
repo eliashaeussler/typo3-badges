@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Tests;
 
+use App\Repository\ApiTokenRepository;
 use App\Service\ApiService;
 use Override;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -47,7 +48,12 @@ abstract class AbstractApiTestCase extends KernelTestCase
         self::bootKernel();
 
         $this->cache = self::getContainer()->get(CacheInterface::class);
-        $this->apiService = new ApiService($this->getMockClient(), $this->cache);
+        $this->apiService = new ApiService(
+            $this->getMockClient(),
+            $this->getMockClient(),
+            $this->cache,
+            self::getContainer()->get(ApiTokenRepository::class),
+        );
     }
 
     /**

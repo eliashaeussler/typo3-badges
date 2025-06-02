@@ -19,11 +19,5 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
-    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
-];
+// SYMFONY_DECRYPTION_SECRET=KQXximNWUpTDGJLkL/YkGphZAEGngSDgPJWqv9NH+D5EecDDJDE7talDFLjosJdwsNWP/24QVikD69OrbUBMFA==
+return "\x29\x05\xF1\x8AcVR\x94\xC3\x18\x92\xE4\x2F\xF6\x24\x1A\x98Y\x00A\xA7\x81\x20\xE0\x3C\x95\xAA\xBF\xD3G\xF8\x3EDy\xC0\xC3\x241\x3B\xB5\xA9C\x14\xB8\xE8\xB0\x97p\xB0\xD5\x8F\xFFn\x10V\x29\x03\xEB\xD3\xABm\x40L\x14";

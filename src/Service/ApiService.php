@@ -23,8 +23,11 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Entity\ApiToken;
 use App\Entity\Dto\ExtensionMetadata;
+use App\Repository\ApiTokenRepository;
 use DateTime;
+use DateTimeImmutable;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -40,8 +43,10 @@ final readonly class ApiService
     private const string FALLBACK_EXTENSION_KEY = 'handlebars';
 
     public function __construct(
-        private HttpClientInterface $client,
+        private HttpClientInterface $authClient,
+        private HttpClientInterface $tokenClient,
         private CacheInterface $cache,
+        private ApiTokenRepository $apiTokenRepository,
         private int $cacheExpirationPeriod = 3600,
     ) {}
 
@@ -100,12 +105,41 @@ final readonly class ApiService
         );
     }
 
+    public function refreshApiToken(ApiToken $apiToken, bool $force = false): void
+    {
+        if (!$force && !$apiToken->isExpired()) {
+            return;
+        }
+
+        $apiPath = $this->buildApiPath('/auth/token/refresh');
+        $response = $this->authClient->request('POST', $apiPath, [
+            'body' => [
+                'access_token' => $apiToken->getAccessToken(),
+                'token' => $apiToken->getRefreshToken(),
+            ],
+        ]);
+
+        /** @var array{access_token: string, refresh_token: string, expires_in: int} $responseArray */
+        $responseArray = $response->toArray();
+
+        // Calculate expiry date with given threshold
+        $expiryTimestamp = time() + $responseArray['expires_in'];
+        $expiryDate = new DateTimeImmutable('@'.$expiryTimestamp);
+
+        // Update api token
+        $apiToken->setAccessToken($responseArray['access_token']);
+        $apiToken->setRefreshToken($responseArray['refresh_token']);
+        $apiToken->setExpiryDate($expiryDate);
+
+        $this->apiTokenRepository->save($apiToken, true);
+    }
+
     /**
      * @return array<int|string, mixed>
      */
     private function sendRequestAndCacheResponse(string $path, ItemInterface $item, ?int $expiresAfter = null): array
     {
-        $response = $this->client->request('GET', $path);
+        $response = $this->tokenClient->request('GET', $path);
         $responseArray = $response->toArray();
 
         $item->expiresAfter($expiresAfter ?? $this->cacheExpirationPeriod);

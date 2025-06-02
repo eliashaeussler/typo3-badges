@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
@@ -19,11 +21,23 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
-    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
-];
+namespace App\Exception;
+
+use Exception;
+
+/**
+ * MissingApiTokenException.
+ *
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-3.0-or-later
+ */
+final class MissingApiTokenException extends Exception
+{
+    public static function create(): self
+    {
+        return new self(
+            'No API token configured. Please add a valid API token for TYPO3 REST API.',
+            1687078695,
+        );
+    }
+}
