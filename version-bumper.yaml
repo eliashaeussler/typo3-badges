@@ -1,8 +1,6 @@
 presets:
-  - name: typo3-commit-guidelines
-  - name: npm-package
-    options:
-      packageName: '@eliashaeussler/typo3-badges'
+  - typo3-commit-guidelines
+  - npm-package
 
 filesToModify:
   - path: spec/typo3-badges.oas3.yaml
