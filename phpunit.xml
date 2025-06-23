@@ -50,5 +50,9 @@
 
     <extensions>
         <bootstrap class="App\Tests\ClearCacheAfterTestExtension"/>
+        <bootstrap class="Symfony\Bridge\PhpUnit\SymfonyExtension">
+            <parameter name="clock-mock-namespaces" value="App"/>
+            <parameter name="dns-mock-namespaces" value="App"/>
+        </bootstrap>
     </extensions>
 </phpunit>

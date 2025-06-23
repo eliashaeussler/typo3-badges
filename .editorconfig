@@ -36,3 +36,6 @@ indent_size = 2
 # .htaccess
 [{_.htaccess,.htaccess}]
 indent_style = tab
+
+[*.md]
+trim_trailing_whitespace = false
