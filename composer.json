@@ -17,7 +17,7 @@
 		"ext-hash": "*",
 		"ext-json": "*",
 		"nyholm/psr7": "1.8.2",
-		"sentry/sentry-symfony": "5.2.0",
+		"sentry/sentry-symfony": "5.3.0",
 		"symfony/apache-pack": "1.0.1",
 		"symfony/asset": "7.3.0",
 		"symfony/cache": "7.3.1",
