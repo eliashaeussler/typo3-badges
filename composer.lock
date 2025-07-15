@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b2827b7217c6714f74496228289d6e1",
+    "content-hash": "e241ec57e9c6afc8c2a678626f0c2d08",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -4690,16 +4690,16 @@
         },
         {
             "name": "eliashaeussler/version-bumper",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/version-bumper.git",
-                "reference": "a5e5395f0f76ceb9cbe8c4d7194039777c2181c9"
+                "reference": "06caa19bdb3948dcf98e4f59d90baf290e0d2a27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/a5e5395f0f76ceb9cbe8c4d7194039777c2181c9",
-                "reference": "a5e5395f0f76ceb9cbe8c4d7194039777c2181c9",
+                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/06caa19bdb3948dcf98e4f59d90baf290e0d2a27",
+                "reference": "06caa19bdb3948dcf98e4f59d90baf290e0d2a27",
                 "shasum": ""
             },
             "require": {
@@ -4722,7 +4722,8 @@
                 "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-symfony": "^2.0",
-                "phpunit/phpunit": "^11.0 || ^12.0"
+                "phpunit/phpunit": "^11.0 || ^12.0",
+                "shipmonk/composer-dependency-analyser": "^1.8"
             },
             "type": "composer-plugin",
             "extra": {
@@ -4748,9 +4749,9 @@
             "description": "Composer plugin to bump project versions during release preparations",
             "support": {
                 "issues": "https://github.com/eliashaeussler/version-bumper/issues",
-                "source": "https://github.com/eliashaeussler/version-bumper/tree/3.0.0"
+                "source": "https://github.com/eliashaeussler/version-bumper/tree/3.0.1"
             },
-            "time": "2025-06-28T12:36:27+00:00"
+            "time": "2025-07-15T08:32:17+00:00"
         },
         {
             "name": "ergebnis/composer-normalize",
