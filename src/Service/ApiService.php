@@ -76,7 +76,8 @@ final readonly class ApiService
                     'page' => random_int(1, 10),
                     'per_page' => 20,
                     'filter' => [
-                        'typo3_version' => random_int(11, 13),
+                        // @todo Go back to random_int(11, 13) once https://git.typo3.org/services/t3o-sites/extensions.typo3.org/ter/-/merge_requests/794 is merged
+                        'typo3_version' => random_int(9, 11),
                     ],
                 ];
                 $apiUrl = $apiPath.'?'.http_build_query($filterOptions);
