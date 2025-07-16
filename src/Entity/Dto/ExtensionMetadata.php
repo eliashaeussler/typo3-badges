@@ -33,7 +33,7 @@ use Override;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  *
- * @implements \ArrayAccess<int|string, mixed>
+ * @implements ArrayAccess<int|string, mixed>
  */
 final class ExtensionMetadata implements ArrayAccess
 {
