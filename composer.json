@@ -37,7 +37,7 @@
 		"symfony/service-contracts": "3.6.0",
 		"symfony/web-link": "7.3.0",
 		"symfony/web-profiler-bundle": "7.3.2",
-		"symfony/webpack-encore-bundle": "2.2.0",
+		"symfony/webpack-encore-bundle": "2.3.0",
 		"symfony/yaml": "7.3.2",
 		"twig/twig": "3.21.1"
 	},
