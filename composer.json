@@ -26,7 +26,7 @@
 		"symfony/css-selector": "7.3.0",
 		"symfony/dependency-injection": "7.3.2",
 		"symfony/dotenv": "7.3.2",
-		"symfony/flex": "2.8.1",
+		"symfony/flex": "2.8.2",
 		"symfony/framework-bundle": "7.3.2",
 		"symfony/http-client": "7.3.2",
 		"symfony/http-client-contracts": "3.6.0",
