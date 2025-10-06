@@ -59,6 +59,7 @@ export default class LazyLoad {
    */
   static loadImage(element) {
     const { lazyClasses, src } = element.dataset;
+    const placeholderSrc = element.getAttribute('src');
 
     // Early return if "data-src" attribute is missing or is part of a template section
     if (typeof src === 'undefined' || src.includes('EXTENSION_KEY')) {
@@ -71,7 +72,15 @@ export default class LazyLoad {
 
     // Remove lazy-load classes
     element.addEventListener('load', () => {
-      element.classList.remove(...lazyClasses.split(' '));
+      if (element.getAttribute('src') !== placeholderSrc) {
+        element.classList.remove(...lazyClasses.split(' '));
+      }
+    });
+
+    // Revert image source exchange if loading fails
+    element.addEventListener('error', () => {
+      element.setAttribute('src', placeholderSrc);
+      element.classList.add(...lazyClasses.split(' '));
     });
   }
 }
