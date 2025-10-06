@@ -25,7 +25,13 @@
         {% include 'homepage/usage.html.twig' %}
     </section>
 
-    <section class="mt-4 js-hidden">
+    <section class="mt-4 relative js-hidden">
+        <aside class="absolute subpixel-antialiased right-full mr-12 md:mr-16 -top-[5.5rem] text-white hidden xl:flex flex-col items-end select-none" aria-hidden="true">
+            <p class="font-cursive whitespace-nowrap mt-2 text-md">Try for your extension</p>
+
+            <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 26 28" xmlns="http://www.w3.org/2000/svg"><path stroke-width="0.75" stroke-miterlimit="10" stroke-dasharray="2, 0.75" d="M 0 0.633 L 0.92 0.633 L 1.95 0.633 C 3.39 0.633 4.8 0.803 6.16 1.143 C 7.52 1.473 8.83 1.963 10.08 2.603 C 11.33 3.233 12.52 4.013 13.63 4.903 C 14.74 5.803 15.78 6.823 16.72 7.953 C 17.66 9.083 18.52 10.323 19.27 11.653 C 20.02 12.983 20.67 14.403 21.2 15.903 C 21.73 17.403 22.14 18.973 22.42 20.593 C 22.7 22.223 22.85 23.903 22.85 25.633" style="transform-box: fill-box; transform-origin: 50% 50%; stroke-width: 0.75;" transform="matrix(-1, 0, 0, -1, 0.000001, -0.000001)"/><polygon fill="currentColor" points="22.41 25.633 25 24.133 25 27.133" style="transform-box: fill-box; transform-origin: 50% 50%; stroke-width: 1;" transform="matrix(-1, 0, 0, -1, 0, 0.000001)"/></svg>
+        </aside>
+
         {% include 'homepage/try-out.html.twig' %}
     </section>
 
