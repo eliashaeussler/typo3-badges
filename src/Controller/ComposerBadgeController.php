@@ -39,7 +39,7 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/composer/{provider?}.{_format}',
     name: 'badge.composer',
     requirements: [
-        'extension' => '[a-z0-9_]+',
+        'extension' => '[a-z][a-z0-9_]+',
         '_format' => 'json|svg',
     ],
     options: [

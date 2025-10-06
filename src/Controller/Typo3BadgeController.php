@@ -40,7 +40,7 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/typo3/{provider?}.{_format}',
     name: 'badge.typo3',
     requirements: [
-        'extension' => '[a-z0-9_]+',
+        'extension' => '[a-z][a-z0-9_]+',
         '_format' => 'json|svg',
     ],
     options: [
