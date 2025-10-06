@@ -27,7 +27,7 @@
                     </button>
                     {% include 'partials/_badge-provider-toggle.html.twig' with {'section': 'try-out'} %}
                 </div>
-                <div id="try-out-template" class="hidden">
+                <div id="try-out-code-template" class="hidden">
                     {% for provider in providers %}
                         <div data-badge-provider="{{ provider.identifier }}" class="-mt-2 space-y-6">
                             <div>
@@ -89,6 +89,17 @@
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+
+                <div id="try-out-error-template" class="hidden">
+                    {% include 'partials/_callout.html.twig' with {
+                        'severity': 'error',
+                        'header': 'Composer package name detected',
+                        'body': 'The TYPO3 extension repository (TER) REST API currently does not allow fetching ' ~
+                            'extension metadata for Composer package names. Please use the appropriate extension key ' ~
+                            'instead, which can be found on the <a href="https://extensions.typo3.org/package/PACKAGE_NAME" ' ~
+                            'rel="nofollow" class="font-bold hover:underline" target="_blank">TER detail page</a>.',
+                    } %}
                 </div>
 
                 <div id="try-out-output" class="hidden"></div>

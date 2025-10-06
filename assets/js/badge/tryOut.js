@@ -47,7 +47,9 @@ export default class TryOut {
 
   input;
 
-  template;
+  codeTemplate;
+
+  errorTemplate;
 
   output;
 
@@ -62,8 +64,8 @@ export default class TryOut {
     this.input = document.querySelector('#try-out-extension-key');
     this.modal = new Modal(this.element, this.options);
 
-    // Store try-out template section
-    this.readTemplate();
+    // Store try-out template sections
+    this.readTemplates();
 
     // Open modal on click on trigger elements
     [...this.triggers].forEach((t) => {
@@ -112,8 +114,9 @@ export default class TryOut {
   /**
    * Read and store try-out template section.
    */
-  readTemplate() {
-    this.template = document.querySelector('#try-out-template').innerHTML;
+  readTemplates() {
+    this.codeTemplate = document.querySelector('#try-out-code-template').innerHTML;
+    this.errorTemplate = document.querySelector('#try-out-error-template').innerHTML;
     this.output = document.querySelector('#try-out-output');
     this.extensionKeyInput = document.querySelector('#try-out-extension-key');
   }
@@ -125,8 +128,15 @@ export default class TryOut {
    */
   applyTemplate(extensionKey) {
     this.output.classList.remove('hidden');
-    this.output.innerHTML = this.template.replaceAll('EXTENSION_KEY', extensionKey);
     this.extensionKeyInput.value = extensionKey;
+
+    // Fail on Composer package names
+    if (extensionKey.includes('/')) {
+      this.output.innerHTML = this.errorTemplate.replaceAll('PACKAGE_NAME', extensionKey);
+      return;
+    }
+
+    this.output.innerHTML = this.codeTemplate.replaceAll('EXTENSION_KEY', extensionKey);
 
     // Connect badge provider toggles
     const badgeProviderToggle = new BadgeProviderToggle('#try-out-modal .badge-providers-button');
