@@ -40,7 +40,7 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/downloads/{provider?}.{_format}',
     name: 'badge.downloads',
     requirements: [
-        'extension' => '[a-z0-9_]+',
+        'extension' => '[a-z][a-z0-9_]+',
         '_format' => 'json|svg',
     ],
     options: [

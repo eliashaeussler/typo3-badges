@@ -40,7 +40,7 @@ use Symfony\Component\Routing\Annotation\Route;
     path: '/badge/{extension}/stability/{provider?}.{_format}',
     name: 'badge.stability',
     requirements: [
-        'extension' => '[a-z0-9_]+',
+        'extension' => '[a-z][a-z0-9_]+',
         '_format' => 'json|svg',
     ],
     options: [
