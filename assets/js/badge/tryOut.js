@@ -49,11 +49,13 @@ export default class TryOut {
 
   codeTemplate;
 
-  errorTemplate;
+  errorTemplates;
 
   output;
 
   extensionKeyInput;
+
+  terLink;
 
   modal;
 
@@ -102,6 +104,11 @@ export default class TryOut {
       const extensionKey = this.input.value.trim().toLowerCase();
       this.applyTemplate(extensionKey);
     };
+
+    const currentExtensionKey = this.element.dataset.extensionKey ?? '';
+    if (currentExtensionKey !== '') {
+      Url.setInHash('extension', currentExtensionKey);
+    }
   }
 
   /**
@@ -116,9 +123,15 @@ export default class TryOut {
    */
   readTemplates() {
     this.codeTemplate = document.querySelector('#try-out-code-template').innerHTML;
-    this.errorTemplate = document.querySelector('#try-out-error-template').innerHTML;
+    this.errorTemplates = Object.fromEntries(
+      Array.from(document.querySelectorAll('#try-out-error-template > [data-error-identifier]')).map((el) => [
+        el.dataset.errorIdentifier,
+        el.innerHTML,
+      ]),
+    );
     this.output = document.querySelector('#try-out-output');
     this.extensionKeyInput = document.querySelector('#try-out-extension-key');
+    this.terLink = document.querySelector('#try-out-ter-link');
   }
 
   /**
@@ -132,11 +145,22 @@ export default class TryOut {
 
     // Fail on Composer package names
     if (extensionKey.includes('/')) {
-      this.output.innerHTML = this.errorTemplate.replaceAll('PACKAGE_NAME', extensionKey);
+      this.output.innerHTML = this.errorTemplates['composer-name-detected'].replaceAll('PACKAGE_NAME', extensionKey);
+      this.handleError();
       return;
     }
 
+    // Fail on invalid extension key
+    if (!extensionKey.match(/^[a-z][a-z0-9_]+$/)) {
+      this.output.innerHTML = this.errorTemplates['invalid-extension-key'].replaceAll('PACKAGE_NAME', extensionKey);
+      this.handleError();
+      return;
+    }
+
+    this.element.dataset.extensionKey = extensionKey;
     this.output.innerHTML = this.codeTemplate.replaceAll('EXTENSION_KEY', extensionKey);
+    this.terLink.innerHTML = this.terLink.innerHTML.replaceAll('EXTENSION_KEY', extensionKey);
+    this.terLink.classList.remove('hidden');
 
     // Connect badge provider toggles
     const badgeProviderToggle = new BadgeProviderToggle('#try-out-modal .badge-providers-button');
@@ -179,5 +203,15 @@ export default class TryOut {
 
     // Store in URL
     Url.setInHash('extension', extensionKey);
+  }
+
+  /**
+   * Handle invalid extension key inputs.
+   */
+  handleError() {
+    this.element.dataset.extensionKey = '';
+    this.terLink.classList.add('hidden');
+
+    Url.deleteFromHash('extension');
   }
 }
