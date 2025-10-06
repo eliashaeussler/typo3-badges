@@ -159,7 +159,9 @@ export default class TryOut {
 
     this.element.dataset.extensionKey = extensionKey;
     this.output.innerHTML = this.codeTemplate.replaceAll('EXTENSION_KEY', extensionKey);
-    this.terLink.innerHTML = this.terLink.innerHTML.replaceAll('EXTENSION_KEY', extensionKey);
+
+    // Update TER link
+    this.terLink.querySelector('a').setAttribute('href', `https://extensions.typo3.org/extension/${extensionKey}`);
     this.terLink.classList.remove('hidden');
 
     // Connect badge provider toggles
