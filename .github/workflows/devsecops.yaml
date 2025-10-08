@@ -11,20 +11,20 @@ jobs:
   find-leaked-secrets:
     uses: l3montree-dev/devguard-action/.github/workflows/secret-scanning.yml@main
     with:
-      asset-name: "elias-haussler/projects/typo3-badges/assets/typo3-badges"
+      asset-name: "elias-haeussler/projects/typo3-badges/assets/typo3-badges"
     secrets:
       devguard-token: "${{ secrets.DEVGUARD_TOKEN }}"
 
   dependency-scanning:
     uses: l3montree-dev/devguard-action/.github/workflows/software-composition-analysis.yml@main
     with:
-      asset-name: "elias-haussler/projects/typo3-badges/assets/typo3-badges"
+      asset-name: "elias-haeussler/projects/typo3-badges/assets/typo3-badges"
     secrets:
       devguard-token: "${{ secrets.DEVGUARD_TOKEN }}"
 
   bad-practice-finder:
     uses: l3montree-dev/devguard-action/.github/workflows/sast.yml@main
     with:
-      asset-name: "elias-haussler/projects/typo3-badges/assets/typo3-badges"
+      asset-name: "elias-haeussler/projects/typo3-badges/assets/typo3-badges"
     secrets:
       devguard-token: "${{ secrets.DEVGUARD_TOKEN }}"
