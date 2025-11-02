@@ -39,7 +39,7 @@
 		"symfony/web-profiler-bundle": "7.3.5",
 		"symfony/webpack-encore-bundle": "2.3.0",
 		"symfony/yaml": "7.3.5",
-		"twig/twig": "3.21.1"
+		"twig/twig": "3.22.0"
 	},
 	"require-dev": {
 		"eliashaeussler/php-cs-fixer-config": "2.3.0",
