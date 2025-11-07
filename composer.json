@@ -34,7 +34,7 @@
 		"symfony/http-kernel": "7.3.6",
 		"symfony/routing": "7.3.6",
 		"symfony/runtime": "7.3.4",
-		"symfony/service-contracts": "3.6.0",
+		"symfony/service-contracts": "3.6.1",
 		"symfony/web-link": "7.3.0",
 		"symfony/web-profiler-bundle": "7.3.5",
 		"symfony/webpack-encore-bundle": "2.3.0",
