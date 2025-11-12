@@ -30,7 +30,7 @@
 		"symfony/framework-bundle": "7.3.6",
 		"symfony/http-client": "7.3.6",
 		"symfony/http-client-contracts": "3.6.0",
-		"symfony/http-foundation": "7.3.6",
+		"symfony/http-foundation": "7.3.7",
 		"symfony/http-kernel": "7.3.6",
 		"symfony/routing": "7.3.6",
 		"symfony/runtime": "7.3.4",
