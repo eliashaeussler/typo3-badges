@@ -23,10 +23,6 @@ declare(strict_types=1);
 
 use EliasHaeussler\PHPStanConfig;
 
-$symfonySet = PHPStanConfig\Set\SymfonySet::create()
-    ->withContainerXmlPath('var/cache/dev/App_KernelDevDebugContainer.xml')
-;
-
 return PHPStanConfig\Config\Config::create(__DIR__)
     ->in(
         'bin',
@@ -38,7 +34,9 @@ return PHPStanConfig\Config\Config::create(__DIR__)
     ->withBleedingEdge([
         'internalTag' => false,
     ])
-    ->withSets($symfonySet)
+    ->withSet(static function (PHPStanConfig\Set\SymfonySet $set) {
+        $set->withContainerXmlPath('var/cache/dev/App_KernelDevDebugContainer.xml');
+    })
     ->level(8)
     ->toArray()
 ;
