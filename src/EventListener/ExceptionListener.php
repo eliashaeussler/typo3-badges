@@ -43,7 +43,7 @@ final readonly class ExceptionListener
 
     public function __invoke(ExceptionEvent $event): void
     {
-        $route = $event->getRequest()->get('_route');
+        $route = $event->getRequest()->attributes->get('_route');
 
         if ('app_homepage' === $route) {
             $response = $this->renderResponse();
