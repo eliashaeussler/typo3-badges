@@ -38,7 +38,7 @@ final class ErrorController extends AbstractBadgeController
 {
     public function __invoke(Request $request, Throwable $exception): Response
     {
-        $provider = (string) $request->get('provider');
+        $provider = (string) $request->attributes->get('provider');
 
         return $this->getBadgeResponse($request, Badge::forError(), '' !== $provider ? $provider : null);
     }
