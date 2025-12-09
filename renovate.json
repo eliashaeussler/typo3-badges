@@ -4,5 +4,8 @@
 		"local>eliashaeussler/renovate-config",
 		"local>eliashaeussler/renovate-config:symfony-project",
 		"local>eliashaeussler/renovate-config:deployer"
-	]
+	],
+	"constraints": {
+		"php": "8.4.*"
+	}
 }
