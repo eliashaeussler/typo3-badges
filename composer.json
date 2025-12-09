@@ -42,7 +42,7 @@
 		"twig/twig": "3.22.1"
 	},
 	"require-dev": {
-		"eliashaeussler/php-cs-fixer-config": "3.0.0",
+		"eliashaeussler/php-cs-fixer-config": "3.0.1",
 		"eliashaeussler/phpstan-config": "3.1.2",
 		"eliashaeussler/rector-config": "4.0.0",
 		"eliashaeussler/version-bumper": "3.1.0",
