@@ -5,7 +5,6 @@
 # Badges for TYPO3 extensions
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-badges?logo=coveralls)](https://coveralls.io/github/eliashaeussler/typo3-badges)
-[![Maintainability](https://qlty.sh/gh/eliashaeussler/projects/typo3-badges/maintainability.svg)](https://qlty.sh/gh/eliashaeussler/projects/typo3-badges)
 [![Uptime monitoring](https://monitor.haeussler.dev/api/badge/9/status?label=status&upLabel=up&downLabel=down)](https://monitor.haeussler.dev/)
 [![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/deploy.yaml?label=deploy&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
