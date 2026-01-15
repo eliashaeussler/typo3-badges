@@ -12,7 +12,7 @@
 	},
 	"homepage": "https://typo3-badges.dev",
 	"devDependencies": {
-		"@babel/core": "7.28.5",
+		"@babel/core": "7.28.6",
 		"@babel/preset-env": "7.28.5",
 		"@eslint/js": "9.39.2",
 		"@symfony/webpack-encore": "5.3.1",
