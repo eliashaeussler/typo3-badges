@@ -22,6 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Validate OpenAPI definition
-        uses: swaggerexpert/swagger-editor-validate@v1
+        uses: swaggerexpert/apidom-validate@v1
         with:
           definition-file: spec/typo3-badges.oas3.yaml
+          fails-on: 2
