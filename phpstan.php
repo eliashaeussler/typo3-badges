@@ -31,6 +31,7 @@ return PHPStanConfig\Config\Config::create(__DIR__)
         'src',
         'tests',
     )
+    ->not('config/reference.php')
     ->withBleedingEdge([
         'internalTag' => false,
     ])
