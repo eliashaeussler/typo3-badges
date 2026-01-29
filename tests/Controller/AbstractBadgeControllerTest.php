@@ -29,7 +29,6 @@ use App\Service\BadgeService;
 use App\Tests\AbstractApiTestCase;
 use App\Tests\Fixtures\AbstractBadgeControllerTestClass;
 use DateTime;
-use Override;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +45,6 @@ final class AbstractBadgeControllerTest extends AbstractApiTestCase
     private BadgeProviderFactory $badgeProviderFactory;
     private AbstractBadgeControllerTestClass $subject;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

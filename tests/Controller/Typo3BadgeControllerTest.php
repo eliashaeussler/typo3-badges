@@ -26,7 +26,6 @@ namespace App\Tests\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\Typo3BadgeController;
 use App\Tests\AbstractApiTestCase;
-use Override;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -43,7 +42,6 @@ final class Typo3BadgeControllerTest extends AbstractApiTestCase
 {
     private Typo3BadgeController $subject;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();

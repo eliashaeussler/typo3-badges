@@ -26,7 +26,6 @@ namespace App\Tests\Controller;
 use App\Badge\Provider\BadgeProviderFactory;
 use App\Controller\ExtensionBadgeController;
 use App\Tests\AbstractApiTestCase;
-use Override;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -43,7 +42,6 @@ final class ExtensionBadgeControllerTest extends AbstractApiTestCase
 {
     private ExtensionBadgeController $subject;
 
-    #[Override]
     protected function setUp(): void
     {
         parent::setUp();
