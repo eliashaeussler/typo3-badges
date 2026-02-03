@@ -22,7 +22,7 @@
 		"eslint": "9.39.2",
 		"file-loader": "6.2.0",
 		"globals": "17.3.0",
-		"knip": "5.82.1",
+		"knip": "5.83.0",
 		"postcss-import": "16.1.1",
 		"postcss-loader": "8.2.0",
 		"stylelint": "17.1.0",
