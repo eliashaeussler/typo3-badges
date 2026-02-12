@@ -31,7 +31,7 @@
 		"tailwindcss-crossbrowser-touch": "1.1.2",
 		"tailwindcss-selection-variant": "0.1.0",
 		"typescript": "5.9.3",
-		"webpack": "5.105.1",
+		"webpack": "5.105.2",
 		"webpack-cli": "5.1.4",
 		"webpack-notifier": "1.15.0"
 	},
