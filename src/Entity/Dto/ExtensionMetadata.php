@@ -27,6 +27,8 @@ use ArrayAccess;
 use DateTime;
 use Override;
 
+use function is_numeric;
+
 /**
  * ExtensionMetadata.
  *
@@ -61,24 +63,33 @@ final class ExtensionMetadata implements ArrayAccess
     #[Override]
     public function offsetExists(mixed $offset): bool
     {
-        return isset($this->metadata[$offset]);
+        return isset($this->metadata[$this->castOffset($offset)]);
     }
 
     #[Override]
     public function offsetGet(mixed $offset): mixed
     {
-        return $this->metadata[$offset] ?? null;
+        return $this->metadata[$this->castOffset($offset)] ?? null;
     }
 
     #[Override]
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        $this->metadata[$offset] = $value;
+        $this->metadata[$this->castOffset($offset)] = $value;
     }
 
     #[Override]
     public function offsetUnset(mixed $offset): void
     {
-        unset($this->metadata[$offset]);
+        unset($this->metadata[$this->castOffset($offset)]);
+    }
+
+    private function castOffset(mixed $offset): string|int
+    {
+        if (is_numeric($offset)) {
+            return (int) $offset;
+        }
+
+        return (string) $offset;
     }
 }
