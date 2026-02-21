@@ -1,5 +1,4 @@
 name: DevGuard DevSecOps
-
 on:
   push:
 
@@ -23,7 +22,7 @@ jobs:
       devguard-token: "${{ secrets.DEVGUARD_TOKEN }}"
 
   bad-practice-finder:
-    uses: l3montree-dev/devguard-action/.github/workflows/sast.yml@main
+    uses: l3montree-dev/devguard-action/.github/workflows/static-application-security-testing.yml@main
     with:
       asset-name: "elias-haeussler/projects/typo3-badges/assets/typo3-badges"
     secrets:
