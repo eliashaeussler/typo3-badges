@@ -6,6 +6,6 @@
 		"local>eliashaeussler/renovate-config:deployer"
 	],
 	"constraints": {
-		"php": "8.4.*"
+		"php": "8.5.*"
 	}
 }
