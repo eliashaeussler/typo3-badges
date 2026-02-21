@@ -17,7 +17,7 @@
 		"@eslint/js": "10.0.1",
 		"@symfony/webpack-encore": "5.3.1",
 		"@tailwindcss/postcss": "4.2.0",
-		"@types/node": "25.2.3",
+		"@types/node": "25.3.0",
 		"autoprefixer": "10.4.24",
 		"eslint": "10.0.1",
 		"file-loader": "6.2.0",
