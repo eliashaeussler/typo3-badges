@@ -34,5 +34,13 @@ $header = PhpCsFixerConfig\Rules\Header::create(
 
 return PhpCsFixerConfig\Config::create()
     ->withRule($header)
-    ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
+    ->withFinder(
+        static fn (Finder\Finder $finder) => $finder
+            ->in(__DIR__)
+            ->exclude('var')
+            ->notPath([
+                'config/bundles.php',
+                'config/reference.php',
+            ]),
+    )
 ;
