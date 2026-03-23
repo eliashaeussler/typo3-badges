@@ -32,7 +32,7 @@
 		"tailwindcss-selection-variant": "0.1.0",
 		"typescript": "5.9.3",
 		"webpack": "5.105.3",
-		"webpack-cli": "5.1.4",
+		"webpack-cli": "6.0.1",
 		"webpack-notifier": "1.15.0"
 	},
 	"dependencies": {
