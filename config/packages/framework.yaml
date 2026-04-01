@@ -12,7 +12,6 @@ framework:
         scoped_clients:
             typo3_api.client:
                 base_uri: 'https://extensions.typo3.org'
-                auth_bearer: '%env(TYPO3_API_TOKEN)%'
 
 when@prod:
     framework:
