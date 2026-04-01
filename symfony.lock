@@ -118,12 +118,12 @@
         "version": "5.0.3"
     },
     "phpunit/phpunit": {
-        "version": "12.4",
+        "version": "13.0",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "11.1",
-            "ref": "1117deb12541f35793eec9fff7494d7aa12283fc"
+            "ref": "ca0bc067abfb40a8de1b2561b96cbfc2b833c314"
         },
         "files": [
             ".env.test",
@@ -328,12 +328,12 @@
         "version": "v6.0.0"
     },
     "symfony/phpunit-bridge": {
-        "version": "7.3",
+        "version": "8.0",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "7.3",
-            "ref": "dc13fec96bd527bd399c3c01f0aab915c67fd544"
+            "ref": "56f87409c45ff6654b0bf07c5cc359aebf6016ab"
         },
         "files": []
     },
@@ -418,7 +418,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "2.1",
-            "ref": "d38b271482707f5209f7bb03884feb88e3bb4f45"
+            "ref": "b346dae458e64a1921ded2125993d94bd719a8dd"
         },
         "files": [
             "assets/app.js",
