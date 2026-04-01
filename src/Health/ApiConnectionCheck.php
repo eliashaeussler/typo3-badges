@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
@@ -19,11 +21,36 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
-    Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
-];
+namespace App\Health;
+
+use App\Service\ApiService;
+use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
+
+/**
+ * ApiConnectionCheck.
+ *
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-3.0-or-later
+ */
+final readonly class ApiConnectionCheck implements HealthCheck
+{
+    public function __construct(
+        private ApiService $apiService,
+    ) {}
+
+    public function check(): HealthState
+    {
+        try {
+            $pingResponse = $this->apiService->sendPing();
+        } catch (ExceptionInterface $exception) {
+            return HealthState::fromException($exception);
+        }
+
+        return HealthState::fromResponse($pingResponse);
+    }
+
+    public function getName(): string
+    {
+        return 'connection';
+    }
+}

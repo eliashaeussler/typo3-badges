@@ -65,6 +65,21 @@ final class ApiServiceTest extends AbstractApiTestCase
     }
 
     #[Test]
+    public function getExtensionMetadataCanTemporarilyDisableCaching(): void
+    {
+        $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
+
+        $cacheIdentifier = $this->getCacheIdentifier('typo3_api.extension_metadata', [
+            'apiPath' => '/api/v1/extension/foo',
+        ]);
+
+        self::assertSame(['foo' => 'baz'], $this->apiService->getExtensionMetadata('foo', true)->getMetadata());
+        self::assertSame(1, $this->mockClient?->getRequestsCount());
+        /* @phpstan-ignore staticMethod.alreadyNarrowedType */
+        self::assertNull($this->cache->get($cacheIdentifier, fn () => null));
+    }
+
+    #[Test]
     public function getRandomExtensionMetadataReturnsExtensionMetadataFromCache(): void
     {
         $cacheIdentifier = $this->getCacheIdentifier('typo3_api.random_extensions', [

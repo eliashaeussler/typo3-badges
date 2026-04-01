@@ -34,6 +34,7 @@
 		"symfony/http-kernel": "8.0.8",
 		"symfony/routing": "8.0.8",
 		"symfony/runtime": "8.0.8",
+		"symfony/security-bundle": "8.0.8",
 		"symfony/service-contracts": "3.6.1",
 		"symfony/web-link": "8.0.8",
 		"symfony/web-profiler-bundle": "8.0.8",

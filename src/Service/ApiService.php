@@ -25,9 +25,11 @@ namespace App\Service;
 
 use App\Entity\Dto\ExtensionMetadata;
 use DateTime;
+use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * ApiService.
@@ -45,12 +47,18 @@ final readonly class ApiService
         private int $cacheExpirationPeriod = 3600,
     ) {}
 
-    public function getExtensionMetadata(string $extensionKey): ExtensionMetadata
+    public function getExtensionMetadata(string $extensionKey, bool $disableCaching = false): ExtensionMetadata
     {
         $apiPath = $this->buildApiPath('/extension/{extension}', ['extension' => $extensionKey]);
 
+        if ($disableCaching) {
+            $cache = new NullAdapter();
+        } else {
+            $cache = $this->cache;
+        }
+
         // Fetch extension metadata from cache or external API
-        $extensionMetadata = $this->cache->get(
+        $extensionMetadata = $cache->get(
             $this->calculateCacheIdentifier('typo3_api.extension_metadata', ['apiPath' => $apiPath]),
             fn (ItemInterface $item) => $this->sendRequestAndCacheResponse($apiPath, $item),
             null,
@@ -97,6 +105,11 @@ final readonly class ApiService
             ['key' => $extensions[array_rand($extensions)]['key']],
             $this->determineCacheExpiryDateFromCacheMetadata($cacheMetadata),
         );
+    }
+
+    public function sendPing(): ResponseInterface
+    {
+        return $this->client->request('GET', $this->buildApiPath('/ping'));
     }
 
     /**

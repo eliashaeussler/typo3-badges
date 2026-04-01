@@ -6,3 +6,11 @@ services:
     public: true
 
   App\Cache\RandomExtensionMetadataCacheWarmer: ~
+
+  App\Controller\HealthController:
+    autoconfigure: true
+    arguments:
+      $healthChecks: ['@test.health_check']
+
+  test.health_check:
+    class: 'App\Tests\Fixtures\DummyHealthCheck'
