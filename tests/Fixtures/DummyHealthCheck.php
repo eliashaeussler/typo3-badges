@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
@@ -19,11 +21,28 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
-    Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
-];
+namespace App\Tests\Fixtures;
+
+use App\Health\HealthCheck;
+use App\Health\HealthState;
+
+/**
+ * DummyHealthCheck.
+ *
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-3.0-or-later
+ */
+final class DummyHealthCheck implements HealthCheck
+{
+    public static ?HealthState $next = null;
+
+    public function check(): HealthState
+    {
+        return self::$next ?? new HealthState(true);
+    }
+
+    public function getName(): string
+    {
+        return 'dummy';
+    }
+}

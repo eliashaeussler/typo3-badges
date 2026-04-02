@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Symfony project "eliashaeussler/typo3-badges".
  *
@@ -19,11 +21,20 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
-    Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
-];
+namespace App\Health;
+
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
+
+/**
+ * HealthCheck.
+ *
+ * @author Elias Häußler <elias@haeussler.dev>
+ * @license GPL-3.0-or-later
+ */
+#[AutoconfigureTag('app.health_check')]
+interface HealthCheck
+{
+    public function check(): HealthState;
+
+    public function getName(): string;
+}

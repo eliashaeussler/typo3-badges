@@ -35,6 +35,7 @@ return static function (Configuration $config): Configuration {
         'symfony/flex',
         'symfony/http-client',
         'symfony/runtime',
+        'symfony/security-bundle',
         'symfony/web-link',
         'symfony/web-profiler-bundle',
         'symfony/webpack-encore-bundle',
