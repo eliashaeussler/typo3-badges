@@ -47,7 +47,7 @@ use function is_array;
     methods: ['GET'],
     format: 'json',
 )]
-final class ApiSpecificationController
+final readonly class ApiSpecificationController
 {
     public function __invoke(Request $request): Response
     {
