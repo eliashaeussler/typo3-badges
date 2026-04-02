@@ -43,7 +43,7 @@ abstract class AbstractBadgeController
 {
     use CacheableResponseTrait;
 
-    protected const DEFAULT_CONTENT_TYPE = 'image/svg+xml; charset=utf-8';
+    protected const string DEFAULT_CONTENT_TYPE = 'image/svg+xml; charset=utf-8';
 
     protected BadgeProviderFactory $badgeProviderFactory;
     protected BadgeService $badgeService;
