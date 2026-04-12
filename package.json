@@ -24,7 +24,7 @@
 		"knip": "6.4.1",
 		"postcss-import": "16.1.1",
 		"postcss-loader": "8.2.1",
-		"stylelint": "17.6.0",
+		"stylelint": "17.7.0",
 		"stylelint-config-standard": "40.0.0",
 		"tailwindcss": "4.2.2",
 		"tailwindcss-crossbrowser-touch": "1.1.2",
