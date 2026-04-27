@@ -40,7 +40,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@3.2.1
+        uses: ramsey/composer-install@4.0.0
       - name: Install node modules
         run: npm ci
 
