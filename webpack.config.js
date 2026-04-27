@@ -32,7 +32,6 @@ Encore
    * https://symfony.com/doc/current/frontend.html#adding-more-features
    */
   .cleanupOutputBeforeBuild()
-  .enableBuildNotifications()
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
   .enablePostCssLoader()
