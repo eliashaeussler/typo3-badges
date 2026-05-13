@@ -84,7 +84,7 @@ final readonly class ApiService
                     'page' => random_int(1, 10),
                     'per_page' => 20,
                     'filter' => [
-                        'typo3_version' => random_int(9, 13),
+                        'typo3_version' => random_int(11, 14),
                     ],
                 ];
                 $apiUrl = $apiPath.'?'.http_build_query($filterOptions);
