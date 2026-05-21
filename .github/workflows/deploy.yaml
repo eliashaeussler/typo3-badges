@@ -101,7 +101,7 @@ jobs:
 
       # Deploy to production
       - name: Deploy
-        uses: deployphp/action@v1
+        uses: deployphp/action@a1b46c204dbde25a32ed0d7bb6751ac3377ca1e9 # v1
         env:
           LANG: en_US.UTF-8
           LANGUAGE: en_US.UTF-8
