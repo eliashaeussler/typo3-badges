@@ -8,21 +8,21 @@ permissions:
 
 jobs:
   find-leaked-secrets:
-    uses: l3montree-dev/devguard-action/.github/workflows/secret-scanning.yml@c0d051408d107cf2af8eb8728583ec4b41d51ab5 # main
+    uses: l3montree-dev/devguard-action/.github/workflows/secret-scanning.yml@7a8eced193e7cd14f4f0998c2b60664e5a60b76f # main
     with:
       asset-name: "elias-haeussler/projects/typo3-badges/assets/typo3-badges"
     secrets:
       devguard-token: "${{ secrets.DEVGUARD_TOKEN }}"
 
   dependency-scanning:
-    uses: l3montree-dev/devguard-action/.github/workflows/software-composition-analysis.yml@c0d051408d107cf2af8eb8728583ec4b41d51ab5 # main
+    uses: l3montree-dev/devguard-action/.github/workflows/software-composition-analysis.yml@7a8eced193e7cd14f4f0998c2b60664e5a60b76f # main
     with:
       asset-name: "elias-haeussler/projects/typo3-badges/assets/typo3-badges"
     secrets:
       devguard-token: "${{ secrets.DEVGUARD_TOKEN }}"
 
   bad-practice-finder:
-    uses: l3montree-dev/devguard-action/.github/workflows/static-application-security-testing.yml@c0d051408d107cf2af8eb8728583ec4b41d51ab5 # main
+    uses: l3montree-dev/devguard-action/.github/workflows/static-application-security-testing.yml@7a8eced193e7cd14f4f0998c2b60664e5a60b76f # main
     with:
       asset-name: "elias-haeussler/projects/typo3-badges/assets/typo3-badges"
     secrets:
