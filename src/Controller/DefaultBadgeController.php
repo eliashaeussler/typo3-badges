@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Badge\Provider\ShieldsBadgeProvider;
 use App\Entity\Badge;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,13 +45,16 @@ use Symfony\Component\Routing\Attribute\Route;
         'title' => 'TYPO3',
         'description' => 'Get JSON data for a generic TYPO3 badge.',
     ],
+    defaults: [
+        'provider' => ShieldsBadgeProvider::IDENTIFIER,
+    ],
     methods: ['GET'],
     priority: -255,
     format: 'json',
 )]
 final class DefaultBadgeController extends AbstractBadgeController
 {
-    public function __invoke(Request $request, ?string $provider = null): Response
+    public function __invoke(Request $request, string $provider): Response
     {
         return $this->getBadgeResponse($request, Badge::static(), $provider);
     }

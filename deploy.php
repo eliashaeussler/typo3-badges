@@ -52,6 +52,7 @@ set('rsync', [
         'deploy.php',
         'eslint.config.js',
         'knip.json',
+        'patches.lock.json',
         'phpstan.php',
         'phpunit.xml',
         'postcss.config.js',

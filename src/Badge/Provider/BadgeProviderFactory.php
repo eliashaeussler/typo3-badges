@@ -24,7 +24,10 @@ declare(strict_types=1);
 namespace App\Badge\Provider;
 
 use App\Exception\InvalidProviderException;
+use Symfony\Component\DependencyInjection\Attribute\AutowireLocator;
 use Symfony\Component\DependencyInjection\ServiceLocator;
+
+use function iterator_to_array;
 
 /**
  * BadgeProviderFactory.
@@ -38,23 +41,17 @@ final readonly class BadgeProviderFactory
      * @param ServiceLocator<BadgeProvider> $providers
      */
     public function __construct(
+        #[AutowireLocator('badge.provider')]
         private ServiceLocator $providers,
     ) {}
 
     /**
      * @throws InvalidProviderException
      */
-    public function get(?string $name = null): BadgeProvider
+    public function get(string $name): BadgeProvider
     {
-        if (null === $name) {
-            return $this->getDefaultProvider();
-        }
-
-        /** @var class-string<BadgeProvider> $service */
-        foreach ($this->providers->getProvidedServices() as $serviceId => $service) {
-            if ($service::getIdentifier() === $name) {
-                return $this->providers->get($serviceId);
-            }
+        if ($this->providers->has($name)) {
+            return $this->providers->get($name);
         }
 
         throw InvalidProviderException::create($name);
@@ -65,18 +62,6 @@ final readonly class BadgeProviderFactory
      */
     public function getAll(): array
     {
-        $providers = [];
-
-        foreach (array_keys($this->providers->getProvidedServices()) as $serviceId) {
-            $provider = $this->providers->get($serviceId);
-            $providers[$provider::getIdentifier()] = $provider;
-        }
-
-        return $providers;
-    }
-
-    private function getDefaultProvider(): BadgeProvider
-    {
-        return $this->providers->get(ShieldsBadgeProvider::getIdentifier());
+        return iterator_to_array($this->providers);
     }
 }

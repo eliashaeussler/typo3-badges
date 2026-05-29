@@ -16,30 +16,31 @@
 		"php": "~8.5.0",
 		"ext-hash": "*",
 		"ext-json": "*",
+		"cweagans/composer-patches": "2.0.0",
 		"nyholm/psr7": "1.8.2",
 		"sentry/sentry-symfony": "5.10.0",
 		"symfony/apache-pack": "1.0.1",
-		"symfony/asset": "8.0.8",
-		"symfony/cache": "8.0.13",
+		"symfony/asset": "8.1.0",
+		"symfony/cache": "8.1.0",
 		"symfony/cache-contracts": "3.7.0",
-		"symfony/console": "8.0.13",
-		"symfony/css-selector": "8.0.9",
-		"symfony/dependency-injection": "8.0.13",
-		"symfony/dotenv": "8.0.11",
+		"symfony/console": "8.1.0",
+		"symfony/css-selector": "8.1.0",
+		"symfony/dependency-injection": "8.1.0",
+		"symfony/dotenv": "8.1.0",
 		"symfony/flex": "2.10.0",
-		"symfony/framework-bundle": "8.0.13",
-		"symfony/http-client": "8.0.13",
+		"symfony/framework-bundle": "8.1.0",
+		"symfony/http-client": "8.1.0",
 		"symfony/http-client-contracts": "3.7.0",
-		"symfony/http-foundation": "8.0.13",
-		"symfony/http-kernel": "8.0.13",
-		"symfony/routing": "8.0.13",
-		"symfony/runtime": "8.0.13",
-		"symfony/security-bundle": "8.0.13",
+		"symfony/http-foundation": "8.1.0",
+		"symfony/http-kernel": "8.1.0",
+		"symfony/routing": "8.1.0",
+		"symfony/runtime": "8.1.0",
+		"symfony/security-bundle": "8.1.0",
 		"symfony/service-contracts": "3.7.0",
-		"symfony/web-link": "8.0.8",
-		"symfony/web-profiler-bundle": "8.0.13",
+		"symfony/web-link": "8.1.0",
+		"symfony/web-profiler-bundle": "8.1.0",
 		"symfony/webpack-encore-bundle": "2.4.0",
-		"symfony/yaml": "8.0.13",
+		"symfony/yaml": "8.1.0",
 		"twig/twig": "3.27.0"
 	},
 	"require-dev": {
@@ -51,8 +52,8 @@
 		"phpstan/extension-installer": "1.4.3",
 		"phpstan/phpstan-symfony": "2.0.18",
 		"phpunit/phpunit": "13.1.13",
-		"symfony/browser-kit": "8.0.8",
-		"symfony/phpunit-bridge": "8.0.8"
+		"symfony/browser-kit": "8.1.0",
+		"symfony/phpunit-bridge": "8.1.0"
 	},
 	"replace": {
 		"symfony/polyfill-ctype": "*",
@@ -82,6 +83,7 @@
 	"config": {
 		"allow-plugins": {
 			"composer/package-versions-deprecated": true,
+			"cweagans/composer-patches": true,
 			"eliashaeussler/version-bumper": true,
 			"ergebnis/composer-normalize": true,
 			"phpstan/extension-installer": true,
@@ -95,9 +97,14 @@
 		"sort-packages": true
 	},
 	"extra": {
+		"patches": {
+			"symfony/webpack-encore-bundle": {
+				"Fix Symfony 8.1 DependencyInjection deprecation warning": "https://patch-diff.githubusercontent.com/raw/symfony/webpack-encore-bundle/pull/258.patch"
+			}
+		},
 		"symfony": {
 			"allow-contrib": false,
-			"require": "~8.0.0"
+			"require": "~8.1.0"
 		}
 	},
 	"scripts": {

@@ -26,6 +26,7 @@ use ComposerUnused\ComposerUnused\Configuration\NamedFilter;
 
 return static function (Configuration $config): Configuration {
     $configPackages = [
+        'cweagans/composer-patches',
         'sentry/sentry-symfony',
         'symfony/apache-pack',
         'symfony/asset',

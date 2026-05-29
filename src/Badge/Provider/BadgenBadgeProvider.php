@@ -27,6 +27,7 @@ use App\Entity\Badge;
 use App\Enums\Color;
 use Nyholm\Psr7\Uri;
 use Override;
+use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -41,6 +42,7 @@ use function array_map;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[AsTaggedItem(BadgenBadgeProvider::IDENTIFIER)]
 final class BadgenBadgeProvider implements BadgeProvider
 {
     use RoutingTrait;

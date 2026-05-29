@@ -26,6 +26,7 @@ namespace App\Service;
 use App\Entity\Dto\ExtensionMetadata;
 use DateTime;
 use Symfony\Component\Cache\Adapter\NullAdapter;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -42,6 +43,7 @@ final readonly class ApiService
     private const string FALLBACK_EXTENSION_KEY = 'handlebars';
 
     public function __construct(
+        #[Autowire(service: 'typo3_api.client')]
         private HttpClientInterface $client,
         private CacheInterface $cache,
         private int $cacheExpirationPeriod = 3600,

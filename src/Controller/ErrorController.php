@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Badge\Provider\ShieldsBadgeProvider;
 use App\Entity\Badge;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,6 +41,10 @@ final class ErrorController extends AbstractBadgeController
     {
         $provider = (string) $request->attributes->get('provider');
 
-        return $this->getBadgeResponse($request, Badge::forError(), '' !== $provider ? $provider : null);
+        return $this->getBadgeResponse(
+            $request,
+            Badge::forError(),
+            '' !== $provider ? $provider : ShieldsBadgeProvider::IDENTIFIER,
+        );
     }
 }

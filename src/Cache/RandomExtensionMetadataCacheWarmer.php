@@ -25,6 +25,7 @@ namespace App\Cache;
 
 use App\Service\ApiService;
 use Override;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
 
 /**
@@ -37,6 +38,7 @@ use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
  *
  * @codeCoverageIgnore
  */
+#[Autoconfigure(tags: ['kernel.cache_warmer'])]
 final readonly class RandomExtensionMetadataCacheWarmer implements CacheWarmerInterface
 {
     public function __construct(

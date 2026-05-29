@@ -59,7 +59,7 @@ final class VerifiedBadgeControllerTest extends AbstractApiTestCase
         $this->expectException(BadRequestHttpException::class);
         $this->expectExceptionMessage('Invalid API response.');
 
-        ($this->subject)(new Request(), 'foo');
+        ($this->subject)(new Request(), 'foo', 'shields');
     }
 
     #[Test]
@@ -86,7 +86,7 @@ final class VerifiedBadgeControllerTest extends AbstractApiTestCase
 
         self::assertSame(
             $expected->getContent(),
-            ($this->subject)(new Request(), 'foo')->getContent(),
+            ($this->subject)(new Request(), 'foo', 'shields')->getContent(),
         );
     }
 

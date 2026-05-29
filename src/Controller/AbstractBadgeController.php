@@ -63,7 +63,7 @@ abstract class AbstractBadgeController
     protected function getBadgeResponse(
         Request $request,
         Badge $badge,
-        ?string $provider = null,
+        string $provider,
         ?DateTime $cacheExpirationDate = null,
     ): Response {
         try {

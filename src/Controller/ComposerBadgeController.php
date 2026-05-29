@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Badge\Provider\ShieldsBadgeProvider;
 use App\Entity\Badge;
 use App\Service\ApiService;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,6 +47,9 @@ use Symfony\Component\Routing\Attribute\Route;
         'title' => 'Composer',
         'description' => 'Get JSON data for Composer name.',
     ],
+    defaults: [
+        'provider' => ShieldsBadgeProvider::IDENTIFIER,
+    ],
     methods: ['GET'],
     format: 'json',
 )]
@@ -55,7 +59,7 @@ final class ComposerBadgeController extends AbstractBadgeController
         private readonly ApiService $apiService,
     ) {}
 
-    public function __invoke(Request $request, string $extension, ?string $provider = null): Response
+    public function __invoke(Request $request, string $extension, string $provider): Response
     {
         $extensionMetadata = $this->apiService->getExtensionMetadata($extension);
         $composerName = $extensionMetadata[0]['meta']['composer_name'] ?? null;
