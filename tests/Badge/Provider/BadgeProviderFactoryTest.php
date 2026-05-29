@@ -57,12 +57,6 @@ final class BadgeProviderFactoryTest extends KernelTestCase
     }
 
     #[Test]
-    public function getReturnsDefaultBadgeResponseProvider(): void
-    {
-        self::assertInstanceOf(ShieldsBadgeProvider::class, $this->subject->get());
-    }
-
-    #[Test]
     public function getThrowsExceptionIfGivenTypeIsNotSupported(): void
     {
         $this->expectException(InvalidProviderException::class);

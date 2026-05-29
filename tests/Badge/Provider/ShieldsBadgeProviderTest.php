@@ -75,7 +75,7 @@ final class ShieldsBadgeProviderTest extends KernelTestCase
     #[DataProvider('generateUriForRouteReturnsUriForGivenRouteDataProvider')]
     public function generateUriForRouteReturnsUriForGivenRoute(Route|string $route): void
     {
-        $expected = 'https://shields.io/endpoint?url=https://localhost/badge/foo/downloads/shields';
+        $expected = 'https://shields.io/endpoint?url=https://localhost/badge/foo/downloads';
 
         self::assertSame($expected, $this->subject->generateUriForRoute($route, ['extension' => 'foo']));
     }

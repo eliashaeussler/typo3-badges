@@ -42,7 +42,7 @@ final class AbstractBadgeControllerTestClass extends AbstractBadgeController
     public function testGetBadgeResponse(
         Request $request,
         Badge $badge,
-        ?string $provider = null,
+        string $provider,
         ?DateTime $cacheExpirationDate = null,
     ): Response {
         return $this->getBadgeResponse($request, $badge, $provider, $cacheExpirationDate);

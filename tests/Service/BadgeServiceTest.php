@@ -53,7 +53,7 @@ final class BadgeServiceTest extends AbstractApiTestCase
     public function getReturnsBadgeResponseFromCache(): void
     {
         $badge = Badge::static();
-        $badgeProvider = $this->badgeProviderFactory->get();
+        $badgeProvider = $this->badgeProviderFactory->get('shields');
         $cacheIdentifier = $this->getCacheIdentifier('badge_response', [
             'url' => $badgeProvider->generateUriForBadge($badge),
         ]);
@@ -84,7 +84,7 @@ final class BadgeServiceTest extends AbstractApiTestCase
         ]);
 
         $badge = Badge::static();
-        $badgeProvider = $this->badgeProviderFactory->get();
+        $badgeProvider = $this->badgeProviderFactory->get('shields');
         $cacheIdentifier = $this->getCacheIdentifier('badge_response', [
             'url' => $badgeProvider->generateUriForBadge($badge),
         ]);

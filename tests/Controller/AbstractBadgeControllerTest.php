@@ -70,7 +70,7 @@ final class AbstractBadgeControllerTest extends AbstractApiTestCase
     {
         $badge = Badge::static();
 
-        $badgeProvider = $this->badgeProviderFactory->get();
+        $badgeProvider = $this->badgeProviderFactory->get('shields');
         $cacheIdentifier = $this->getCacheIdentifier('badge_response', [
             'url' => $badgeProvider->generateUriForBadge($badge),
         ]);
@@ -85,7 +85,7 @@ final class AbstractBadgeControllerTest extends AbstractApiTestCase
         $request = new Request();
         $request->setRequestFormat('svg');
 
-        $actual = $this->subject->testGetBadgeResponse($request, $badge);
+        $actual = $this->subject->testGetBadgeResponse($request, $badge, 'shields');
 
         self::assertSame('foo', $actual->getContent());
         self::assertSame('baz', $actual->headers->get('Content-Type'));
@@ -96,9 +96,9 @@ final class AbstractBadgeControllerTest extends AbstractApiTestCase
     public function getBadgeResponseReturnsResponseForDefaultProviderIfNoProviderIsGiven(): void
     {
         $badge = Badge::static();
-        $expected = $this->badgeProviderFactory->get()->createResponse($badge);
+        $expected = $this->badgeProviderFactory->get('shields')->createResponse($badge);
 
-        self::assertEquals($expected, $this->subject->testGetBadgeResponse(new Request(), $badge));
+        self::assertEquals($expected, $this->subject->testGetBadgeResponse(new Request(), $badge, 'shields'));
     }
 
     #[Test]

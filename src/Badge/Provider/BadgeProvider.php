@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace App\Badge\Provider;
 
 use App\Entity\Badge;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Route;
 
@@ -33,6 +34,7 @@ use Symfony\Component\Routing\Route;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-3.0-or-later
  */
+#[AutoconfigureTag('badge.provider')]
 interface BadgeProvider
 {
     public static function getIdentifier(): string;

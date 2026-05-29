@@ -56,7 +56,7 @@ final class HomepageController extends AbstractController
         return $this->render('homepage.html.twig', [
             'routes' => $this->getRoutes(),
             'providers' => $providers,
-            'defaultProvider' => $providers[ShieldsBadgeProvider::getIdentifier()],
+            'defaultProvider' => $providers[ShieldsBadgeProvider::IDENTIFIER],
             'randomExtensionKey' => $randomExtensionMetadata['key'],
         ]);
     }

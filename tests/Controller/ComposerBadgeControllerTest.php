@@ -72,7 +72,7 @@ final class ComposerBadgeControllerTest extends AbstractApiTestCase
 
         self::assertSame(
             $expected->getContent(),
-            ($this->subject)(new Request(), 'foo')->getContent(),
+            ($this->subject)(new Request(), 'foo', 'shields')->getContent(),
         );
     }
 
@@ -98,7 +98,7 @@ final class ComposerBadgeControllerTest extends AbstractApiTestCase
 
         self::assertSame(
             $expected->getContent(),
-            ($this->subject)(new Request(), 'foo')->getContent(),
+            ($this->subject)(new Request(), 'foo', 'shields')->getContent(),
         );
     }
 }
