@@ -148,7 +148,7 @@ final readonly class ApiService
     }
 
     /**
-     * @param array{expiry?: int|numeric-string}|null $cacheMetadata
+     * @param array<mixed>|null $cacheMetadata
      */
     private function determineCacheExpiryDateFromCacheMetadata(?array $cacheMetadata): ?DateTime
     {
