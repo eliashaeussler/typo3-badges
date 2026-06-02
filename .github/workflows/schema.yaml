@@ -17,12 +17,12 @@ jobs:
     needs: prepare
     if: needs.prepare.outputs.continue == 'true'
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
           fetch-depth: 0
 
       - name: Validate OpenAPI definition
-        uses: swaggerexpert/apidom-validate@75f93b5a4c5e94b5ca8da851d48bfdcc4a8be014 # v1
+        uses: swaggerexpert/apidom-validate@f839307deab4db59c7814834a2076d309e23b535 # v1.4.1
         with:
           definition-file: spec/typo3-badges.oas3.yaml
           fails-on: 2
