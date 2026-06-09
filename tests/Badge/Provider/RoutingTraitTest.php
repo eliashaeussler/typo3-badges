@@ -55,7 +55,7 @@ final class RoutingTraitTest extends KernelTestCase
         $route = new Route('/foo');
 
         $this->expectException(RouteNotFoundException::class);
-        $this->expectExceptionMessage('Unable to find route with path "/foo"!');
+        $this->expectExceptionMessageIs('Unable to find route with path "/foo"!');
         $this->expectExceptionCode(1641203175);
 
         $this->subject->testIdentifyRoute($route);

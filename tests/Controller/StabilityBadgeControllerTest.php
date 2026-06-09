@@ -57,7 +57,7 @@ final class StabilityBadgeControllerTest extends AbstractApiTestCase
         $this->mockResponses[] = new MockResponse(json_encode(['foo' => 'baz'], JSON_THROW_ON_ERROR));
 
         $this->expectException(BadRequestHttpException::class);
-        $this->expectExceptionMessage('Invalid API response.');
+        $this->expectExceptionMessageIs('Invalid API response.');
 
         ($this->subject)(new Request(), 'foo', 'shields');
     }
