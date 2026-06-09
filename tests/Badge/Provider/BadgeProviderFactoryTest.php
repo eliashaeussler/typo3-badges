@@ -60,7 +60,7 @@ final class BadgeProviderFactoryTest extends KernelTestCase
     public function getThrowsExceptionIfGivenTypeIsNotSupported(): void
     {
         $this->expectException(InvalidProviderException::class);
-        $this->expectExceptionMessage('The provider "foo" is not supported.');
+        $this->expectExceptionMessageIs('The provider "foo" is not supported.');
         $this->expectExceptionCode(1641195602);
 
         $this->subject->get('foo');
