@@ -108,6 +108,9 @@
 		"symfony": {
 			"allow-contrib": false,
 			"require": "~8.1.0"
+		},
+		"version-bumper": {
+			"config-file": "build/release/version-bumper.yaml"
 		}
 	},
 	"scripts": {
