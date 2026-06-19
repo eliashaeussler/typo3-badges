@@ -3,7 +3,7 @@ repository:
   description: '🌍 Symfony project with SVG and JSON endpoints for beautiful TYPO3 badges'
   homepage: 'https://typo3-badges.dev'
   topics: 'typo3,badges,symfony-project'
-  private: true
+  private: false
   has_issues: true
   has_projects: false
   has_wiki: false
