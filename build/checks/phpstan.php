@@ -23,7 +23,7 @@ declare(strict_types=1);
 
 use EliasHaeussler\PHPStanConfig;
 
-return PHPStanConfig\Config\Config::create(__DIR__)
+return PHPStanConfig\Config\Config::create(dirname(__DIR__, 2))
     ->in(
         'bin',
         'config',

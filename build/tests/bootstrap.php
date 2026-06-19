@@ -21,30 +21,18 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use ComposerUnused\ComposerUnused\Configuration\Configuration;
-use ComposerUnused\ComposerUnused\Configuration\NamedFilter;
+use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\Filesystem\Filesystem;
 
-return static function (Configuration $config): Configuration {
-    $configPackages = [
-        'cweagans/composer-patches',
-        'sentry/sentry-symfony',
-        'symfony/apache-pack',
-        'symfony/asset',
-        'symfony/console',
-        'symfony/css-selector',
-        'symfony/dotenv',
-        'symfony/flex',
-        'symfony/http-client',
-        'symfony/runtime',
-        'symfony/security-bundle',
-        'symfony/web-link',
-        'symfony/web-profiler-bundle',
-        'symfony/webpack-encore-bundle',
-    ];
+$rootPath = dirname(__DIR__, 2);
 
-    foreach ($configPackages as $packageName) {
-        $config->addNamedFilter(NamedFilter::fromString($packageName));
-    }
+require $rootPath.'/vendor/autoload.php';
 
-    return $config;
-};
+new Dotenv()->bootEnv($rootPath.'/.env');
+
+if ((bool) $_SERVER['APP_DEBUG']) {
+    umask(0000);
+}
+
+// Clear all caches
+new Filesystem()->remove($rootPath.'/var/cache/test');

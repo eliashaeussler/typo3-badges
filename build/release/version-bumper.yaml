@@ -11,3 +11,5 @@ filesToModify:
 releaseOptions:
   commitMessage: '[RELEASE] Release of typo3-badges {%version%}'
   signTag: true
+
+rootPath: ../../
