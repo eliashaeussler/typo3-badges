@@ -101,6 +101,7 @@ jobs:
       - name: 'Deploy'
         uses: eliashaeussler/gha/.github/actions/deploy-app@24c8e1aa6eb95107a2f97721f962cc6372ae9016 # 0.8.1
         with:
+          command: dev
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
           deployer-version: '8.0.5'
