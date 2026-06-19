@@ -4,9 +4,7 @@
 		"dependencies"
 	],
 	"ignoreDependencies": [
-		"@tailwindcss/postcss",
 		"autoprefixer",
-		"postcss-import",
 		"tailwindcss"
 	]
 }

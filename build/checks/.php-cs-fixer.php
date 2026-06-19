@@ -36,7 +36,7 @@ return PhpCsFixerConfig\Config::create()
     ->withRule($header)
     ->withFinder(
         static fn (Finder\Finder $finder) => $finder
-            ->in(__DIR__)
+            ->in(dirname(__DIR__, 2))
             ->exclude('var')
             ->notPath([
                 'config/bundles.php',

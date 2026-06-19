@@ -6,10 +6,7 @@
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-badges?logo=coveralls)](https://coveralls.io/github/eliashaeussler/typo3-badges)
 [![Uptime monitoring](https://monitor.haeussler.dev/api/badge/9/status?label=status&upLabel=up&downLabel=down)](https://monitor.haeussler.dev/)
-[![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/cgl.yaml)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/deploy.yaml?label=deploy&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/deploy.yaml)
-[![API schema](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/schema.yaml?label=schema&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/schema.yaml)
-[![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/tests.yaml)
+[![CI](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-badges/ci.yaml?label=CI&logo=github)](https://github.com/eliashaeussler/typo3-badges/actions/workflows/ci.yaml)
 
 **🌍&nbsp;[Official website](https://typo3-badges.dev)** |
 💾&nbsp;[Repository](https://github.com/eliashaeussler/typo3-badges) |

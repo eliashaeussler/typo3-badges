@@ -22,10 +22,12 @@
 		"eslint": "10.5.0",
 		"globals": "17.6.0",
 		"knip": "6.16.1",
+		"npm-run-all": "^4.1.5",
 		"postcss-import": "16.1.1",
 		"postcss-loader": "8.2.1",
 		"stylelint": "17.13.0",
 		"stylelint-config-standard": "40.0.0",
+		"swagger-spec-validator": "^6.0.0",
 		"tailwindcss": "4.3.1",
 		"tailwindcss-crossbrowser-touch": "1.1.2",
 		"tailwindcss-selection-variant": "0.1.0",
@@ -41,10 +43,17 @@
 	},
 	"scripts": {
 		"build": "encore prod",
-		"check-dependencies": "knip",
-		"dev": "encore dev --watch",
-		"lint": "npm run lint:css && npm run lint:js",
-		"lint:css": "stylelint 'assets/**/*.css'",
-		"lint:js": "eslint 'assets/**/*.js'"
+		"start": "encore dev --watch",
+		"check": "npm-run-all check:deps check:schema check:style",
+		"check:deps": "knip -c build/checks/knip.json",
+		"check:schema": "swagger-spec-validator spec/typo3-badges.oas3.yaml",
+		"check:style": "npm-run-all check:style:css check:style:js",
+		"check:style:css": "stylelint 'assets/**/*.css'",
+		"check:style:js": "eslint 'assets/**/*.js' './*.js'",
+		"ci": "npm audit && npm run check",
+		"fix": "npm run fix:style",
+		"fix:style": "npm-run-all fix:style:css fix:style:js",
+		"fix:style:css": "stylelint 'assets/**/*.css' --fix",
+		"fix:style:js": "eslint 'assets/**/*.js' './*.js' --fix"
 	}
 }

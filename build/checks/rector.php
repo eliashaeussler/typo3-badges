@@ -27,25 +27,27 @@ use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
 use Rector\Symfony\Symfony34\Rector\Closure\ContainerGetNameToTypeInTestsRector;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->symfonyContainerXml(__DIR__.'/var/cache/dev/App_KernelDevDebugContainer.xml');
+    $rootPath = dirname(__DIR__, 2);
+
+    $rectorConfig->symfonyContainerXml($rootPath.'/var/cache/dev/App_KernelDevDebugContainer.xml');
 
     Config::create($rectorConfig)
         ->in(
-            __DIR__.'/src',
-            __DIR__.'/tests',
+            $rootPath.'/src',
+            $rootPath.'/tests',
         )
         ->withSymfony()
         ->withPHPUnit()
         ->skip(AnnotationToAttributeRector::class, [
-            __DIR__.'/src/Badge/Provider/BadgenBadgeProvider.php',
-            __DIR__.'/src/Badge/Provider/ShieldsBadgeProvider.php',
-            __DIR__.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
+            $rootPath.'/src/Badge/Provider/BadgenBadgeProvider.php',
+            $rootPath.'/src/Badge/Provider/ShieldsBadgeProvider.php',
+            $rootPath.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
         ])
         ->skip(ContainerGetNameToTypeInTestsRector::class, [
-            __DIR__.'/tests/Badge/Provider/BadgenBadgeProviderTest.php',
-            __DIR__.'/tests/Badge/Provider/RoutingTraitTest.php',
-            __DIR__.'/tests/Badge/Provider/ShieldsBadgeProviderTest.php',
-            __DIR__.'/tests/Controller/HomepageControllerTest.php',
+            $rootPath.'/tests/Badge/Provider/BadgenBadgeProviderTest.php',
+            $rootPath.'/tests/Badge/Provider/RoutingTraitTest.php',
+            $rootPath.'/tests/Badge/Provider/ShieldsBadgeProviderTest.php',
+            $rootPath.'/tests/Controller/HomepageControllerTest.php',
         ])
         ->apply()
     ;
