@@ -52,7 +52,7 @@
 		"ergebnis/composer-normalize": "2.52.0",
 		"phpstan/extension-installer": "1.4.3",
 		"phpstan/phpstan-symfony": "2.0.20",
-		"phpunit/phpunit": "13.2.0",
+		"phpunit/phpunit": "13.2.1",
 		"shipmonk/composer-dependency-analyser": "1.8.4",
 		"symfony/browser-kit": "8.1.0",
 		"symfony/filesystem": "8.1.0",
