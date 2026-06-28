@@ -16,7 +16,6 @@
 		"php": "~8.5.0",
 		"ext-hash": "*",
 		"ext-json": "*",
-		"cweagans/composer-patches": "2.0.0",
 		"nyholm/psr7": "1.8.2",
 		"sentry/sentry-symfony": "5.10.0",
 		"symfony/apache-pack": "1.0.1",
@@ -86,7 +85,6 @@
 	"config": {
 		"allow-plugins": {
 			"composer/package-versions-deprecated": true,
-			"cweagans/composer-patches": true,
 			"eliashaeussler/version-bumper": true,
 			"ergebnis/composer-normalize": true,
 			"phpstan/extension-installer": true,
@@ -100,11 +98,6 @@
 		"sort-packages": true
 	},
 	"extra": {
-		"patches": {
-			"symfony/webpack-encore-bundle": {
-				"Fix Symfony 8.1 DependencyInjection deprecation warning": "https://patch-diff.githubusercontent.com/raw/symfony/webpack-encore-bundle/pull/258.patch"
-			}
-		},
 		"symfony": {
 			"allow-contrib": false,
 			"require": "~8.1.0"

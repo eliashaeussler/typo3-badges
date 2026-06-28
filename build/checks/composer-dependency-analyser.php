@@ -26,7 +26,6 @@ use ShipMonk\ComposerDependencyAnalyser;
 $configuration = new ComposerDependencyAnalyser\Config\Configuration();
 $configuration->ignoreErrorsOnPackages(
     [
-        'cweagans/composer-patches',
         'sentry/sentry-symfony',
         'symfony/apache-pack',
         'symfony/asset',
