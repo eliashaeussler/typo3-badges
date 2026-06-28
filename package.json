@@ -19,7 +19,7 @@
 		"@symfony/webpack-encore": "7.1.0",
 		"@tailwindcss/postcss": "4.3.1",
 		"@types/node": "26.0.1",
-		"autoprefixer": "10.5.0",
+		"autoprefixer": "10.5.2",
 		"eslint": "10.5.0",
 		"globals": "17.6.0",
 		"knip": "6.17.1",
