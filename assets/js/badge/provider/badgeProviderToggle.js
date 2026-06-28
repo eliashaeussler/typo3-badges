@@ -17,8 +17,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import BadgeProvider from './badgeProvider';
-import Url from '../../url';
+import BadgeProvider from './badgeProvider.js';
+import Url from '../../url.js';
 
 /**
  * BadgeProviderToggle.

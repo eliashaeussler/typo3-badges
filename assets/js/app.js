@@ -17,11 +17,11 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import BadgeProviderToggle from './badge/provider/badgeProviderToggle';
-import Clipboard from './clipboard';
-import CodeTabs from './badge/codeTabs';
-import LazyLoad from './badge/lazyLoad';
-import TryOut from './badge/tryOut';
+import BadgeProviderToggle from './badge/provider/badgeProviderToggle.js';
+import Clipboard from './clipboard.js';
+import CodeTabs from './badge/codeTabs.js';
+import LazyLoad from './badge/lazyLoad.js';
+import TryOut from './badge/tryOut.js';
 
 /**
  * App.
