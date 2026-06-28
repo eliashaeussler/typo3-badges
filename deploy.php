@@ -50,7 +50,6 @@ set('rsync', [
         '/CODEOWNERS',
         '/deploy.php',
         '/eslint.config.js',
-        '/patches.lock.json',
         '/postcss.config.js',
         '/renovate.json',
         '/tailwind.config.js',

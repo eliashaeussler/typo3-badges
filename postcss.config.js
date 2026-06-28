@@ -1,6 +1,9 @@
-module.exports = {
+import postcssImport from 'postcss-import';
+import tailwindPostcss from '@tailwindcss/postcss';
+
+export default {
   plugins: [
-    require('postcss-import'),
-    require('@tailwindcss/postcss'),
-  ]
+    postcssImport,
+    tailwindPostcss,
+  ],
 };

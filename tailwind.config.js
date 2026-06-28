@@ -1,4 +1,7 @@
-module.exports = {
+import tailwindSelectionVariant from 'tailwindcss-selection-variant';
+import tailwindCrossbrowserTouch from 'tailwindcss-crossbrowser-touch';
+
+export default {
   content: [
     './assets/**/*.js',
     './templates/**/*.html.twig',
@@ -26,7 +29,7 @@ module.exports = {
     opacity: ['no-touch'],
   },
   plugins: [
-    require('tailwindcss-selection-variant'),
-    require('tailwindcss-crossbrowser-touch')(),
+    tailwindSelectionVariant,
+    tailwindCrossbrowserTouch(),
   ],
 }

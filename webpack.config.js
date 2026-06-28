@@ -1,14 +1,15 @@
-const Encore = require('@symfony/webpack-encore');
+import Encore from '@symfony/webpack-encore';
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
 if (!Encore.isRuntimeEnvironmentConfigured()) {
-  Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
+  // eslint-disable-next-line no-undef
+    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
 }
 
 Encore
-  .setOutputPath('public/assets/')
-  .setPublicPath('/assets')
+    .setOutputPath('public/assets/')
+    .setPublicPath('/assets')
 
   /*
    * ENTRY CONFIG
@@ -38,4 +39,4 @@ Encore
   .enableIntegrityHashes(Encore.isProduction())
 ;
 
-module.exports = Encore.getWebpackConfig();
+export default await Encore.getWebpackConfig();

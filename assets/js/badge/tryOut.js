@@ -18,11 +18,11 @@
  */
 
 import { Modal, Tabs } from 'flowbite';
-import BadgeProviderToggle from './provider/badgeProviderToggle';
-import Clipboard from '../clipboard';
-import CodeTabs from './codeTabs';
-import LazyLoad from './lazyLoad';
-import Url from '../url';
+import BadgeProviderToggle from './provider/badgeProviderToggle.js';
+import Clipboard from '../clipboard.js';
+import CodeTabs from './codeTabs.js';
+import LazyLoad from './lazyLoad.js';
+import Url from '../url.js';
 
 /**
  * TryOut.

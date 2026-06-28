@@ -20,7 +20,7 @@
 import './main.css';
 
 import 'flowbite';
-import App from './js/app';
+import App from './js/app.js';
 
 const app = new App();
 app.initializeEnvironment();
