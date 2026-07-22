@@ -406,12 +406,12 @@
         "version": "v6.0.1"
     },
     "symfony/twig-bundle": {
-        "version": "8.0",
+        "version": "8.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "6.4",
-            "ref": "f250159ebe99153d0c640a3e7742876fc7453f2c"
+            "ref": "06dacf16872358cb1f2494e089070ff2d045233a"
         },
         "files": [
             "config/packages/twig.yaml",
@@ -443,7 +443,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "2.2",
-            "ref": "3a870e92b23917ae95f0796a0599b1aca11d4bfd"
+            "ref": "b618bf5f17ed61f523da7153025bf58ec9502f65"
         },
         "files": [
             "assets/app.js",

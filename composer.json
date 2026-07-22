@@ -136,7 +136,7 @@
 			"@check:style:twig"
 		],
 		"check:style:composer": "@fix:composer --dry-run",
-		"check:style:editorconfig": "ec",
+		"check:style:editorconfig": "ec --git-only",
 		"check:style:php": "@fix:php --dry-run",
 		"check:style:twig": "bin/console lint:twig templates",
 		"ci": [
