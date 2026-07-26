@@ -14,7 +14,7 @@ permissions:
 jobs:
   prepare:
     name: 'Prepare workflow'
-    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@1fb632290bce95f37a13857172e1ac6bf1a821c1 # 0.8.3
+    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@a6093ebd6b0e93dedcb221832dadcb279bff4cbd # 0.9.1
 
   checks:
     name: 'Checks'
@@ -26,7 +26,7 @@ jobs:
       contents: read
       security-events: write
 
-    uses: eliashaeussler/gha/.github/workflows/checks.yaml@1fb632290bce95f37a13857172e1ac6bf1a821c1 # 0.8.3
+    uses: eliashaeussler/gha/.github/workflows/checks.yaml@a6093ebd6b0e93dedcb221832dadcb279bff4cbd # 0.9.1
     with:
       npm: true
 
@@ -42,7 +42,7 @@ jobs:
     secrets:
       DEVGUARD_TOKEN: ${{ secrets.DEVGUARD_TOKEN }}
 
-    uses: eliashaeussler/gha/.github/workflows/devsecops.yaml@1fb632290bce95f37a13857172e1ac6bf1a821c1 # 0.8.3
+    uses: eliashaeussler/gha/.github/workflows/devsecops.yaml@a6093ebd6b0e93dedcb221832dadcb279bff4cbd # 0.9.1
     with:
       devguard-asset-name: elias-haeussler/projects/typo3-badges/assets/typo3-badges
 
@@ -52,6 +52,6 @@ jobs:
     needs: [prepare]
     if: ${{ needs.prepare.outputs.continue == 'true' }}
 
-    uses: eliashaeussler/gha/.github/workflows/composer-test-coverage.yaml@1fb632290bce95f37a13857172e1ac6bf1a821c1 # 0.8.3
+    uses: eliashaeussler/gha/.github/workflows/composer-test-coverage.yaml@a6093ebd6b0e93dedcb221832dadcb279bff4cbd # 0.9.1
     with:
       build-command: 'build'
