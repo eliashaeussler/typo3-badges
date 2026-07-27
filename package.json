@@ -23,7 +23,7 @@
 		"eslint": "10.8.0",
 		"globals": "17.7.0",
 		"knip": "6.29.0",
-		"npm-run-all": "4.1.5",
+		"npm-run-all-next": "^1.4.2",
 		"postcss-import": "16.1.1",
 		"postcss-loader": "8.2.1",
 		"stylelint": "17.14.1",
@@ -45,15 +45,15 @@
 	"scripts": {
 		"build": "encore prod",
 		"start": "encore dev --watch",
-		"check": "npm-run-all check:deps check:schema check:style",
+		"check": "npm-run-all-next check:deps check:schema check:style",
 		"check:deps": "knip -c build/checks/knip.json",
 		"check:schema": "swagger-spec-validator spec/typo3-badges.oas3.yaml",
-		"check:style": "npm-run-all check:style:css check:style:js",
+		"check:style": "npm-run-all-next check:style:css check:style:js",
 		"check:style:css": "stylelint 'assets/**/*.css'",
 		"check:style:js": "eslint 'assets/**/*.js' './*.js'",
 		"ci": "npm audit && npm run check",
 		"fix": "npm run fix:style",
-		"fix:style": "npm-run-all fix:style:css fix:style:js",
+		"fix:style": "npm-run-all-next fix:style:css fix:style:js",
 		"fix:style:css": "stylelint 'assets/**/*.css' --fix",
 		"fix:style:js": "eslint 'assets/**/*.js' './*.js' --fix"
 	}
