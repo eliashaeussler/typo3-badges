@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: write
 
-    uses: eliashaeussler/gha/.github/workflows/github-release.yaml@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+    uses: eliashaeussler/gha/.github/workflows/github-release.yaml@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
 
   deploy-prod:
     name: 'Deploy to production'
@@ -39,23 +39,23 @@ jobs:
 
     steps:
       - name: 'Checkout'
-        uses: eliashaeussler/gha/.github/actions/checkout@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/checkout@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
 
       - name: 'Setup PHP'
-        uses: eliashaeussler/gha/.github/actions/setup-php@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/setup-php@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
         with:
           php-version: 8.5
 
       - name: 'Install Composer packages'
-        uses: eliashaeussler/gha/.github/actions/composer-install@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/composer-install@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
         with:
           composer-options: '--no-dev --optimize-autoloader'
 
       - name: 'Build assets'
-        uses: eliashaeussler/gha/.github/actions/build-assets@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/build-assets@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
 
       - name: 'Deploy'
-        uses: eliashaeussler/gha/.github/actions/deploy-app@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/deploy-app@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
         with:
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
@@ -83,23 +83,23 @@ jobs:
 
     steps:
       - name: 'Checkout'
-        uses: eliashaeussler/gha/.github/actions/checkout@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/checkout@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
 
       - name: 'Setup PHP'
-        uses: eliashaeussler/gha/.github/actions/setup-php@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/setup-php@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
         with:
           php-version: 8.5
 
       - name: 'Install Composer packages'
-        uses: eliashaeussler/gha/.github/actions/composer-install@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/composer-install@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
         with:
           composer-options: '--no-dev --optimize-autoloader'
 
       - name: 'Build assets'
-        uses: eliashaeussler/gha/.github/actions/build-assets@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/build-assets@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
 
       - name: 'Deploy'
-        uses: eliashaeussler/gha/.github/actions/deploy-app@67003507164f2d631fa6abdae19c2137eb04ca58 # 0.9.3
+        uses: eliashaeussler/gha/.github/actions/deploy-app@4d49615252d2d4710ef8ec80f45dc2cfa95071d5 # 0.9.4
         with:
           command: dev
           private-key: ${{ secrets.SSH_PRIVATE_KEY }}
