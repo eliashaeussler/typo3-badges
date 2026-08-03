@@ -22,7 +22,7 @@
 		"autoprefixer": "10.5.4",
 		"eslint": "10.8.0",
 		"globals": "17.8.0",
-		"knip": "6.29.0",
+		"knip": "6.31.0",
 		"npm-run-all-next": "1.4.2",
 		"postcss-import": "16.1.1",
 		"postcss-loader": "8.2.1",
