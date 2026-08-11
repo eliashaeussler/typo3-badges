@@ -1,0 +1,18 @@
+package-lock.json
+  h_a1c258d8beeba3 3,9
+package.json
+  h_a1c258d8beeba3 4
+spec/typo3-badges.oas3.yaml
+  h_a1c258d8beeba3 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "8b1cda6723cbb7fc6c1fb77ddc43c7cd085a3b2c",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
