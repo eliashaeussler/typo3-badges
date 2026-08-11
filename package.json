@@ -21,7 +21,7 @@
 		"@types/node": "26.2.0",
 		"autoprefixer": "10.5.4",
 		"eslint": "10.8.0",
-		"globals": "17.8.0",
+		"globals": "17.9.0",
 		"knip": "6.31.0",
 		"npm-run-all-next": "1.4.2",
 		"postcss-import": "16.1.1",
