@@ -73,7 +73,7 @@ set('shared_dirs', [
 ]);
 
 // Symfony
-set('bin/console', '{{bin/php}} {{release_or_current_path}}/bin/console');
+set('bin/console', 'COLUMNS=120 LINES=50 {{bin/php}} {{release_or_current_path}}/bin/console');
 
 // Hosts
 host('production')
