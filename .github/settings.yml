@@ -95,11 +95,11 @@ rulesets:
               integration_id: 15368
             - context: 'Checks / Perform repository checks'
               integration_id: 15368
-            - context: 'DevSecOps / Secret scanning / secret-scanning'
+            - context: 'DevSecOps / Secret scanning / devguard:secret-scanning'
               integration_id: 15368
-            - context: 'DevSecOps / Dependency scanning / sca'
+            - context: 'DevSecOps / Dependency scanning / devguard:software-composition-analysis'
               integration_id: 15368
-            - context: 'DevSecOps / SAST / static-application-security-testing'
+            - context: 'DevSecOps / SAST / devguard:static-application-security-testing'
               integration_id: 15368
             - context: 'Tests / Collect test coverage'
               integration_id: 15368
