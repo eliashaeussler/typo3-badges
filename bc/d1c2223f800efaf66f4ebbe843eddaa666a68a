@@ -1,0 +1,18 @@
+.github/workflows/ci.yaml
+  h_a1c258d8beeba3 17,29,45,55
+.github/workflows/release.yaml
+  h_a1c258d8beeba3 18,42,45,50,55,58,86,89,94,99,102
+.github/settings.yml
+  h_a1c258d8beeba3 98,100,102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "bcd1c2223f800efaf66f4ebbe843eddaa666a68a",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
