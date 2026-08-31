@@ -33,7 +33,7 @@
 		"tailwindcss-crossbrowser-touch": "1.1.2",
 		"tailwindcss-selection-variant": "0.1.0",
 		"webpack": "5.110.1",
-		"webpack-cli": "7.2.2"
+		"webpack-cli": "7.2.3"
 	},
 	"dependencies": {
 		"@fontsource/indie-flower": "5.3.0",
