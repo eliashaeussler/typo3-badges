@@ -77,7 +77,7 @@ set('bin/console', 'COLUMNS=120 LINES=50 {{bin/php}} {{release_or_current_path}}
 
 // Hosts
 host('production')
-    ->set('hostname', 'cp232.sp-server.net')
+    ->set('hostname', 'cp177.sp-server.net')
     ->set('remote_user', 'eliashae')
     ->set('http_user', 'eliashae')
     ->set('writable_mode', 'chmod')
@@ -85,7 +85,7 @@ host('production')
     ->add('env', ['APP_ENV' => 'prod'])
 ;
 host('dev')
-    ->set('hostname', 'cp232.sp-server.net')
+    ->set('hostname', 'cp177.sp-server.net')
     ->set('remote_user', 'eliashae')
     ->set('http_user', 'eliashae')
     ->set('writable_mode', 'chmod')
