@@ -68,7 +68,7 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' }}
 
     environment:
-      name: production
+      name: development
       url: https://pre.typo3-badges.dev
 
     concurrency:
