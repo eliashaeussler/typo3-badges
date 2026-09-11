@@ -1,0 +1,16 @@
+deploy.php
+  h_a1c258d8beeba3 80,88
+.github/workflows/release.yaml
+  h_a1c258d8beeba3 71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1c77c98b7564a7fbbe8d2a2618a21ed1b12454fa",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
