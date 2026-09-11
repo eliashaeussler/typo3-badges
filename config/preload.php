@@ -19,6 +19,10 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-if (file_exists(\dirname(__DIR__).'/var/cache/prod/App_KernelProdContainer.preload.php')) {
-    require \dirname(__DIR__).'/var/cache/prod/App_KernelProdContainer.preload.php';
+$files = glob(dirname(__DIR__).'/var/cache/prod/*.preload.php');
+
+if (is_array($files)) {
+    foreach ($files as $file) {
+        require $file;
+    }
 }

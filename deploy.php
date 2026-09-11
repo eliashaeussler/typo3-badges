@@ -47,6 +47,8 @@ set('rsync', [
         '/.gitattributes',
         '/.gitignore',
         '/.stylelintrc.json',
+        '/AGENTS.md',
+        '/CLAUDE.md',
         '/CODEOWNERS',
         '/deploy.php',
         '/eslint.config.js',
