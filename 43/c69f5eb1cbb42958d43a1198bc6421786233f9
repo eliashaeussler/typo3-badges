@@ -1,0 +1,14 @@
+deploy.php
+  h_a1c258d8beeba3 80,88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "43c69f5eb1cbb42958d43a1198bc6421786233f9",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
