@@ -1,0 +1,14 @@
+package-lock.json
+  h_a1c258d8beeba3 4233-4235,5160-5162,6454-6456
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2dfd01cf0ef850a32e702b638248a2c9cf1aefe6",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
