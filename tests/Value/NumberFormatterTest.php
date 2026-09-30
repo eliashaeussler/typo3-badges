@@ -52,6 +52,10 @@ final class NumberFormatterTest extends TestCase
         yield 'lower than 1000' => [278, '278'];
         yield 'thousands (#1)' => [2782, '2.8K'];
         yield 'thousands (#2)' => [278239, '278.2K'];
+        yield 'thousands with trailing zero' => [20049, '20K'];
+        yield 'round thousands' => [100000, '100K'];
+        yield 'thousands rounded up to millions' => [999999, '1M'];
+        yield 'round millions' => [10000000, '10M'];
         yield 'millions (#1)' => [2782394, '2.8M'];
         yield 'millions (#2)' => [278239465, '278.2M'];
         yield 'billions (#1)' => [2782394658, '2.8B'];
