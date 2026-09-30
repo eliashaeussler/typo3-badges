@@ -47,12 +47,18 @@ final class NumberFormatter
 
         $unit = intval(log($number, 1000));
         $units = ['', 'K', 'M', 'B', 'T', 'Q'];
+        $value = round($number / 1000 ** $unit, 1);
+
+        // Rounding may carry over to the next unit, e.g. 999999 => 1000.0K => 1M
+        if ($value >= 1000) {
+            ++$unit;
+            $value = round($number / 1000 ** $unit, 1);
+        }
 
         if (array_key_exists($unit, $units)) {
-            /** @var non-empty-string $formattedNumber */
-            $formattedNumber = rtrim(number_format($number / 1000 ** $unit, 1), '.0');
+            $decimals = $value === floor($value) ? 0 : 1;
 
-            return $formattedNumber.$units[$unit];
+            return number_format($value, $decimals, '.', '').$units[$unit];
         }
 
         return (string) $number;
