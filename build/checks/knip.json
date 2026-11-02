@@ -4,7 +4,6 @@
 		"dependencies"
 	],
 	"ignoreDependencies": [
-		"autoprefixer",
-		"tailwindcss"
+		"autoprefixer"
 	]
 }
