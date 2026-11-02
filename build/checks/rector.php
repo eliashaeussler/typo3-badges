@@ -21,34 +21,17 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
-use Rector\Symfony\Symfony34\Rector\Closure\ContainerGetNameToTypeInTestsRector;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rootPath = dirname(__DIR__, 2);
+$rootPath = dirname(__DIR__, 2);
 
-    $rectorConfig->symfonyContainerXml($rootPath.'/var/cache/dev/App_KernelDevDebugContainer.xml');
-
-    Config::create($rectorConfig)
-        ->in(
-            $rootPath.'/src',
-            $rootPath.'/tests',
-        )
-        ->withSymfony()
-        ->withPHPUnit()
-        ->skip(AnnotationToAttributeRector::class, [
-            $rootPath.'/src/Badge/Provider/BadgenBadgeProvider.php',
-            $rootPath.'/src/Badge/Provider/ShieldsBadgeProvider.php',
-            $rootPath.'/src/Cache/RandomExtensionMetadataCacheWarmer.php',
-        ])
-        ->skip(ContainerGetNameToTypeInTestsRector::class, [
-            $rootPath.'/tests/Badge/Provider/BadgenBadgeProviderTest.php',
-            $rootPath.'/tests/Badge/Provider/RoutingTraitTest.php',
-            $rootPath.'/tests/Badge/Provider/ShieldsBadgeProviderTest.php',
-            $rootPath.'/tests/Controller/HomepageControllerTest.php',
-        ])
-        ->apply()
-    ;
-};
+return RectorConfig::configure()
+    ->withPaths([
+        $rootPath.'/src',
+        $rootPath.'/tests',
+    ])
+    ->withPhpSets(php85: true)
+    ->withPreparedSets(phpunitMockToStub: true, doctrineCodeQuality: true, symfonyCodeQuality: true, symfonyConfigs: true)
+    ->withComposerBased(twig: true, doctrine: true, phpunit: true, symfony: true)
+    ->withSymfonyContainerXml($rootPath.'/var/cache/dev/App_KernelDevDebugContainer.xml')
+;

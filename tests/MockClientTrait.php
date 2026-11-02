@@ -44,9 +44,7 @@ trait MockClientTrait
 
     protected function getMockClient(): MockHttpClient
     {
-        if (null === $this->mockClient) {
-            $this->mockClient = new MockHttpClient($this->getMockResponses());
-        }
+        $this->mockClient ??= new MockHttpClient($this->getMockResponses());
 
         return $this->mockClient;
     }
