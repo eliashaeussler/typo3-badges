@@ -1,6 +1,14 @@
 {
 	"extends": "stylelint-config-standard",
 	"rules": {
+		"at-rule-prelude-no-invalid": [
+			true,
+			{
+				"ignoreAtRules": [
+					"apply"
+				]
+			}
+		],
 		"at-rule-no-deprecated": [
 			true,
 			{
