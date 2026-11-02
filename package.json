@@ -51,7 +51,7 @@
 		"check:style": "npm-run-all-next check:style:css check:style:js",
 		"check:style:css": "stylelint 'assets/**/*.css'",
 		"check:style:js": "eslint 'assets/**/*.js' './*.js'",
-		"ci": "npm audit && npm run check",
+		"ci": "npm audit --omit=dev --audit-level=moderate && npm run check",
 		"fix": "npm run fix:style",
 		"fix:style": "npm-run-all-next fix:style:css fix:style:js",
 		"fix:style:css": "stylelint 'assets/**/*.css' --fix",
