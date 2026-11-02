@@ -20,7 +20,7 @@
 		"@tailwindcss/postcss": "4.3.3",
 		"@types/node": "26.6.6",
 		"autoprefixer": "10.6.2",
-		"eslint": "10.13.0",
+		"eslint": "10.14.0",
 		"globals": "17.13.0",
 		"knip": "6.44.0",
 		"npm-run-all-next": "1.4.2",
