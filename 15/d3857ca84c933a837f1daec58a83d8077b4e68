@@ -1,0 +1,32 @@
+composer.json
+  s_a6b7de36e30932::t_08dc1a37d04c90 18
+tests/Value/NumberFormatterTest.php
+  s_a6b7de36e30932::t_6ef9ed5fcec3cd 53,56-62
+  s_a6b7de36e30932::t_08dc1a37d04c90 69
+src/Value/NumberFormatter.php
+  h_a1c258d8beeba3 39-40,44
+  s_a6b7de36e30932::t_08dc1a37d04c90 41,43,47
+composer.lock
+  h_a1c258d8beeba3 10387
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "15d3857ca84c933a837f1daec58a83d8077b4e68",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  },
+  "sessions": {
+    "s_a6b7de36e30932": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "84c47229-cd34-41bb-9e71-bd43b365bf9e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": null
+    }
+  }
+}
