@@ -1,0 +1,19 @@
+src/Value/NumberFormatter.php
+  s_a6b7de36e30932::t_8ae8c7e6908c9f 39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5d1cea551ba98bcff5a330c458b2a0868109551e",
+  "prompts": {},
+  "sessions": {
+    "s_a6b7de36e30932": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "84c47229-cd34-41bb-9e71-bd43b365bf9e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
