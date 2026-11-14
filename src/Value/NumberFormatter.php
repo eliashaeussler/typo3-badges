@@ -36,6 +36,7 @@ final class NumberFormatter
      */
     public static function format(int $number): string
     {
+        /* @phpstan-ignore argument.invalidConstant (PHPStan is not aware of the constant, which was introduced with PHP 8.5) */
         $formatter = new \NumberFormatter('en', \NumberFormatter::DECIMAL_COMPACT_SHORT);
         $formatter->setAttribute(\NumberFormatter::MAX_FRACTION_DIGITS, 1);
         $formattedNumber = $formatter->format($number);
