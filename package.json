@@ -16,7 +16,7 @@
 		"@babel/core": "8.1.2",
 		"@babel/preset-env": "8.0.7",
 		"@eslint/js": "10.0.1",
-		"@symfony/webpack-encore": "7.2.0",
+		"@symfony/webpack-encore": "7.2.1",
 		"@tailwindcss/postcss": "4.3.3",
 		"@types/node": "26.6.6",
 		"autoprefixer": "10.6.2",
