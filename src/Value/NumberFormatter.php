@@ -23,9 +23,6 @@ declare(strict_types=1);
 
 namespace App\Value;
 
-use function array_key_exists;
-use function intval;
-
 /**
  * NumberFormatter.
  *
@@ -35,26 +32,19 @@ use function intval;
 final class NumberFormatter
 {
     /**
-     * @see https://gist.github.com/gcphost/589d915e2c2f67270cc9bdade732b77f
-     *
      * @return non-empty-string
      */
     public static function format(int $number): string
     {
-        if ($number < 1000) {
+        /* @phpstan-ignore argument.invalidConstant (PHPStan is not aware of the constant, which was introduced with PHP 8.5) */
+        $formatter = new \NumberFormatter('en', \NumberFormatter::DECIMAL_COMPACT_SHORT);
+        $formatter->setAttribute(\NumberFormatter::MAX_FRACTION_DIGITS, 1);
+        $formattedNumber = $formatter->format($number);
+
+        if (false === $formattedNumber || '' === $formattedNumber) {
             return (string) $number;
         }
 
-        $unit = intval(log($number, 1000));
-        $units = ['', 'K', 'M', 'B', 'T', 'Q'];
-
-        if (array_key_exists($unit, $units)) {
-            /** @var non-empty-string $formattedNumber */
-            $formattedNumber = rtrim(number_format($number / 1000 ** $unit, 1), '.0');
-
-            return $formattedNumber.$units[$unit];
-        }
-
-        return (string) $number;
+        return $formattedNumber;
     }
 }

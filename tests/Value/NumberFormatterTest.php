@@ -50,16 +50,22 @@ final class NumberFormatterTest extends TestCase
     public static function formatReturnsFormattedNumberDataProvider(): Generator
     {
         yield 'lower than 1000' => [278, '278'];
+        yield 'exactly 1000' => [1000, '1K'];
         yield 'thousands (#1)' => [2782, '2.8K'];
         yield 'thousands (#2)' => [278239, '278.2K'];
+        yield 'thousands with trailing zero' => [20049, '20K'];
+        yield 'round thousands' => [100000, '100K'];
+        yield 'thousands rounded up to millions' => [999999, '1M'];
+        yield 'round millions' => [10000000, '10M'];
+        yield 'exactly one million' => [1000000, '1M'];
+        yield 'millions rounded up to billions' => [999999999, '1B'];
+        yield 'exactly one billion' => [1000000000, '1B'];
         yield 'millions (#1)' => [2782394, '2.8M'];
         yield 'millions (#2)' => [278239465, '278.2M'];
         yield 'billions (#1)' => [2782394658, '2.8B'];
         yield 'billions (#2)' => [278239465890, '278.2B'];
         yield 'trillions (#1)' => [2782394658901, '2.8T'];
         yield 'trillions (#2)' => [278239465890145, '278.2T'];
-        yield 'quadrillions (#1)' => [2782394658901452, '2.8Q'];
-        yield 'quadrillions (#2)' => [278239465890145231, '278.2Q'];
-        yield 'higher than quadrillions' => [2782394658901452310, '2782394658901452310'];
+        yield 'higher than trillions' => [2782394658901452, '2782.4T'];
     }
 }
