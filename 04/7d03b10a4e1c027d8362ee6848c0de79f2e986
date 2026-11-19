@@ -1,0 +1,14 @@
+renovate.json
+  h_a1c258d8beeba3 7-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "047d03b10a4e1c027d8362ee6848c0de79f2e986",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
