@@ -44,7 +44,7 @@ jobs:
       - name: 'Setup PHP'
         uses: eliashaeussler/gha/.github/actions/setup-php@7e16bdf568d9d36b2b0f89631a67e742d6daf44a # 1.1.32
         with:
-          php-version: 8.5
+          php-version: 8.6
 
       - name: 'Install Composer packages'
         uses: eliashaeussler/gha/.github/actions/composer-install@7e16bdf568d9d36b2b0f89631a67e742d6daf44a # 1.1.32
@@ -88,7 +88,7 @@ jobs:
       - name: 'Setup PHP'
         uses: eliashaeussler/gha/.github/actions/setup-php@7e16bdf568d9d36b2b0f89631a67e742d6daf44a # 1.1.32
         with:
-          php-version: 8.5
+          php-version: 8.6
 
       - name: 'Install Composer packages'
         uses: eliashaeussler/gha/.github/actions/composer-install@7e16bdf568d9d36b2b0f89631a67e742d6daf44a # 1.1.32
