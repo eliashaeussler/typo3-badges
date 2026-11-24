@@ -13,7 +13,7 @@
 	],
 	"homepage": "https://typo3-badges.dev",
 	"require": {
-		"php": "~8.5.0",
+		"php": "~8.6.0",
 		"ext-hash": "*",
 		"ext-intl": "*",
 		"ext-json": "*",
